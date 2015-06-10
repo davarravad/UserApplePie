@@ -1,5 +1,7 @@
 <?php 
 /*
+UserApple Pie Version: 0.0.1
+http://www.thedavar.net
 UserCake Version: 2.0.2
 http://usercake.com
 */
@@ -10,7 +12,7 @@ echo "
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<title>UserCake</title>
+<title>UserApplePie</title>
 <link href='../models/site-templates/default.css' rel='stylesheet' type='text/css' />
 <script src='../models/funcs.js' type='text/javascript'>
 </script>
@@ -18,7 +20,7 @@ echo "
 <body>
 <div id='top'><div id='logo'></div></div>
 <div id='content'>
-<h1>UserCake</h1>
+<h1>UserApplePie</h1>
 <h2>Installer</h2>";	
 
 if(isset($_GET["install"]))

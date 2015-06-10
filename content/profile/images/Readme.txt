@@ -1,0 +1,1 @@
+This folder is just a temp folder for image uploads.  Files are deleted from this folder after the upload to small and thumb are a success.

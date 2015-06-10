@@ -1,0 +1,1 @@
+Images uploaded will be placed here at the reduced image size that is more web friendly.
