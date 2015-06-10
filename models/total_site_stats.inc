@@ -1,0 +1,71 @@
+<?
+	// Get the totals for site stats
+	// Give users more information with links
+
+	// Notes: Add total online members with link to view all online members
+	
+	// Get the global info for site database and such
+	global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix;
+
+		// Veh Pro Count
+		$query_tvp = "SELECT count(*) as total from ".$db_table_prefix."submit";
+		if ($result_tvp = $mysqli->query("$query_tvp")) {
+			/* determine number of rows result set */
+			$total_tvp = $result_tvp->fetch_row();
+			$total_tvp = $total_tvp['0'];
+			/* close result set */
+			$result_tvp->close();
+		}
+
+		// Member Count
+		$query_mem = "SELECT count(*) as total from ".$db_table_prefix."users "; // WHERE NOT `userStatus`='0'
+		if ($result_mem = $mysqli->query("$query_mem")) {
+			/* determine number of rows result set */
+			$total_mem = $result_mem->fetch_row();
+			$total_mem = $total_mem['0'];
+			/* close result set */
+			$result_mem->close();
+		}
+
+		// Forum Topics Count
+		$query_diy_topics = "SELECT count(*) as total from ".$db_table_prefix."forum_posts";
+		if ($result_diy_topics = $mysqli->query("$query_diy_topics")) {
+			/* determine number of rows result set */
+			$total_diy_topics = $result_diy_topics->fetch_row();
+			$total_diy_topics = $total_diy_topics['0'];
+			/* close result set */
+			$result_diy_topics->close();
+		}
+		
+		// Forum Replys Count
+		$query_diy_replys = "SELECT count(*) as total from ".$db_table_prefix."forum_posts_replys";
+		if ($result_diy_replys = $mysqli->query("$query_diy_replys")) {
+			/* determine number of rows result set */
+			$total_diy_replys = $result_diy_replys->fetch_row();
+			$total_diy_replys = $total_diy_replys['0'];
+			/* close result set */
+			$result_diy_replys->close();
+		}		
+		
+
+		echo "<table width='150' border='0' cellpadding='0' cellspacing='0'><tr><td class='main_tbl_nav_links_title2'>";
+			echo "Site Stats";
+		echo "</td></tr>";
+
+		
+		echo "<tr><td class='main_tbl_nav_links_sub'>";
+		echo "<a href='${site_url_link}members/'>Members: $total_mem</a><br>";
+		echo "</td></tr>";
+		
+		echo "<tr><td class='main_tbl_nav_links_sub'>";
+		echo "<a href='${site_url_link}Forum/'>Forum Topics: $total_diy_topics</a><br>";
+		echo "</td></tr>";
+		
+		echo "<tr><td class='main_tbl_nav_links_sub'>";
+		echo "<a href='${site_url_link}Forum/'>Forum Replys: $total_diy_replys</a><br>";
+		echo "</td></tr>";
+
+		echo "<tr><td class='main_tbl_nav_links_subB'>";
+		
+		echo "</td></tr></table>";
+?>

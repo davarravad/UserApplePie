@@ -1,0 +1,41 @@
+<?php
+/*
+UserCake Version: 2.0.2
+http://usercake.com
+*/
+
+//Database Information
+$db_host = "localhost"; //Host address (most likely localhost)
+$db_name = "thedavar"; //Name of Database
+$db_user = "thedavar"; //Name of database user
+$db_pass = "tijsatdtia6584321"; //Password for database user
+$db_table_prefix = "uc_";
+
+// Sets globals for sql with updated sql
+$conn=($GLOBALS["___mysqli_ston"] = mysqli_connect("$db_host",  "$db_user",  "$db_pass", "$db_name", "3306")) or die ('Cannot connect to the database because: ' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
+// Work the above sql connection out in time ^^^
+
+GLOBAL $errors;
+GLOBAL $successes;
+
+$errors = array();
+$successes = array();
+
+/* Create a new mysqli object with database connection parameters */
+$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+GLOBAL $mysqli;
+
+if(mysqli_connect_errno()) {
+	echo "Connection Failed: " . mysqli_connect_errno();
+	exit();
+}
+
+//Direct to install directory, if it exists
+if(is_dir("install/"))
+{
+	header("Location: install/");
+	die();
+
+}
+
+?>

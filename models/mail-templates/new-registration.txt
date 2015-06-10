@@ -1,0 +1,5 @@
+Welcome to CarTruckClubs.com, #USERNAME#
+<br><br>
+Thank you for signing up for #WEBSITENAME#
+<br><br>
+#ACTIVATION-MESSAGE

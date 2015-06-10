@@ -1,0 +1,126 @@
+<?
+
+//Checks to see if user is loged in
+if(isUserLoggedIn())
+{
+
+		//Token validation function
+	if(!is_valid_token()){ 
+
+		//Token does not match
+		err_message('Sorry, Tokens do not match!  Please go back and try again.');
+
+	}else{
+
+
+		//echo "$com_uid - $com_id - $ed_com_database - $ed_com_id_form - $ed_com_url - $com_content";
+
+		unset($com_content);
+
+		$com_content = $_POST['com_content'];
+
+		if($com_content){
+
+			$com_content = ALB($com_content);
+			 
+			if($ed_com_database == "profilecomments"){
+				$queryUC = "UPDATE `profilecomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "profilecomments_b"){
+				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "writingcomments"){
+				$queryUC = "UPDATE `writingcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "writingcomments_b"){
+				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "artcomments"){
+				$queryUC = "UPDATE `artcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "artcomments_b"){
+				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "clubcomments"){
+				$queryUC = "UPDATE `clubcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "clubcomments_b"){
+				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "status"){
+				$queryUC = "UPDATE `status` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_id`='$userIdme' LIMIT 1";
+				$comment_type_yeah = "Status";
+			}
+			if($ed_com_database == "statcom"){
+				$queryUC = "UPDATE `statcom` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "club_events_com"){
+				$queryUC = "UPDATE `$ed_com_database` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "club_events_com_b"){
+				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "location_comments"){
+				$queryUC = "UPDATE `$ed_com_database` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$comment_type_yeah = "Comment";
+			}
+			if($ed_com_database == "location_comments_b"){
+				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$comment_type_yeah = "Comment";
+			}
+		  
+			$resultsUC = mysqli_query($GLOBALS["___mysqli_ston"],  $queryUC );
+
+			// print out the results
+			if( $resultsUC ){
+
+				//Sends success message to session
+				//Shows user success when they are redirected
+				$success_msg = "You Have Successfully Updated Your $comment_type_yeah!";
+				$_SESSION['success_msg'] = $success_msg;			
+
+				echo "Successfully saved the entry.<br><br>";
+				//echo "$com_content";
+				//Disables auto refresh for debug stuff
+				if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
+					//Redirects the user
+					global $site_url_link;
+					$redir_link_url = "";
+					
+					// Redirect member to their post
+					header("Location: $redir_link_url");
+					exit;
+
+				}
+			}
+			else{
+				//Code used to report mysql error
+				$mysql_error_report = "TRUE";
+				$sql_query = "$queryUC";
+				require "models/mysql_error_report.inc";
+			}
+		}
+
+
+				 //End of Token Check
+					}			
+				 //Ends the token session for better security	
+				unset($_SESSION['user_token']);  
+
+
+}else{
+	notlogedinmsg();
+}
+
+?>
