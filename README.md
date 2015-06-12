@@ -26,11 +26,11 @@ Thank you for downloading UserApplePie, the simple user management package.
 
 //--Installation.
 
-1. Before proceeding please open up models/db-settings.php
+1. Before proceeding please open up models/db-settings.inc
 
 2. Create a database on your server / web hosting package.
 
-3. Fill out the connection details in db-settings.php
+3. Fill out the connection details in db-settings.inc
 
 4. UserApplePie supports MySQLi and requires MySQL server version 4.1.3 or newer.
 
