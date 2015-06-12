@@ -5,25 +5,61 @@ http://www.thedavar.net
 UserCake Version: 2.0.2
 http://usercake.com
 */
-require_once("../models/db-settings.php");
+require_once("../models/db-settings.inc");
+
+// Current Version
+$uap_ver = "v0.0.1";
 
 echo "
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<title>UserApplePie</title>
-<link href='../models/site-templates/default.css' rel='stylesheet' type='text/css' />
+<title>UserApplePie $uap_ver Installer</title>
+<style type='text/css'>
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	background-color: #C1DDFF;
+}
+hr {
+	color: #069;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #0CF;
+	margin: 4px;
+	width: 100%;
+}
+h1 {
+	margin: 2px;
+	 text-shadow: 1px 1px #0074E8;
+}
+h2 {
+	margin: 2px;	
+}
+#content {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #003333;
+}
+</style>
 <script src='../models/funcs.js' type='text/javascript'>
 </script>
 </head>
 <body>
 <div id='top'><div id='logo'></div></div>
 <div id='content'>
-<h1>UserApplePie</h1>
-<h2>Installer</h2>";	
+<h1>UserApplePie $uap_ver</h1>
+<hr>
+<h2>Installer</h2>
+<hr>";	
 
-if(isset($_GET["install"]))
+// Get Data from form request
+if(isset($_POST['pass_requirements'])){ $pass_requirements = $_POST['pass_requirements']; }else{ $pass_requirements = "FALSE"; }
+if(isset($_POST['install'])){ $install = $_POST['install']; }else{ $install = "FALSE"; }
+
+
+if($install == "TRUE")
 {
 	$db_issue = false;
 	
@@ -287,16 +323,196 @@ if(isset($_GET["install"]))
 		$db_issue = true;
 	}
 	
-	if(!$db_issue)
+	if(!$db_issue){
 		echo "<p><strong>Database setup complete, please delete the install folder.</strong></p>";
-	else
-	echo "<p><a href=\"?install=true\">Try again</a></p>";
+	} else {
+		echo "<p><a href=\"?install=true\">Try again</a></p>";
+	}
 }
-else
+else if($pass_requirements == 'TRUE')
 {
 	echo "
-	<a href='?install=true'>Install UserCake</a>
+		<strong>Update the following information to match your server settings.  Make sure you replace the default text or your website may have issues.</strong><hr>
+		<form name='adminConfiguration' action='' method='post'>
+		<table width=100%><tr>
+			<td>
+				<label>Website Name:</label>
+			</td><td>
+				<input size='60' maxlength='150' type='text' name='website_name' value='UserApplePie' />
+			</td>
+		</tr><tr>
+			<td>
+				<label>Website URL:</label>
+			</td><td>
+				<input size='60' maxlength='150' type='text' name='website_url' value='http://www.website.com' />
+			</td>
+		</tr><tr>
+			<td>
+				<label>Website Mobile URL:</label>
+			</td><td>
+				<input size='60' maxlength='150' type='text' name='site_url_link_m' value='http://m.website.com' />
+			</td>
+		</tr><tr>
+			<td>
+				<label>Website Main Directory:</label>
+			</td><td>
+				<input size='60' maxlength='150' type='text' name='site_dir' value='websitefolder' />
+			</td>
+		</tr><tr>
+			<td>
+				<label>Website Folder Directory:</label>
+			</td><td>
+				<input size='60' maxlength='150' type='text' name='site_folder_dir' value='/var/www/html/' />
+			</td>
+		</tr><tr>
+			<td>
+				<label>Website Description:</label>
+			</td><td>
+				<textarea rows='4' cols='45' type='text' maxlength='255' name='site_gbl_descript'>My Website and Stuff</textarea>
+			</td>
+		</tr><tr>
+			<td>
+				<label>Website Keywords:</label>
+			</td><td>
+				<textarea rows='4' cols='45' type='text' maxlength='255' name='site_gbl_keywords'>UserApplePie, UserCake</textarea>
+			</td>
+		</tr><tr>
+			<td>
+				<label>Site Email:</label>
+			</td><td>
+				<input size='60' maxlength='255' type='text' name='email' value='admin@website.com' />
+			</td>
+		</tr>
+		<tr><td colspan=2>
+		<hr>
+		<strong>Google reCAPTCHA Settings</strong> - <a href='https://www.google.com/recaptcha/' target='_blank'>Google reCAPTCHA</a>
+		</td></tr>
+		<tr>
+			<td>
+				<label>Site Key:</label>
+			</td><td>
+				<input size='60' maxlength='255' type='text' name='recap_sitekey' value='Get Site Key From Google' />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Secret Key:</label>
+			</td><td>
+				<input size='60' maxlength='255' type='text' name='recap_secretkey' value='Get Secret Key From Google' />
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+		<hr><center>
+		<strong>Please make sure information above is correct before installing.</strong><br>
+		<input type='submit' name='Submit' value='Install UserApplePie' />
+		</center>
+		</td></tr>
+		</table>
+		</form>
 	";
+}else{
+	echo "
+		UserApplePie requires the following to be installed and working before installation can continue.<hr>
+		PHP
+	";
+			// Check to make sure php is version is good enough
+			if (version_compare(phpversion(), '5.3.10', '<')) {
+				// php version isn't high enough
+				echo " - <font color=red><strong>Out of Date, Update to 5.3.10 or greater to continue.</strong></font>";
+				echo " - <a href='http://php.net/' target='_blank'>PHP Website</a>";
+				$server_check_status = "FALSE";
+			} else {
+				echo " - <font color=green><strong>Good To Go!</strong></font>";
+			}
+	echo "
+		<br>
+		MySQL
+	";
+			// Check to make sure php is version is good enough
+			if (!function_exists('mysqli_connect')) {
+				// php version isn't high enough
+				echo " - <font color=red><strong>MySQLi does not seem to be installed.</strong></font>";
+				echo " - <a href='https://www.mysql.com/' target='_blank'>MySQLi Website</a>";
+				$server_check_status = "FALSE";
+			} else {
+				echo " - <font color=green><strong>Good To Go!</strong></font>";
+			}
+	echo " <br>
+		ImageMagic
+	";
+			// Check to make sure php is version is good enough
+			if (!extension_loaded('imagick')) {
+				// php version isn't high enough
+				echo " - <font color=red><strong>ImageMagick does not seem to be installed.</strong></font>";
+				echo " - <a href='http://www.imagemagick.org' target='_blank'>ImageMagick Website</a>";
+				$server_check_status = "FALSE";
+			} else {
+				echo " - <font color=green><strong>Good To Go!</strong></font>";
+			}
+	echo " 
+		<Br>
+		mod_rewrite
+	";
+		// Check to see if mod_rewrite is enabled on server
+		$isEnabled = in_array('mod_rewrite', apache_get_modules());
+			if($isEnabled){
+				echo " - <font color=green><strong>Good To Go!</strong></font>";
+			} else {
+				echo " - <font color=red><strong>Not Enabled.</strong></font>";
+				$server_check_status = "FALSE";
+			}
+	echo "
+		<hr>
+		Image upload folders need to be writeable for profile images to work.<br>
+		Status for folders in /content/profile/<hr>
+		images
+	";
+		// Checks the images folder to see if server can write photos to it
+		$dir_check = '../content/profile/images/';
+		if (is_dir($dir_check) && is_writable($dir_check)) {
+			echo " - <font color=green><strong>Good To Go!</strong></font>";
+		} else {
+			echo " - <font color=red><strong>Server does NOT have permission to write to this folder!</strong></font>";
+			$server_check_status = "FALSE";
+		}
+	echo "
+		<Br>
+		small
+	";
+		// Checks the images folder to see if server can write photos to it
+		$dir_check = '../content/profile/small/';
+		if (is_dir($dir_check) && is_writable($dir_check)) {
+			echo " - <font color=green><strong>Good To Go!</strong></font>";
+		} else {
+			echo " - <font color=red><strong>Server does NOT have permission to write to this folder!</strong></font>";
+			$server_check_status = "FALSE";
+		}
+	echo "
+		<br>
+		thumb
+	";
+		// Checks the images folder to see if server can write photos to it
+		$dir_check = '../content/profile/thumb/';
+		if (is_dir($dir_check) && is_writable($dir_check)) {
+			echo " - <font color=green><strong>Good To Go!</strong></font>";
+		} else {
+			echo " - <font color=red><strong>Server does NOT have permission to write to this folder!</strong></font>";
+			$server_check_status = "FALSE";
+		}
+		
+		
+	// Check to see current server status and if installation can continue
+	if($server_check_status == "FALSE"){
+		echo "<hr><center><font color=red><strong>Sorry, Your server is not properly configured to install UserApplePie $uap_ver!</strong></font></center>";
+		echo "<br><br><center>Please correct the above issues and <a href='.'>try again</a>.</center>";
+	}else{
+		echo "<hr><center><font color=green><strong>Congratulations!  Your server is ready to install UserApplePie $uap_ver</strong></font>";
+		echo "<form method='post' action='' onsubmit='submit.disabled = true; return true;'>";
+			echo "<input type='hidden' name='pass_requirements' value='TRUE'>";
+			echo "<input type=\"submit\" value=\"Start Install\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
+		echo "</form></center>";
+	}
 }
 
 echo "
