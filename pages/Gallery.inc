@@ -122,8 +122,6 @@ if ($result = $mysqli->query("$query")) {
 			// Table Class
 			$bgcolor = 'epboxa';
 
-				//echo "<table width='$tblw500' border='0' cellpadding='0' cellspacing='0' class='$bgcolor'>";
-				//echo "<tr><td valign='top' width='150'>";
 				echo "<li class='epboxa' width='110'>";
 					
 					//Displays Vehicle Photos with correct link

@@ -47,6 +47,15 @@
 			$result_diy_replys->close();
 		}		
 		
+		// Online Members Count
+		$query_usr_online = "SELECT count(*) as total from ".$db_table_prefix."loggedusers";
+		if ($result_usr_online = $mysqli->query("$query_usr_online")) {
+			/* determine number of rows result set */
+			$total_usr_online = $result_usr_online->fetch_row();
+			$total_usr_online = $total_usr_online['0'];
+			/* close result set */
+			$result_usr_online->close();
+		}
 
 		echo "<table width='150' border='0' cellpadding='0' cellspacing='0'><tr><td class='main_tbl_nav_links_title2'>";
 			echo "Site Stats";
@@ -55,6 +64,10 @@
 		
 		echo "<tr><td class='main_tbl_nav_links_sub'>";
 		echo "<a href='${site_url_link}members/'>Members: $total_mem</a><br>";
+		echo "</td></tr>";
+		
+		echo "<tr><td class='main_tbl_nav_links_sub'>";
+		echo "<a href='${site_url_link}whosonline/'>Members Online: $total_usr_online</a><br>";
 		echo "</td></tr>";
 		
 		echo "<tr><td class='main_tbl_nav_links_sub'>";
