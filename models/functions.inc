@@ -856,4 +856,35 @@ if(!isUserLoggedIn()){
 }
 
 
+//Added Functions that allow admins to activate or deactivate users based on user id
+// Admin - Change a user from inactive to active
+
+function setUserActiveStatus($id)
+{
+	global $mysqli,$db_table_prefix;
+	$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."users
+		SET active = 1
+		WHERE
+		id = ?
+		LIMIT 1");
+	$stmt->bind_param("i", $id);
+	$result = $stmt->execute();
+	$stmt->close();	
+	return $result;
+}
+
+function setUserInactiveStatus($id)
+{
+	global $mysqli,$db_table_prefix;
+	$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."users
+		SET active = 0
+		WHERE
+		id = ?
+		LIMIT 1");
+	$stmt->bind_param("i", $id);
+	$result = $stmt->execute();
+	$stmt->close();	
+	return $result;
+}
+
 ?>

@@ -61,11 +61,32 @@ if(!empty($_POST))
 		else {
 			$displayname = $userdetails['display_name'];
 		}
-		
+
+// Test Edit	
+//		//Activate account
+//		if(isset($_POST['activate']) && $_POST['activate'] == "activate"){
+//			if (setUserActive($userdetails['activation_token'])){
+//				$successes[] = lang("ACCOUNT_MANUALLY_ACTIVATED", array($displayname));
+//			}
+//			else {
+//				$errors[] = lang("SQL_ERROR");
+//			}
+//		}
+
 		//Activate account
 		if(isset($_POST['activate']) && $_POST['activate'] == "activate"){
-			if (setUserActive($userdetails['activation_token'])){
+			if (setUserActiveStatus($userdetails['id'])){
 				$successes[] = lang("ACCOUNT_MANUALLY_ACTIVATED", array($displayname));
+			}
+			else {
+				$errors[] = lang("SQL_ERROR");
+			}
+		}
+		
+		//Deactivate account
+		if(isset($_POST['deactivate']) && $_POST['deactivate'] == "deactivate"){
+			if (setUserInactiveStatus($userdetails['id'])){
+				$successes[] = lang("ACCOUNT_MANUALLY_DEACTIVATED", array($displayname));
 			}
 			else {
 				$errors[] = lang("SQL_ERROR");
@@ -170,14 +191,18 @@ echo "
 <input type='text' name='email' value='".$userdetails['email']."' />
 </p>
 <p>
-<label>Active:</label>";
+<label>Status:</label> ";
 
 //Display activation link, if account inactive
 if ($userdetails['active'] == '1'){
-	echo "Yes";	
+	echo "Active
+	</p>
+	<p>
+	<label>Deactivate:</label>
+	<input type='checkbox' name='deactivate' id='deactivate' value='deactivate'>";	
 }
 else{
-	echo "No
+	echo "Not Active - Banned
 	</p>
 	<p>
 	<label>Activate:</label>
