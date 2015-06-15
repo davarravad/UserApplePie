@@ -44,6 +44,9 @@
 				<a href='${site_url_link}YummyAsPie/admin_users/'>Admin Users</a> | 
 				<a href='${site_url_link}YummyAsPie/admin_permissions/'>Admin Permissions</a> | 
 				<a href='${site_url_link}YummyAsPie/admin_pages/'>Admin Pages</a>";
+			echo "<hr>";
+			echo "
+				<a href='${site_url_link}YummyAsPie/admin_forum/'>Admin Forum</a>";
 			echo "</center></td></tr></table><br>";
 
 

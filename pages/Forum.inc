@@ -22,6 +22,18 @@ $load_page_dir = "forum";
 $load_page_req = $load_page;
 // Set the default page
 $load_page_def = "main";
+
+// Add Forum Admin Functions
+require("pages/forum/forum_admin_funcs.inc");
+
+// Displays Current User's Status if they are Mod or Admin
+if(userCheckForumAdmin()){
+	echo " You are Admin. ";
+}
+if(userCheckForumMod()){
+	echo " You are Moderator. ";
+}
+
 // Run the page function
 display_pages_in_pages($load_page_dir, $load_page_req, $load_page_def, $load_cat, $load_id);
 

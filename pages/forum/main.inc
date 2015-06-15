@@ -1,15 +1,16 @@
 <?php
 
-// Page title
-$stc_page_title = "Forum";
-// Page Description
-$stc_page_description = "Welcome to the Forum.  Ask questions and get answers from fellow Forum members.";
-// Run Top of page func
-style_header_content($stc_page_title, $stc_page_description);
-// Which database do we use
-$stc_page_sel = "forum";
+
+	// Page title
+	$stc_page_title = "Forum";
+	// Page Description
+	$stc_page_description = "Welcome to the Forum.  Ask questions and get answers from fellow Forum members.";
+	// Run Top of page func
+	style_header_content($stc_page_title, $stc_page_description);
+	// Which database table do we use
+	$stc_page_sel = "forum";
+
 	// Main Page for forum
-	//echo "Welcome to the forum for diy stuff. ($load_cat)($load_id)<br>";
 	
 	// Check database for sections
 	
@@ -17,15 +18,35 @@ $stc_page_sel = "forum";
 	global $session_token_num;
 
 	// Get all Categories from database
-	$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_name`='$stc_page_sel' GROUP BY forum_title ORDER BY `".$db_table_prefix."forum_cat`.`forum_id` ASC ";
+	$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_name`='$stc_page_sel' GROUP BY forum_title ORDER BY `".$db_table_prefix."forum_cat`.`forum_order_title` ASC ";
 	$result = $mysqli->query($query);
 	$arr = $result->fetch_all(MYSQLI_BOTH);
 	foreach($arr as $row)
 	{
 		$f_title = $row['forum_title'];
 		$f_id = $row['forum_id'];
+		$f_order_title = $row['forum_order_title'];
 		echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class=hr2>";
-		echo "<strong>$f_title</strong><br>";
+		echo "<table width='100%'><tr><td>";
+		//Display title or edit title field if mod and requested
+		forumEditTitleCheck($f_title);
+		
+		// Display Forum Title Edit Funcs.
+		if(userCheckForumAdmin() || userCheckForumMod()){
+			// Show admin feature if is admin
+			// Display current order id
+			echo "</td><td align='right'>";
+			//echo "Order Id: $f_order_title ";
+			echo "<table><tr><td width='140px' align='right'>";
+				//Display Move Buttons
+				forumMoveTitleOrder($f_order_title);
+			echo "</td><td width='100px' align='right'>";
+				//Display Edit/Delete Buttons
+				forumEditTitle($f_title);
+			echo "</td></tr></table>";
+		}
+		
+		echo "</td></tr></table>";
 		echo "</td></tr><tr><td class='content78'>";
 
 			$f_title_2 = addslashes($f_title);
