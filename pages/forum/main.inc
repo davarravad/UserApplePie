@@ -7,15 +7,13 @@
 	$stc_page_description = "Welcome to the Forum.  Ask questions and get answers from fellow Forum members.";
 	// Run Top of page func
 	style_header_content($stc_page_title, $stc_page_description);
-	// Which database table do we use
-	$stc_page_sel = "forum";
 
 	// Main Page for forum
 	
 	// Check database for sections
 	
 	global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix;
-	global $session_token_num;
+	global $session_token_num, $stc_page_sel;
 
 	// Get all Categories from database
 	$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_name`='$stc_page_sel' GROUP BY forum_title ORDER BY `".$db_table_prefix."forum_cat`.`forum_order_title` ASC ";
@@ -79,6 +77,7 @@
 		echo "</td></tr></table><br>";
 			
 	}
+	forumCreateNewTopic();
 
 // Run Footer of page func
 style_footer_content();

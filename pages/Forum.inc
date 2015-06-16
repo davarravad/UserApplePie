@@ -22,6 +22,8 @@ $load_page_dir = "forum";
 $load_page_req = $load_page;
 // Set the default page
 $load_page_def = "main";
+// Which database table do we use
+$stc_page_sel = "forum";
 
 // Add Forum Admin Functions
 require("pages/forum/forum_admin_funcs.inc");
