@@ -153,6 +153,24 @@ function forumEditTitleCheck($f_title){
 	}
 }
 
+// Setup User Forum Permissions Display
+function forumDisplayUserPerms(){
+	// Displays Current User's Status if they are Visitor, Member, Mod, or Admin
+	if(userCheckForumAdmin()){ $forum_perm_level = "Admin"; }
+	else if(userCheckForumMod()){ $forum_perm_level = "Moderator"; }
+	else if(isUserLoggedIn()){ $forum_perm_level = "Member"; }
+	else{ $forum_perm_level = "Visitor"; }
+	// If Admin or Mod Show settings to edit forum
+	echo "<table width='100%' class='content78'><tr><td>";
+		echo "Permission Level: $forum_perm_level";
+	echo "</td></tr></table>";
+}
+	
+// Allow Admin to Create New Forum Titles
+function forumCreateNewTopic(){
+	echo "Create new topic";
+}
+
 // Check to see if admin or mod wants to move the cat up or down
 if(isset($_POST['MoveCatUp'])){ $MoveCatUp = $_POST['MoveCatUp']; }else{ $MoveCatUp = "FALSE"; }
 if(isset($_POST['MoveCatDown'])){ $MoveCatDown = $_POST['MoveCatDown']; }else{ $MoveCatDown = "FALSE"; }

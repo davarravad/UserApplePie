@@ -75,11 +75,10 @@
 					total_topic_replys_display($f_id2);
 				echo "</td></tr></table>";
 			}
-
+			
 		echo "</td></tr></table><br>";
 			
 	}
-
 
 // Run Footer of page func
 style_footer_content();
