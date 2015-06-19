@@ -39,7 +39,7 @@
 	";
 	
 	//Sets the title and description of site if no ?=page, ?=profile, ?=club are requested
-	if(empty($_GET['page']) && empty($_GET['profile']) && empty($_GET['club']) && empty($_GET['Club'])){
+	if(empty($_GET['page']) && empty($_GET['profile'])){
 		
 		echo "<meta name=\"description\" content=\" ".$site_gbl_descript." \">";
 		echo "<meta http-equiv=\"Content-Language\" content=\"en\">";
@@ -60,7 +60,7 @@
 	echo "
 
 <table width='100%' border='0' cellpadding='0' cellspacing='0' class='top_header_fixed'><tr><td class='header_title' height='50px' colspan='2'>
-	<img src=\"/images/tazib_top_header.gif\" width=\"700\" height=\"50\" alt=\"$websiteName\" longdesc=\"http://www.cartruckclubs.com\" />
+	$websiteName
 </td></tr><tr><td height='25px' align='left' valign='middle' class='header_links' width='100%'>
 
     <ul id='MenuBar1' class='MenuBarHorizontal'>

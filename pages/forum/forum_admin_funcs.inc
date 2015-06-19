@@ -102,8 +102,8 @@ function forumMoveTitleOrder($fot_id){
 					//Disables auto refresh for debug stuff
 					if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
 						//Redirects the user
-						global $websiteUrl;
-						$form_redir_link = "${websiteUrl}Forum/";
+						global $websiteUrl, $site_forum_title;
+						$form_redir_link = "${websiteUrl}${site_forum_title}/";
 						// Redirect member to their post
 						header("Location: $form_redir_link");
 						exit;
@@ -147,8 +147,8 @@ function forumMoveTitleOrder($fot_id){
 					//Disables auto refresh for debug stuff
 					if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
 						//Redirects the user
-						global $websiteUrl;
-						$form_redir_link = "${websiteUrl}Forum/";
+						global $websiteUrl, $site_forum_title;
+						$form_redir_link = "${websiteUrl}${site_forum_title}/";
 						// Redirect member to their post
 						header("Location: $form_redir_link");
 						exit;
@@ -215,10 +215,10 @@ function forumMoveTitleOrder($fot_id){
 }
 
 //////////////////////////////////////////////////
-// Allow admin to edit and delete forum Categories
+// Allow admin to edit and delete forum Titles
 //////////////////////////////////////////////////
 function forumEditTitle($f_title){
-	global $mysqli, $db_table_prefix, $load_page_dir, $session_token_num;
+	global $mysqli, $db_table_prefix, $load_page_dir, $session_token_num, $websiteUrl, $site_forum_title;
 	// Form button to edit forum title
 	echo "<form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
 		// Setup token in form // create multi sessions
@@ -232,7 +232,7 @@ function forumEditTitle($f_title){
 	// Only Admins Can Delete Forum Titles
 	if(userCheckForumAdmin()){
 		// Form button to delete forum title
-		echo "<form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
+		echo "<form enctype=\"multipart/form-data\" action=\"${websiteUrl}${site_forum_title}/forum_delete_stuff/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
 			// Setup token in form // create multi sessions
 			if(isset($session_token_num)){$session_token_num = $session_token_num + 1;}else{$session_token_num = "1";}
 			form_token();
@@ -273,8 +273,8 @@ function forumEditTitleCheck($f_title){
 				//Disables auto refresh for debug stuff
 				if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
 					//Redirects the user
-					global $websiteUrl;
-					$form_redir_link = "${websiteUrl}Forum/";
+					global $websiteUrl, $site_forum_title;
+					$form_redir_link = "${websiteUrl}${site_forum_title}/";
 					// Redirect member to their post
 					header("Location: $form_redir_link");
 					exit;
@@ -366,8 +366,8 @@ function forumCreateNewTopic(){
 					//Disables auto refresh for debug stuff
 					if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
 						//Redirects the user
-						global $websiteUrl;
-						$form_redir_link = "${websiteUrl}Forum/";
+						global $websiteUrl, $site_forum_title;
+						$form_redir_link = "${websiteUrl}${site_forum_title}/";
 						// Redirect member to their post
 						header("Location: $form_redir_link");
 						exit;
@@ -394,6 +394,30 @@ function forumCreateNewTopic(){
 	}
 }
 
+//////////////////////////////////////////////////
+// Display the edit delete button for forum categories
+//////////////////////////////////////////////////
+function forumCatEdit(){
+	if(userCheckForumAdmin() || userCheckForumMod()){
+		// Display Edit, Delete, and Move Buttons
+		echo "</td></tr><tr><td colspan=2 align=right>";
+		// Display Edit and Move buttons to mods and admins
+		echo "Move Up Move Down Edit ";
+		// Only display delete button to admins
+		if(userCheckForumAdmin()){
+			echo " Delete ";
+		}
+	}
+}
+
+//////////////////////////////////////////////////
+// Allow Mods and Admin to create new categories
+//////////////////////////////////////////////////
+function forumCatNew(){
+	if(userCheckForumAdmin() || userCheckForumMod()){
+		echo "Create New Category";
+	}
+}
 
 
 ?>

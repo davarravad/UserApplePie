@@ -1,8 +1,8 @@
 <?php
 
-
+	global $site_forum_title;
 	// Page title
-	$stc_page_title = "Forum";
+	$stc_page_title = $site_forum_title;
 	// Page Description
 	$stc_page_description = "Welcome to the Forum.  Ask questions and get answers from fellow Forum members.";
 	// Run Top of page func
@@ -71,8 +71,12 @@
 					echo "<br>";
 					// Display total number of topic replys for this category
 					total_topic_replys_display($f_id2);
+					// Display Edit, Delete, and Move Buttons
+					forumCatEdit();
 				echo "</td></tr></table>";
 			}
+			// Display Create New Category Form
+			forumCatNew();
 			
 		echo "</td></tr></table><br>";
 			

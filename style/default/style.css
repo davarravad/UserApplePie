@@ -171,13 +171,16 @@ td.header_links
 }
 td.header_title
 {
-	background-color: #869EB2;
-	border-bottom-width: 0px;
+	background-color: #FFFFFF;
+	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-color: #333;
 	background-attachment:fixed;
 	background-image:url(/images/tazib_top_header_bg.gif);
 	background-repeat:repeat-x;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
 }
 table.top_header_fixed {
 	position:fixed;
