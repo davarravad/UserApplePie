@@ -14,7 +14,10 @@
 	
 	global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix;
 	global $session_token_num, $stc_page_sel;
-
+	
+	// Make sure all forum titles are in order
+	forumCleanOrderTitle();
+	
 	// Get all Categories from database
 	$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_name`='$stc_page_sel' GROUP BY forum_title ORDER BY `".$db_table_prefix."forum_cat`.`forum_order_title` ASC ";
 	$result = $mysqli->query($query);
@@ -24,8 +27,15 @@
 		$f_title = $row['forum_title'];
 		$f_id = $row['forum_id'];
 		$f_order_title = $row['forum_order_title'];
+		
+		// If Admin or mod is logged in check to 
+		// see if categories are in order.
+		// If not then fix it.
+		forumCleanOrderCat($f_title);
+		
 		echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class=hr2>";
 		echo "<table width='100%'><tr><td>";
+		
 		//Display title or edit title field if mod and requested
 		forumEditTitleCheck($f_title);
 		
@@ -50,7 +60,7 @@
 			$f_title_2 = addslashes($f_title);
 		
 			// Get all Sub Categories for current category
-			$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_title`='$f_title_2' GROUP BY forum_cat";
+			$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_title`='$f_title_2' GROUP BY forum_cat ORDER BY forum_order_cat";
 			$result = $mysqli->query($query);
 			$arr2 = $result->fetch_all(MYSQLI_BOTH);
 			foreach($arr2 as $row2)
@@ -58,6 +68,7 @@
 				$f_cat = $row2['forum_cat'];
 				$f_des = $row2['forum_des'];
 				$f_id2 = $row2['forum_id'];
+				$cat_order_id = $row2['forum_order_cat'];
 				
 				$f_des = stripslashes($f_des);
 				$f_cat = stripslashes($f_cat);
@@ -72,11 +83,11 @@
 					// Display total number of topic replys for this category
 					total_topic_replys_display($f_id2);
 					// Display Edit, Delete, and Move Buttons
-					forumCatEdit();
+					forumCatEdit($f_id2,$f_title,$cat_order_id);
 				echo "</td></tr></table>";
 			}
 			// Display Create New Category Form
-			forumCatNew();
+			forumCatNew($f_title);
 			
 		echo "</td></tr></table><br>";
 			
