@@ -74,8 +74,7 @@
 				$f_cat = stripslashes($f_cat);
 				
 				echo "<table width='100%' border='0' cellspacing='0' cellpadding='0' class='epboxc'><tr><td width=''>";
-					echo "<h3><a href='${site_url_link}${site_forum_title}/forum_display/$f_cat/$f_id2/' title='$f_cat' ALT='$f_cat'>$f_cat</a></h3>";
-					echo " - $f_des";
+					forumEditCatCheck($f_cat,$f_des,$f_id2);
 				echo "</td><td width='75'>";
 					// Display total number of topics for this category
 					total_topics_display($f_id2);
@@ -83,7 +82,7 @@
 					// Display total number of topic replys for this category
 					total_topic_replys_display($f_id2);
 					// Display Edit, Delete, and Move Buttons
-					forumCatEdit($f_id2,$f_title,$cat_order_id);
+					forumCatEdit($f_id2,$f_title,$cat_order_id,$f_cat,$f_des,$f_id2);
 				echo "</td></tr></table>";
 			}
 			// Display Create New Category Form

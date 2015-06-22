@@ -408,6 +408,7 @@ function forumEditTitleCheck($f_title){
 		}
 	}
 }
+
 //////////////////////////////////////////////////
 // Setup User Forum Permissions Display
 //////////////////////////////////////////////////
@@ -771,20 +772,139 @@ function forumCatNew($f_title){
 	}
 }
 
+//////////////////////////////////////////////////
+// Allow admin to edit forum cats
+//////////////////////////////////////////////////
+function forumEditCatCheck($f_cat,$f_des,$f_id2){
+	global $mysqli, $db_table_prefix, $load_page_dir, $session_token_num, $debug_website, $websiteUrl, $site_forum_title;
+	// Check to see if mod is updating a forum cat
+	if(isset($_POST['AdminEditCat'])){ $AdminEditCat = $_POST['AdminEditCat']; }else{ $AdminEditCat = "FALSE"; }
+	if(isset($_POST['forum_cat_old'])){ $forum_cat_old = $_POST['forum_cat_old']; }else{ $forum_cat_old = ""; }
+	if(isset($_POST['forum_cat_new'])){ $forum_cat_new = $_POST['forum_cat_new']; }else{ $forum_cat_new = ""; }
+	if(isset($_POST['forum_des_old'])){ $forum_des_old = $_POST['forum_des_old']; }else{ $forum_des_old = ""; }
+	if(isset($_POST['forum_des_new'])){ $forum_des_new = $_POST['forum_des_new']; }else{ $forum_des_new = ""; }
+	if(isset($_POST['forum_id_edit'])){ $forum_id_edit = $_POST['forum_id_edit']; }else{ $forum_id_edit = ""; }
+	if($AdminEditCat == "TRUE"){
+		//Token validation function
+		if(!is_valid_token()){ 
+			//Token does not match
+			err_message('Sorry, Tokens do not match!  Please go back and try again.');
+			die;
+		}else{
+			// Update Database with new cat
+			$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."forum_cat SET forum_cat=?, forum_des=? WHERE forum_id=?");
+			$stmt->bind_param("ssi", $forum_cat_new, $forum_des_new, $forum_id_edit);
+			if($stmt->execute()){
+				$stmt->close();
+				
+				//Sends success message to session
+				//Shows user success when they are redirected
+				$success_msg = "You Have Successfully Updated Forum Cat!";
+				$_SESSION['success_msg'] = $success_msg;
+				
+				//Disables auto refresh for debug stuff
+				if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
+					//Redirects the user
+					global $websiteUrl, $site_forum_cat;
+					$form_redir_link = "${websiteUrl}${site_forum_title}/";
+					// Redirect member to their post
+					header("Location: $form_redir_link");
+					exit;
+				}
+			}
+			else
+			{
+				err_message('Oops. There was an error. 5468');
+				die;
+			}
+		}
+	}else{
+		if(isset($_POST['EditCat'])){ $EditCat = $_POST['EditCat']; }else{ $EditCat = "FALSE"; }
+		if(isset($_POST['forum_cat'])){ $forum_cat = $_POST['forum_cat']; }else{ $forum_cat = ""; }
+		if(isset($_POST['forum_des'])){ $forum_des = $_POST['forum_des']; }else{ $forum_des = ""; }
+		if(isset($_POST['forum_id_edit'])){ $forum_id_edit = $_POST['forum_id_edit']; }else{ $forum_id_edit	= ""; }
+		// Make sure user has permission to edit this cat
+		if((userCheckForumAdmin() || userCheckForumMod()) && ($EditCat == "TRUE" && $forum_cat == $f_cat && $f_id2 == $forum_id_edit)){
+			// Mod or Admin would like to edit a cat
+			// Show edit forum in place of cat
+			echo "<form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
+				// Setup token in form // create multi sessions
+				if(isset($session_token_num)){$session_token_num = $session_token_num + 1;}else{$session_token_num = "1";}
+				form_token();
+				echo "<input name=\"forum_cat_new\" type=\"text\" value=\"${f_cat}\" style='width:200px;font-family:verdana;font-size:12px;font-weight:bold'><BR>";
+				echo "<input name=\"forum_des_new\" type=\"text\" value=\"${f_des}\" style='width:300px;font-family:verdana;font-size:12px;font-weight:normal'>";
+				echo "<input type=\"hidden\" name=\"forum_cat_old\" value=\"$f_cat\" />";
+				echo "<input type=\"hidden\" name=\"forum_des_old\" value=\"$f_des\" />";
+				echo "<input type=\"hidden\" name=\"forum_id_edit\" value=\"$f_id2\" />";
+				echo "<input type=\"hidden\" name=\"AdminEditCat\" value=\"TRUE\" />";
+				echo "<input type=\"submit\" value=\"Update\" name=\"Update\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+			echo "</form>";
+		}
+		else
+		{
+			global $websiteUrl, $site_forum_cat;
+			echo "<h3><a href='${websiteUrl}${site_forum_title}/forum_display/$f_cat/$f_id2/' title='$f_cat' ALT='$f_cat'>$f_cat</a></h3>";
+			echo " - $f_des";
+		}
+	}
+}
+
+//////////////////////////////////////////////////
+// Allow admin to edit and delete forum Cats
+//////////////////////////////////////////////////
+function forumEditCat($f_cat,$f_des,$f_id2){
+	global $mysqli, $db_table_prefix, $load_page_dir, $session_token_num, $websiteUrl, $site_forum_title;
+	// Form button to edit forum cat
+	echo "<form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
+		// Setup token in form // create multi sessions
+		if(isset($session_token_num)){$session_token_num = $session_token_num + 1;}else{$session_token_num = "1";}
+		form_token();
+		echo "<input type=\"hidden\" name=\"forum_cat\" value=\"$f_cat\" />";
+		echo "<input type=\"hidden\" name=\"forum_id_edit\" value=\"$f_id2\" />";
+		echo "<input type=\"hidden\" name=\"EditCat\" value=\"TRUE\" />";
+		echo "<input type=\"submit\" value=\"Edit\" name=\"Edit\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+	echo "</form>";
+	
+	// Only Admins Can Delete Forum Cats
+	if(userCheckForumAdmin()){
+		// Form button to delete forum cat
+		echo "<form enctype=\"multipart/form-data\" action=\"${websiteUrl}${site_forum_title}/forum_delete_stuff/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
+			// Setup token in form // create multi sessions
+			if(isset($session_token_num)){$session_token_num = $session_token_num + 1;}else{$session_token_num = "1";}
+			form_token();
+			echo "<input type=\"hidden\" name=\"forum_cat\" value=\"$f_cat\" />";
+			echo "<input type=\"hidden\" name=\"forum_id_edit\" value=\"$f_id2\" />";
+			echo "<input type=\"hidden\" name=\"DeleteCat\" value=\"TRUE\" />";
+			echo "<input type=\"submit\" value=\"Delete\" name=\"Delete\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+		echo "</form>";
+	}
+}
+
+//////////////////////////////////////////////////
+// Forum Edit and Delete Function
+//////////////////////////////////////////////////
+function forumCatEditDelete($f_cat,$f_des,$f_id2){
+	// Double check to make sure user is admin or mod
+	if(userCheckForumAdmin() || userCheckForumMod()){
+		// Table to make forum look neat
+		echo "</td><td width='100px' align='right'>";
+		// Forum Cat Edit
+		// Check to see if user wants to edit or delete a cat.
+		forumEditCat($f_cat,$f_des,$f_id2);
+	}
+}
 
 //////////////////////////////////////////////////
 // Display the edit delete button for forum categories
 //////////////////////////////////////////////////
-function forumCatEdit($fot_id,$f_title,$cat_order_id){
+function forumCatEdit($fot_id,$f_title,$cat_order_id,$f_cat,$f_des,$f_id2){
 	if(userCheckForumAdmin() || userCheckForumMod()){
 		// Display Edit, Delete, and Move Buttons
 		echo "</td></tr><tr><td colspan=2 align=right>";
 		// Display Edit and Move buttons to mods and admins
 		forumMoveCatOrder($fot_id,$f_title,$cat_order_id);
-		// Only display delete button to admins
-		if(userCheckForumAdmin()){
-			echo " Delete ";
-		}
+		// Display Edit and Delete buttons to mods and admins
+		forumCatEditDelete($f_cat,$f_des,$f_id2);
 	}
 }
 
