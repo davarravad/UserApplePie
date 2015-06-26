@@ -49,7 +49,8 @@
 					fp.forum_post_id as forum_post_id, fp.forum_id as forum_id, 
 					fp.forum_user_id as forum_user_id, fp.forum_title as forum_title, 
 					fp.forum_content as forum_content, fp.forum_edit_date as forum_edit_date,
-					fp.forum_timestamp as forum_timestamp, fpr.id as id,
+					fp.forum_timestamp as forum_timestamp, 
+					fp.forum_status as forum_status, fpr.id as id,
 					fpr.fpr_post_id as fpr_post_id, fpr.fpr_id as fpr_id,
 					fpr.fpr_user_id as fpr_user_id, fpr.fpr_title as fpr_title,
 					fpr.fpr_content as fpr_content, fpr.fpr_edit_date as fpr_edit_date,
@@ -132,6 +133,7 @@
 					$f_p_title = $row2['forum_title'];
 					$f_p_timestamp = $row2['forum_timestamp'];
 					$f_p_user_id = $row2['forum_user_id'];
+					$f_p_status = $row2['forum_status'];
 					$tstamp = $row2['tstamp'];
 					$f_p_user_name = get_user_name_2($f_p_user_id);
 					
@@ -144,6 +146,8 @@
 							echo "<a href='${site_url_link}${site_forum_title}/display_topic/$f_p_id/' title='$f_p_title' ALT='$f_p_title'>$f_p_title</a>";
 							echo "</font></strong>";
 							echo "<br>";
+							// Display Locked Message if Topic has been locked by admin
+							forumTopicStatus('display_note', $f_p_status, NULL);
 							echo "&nbsp; Created by <a href='${site_url_link}member/$f_p_user_id/'>$f_p_user_name</a> - ";
 							//Display how long ago this was posted
 							$timestart = "$f_p_timestamp";  //Time of post

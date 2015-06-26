@@ -53,10 +53,7 @@
 		$f_p_edit_date = $row['forum_edit_date'];
 		$f_p_timestamp = $row['forum_timestamp'];
 		$f_p_user_id = $row['forum_user_id'];
-		$f_p_year = $row['forum_year'];
-		$f_p_make = $row['forum_make'];
-		$f_p_model = $row['forum_model'];
-		$f_p_engine = $row['forum_engine'];
+		$f_p_status = $row['forum_status'];
 		$f_p_user_name = get_user_name_2($f_p_user_id);
 		
 		$f_p_title = stripslashes($f_p_title);
@@ -65,13 +62,8 @@
 		// Page title
 		$stc_page_title = "$websiteName - Forum - $f_p_title";
 		// Page Description
-			// If year make model engine are set show them
-			if(!empty($f_p_year) && !empty($f_p_make) && !empty($f_p_model) && !empty($f_p_engine)){
-				$veh_info = "$f_p_year $f_p_make $f_p_model $f_p_engine - ";
-			}else{
-				$veh_info = "";
-			}
-		$stc_page_description = "${veh_info}${f_p_content}";
+
+		$stc_page_description = "${f_p_content}";
 		// Run Top of page func
 		style_header_content($stc_page_title, $stc_page_description);
 		// Which database do we use
@@ -103,7 +95,9 @@
 		echo "</td></tr></table>";
 		
 		echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class=hr2 colspan=3>";
-		echo "<strong>$f_p_title</strong><br>";
+		echo "<strong>$f_p_title</strong>";
+		// Display Locked Message if Topic has been locked by admin
+		forumTopicStatus('display_note', $f_p_status, NULL);
 		echo "</td></tr><tr><td class='content78' width='100' valign='top'>";
 			echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr>";
 			echo "<td align='center' width='100px'>";
@@ -526,9 +520,15 @@
 				} // End of pages check
 		
 		} // End of sql resutls check
-		
-		// Display reply textarea
-		require("pages/forum/reply_topic.inc");
+
+		// Check to see if Topic is locked. 
+		// If Locked then disable the reply_topic
+		if($f_p_status != "2"){
+			// Display reply textarea
+			require("pages/forum/reply_topic.inc");
+		}else{
+			echo "This Topic has been locked!<Br><br>";
+		}
 		
 		// Display message that tells current user if they are subscribed to the current topic
 		if($usr_email_subcribe == "NO"){
@@ -566,6 +566,9 @@
 		$view_owner_userid = "$userIdme";  //Post owners userid
 		require "models/views.inc";
 		//End View 
+		
+		// Check to see if admin would like to lock or unlock this topic
+		forumTopicStatus('admin_topic', $f_p_status, $f_p_id);
 		
 		// Run Footer of page func
 		style_footer_content();	

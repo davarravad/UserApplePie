@@ -908,6 +908,86 @@ function forumCatEdit($fot_id,$f_title,$cat_order_id,$f_cat,$f_des,$f_id2){
 	}
 }
 
-
+//////////////////////////////////////////////////
+// Forum Topic Status - Open(1) - Locked(2)
+//////////////////////////////////////////////////
+function forumTopicStatus($fs_setting, $f_status, $f_p_id){
+	global $mysqli, $db_table_prefix, $site_url_link, $site_forum_title, $session_token_num;	
+	// If display_note just show a message that says locked if locked
+	if($fs_setting == "display_note" && $f_status == "2"){
+		echo " <strong><font color='red'>Topic Locked</font></strong> ";
+	}
+	// If admin or mod logged in let them lock or unlock the topic
+	if($fs_setting == "admin_topic"){
+		if(userCheckForumAdmin() || userCheckForumMod()){
+			// If topic is locked then show unlock button
+			if($f_status == "2"){
+				if(isset($_POST['forum_post_id'])){ $forum_post_id = $_POST['forum_post_id']; }else{ $forum_post_id = ""; }
+				if(isset($_POST['unlock_topic'])){ $unlock_topic = $_POST['unlock_topic']; }else{ $unlock_topic = ""; }
+				// Check to see if admin or mod is unlocking this topic
+				if($unlock_topic == "TRUE"){	
+					$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."forum_posts SET forum_status=1 WHERE forum_post_id=? LIMIT 1");
+					$stmt->bind_param("i", $forum_post_id);
+					$stmt->execute();				
+					//echo $stmt->error;
+					$stmt->close();	
+					//Sends success message to session
+					//Shows user success when they are redirected
+					$success_msg = "You Have Successfully UnLocked this Topic!";
+					$_SESSION['success_msg'] = $success_msg;
+				
+					//Disables auto refresh for debug stuff
+					if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
+						// Redirect member to their post
+						header("Location: ");
+						exit;
+					}
+				}else{
+					echo "<br><br><form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" >";
+						// Setup forum token
+						if(isset($session_token_num)){ $session_token_num = $session_token_num + 1; }else{ $session_token_num = "1"; }
+						form_token();				
+						echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$f_p_id\" />";
+						echo "<input type=\"hidden\" name=\"unlock_topic\" value=\"TRUE\" />";
+						echo "<input type=\"submit\" value=\"UnLock Topic\" name=\"UnLock Topic\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+					echo "</form>";
+				}
+			}
+			// Otherwise show lock button
+			else{
+				if(isset($_POST['forum_post_id'])){ $forum_post_id = $_POST['forum_post_id']; }else{ $forum_post_id = ""; }
+				if(isset($_POST['lock_topic'])){ $lock_topic = $_POST['lock_topic']; }else{ $lock_topic = ""; }
+				// Check to see if admin or mod is unlocking this topic
+				if($lock_topic == "TRUE"){	
+					$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."forum_posts SET forum_status=2 WHERE forum_post_id=? LIMIT 1");
+					$stmt->bind_param("i", $forum_post_id);
+					$stmt->execute();				
+					//echo $stmt->error;
+					$stmt->close();	
+					//Sends success message to session
+					//Shows user success when they are redirected
+					$success_msg = "You Have Successfully Locked this Topic!";
+					$_SESSION['success_msg'] = $success_msg;
+				
+					//Disables auto refresh for debug stuff
+					if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
+						// Redirect member to their post
+						header("Location: ");
+						exit;
+					}
+				}else{
+					echo "<br><br><form enctype=\"multipart/form-data\" action=\"\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" >";
+						// Setup forum token
+						if(isset($session_token_num)){ $session_token_num = $session_token_num + 1; }else{ $session_token_num = "1"; }
+						form_token();				
+						echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$f_p_id\" />";
+						echo "<input type=\"hidden\" name=\"lock_topic\" value=\"TRUE\" />";
+						echo "<input type=\"submit\" value=\"Lock Topic\" name=\"Lock Topic\" class=\"unsweet\" onClick=\"this.value = 'Please Wait....'\" />";
+					echo "</form>";
+				}
+			}
+		}
+	}
+}
 
 ?>
