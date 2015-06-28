@@ -1,35 +1,26 @@
 <?
+////////////////////////////////////
+//   UserCake Forum by DaVaR
+//   http://www.thedavar.net
+//   Version 1.0.0
+//   Forum for User Cake 2.0.2
+////////////////////////////////////
+
+// Save visitor information to database to build a view count
 
 global $mysqli, $site_url_link, $db_table_prefix;
 
 if(!isset($view_sub)){ $view_sub = ""; }
 if(!isset($view_sec_id)){ $view_sec_id = ""; }	
 
-			$querySW = "INSERT INTO `".$db_table_prefix."views` SET 
-				`view_id`='$view_id',
-				`view_sec_id`='$view_sec_id',
-				`view_sub`='$view_sub',
-				`view_location`='$view_location',
-				`view_userid`='$view_userid',
-				`view_url`='$view_url', 
-				`view_owner_userid`='$view_owner_userid' 
-				";
+	$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."views SET view_id=?, view_sec_id=?, view_sub=?, view_location=?, view_userid=?, view_url=?, view_owner_userid=? ");
+	$stmt->bind_param("iissssi", $view_id, $view_sec_id, $view_sub, $view_location, $view_userid, $view_url, $view_owner_userid);
+	$stmt->execute();
+	$newId = $stmt->insert_id;
+	//echo $stmt->error;
+	$stmt->close();	
 
-			$resultsSW = mysqli_query($GLOBALS["___mysqli_ston"],  $querySW );
-	
-			// print out the results
-   			if( $resultsSW )
-   			{
-				//echo( "Successfully saved view entry.<br><br>" );
-   
-			}else{
-				//Code used to report mysql error
-				$mysql_error_report = "TRUE";
-				$sql_query = "$query";
-				require "models/mysql_error_report.inc";
-			}
-
-			//echo "<br> ( $view_sub $view_location - $view_id - $view_userid - $view_url ) ";  //for testing
-
+	//echo "<br> ( $view_sub $view_location - $view_id - $view_userid - $view_url ) ";  //for testing
 
 ?>
+

@@ -433,20 +433,24 @@ function check_multi_logins(){
 	$datetime = date("Y-m-d H:i:s", $ten_minutes_ago);
 		
 	// Login Attempts Count
-	$query_atmpt = "SELECT count(*) as total FROM `".$db_table_prefix."a_attempts` WHERE `attempts_ip`='$user_ip_check' AND `timestamp` >= '$datetime' ORDER BY `attempts_id` DESC LIMIT 1 "; // WHERE NOT `userStatus`='0'
-	if ($result_atmpt = $mysqli->query("$query_atmpt")) {
-		/* determine number of rows result set */
-		$total_atmpt = $result_atmpt->fetch_row();
-		$total_atmpt = $total_atmpt['0'];
-		/* close result set */
-		$result_atmpt->close();
+	//Get the total number of attempts to login within the past 10 min
+	$queryA = "SELECT ".$db_table_prefix."a_attempts.attempts FROM `".$db_table_prefix."a_attempts` WHERE `attempts_ip`='$user_ip_check'  AND timestamp >= '$datetime' ORDER BY `".$db_table_prefix."a_attempts`.`attempts_id` DESC LIMIT 1";
+	// Get information from database
+	$result = $mysqli->query($queryA);
+	$arr_logcheck = $result->fetch_all(MYSQLI_BOTH);
+	foreach($arr_logcheck as $row_logcheck)
+	{
+		$attempts = $row_logcheck['attempts'];
+
+		//echo "TTL ATT: $attempts ";
+		$total_att = $attempts;
 	}
-	echo "<hr>$total_atmpt<hr>";
 	if(empty($total_att)){ $total_att = '0'; }
+	//echo "<hr>$total_att<hr>";
 	
 	//If user has tried to login more than 4 times within the past 10 min
 	//Block them from the login form and show a error message
-	if($total_att >= '4'){
+	if($total_att >= "4"){
 		return 0;
 	}else{
 		return 1;
@@ -800,24 +804,27 @@ function login_attm_hand(){
 	{
 		$attempts = $row_logcheck['attempts'];
 
-		echo "TTL ATT: $attempts ";
+		//echo "TTL ATT: $attempts ";
 		$total_att = $attempts;
 	}
 	if(empty($attempts)){ $total_att = '0'; }
 	
 	//If user has tried to login more than 4 times within the past 10 min
 	//Block them from the login form and show a error message
-	if($total_att >= '4'){
-		//echo "<Br> Your have been temporarily blocked for multiple login fails.  Please try again later.";
+	if($total_att >= "4"){
+		//User is blocked for multi logins
+		err_message('Sorry, Your have been temporarily blocked for multiple login fails.  Please try again later.
+						<br><br>If you just registered for the site, check your email for the activation link.');
+		die;
 	}else{
-		if($total_att >= '1'){
+		if($total_att >= "1"){
 			//If current attempts then add one to row
 			//Update attempt to database
 			$query = "UPDATE `".$db_table_prefix."a_attempts` SET attempts=attempts+1  WHERE `attempts_ip`='$user_ip_check'  AND timestamp >= '$datetime' ORDER BY `".$db_table_prefix."a_attempts`.`attempts_id` DESC LIMIT 1";
 			$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
 			// print out the results
 			if( $results ){
-				echo "<br> IP ($user_ip_check) +1 Logged! <br>";
+				//echo "<br> IP ($user_ip_check) +1 Logged! <br>";
 			}	
 		}else{
 			//If no current attempts then create one
@@ -826,7 +833,7 @@ function login_attm_hand(){
 			$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
 			// print out the results
 			if( $results ){
-				echo "<br> IP ($user_ip_check) Logged! <br>";
+				//echo "<br> IP ($user_ip_check) Logged! <br>";
 			}	
 		}
 	}	

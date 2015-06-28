@@ -6,9 +6,9 @@ http://usercake.com
 
 //Database Information
 $db_host = "localhost"; //Host address (most likely localhost)
-$db_name = "thedavar"; //Name of Database
-$db_user = "thedavar"; //Name of database user
-$db_pass = "tijsatdtia6584321"; //Password for database user
+$db_name = "userapplepie"; //Name of Database
+$db_user = "userapplepie"; //Name of database user
+$db_pass = "sakjdn596412"; //Password for database user
 $db_table_prefix = "uc_";
 
 // Sets globals for sql with updated sql

@@ -63,6 +63,19 @@ if($install == "TRUE")
 {
 	$db_issue = false;
 	
+	// Lets make sure that the admin's input is good before we continue.
+	$email = trim($_POST["email"]);
+	$username = trim($_POST["username"]);
+	$displayname = trim($_POST["displayname"]);
+	$password = trim($_POST["password"]);
+	$confirm_pass = trim($_POST["passwordc"]);
+	
+	if($password != $confirm_pass)
+	{
+		echo "<strong><font color='red'>Admin Passwords Do Not Match!</font></strong>";
+		die;
+	}
+	
 	$permissions_sql = "
 	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."permissions` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -89,6 +102,7 @@ if($install == "TRUE")
 	`lost_password_request` tinyint(1) NOT NULL,
 	`active` tinyint(1) NOT NULL,
 	`title` varchar(150) NOT NULL,
+	`userIP` varchar(100) NOT NULL,
 	`sign_up_stamp` int(11) NOT NULL,
 	`last_sign_in_stamp` int(11) NOT NULL,
 	PRIMARY KEY (`id`)
@@ -182,13 +196,405 @@ if($install == "TRUE")
 	(13, 2, 17);
 	";
 
-	$sessions_sql = "CREATE TABLE IF NOT EXISTS `".$db_table_prefix."sessions (
+	$sessions_sql = "CREATE TABLE IF NOT EXISTS `".$db_table_prefix."sessions` (
 	`sessionStart` int(11) NOT NULL,
 	`sessionData` text NOT NULL,
 	`sessionID` varchar(255) NOT NULL,
 	PRIMARY KEY (`sessionID`)
 	) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 	";
+	
+	//Forum Tables to create
+	$table_forum_cat = "CREATE TABLE IF NOT EXISTS `".$db_table_prefix."forum_cat` (
+	  `forum_id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'id of form thingy',
+	  `forum_name` varchar(255) NOT NULL COMMENT 'name of the full forum',
+	  `forum_title` varchar(255) NOT NULL COMMENT 'title of the forum sections',
+	  `forum_cat` varchar(255) NOT NULL COMMENT 'title of forum category',
+	  `forum_des` text NOT NULL COMMENT 'forum section description',
+	  `forum_perm` int(20) NOT NULL DEFAULT '1' COMMENT 'user permissions',
+	  `forum_order_title` int(11) NOT NULL,
+	  `forum_order_cat` int(11) NOT NULL,
+	  PRIMARY KEY (`forum_id`)
+	) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+	
+	$table_forum_posts = "CREATE TABLE IF NOT EXISTS `".$db_table_prefix."forum_posts` (
+	  `forum_post_id` int(20) NOT NULL AUTO_INCREMENT,
+	  `forum_id` int(20) NOT NULL,
+	  `forum_user_id` int(20) NOT NULL,
+	  `forum_title` varchar(255) NOT NULL,
+	  `forum_content` text NOT NULL,
+	  `forum_edit_date` varchar(20) DEFAULT NULL,
+	  `forum_status` int(11) NOT NULL DEFAULT '1',
+	  `subcribe_email` varchar(10) NOT NULL,
+	  `forum_timestamp` varchar(20) DEFAULT NULL,
+	  PRIMARY KEY (`forum_post_id`)
+	) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+	
+	$table_forum_posts_replys = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."forum_posts_replys` (
+	  `id` int(20) NOT NULL AUTO_INCREMENT,
+	  `fpr_post_id` int(20) NOT NULL,
+	  `fpr_id` int(20) NOT NULL,
+	  `fpr_user_id` int(20) NOT NULL,
+	  `fpr_title` varchar(255) NOT NULL,
+	  `fpr_content` text NOT NULL,
+	  `subcribe_email` varchar(10) NOT NULL,
+	  `fpr_edit_date` varchar(20) DEFAULT NULL,
+	  `fpr_timestamp` varchar(20) DEFAULT NULL,
+	  PRIMARY KEY (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+	
+	$table_a_attempts = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."a_attempts` (
+	  `attempts_id` int(11) NOT NULL AUTO_INCREMENT,
+	  `attempts_ip` varchar(50) NOT NULL,
+	  `attempts` int(1) NOT NULL,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`attempts_id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+
+	$table_ep2 = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."ep2` (
+	  `userId` int(11) NOT NULL DEFAULT '0',
+	  `textfield` varchar(255) NOT NULL DEFAULT '',
+	  `textarea` text NOT NULL,
+	  `textfield2` varchar(255) NOT NULL DEFAULT '',
+	  `textarea2` text NOT NULL,
+	  `textfield3` varchar(255) NOT NULL DEFAULT '',
+	  `textarea3` text NOT NULL,
+	  `textfield4` varchar(255) NOT NULL DEFAULT '',
+	  `textarea4` text NOT NULL,
+	  `textfield5` varchar(255) NOT NULL DEFAULT '',
+	  `textarea5` text NOT NULL,
+	  `textfield6` varchar(255) NOT NULL DEFAULT '',
+	  `textarea6` text NOT NULL,
+	  `textfield7` varchar(255) NOT NULL DEFAULT '',
+	  `textarea7` text NOT NULL,
+	  `textfield8` varchar(255) NOT NULL DEFAULT '',
+	  `textarea8` text NOT NULL,
+	  PRIMARY KEY (`userId`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+	";
+
+	$table_ep3 = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."ep3` (
+	  `id` int(11) NOT NULL AUTO_INCREMENT,
+	  `userId` varchar(255) NOT NULL DEFAULT '',
+	  `nname` varchar(255) NOT NULL DEFAULT '',
+	  `content1` text NOT NULL,
+	  `imgdir` varchar(255) NOT NULL DEFAULT '',
+	  `imgname` varchar(255) NOT NULL DEFAULT '',
+	  `imgsize` varchar(255) NOT NULL DEFAULT '',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+
+	$table_errors = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."errors` (
+	  `er_id` int(11) NOT NULL AUTO_INCREMENT,
+	  `er_type` varchar(255) NOT NULL,
+	  `er_location` varchar(255) NOT NULL,
+	  `er_msg` varchar(255) NOT NULL,
+	  `er_user` varchar(255) NOT NULL,
+	  `er_refer` varchar(255) NOT NULL,
+	  `er_useragent` varchar(255) NOT NULL,
+	  `er_cfile` varchar(255) NOT NULL,
+	  `er_uri` varchar(255) NOT NULL,
+	  `er_ipaddy` varchar(255) NOT NULL,
+	  `er_server` varchar(255) NOT NULL,
+	  `er_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`er_id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+
+	$table_friend = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."friend` (
+	  `id` int(15) NOT NULL AUTO_INCREMENT,
+	  `userId1` int(15) NOT NULL,
+	  `userId2` int(15) NOT NULL,
+	  `status1` varchar(4) NOT NULL DEFAULT '0',
+	  `status2` varchar(4) NOT NULL DEFAULT '0',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+
+	$table_inbox = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."inbox` (
+	  `mid` int(11) NOT NULL AUTO_INCREMENT,
+	  `mdatesent` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+	  `mdateread` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+	  `mfrom` varchar(255) NOT NULL DEFAULT '',
+	  `mto` varchar(255) NOT NULL DEFAULT '',
+	  `mcontent` text NOT NULL,
+	  `msubject` varchar(255) NOT NULL DEFAULT '',
+	  `mread` varchar(6) NOT NULL DEFAULT 'unread',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`mid`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=1 ;
+	";
+
+	$table_loggedusers = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."loggedusers` (
+	  `userId` int(11) NOT NULL DEFAULT '0',
+	  `sessionId` char(32) NOT NULL DEFAULT '',
+	  `loginTime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+	  `lastAccess` datetime DEFAULT NULL,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`userId`,`sessionId`),
+	  KEY `lastAccess` (`lastAccess`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+	";
+
+	$table_outbox = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."outbox` (
+	  `id` int(10) NOT NULL AUTO_INCREMENT,
+	  `mid` int(11) NOT NULL,
+	  `mdatesent` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+	  `mdateread` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+	  `mfrom` varchar(255) NOT NULL DEFAULT '',
+	  `mto` varchar(255) NOT NULL DEFAULT '',
+	  `mcontent` text NOT NULL,
+	  `msubject` varchar(255) NOT NULL DEFAULT '',
+	  `mread` varchar(6) NOT NULL DEFAULT 'unread',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=1 ;
+	";
+
+	$table_profilecomments = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."profilecomments` (
+	  `id` int(10) NOT NULL AUTO_INCREMENT,
+	  `com_uid` int(11) NOT NULL,
+	  `com_id` int(10) NOT NULL DEFAULT '0',
+	  `com_name` varchar(255) NOT NULL DEFAULT '',
+	  `com_content` text NOT NULL,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=1 ;
+	";
+
+	$table_profilecomments_b = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."profilecomments_b` (
+	  `id` int(10) NOT NULL AUTO_INCREMENT,
+	  `statcom_id` int(10) NOT NULL DEFAULT '0',
+	  `statcom_uid` int(15) NOT NULL,
+	  `statcom_name` varchar(255) NOT NULL DEFAULT '',
+	  `statcom_content` text NOT NULL,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=1 ;
+	";
+
+	$table_report = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."report` (
+	  `report_id` int(11) NOT NULL AUTO_INCREMENT,
+	  `report_type` varchar(255) NOT NULL,
+	  `report_msg` text NOT NULL,
+	  `report_user` varchar(255) NOT NULL,
+	  `report_userID` int(15) NOT NULL,
+	  `report_refer` varchar(255) NOT NULL,
+	  `report_useragent` varchar(255) NOT NULL,
+	  `report_cfile` varchar(255) NOT NULL,
+	  `report_uri` varchar(255) NOT NULL,
+	  `report_ipaddy` varchar(255) NOT NULL,
+	  `report_server` varchar(255) NOT NULL,
+	  `report_pageURL` varchar(255) NOT NULL,
+	  `admin_checked` varchar(255) NOT NULL,
+	  `report_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`report_id`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+
+	$table_sitelogs = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."sitelogs` (
+	  `id` int(10) NOT NULL AUTO_INCREMENT,
+	  `membername` varchar(255) NOT NULL DEFAULT '',
+	  `refer` varchar(255) NOT NULL DEFAULT '',
+	  `useragent` varchar(255) NOT NULL DEFAULT '',
+	  `cfile` varchar(255) NOT NULL DEFAULT '',
+	  `uri` varchar(255) NOT NULL DEFAULT '',
+	  `ipaddy` varchar(255) NOT NULL DEFAULT '',
+	  `server` varchar(255) NOT NULL DEFAULT '',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=1 ;
+	";
+
+	$table_statcom = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."statcom` (
+	  `id` int(10) NOT NULL AUTO_INCREMENT,
+	  `statcom_id` int(10) NOT NULL DEFAULT '0',
+	  `statcom_uid` int(15) NOT NULL,
+	  `statcom_name` varchar(255) NOT NULL DEFAULT '',
+	  `statcom_content` text NOT NULL,
+	  `statcom_date` date NOT NULL DEFAULT '0000-00-00',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=1 ;
+	";
+
+	$table_status = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."status` (
+	  `id` int(10) NOT NULL AUTO_INCREMENT,
+	  `com_id` int(10) NOT NULL DEFAULT '0',
+	  `com_uid` int(15) NOT NULL,
+	  `com_name` varchar(255) NOT NULL DEFAULT '',
+	  `com_content` text NOT NULL,
+	  `com_date` date NOT NULL DEFAULT '0000-00-00',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=1 ;
+	";
+
+	$table_submit = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."submit` (
+	  `int` int(11) NOT NULL AUTO_INCREMENT,
+	  `usrida` int(15) NOT NULL,
+	  `veh_type` varchar(255) NOT NULL,
+	  `name` varchar(50) DEFAULT NULL,
+	  `year` varchar(255) DEFAULT NULL,
+	  `make` varchar(255) DEFAULT NULL,
+	  `model` varchar(255) DEFAULT NULL,
+	  `type` varchar(255) DEFAULT NULL,
+	  `engine` varchar(255) DEFAULT NULL,
+	  `color` varchar(255) NOT NULL,
+	  `content1` text,
+	  `content2` text,
+	  `content3` text,
+	  `content4` text,
+	  `youtube1` varchar(255) NOT NULL,
+	  `use` char(3) NOT NULL DEFAULT 'yes',
+	  `new` varchar(4) NOT NULL DEFAULT 'yes',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`int`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+
+	$table_sweet = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."sweet` (
+	  `sid` int(10) NOT NULL AUTO_INCREMENT,
+	  `sweet_id` int(10) NOT NULL,
+	  `sweet_sec_id` int(10) NOT NULL,
+	  `sweet_sub` varchar(255) NOT NULL,
+	  `sweet_location` varchar(255) NOT NULL,
+	  `sweet_userid` int(10) NOT NULL,
+	  `sweet_url` varchar(255) NOT NULL,
+	  `sweet_owner_userid` int(10) NOT NULL,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`sid`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+
+	$table_userprofile = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."userprofile` (
+	  `userId` int(11) NOT NULL DEFAULT '0',
+	  `userFirstName` varchar(64) NOT NULL DEFAULT '',
+	  `userEmail` varchar(64) NOT NULL DEFAULT '',
+	  `userLastName` varchar(64) NOT NULL DEFAULT '',
+	  `userCompany` varchar(15) NOT NULL DEFAULT '',
+	  `userAddr1` varchar(64) NOT NULL DEFAULT '',
+	  `userAddr2` varchar(64) NOT NULL DEFAULT '',
+	  `userCity` varchar(64) NOT NULL DEFAULT '',
+	  `userState` varchar(64) NOT NULL DEFAULT '',
+	  `userCountry` varchar(64) NOT NULL DEFAULT '',
+	  `userTel` varchar(255) NOT NULL,
+	  `userMobiTel` varchar(255) NOT NULL,
+	  `userHomeTel` varchar(255) NOT NULL,
+	  `userFax` varchar(20) NOT NULL DEFAULT 'public',
+	  `userZip` varchar(20) NOT NULL DEFAULT 'public',
+	  `userWeb` varchar(128) NOT NULL DEFAULT '',
+	  `userFacebook` varchar(255) NOT NULL,
+	  `userTwitter` varchar(255) NOT NULL,
+	  `userValidationKey` varchar(32) NOT NULL DEFAULT '',
+	  `userIP` varchar(32) NOT NULL DEFAULT '',
+	  `userSignUp` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+	  `userValidated` tinyint(1) NOT NULL DEFAULT '0',
+	  `userNewsLetter` tinyint(1) NOT NULL DEFAULT '0',
+	  `mainPic` varchar(255) NOT NULL DEFAULT 'noimg.gif',
+	  `user_email_msg` varchar(10) NOT NULL DEFAULT 'yes',
+	  `user_email_profile_com` varchar(10) NOT NULL DEFAULT 'yes',
+	  `user_email_vp_com` varchar(10) NOT NULL DEFAULT 'yes',
+	  `user_email_veh_pic_com` varchar(10) NOT NULL DEFAULT 'yes',
+	  `userLastLogin` datetime NOT NULL,
+	  PRIMARY KEY (`userId`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+	";
+
+	$table_users = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."users` (
+	  `id` int(11) NOT NULL AUTO_INCREMENT,
+	  `user_name` varchar(50) NOT NULL,
+	  `display_name` varchar(50) NOT NULL,
+	  `password` varchar(225) NOT NULL,
+	  `email` varchar(150) NOT NULL,
+	  `activation_token` varchar(225) NOT NULL,
+	  `last_activation_request` int(11) NOT NULL,
+	  `lost_password_request` tinyint(1) NOT NULL,
+	  `active` tinyint(1) NOT NULL,
+	  `title` varchar(150) NOT NULL,
+	  `userIP` varchar(100) NOT NULL,
+	  `sign_up_stamp` int(11) NOT NULL,
+	  `last_sign_in_stamp` int(11) NOT NULL,
+	  PRIMARY KEY (`id`)
+	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+	";
+
+	$table_views = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."views` (
+	  `vid` int(10) NOT NULL AUTO_INCREMENT,
+	  `view_id` int(10) NOT NULL,
+	  `view_sec_id` int(10) NOT NULL,
+	  `view_sub` varchar(255) NOT NULL,
+	  `view_location` varchar(255) NOT NULL,
+	  `view_userid` varchar(50) NOT NULL,
+	  `view_url` varchar(255) NOT NULL,
+	  `view_owner_userid` int(10) NOT NULL,
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`vid`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+	
+	$table_admin = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."admin` (
+	  `id` int(10) NOT NULL AUTO_INCREMENT,
+	  `adminID` int(10) NOT NULL,
+	  `adminuser` varchar(255) NOT NULL DEFAULT '',
+	  `admincontent` text NOT NULL,
+	  `adminshow` varchar(255) NOT NULL DEFAULT '',
+	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+	
+	$table_cities = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."cities` (
+	  `city` varchar(50) NOT NULL,
+	  `state_code` char(2) NOT NULL,
+	  KEY `idx_state_code` (`state_code`)
+	) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+	";
+	
+	$table_cities_extended = "
+	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."cities_extended` (
+	  `ID` int(11) NOT NULL AUTO_INCREMENT,
+	  `city` varchar(50) NOT NULL,
+	  `state_code` char(2) NOT NULL,
+	  `zip` int(5) unsigned zerofill NOT NULL,
+	  `latitude` double NOT NULL,
+	  `longitude` double NOT NULL,
+	  `county` varchar(50) NOT NULL,
+	  `Type` varchar(255) NOT NULL,
+	  PRIMARY KEY (`ID`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+	";
+	
+
 	
 	$stmt = $mysqli->prepare($configuration_sql);
 	if($stmt->execute())
@@ -323,10 +729,296 @@ if($install == "TRUE")
 		$db_issue = true;
 	}
 	
+	// Run Forum Tables Creation
+	$stmt = $mysqli->prepare($table_forum_cat);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."forum_cat table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."forum_cat table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_forum_posts);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."forum_posts table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."forum_posts table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_forum_posts_replys);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."forum_posts_replys table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."forum_posts_replys table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_a_attempts);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."a_attempts table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."a_attempts table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_ep2);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."ep2 table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."ep2 table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_ep3);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."ep3 table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."ep3 table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_errors);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."errors table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."errors table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_friend);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."friend table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."friend table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_inbox);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."inbox table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."inbox table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_loggedusers);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."loggedusers table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."loggedusers table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_outbox);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."outbox table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."outbox table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_profilecomments);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."profilecomments table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."profilecomments table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_profilecomments_b);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."profilecomments_b table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."profilecomments_b table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_report);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."report table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."report table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_sitelogs);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."sitelogs table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."sitelogs table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_statcom);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."statcom table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."statcom table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_status);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."status table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."status table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_submit);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."submit table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."submit table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_sweet);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."sweet table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."sweet table.....</p>";
+		$db_issue = true;
+	}	
+	
+	$stmt = $mysqli->prepare($table_userprofile);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."userprofile table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."userprofile table.....</p>";
+		$db_issue = true;
+	}	
+	
+	$stmt = $mysqli->prepare($table_users);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."users table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."users table.....</p>";
+		$db_issue = true;
+	}	
+	
+	$stmt = $mysqli->prepare($table_views);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."views table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."views table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_admin);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."admin table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."admin table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_cities);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."cities table created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."cities table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_cities_extended);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."cities table_extended created.....</p>";
+	}
+	else
+	{
+		echo "<p>Error constructing ".$db_table_prefix."cities_extended table.....</p>";
+		$db_issue = true;
+	}
+	
+	// Include the cities file for database
+	require('cities_sql.inc');
+	
+	// Database is now setup.  Lets add config to database.
+	
+	// Add admin user to database
+	// Include config to setup new user
+	require_once("adminuser.inc");
+	uap_create_admin_user($email,$username,$displayname,$password);
+	
 	if(!$db_issue){
 		echo "<p><strong>Database setup complete, please delete the install folder.</strong></p>";
 	} else {
-		echo "<p><a href=\"?install=true\">Try again</a></p>";
+		echo "<p><a href=\"\">Try again</a></p>";
 	}
 }
 else if($pass_requirements == 'TRUE')
@@ -401,9 +1093,50 @@ else if($pass_requirements == 'TRUE')
 				<input size='60' maxlength='255' type='text' name='recap_secretkey' value='Get Secret Key From Google' />
 			</td>
 		</tr>
+		<tr><td colspan=2>
+		<hr>
+		<strong>Admin Login Username/Password</strong><Br>
+		We are now going to create the Admin's account so that you can get right to work on your website after install.
+		</td></tr>
+		<tr>
+			<td>
+				<label>Admin User Name:</label>
+			</td><td>
+				<input id='username' type='text' name='username' value='Admin' /> 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Admin Display Name:</label>
+			</td><td>
+				<input id='displayname' type='text' name='displayname' value='Admin' /> 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Admin Password:</label>
+			</td><td>
+				<input type='password' name='password' id='passwordInput' />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Confirm Password:</label>
+			</td><td>
+				<input type='password' name='passwordc' id='confirmPasswordInput' />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Admin E-Mail:</label>
+			</td><td>
+				<input type='text' name='email' value='' />
+			</td>
+		</tr>
 		<tr>
 			<td colspan=2>
 		<hr><center>
+		<input type='hidden' name='install' value='TRUE'>
 		<strong>Please make sure information above is correct before installing.</strong><br>
 		<input type='submit' name='Submit' value='Install UserApplePie' />
 		</center>
@@ -500,7 +1233,8 @@ else if($pass_requirements == 'TRUE')
 			echo " - <font color=red><strong>Server does NOT have permission to write to this folder!</strong></font>";
 			$server_check_status = "FALSE";
 		}
-		
+	
+	if(empty($server_check_status)){ $server_check_status = ""; }
 		
 	// Check to see current server status and if installation can continue
 	if($server_check_status == "FALSE"){
@@ -513,6 +1247,8 @@ else if($pass_requirements == 'TRUE')
 			echo "<input type=\"submit\" value=\"Start Install\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
 		echo "</form></center>";
 	}
+
+	
 }
 
 echo "

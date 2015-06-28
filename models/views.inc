@@ -1,38 +1,57 @@
 <?
-//views Main
+////////////////////////////////////
+//   UserCake Forum by DaVaR
+//   http://www.thedavar.net
+//   Version 1.0.0
+//   Forum for User Cake 2.0.2
+////////////////////////////////////
 
-global $mysqli, $site_url_link, $db_table_prefix;
+// Display how many views a topic has had
+
+global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix;
 
 if($addview == "yesaddview"){
 
 	//Check to see if user has view post already
 	// retrieve the row from the database
 	$queryAS = "SELECT * FROM `".$db_table_prefix."views` WHERE `view_id`='$view_id' AND `view_location`='$view_location' AND `view_userid`='$view_userid' ";
-   
-	$resultAS = mysqli_query($GLOBALS["___mysqli_ston"],  $queryAS );
+	if ($result = $mysqli->query("$queryAS")) {
+
+		/* determine number of rows result set */
+		$num_views = $result->num_rows;
+
+		/* close result set */
+		$result->close();
+	}
 
 	// print out the results
-	if( $resultAS && $contactAS = mysqli_fetch_object( $resultAS ) )
+	if($num_views == "0")
 	{
-		$user_view_status = "alreadyview";
-	}else{
 		$user_view_status = "newview";
+	}else{
+		$user_view_status = "alreadyview";
 	}
-	//echo " ( $user_view_status ) "; //testing already view
+	//echo " ( $num_views - $user_view_status ) "; //testing already view
+	//echo " ( $queryAS ) "; // test user info
+	unset ($num_views);
 	//End Check to see if user has view post
-
-		if(isset($rate_id)){ $view_sec_id = $rate_id; }	
-		if(isset($club_id)){ $view_sec_id = $club_id; }
 
 }
 
 	//Get total views for post
-	$querySWT = "SELECT * FROM `".$db_table_prefix."views` WHERE `view_id`='$view_id' AND `view_location`='$view_location' ";
-	$resultSWT = mysqli_query($GLOBALS["___mysqli_ston"], $querySWT)
-	or die ("Couldn't ececute query. 98745");
-	$num_views = mysqli_num_rows($resultSWT);
-	//End total views for post
 
+	// Get all Categories from database
+	$query = "SELECT * FROM `".$db_table_prefix."views` WHERE `view_id`='$view_id' AND `view_location`='$view_location' ";
+	if ($result = $mysqli->query("$query")) {
+
+		/* determine number of rows result set */
+		$num_views = $result->num_rows;
+
+		/* close result set */
+		$result->close();
+	}
+	//End total views for post
+	
 	if(isset($user_view_status)){
 		if($user_view_status == "alreadyview"){
 			//echo "Already Viewed";
@@ -43,12 +62,12 @@ if($addview == "yesaddview"){
 				}
 		}
 	}
-
+	
 	echo " ( <font color=green>$num_views views!</font> )";
 
 	//echo " ( $view_location - $view_id - $view_userid - $view_url ) ";  //For testing	
-
+	
 
 	//Clear out data so it does not carry over to next post
-	unset($user_view_status);
+	unset($user_view_status, $new_views);
 ?>

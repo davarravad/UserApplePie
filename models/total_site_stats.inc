@@ -63,11 +63,11 @@
 
 		
 		echo "<tr><td class='main_tbl_nav_links_sub'>";
-		echo "<a href='${site_url_link}members/'>Members: $total_mem</a><br>";
+		echo "<a href='${site_url_link}members/' rel='nofollow'>Members: $total_mem</a><br>";
 		echo "</td></tr>";
 		
 		echo "<tr><td class='main_tbl_nav_links_sub'>";
-		echo "<a href='${site_url_link}whosonline/'>Members Online: $total_usr_online</a><br>";
+		echo "<a href='${site_url_link}whosonline/' rel='nofollow'>Members Online: $total_usr_online</a><br>";
 		echo "</td></tr>";
 		
 		echo "<tr><td class='main_tbl_nav_links_sub'>";
