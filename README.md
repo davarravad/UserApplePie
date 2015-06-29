@@ -26,19 +26,19 @@ Thank you for downloading UserApplePie, the simple user management package.
 
 //--Installation.
 
-1. Before proceeding please open up models/db-settings.inc
+Step #1. Before proceeding please open up models/db-settings.inc
 
-2. Create a database on your server / web hosting package.
+Step #2. Create a database on your server / web hosting package.
 
-3. Fill out the connection details in db-settings.inc
+Step #3. Fill out the connection details in db-settings.inc
 
-4. UserApplePie supports MySQLi and requires MySQL server version 4.1.3 or newer.
+Step #4. UserApplePie supports MySQLi and requires MySQL server version 4.1.3 or newer.
 
-5. Enable/Install ImageMagic
+Step #5. Enable/Install ImageMagic
 
-6. Make images, small, and thumb folders that are in /content/profile/ folder writeable by Web Server.
+Step #6. Make images, small, and thumb folders that are in /content/profile/ folder writeable by Web Server.
 
-7. Enable/Install mod_rewrite and add the following to your sites Apache Config (global config, or vhost/directory, or .htaccess):
+Step #7. Enable/Install Apache mod_rewrite and add the following to your sites Apache Config (global config, or vhost/directory, or .htaccess):
 <pre>
 	RewriteEngine On
 	RewriteBase /
@@ -60,7 +60,7 @@ Thank you for downloading UserApplePie, the simple user management package.
 The Above will enable your site url links to look better than http://www.website.com/index.php?page=login
 The urls will be much like http://www.website.com/login/
 
-8. Setup Apache mod_access so that intruders can not open the *.inc files (shows full code as text file if not disabled). 
+Step #8. Enable/Install Apache mod_access so that intruders can not open the *.inc files (shows full code as text file if not disabled). 
 Add the following to either apache global config, or vhost/directory, or .htaccess
 ```html
 	<Files  ~ "\.inc$">
@@ -69,7 +69,7 @@ Add the following to either apache global config, or vhost/directory, or .htacce
 	</Files> 
 ```
 
-9. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
+Step #9. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
    delete the install folder.  The install script checks to make sure all requirements match UserApplePie's needs.  Also has links if not.
 
 - UserApplePie was tested with a Ubuntu Linux server with all the latest updates.  
