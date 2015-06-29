@@ -63,8 +63,7 @@ The urls will be much like http://www.website.com/login/
 8. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
    delete the install folder.  The install script checks to make sure all requirements match UserApplePie's needs.  Also has links if not.
 
--  That's it you're good to go! In only five steps you have a fully functional user management system.
-   For further documentation visit http://www.thedavar.net or http://usercake.com
+-  For further documentation visit http://www.thedavar.net or http://usercake.com
 
 //--Credits for UserApplePie
 
