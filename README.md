@@ -62,12 +62,12 @@ The urls will be much like http://www.website.com/login/
 
 8. Setup Apache mod_access so that intruders can not open the *.inc files (shows full code as text file if not disabled). 
 Add the following to either apache global config, or vhost/directory, or .htaccess
-<code>
+```html
 	<Files  ~ "\.inc$">
 	  Order allow,deny
 	  Deny from all
 	</Files> 
-</code>
+```
 
 9. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
    delete the install folder.  The install script checks to make sure all requirements match UserApplePie's needs.  Also has links if not.
