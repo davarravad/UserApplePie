@@ -62,6 +62,7 @@ if(isset($_POST['install'])){ $install = $_POST['install']; }else{ $install = "F
 if($install == "TRUE")
 {
 	$db_issue = false;
+	$config_issue = false;
 	
 	// Lets make sure that the admin's input is good before we continue.
 	$email = trim($_POST["email"]);
@@ -70,9 +71,94 @@ if($install == "TRUE")
 	$password = trim($_POST["password"]);
 	$confirm_pass = trim($_POST["passwordc"]);
 	
-	if($password != $confirm_pass)
-	{
-		echo "<strong><font color='red'>Admin Passwords Do Not Match!</font></strong>";
+	if($password != $confirm_pass){
+		echo "<strong>**Admin Passwords Do Not Match!</strong><Br>";
+		$config_issue = true;
+	}
+	if(empty($password)){
+		echo "<strong>**Admin Password Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(empty($email)){
+		echo "<strong>**Admin Email Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(empty($username)){
+		echo "<strong>**Admin UserName Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(empty($displayname)){
+		echo "<strong>**Admin DisplayName Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	
+	if(isset($_POST['website_name'])){ $website_name = $_POST['website_name']; }else{ $website_name = ""; }
+	if(empty($website_name)){
+		echo "<strong>**Config Setting Error - Website Name Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(isset($_POST['website_url'])){ $website_url = $_POST['website_url']; }else{ $website_url = ""; }
+	if(empty($website_url)){
+		echo "<strong>**Config Setting Error - Website URL Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(isset($_POST['site_url_link_m'])){ $site_url_link_m = $_POST['site_url_link_m']; }else{ $site_url_link_m = ""; }
+	if(empty($site_url_link_m)){
+		echo "<strong>**Config Setting Error - Website Mobile URL Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(isset($_POST['site_dir'])){ $site_dir = $_POST['site_dir']; }else{ $site_dir = ""; }
+	if(empty($site_dir)){
+		echo "<strong>**Config Setting Error - Website Main Directory Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(isset($_POST['site_folder_dir'])){ $site_folder_dir = $_POST['site_folder_dir']; }else{ $site_folder_dir = ""; }
+	if(empty($site_folder_dir)){
+		echo "<strong>**Config Setting Error - Website Root Folder Directory Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(isset($_POST['site_gbl_descript'])){ $site_gbl_descript = $_POST['site_gbl_descript']; }else{ $site_gbl_descript = ""; }
+	if(isset($_POST['site_gbl_keywords'])){ $site_gbl_keywords = $_POST['site_gbl_keywords']; }else{ $site_gbl_keywords = ""; }
+	if(isset($_POST['site_email'])){ $site_email = $_POST['site_email']; }else{ $site_email = ""; }
+	if(empty($site_email)){
+		echo "<strong>**Config Setting Error - Site Email Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(isset($_POST['recap_sitekey'])){ $recap_sitekey = $_POST['recap_sitekey']; }else{ $recap_sitekey = ""; }
+	if(empty($recap_sitekey) || $recap_sitekey == "Get Site Key From Google"){
+		echo "<strong>**Config Setting Error - Google Site Key Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	if(isset($_POST['recap_secretkey'])){ $recap_secretkey = $_POST['recap_secretkey']; }else{ $recap_secretkey = ""; }
+	if(empty($recap_secretkey) || $recap_secretkey == "Get Secret Key From Google"){
+		echo "<strong>**Config Setting Error - Google Secret Key Was Blank!</strong><Br>";
+		$config_issue = true;
+	}
+	
+	// If there is an empty field then give user option to return back
+	if(!$config_issue){
+		echo "Starting Install!";
+	}else{
+		echo "<br><br><font color=red><strong>The Previous Config Form was NOT filled out completely.</strong></font><br>";
+		echo "<form method='post' action='' onsubmit='submit.disabled = true; return true;'>";
+			echo "<input type='hidden' name='pass_requirements' value='TRUE'>";
+			echo "<input type='hidden' name='email' value='$email'>";
+			echo "<input type='hidden' name='username' value='$username'>";
+			echo "<input type='hidden' name='displayname' value='$displayname'>";
+			echo "<input type='hidden' name='password' value='$password'>";
+			echo "<input type='hidden' name='confirm_pass' value='$confirm_pass'>";
+			echo "<input type='hidden' name='website_name' value='$website_name'>";
+			echo "<input type='hidden' name='website_url' value='$website_url'>";
+			echo "<input type='hidden' name='site_url_link_m' value='$site_url_link_m'>";
+			echo "<input type='hidden' name='site_dir' value='$site_dir'>";
+			echo "<input type='hidden' name='site_folder_dir' value='$site_folder_dir'>";
+			echo "<input type='hidden' name='site_gbl_descript' value='$site_gbl_descript'>";
+			echo "<input type='hidden' name='site_gbl_keywords' value='$site_gbl_keywords'>";
+			echo "<input type='hidden' name='site_email' value='$site_email'>";
+			echo "<input type='hidden' name='recap_sitekey' value='$recap_sitekey'>";
+			echo "<input type='hidden' name='recap_secretkey' value='$recap_secretkey'>";
+			echo "<input type=\"submit\" value=\"Click Here to Go Back and Try Again\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
+		echo "</form></center>";
 		die;
 	}
 	
@@ -130,18 +216,6 @@ if($install == "TRUE")
 	`value` varchar(150) NOT NULL,
 	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
-	";
-	
-	$configuration_entry = "
-	INSERT INTO `".$db_table_prefix."configuration` (`id`, `name`, `value`) VALUES
-	(1, 'website_name', 'UserCake'),
-	(2, 'website_url', 'localhost/'),
-	(3, 'email', 'noreply@ILoveUserCake.com'),
-	(4, 'activation', 'false'),
-	(5, 'resend_activation_threshold', '0'),
-	(6, 'language', 'models/languages/en.php'),
-	(7, 'template', 'models/site-templates/default.css'),
-	(8, 'remember_me_length', '1wk');
 	";
 	
 	$pages_sql = "CREATE TABLE IF NOT EXISTS `".$db_table_prefix."pages` (
@@ -594,6 +668,27 @@ if($install == "TRUE")
 	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 	";
 	
+	$configuration_entry = "
+	INSERT INTO `".$db_table_prefix."configuration` (`id`, `name`, `value`) VALUES
+	(1, 'website_name', '$website_name'),
+	(2, 'website_url', '$website_url'),
+	(3, 'site_url_link_m', '$site_url_link_m'),
+	(4, 'site_dir', '$site_dir'),
+	(5, 'site_folder_dir', '$site_folder_dir'),
+	(6, 'site_debug', 'FALSE'),
+	(7, 'site_gbl_descript', '$site_gbl_descript'),
+	(8, 'site_gbl_keywords', '$site_gbl_keywords'),
+	(9, 'email', '$site_email'),
+	(10, 'resend_activation_threshold', '0'),
+	(11, 'language', 'models/languages/en.php'),
+	(12, 'activation', 'false'),
+	(13, 'template', 'style/default'),
+	(14, 'recap_sitekey', '$recap_sitekey'),
+	(15, 'recap_secretkey', '$recap_secretkey'),
+	(16, 'site_adds_top', ''),
+	(17, 'site_adds_bot', '');
+	";
+	
 
 	
 	$stmt = $mysqli->prepare($configuration_sql);
@@ -1016,13 +1111,54 @@ if($install == "TRUE")
 	uap_create_admin_user($email,$username,$displayname,$password);
 	
 	if(!$db_issue){
-		echo "<p><strong>Database setup complete, please delete the install folder.</strong></p>";
+		echo "<p><h1><strong>Database setup complete, please delete the install folder.</h1></strong></p>";
 	} else {
 		echo "<p><a href=\"\">Try again</a></p>";
 	}
 }
 else if($pass_requirements == 'TRUE')
 {
+	
+	function substrAfter($str, $last) {
+		$startPos = strrpos($str, $last);
+		if ($startPos !== false) {
+			$startPos++;
+			return ($startPos < strlen($str)) ? substr($str, $startPos) : '';
+		}
+		return $str;
+	}
+	
+	// Get information to attempt to fill out the forum for the user
+	$base_dir  = __DIR__; // Absolute path to your installation, ex: /var/www/mywebsite
+	$doc_root  = preg_replace("!{$_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: /var/www
+	$base_url  = preg_replace("!^{$doc_root}!", '', $base_dir); # ex: '' or '/mywebsite'
+	$protocol  = empty($_SERVER['HTTPS']) ? 'http' : 'https';
+	$port      = $_SERVER['SERVER_PORT'];
+	$disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
+	$domain    = $_SERVER['SERVER_NAME'];
+	$full_url  = "$protocol://{$domain}{$disp_port}{$base_url}"; # Ex: 'http://example.com', 'https://example.com/mywebsite', etc.
+	
+	$site_folder = substrAfter($doc_root, '/');
+	$full_url = str_replace('/install', '', $full_url);
+	$root_dir = str_replace($site_folder, '', $doc_root);
+	
+	
+	if(isset($_POST['email'])){ $email = $_POST['email']; }else{ $email = ""; }
+	if(isset($_POST['username'])){ $username = $_POST['username']; }else{ $username = "Admin"; }
+	if(isset($_POST['displayname'])){ $displayname = $_POST['displayname']; }else{ $displayname = "Admin"; }
+	if(isset($_POST['password'])){ $password = $_POST['password']; }else{ $password = ""; }
+	if(isset($_POST['confirm_pass'])){ $confirm_pass = $_POST['confirm_pass']; }else{ $confirm_pass = ""; }
+	if(isset($_POST['website_name'])){ $website_name = $_POST['website_name']; }else{ $website_name = "UserApplePie"; }
+	if(isset($_POST['website_url'])){ $website_url = $_POST['website_url']; }else{ $website_url = $full_url."/"; }
+	if(isset($_POST['site_url_link_m'])){ $site_url_link_m = $_POST['site_url_link_m']; }else{ $site_url_link_m = $full_url."/"; }
+	if(isset($_POST['site_dir'])){ $site_dir = $_POST['site_dir']; }else{ $site_dir = $site_folder; }
+	if(isset($_POST['site_folder_dir'])){ $site_folder_dir = $_POST['site_folder_dir']; }else{ $site_folder_dir = $root_dir; }
+	if(isset($_POST['site_gbl_descript'])){ $site_gbl_descript = $_POST['site_gbl_descript']; }else{ $site_gbl_descript = "My Website and Stuff"; }
+	if(isset($_POST['site_gbl_keywords'])){ $site_gbl_keywords = $_POST['site_gbl_keywords']; }else{ $site_gbl_keywords = "UserApplePie, UserCake"; }
+	if(isset($_POST['site_email'])){ $site_email = $_POST['site_email']; }else{ $site_email = "admin@website.com"; }
+	if(isset($_POST['recap_sitekey'])){ $recap_sitekey = $_POST['recap_sitekey']; }else{ $recap_sitekey = "Get Site Key From Google"; }
+	if(isset($_POST['recap_secretkey'])){ $recap_secretkey = $_POST['recap_secretkey']; }else{ $recap_secretkey = "Get Secret Key From Google"; }
+	
 	echo "
 		<strong>Update the following information to match your server settings.  Make sure you replace the default text or your website may have issues.</strong><hr>
 		<form name='adminConfiguration' action='' method='post'>
@@ -1030,52 +1166,73 @@ else if($pass_requirements == 'TRUE')
 			<td>
 				<label>Website Name:</label>
 			</td><td>
-				<input size='60' maxlength='150' type='text' name='website_name' value='UserApplePie' />
+				<input size='60' maxlength='150' type='text' name='website_name' value='$website_name' />
+			</td>
+			<td>
+				EX: UserApplePie
 			</td>
 		</tr><tr>
 			<td>
 				<label>Website URL:</label>
 			</td><td>
-				<input size='60' maxlength='150' type='text' name='website_url' value='http://www.website.com' />
+				<input size='60' maxlength='150' type='text' name='website_url' value='$website_url' />
+			</td>
+			<td>
+				EX: http://www.website.com/
 			</td>
 		</tr><tr>
 			<td>
 				<label>Website Mobile URL:</label>
 			</td><td>
-				<input size='60' maxlength='150' type='text' name='site_url_link_m' value='http://m.website.com' />
+				<input size='60' maxlength='150' type='text' name='site_url_link_m' value='$site_url_link_m' />
+			</td>
+			<td>
+				EX: http://m.website.com/
 			</td>
 		</tr><tr>
 			<td>
 				<label>Website Main Directory:</label>
 			</td><td>
-				<input size='60' maxlength='150' type='text' name='site_dir' value='websitefolder' />
+				<input size='60' maxlength='150' type='text' name='site_dir' value='$site_dir' />
+			</td>
+			<td>
+				EX: websitefolder
 			</td>
 		</tr><tr>
 			<td>
-				<label>Website Folder Directory:</label>
+				<label>Website Root Folder Directory:</label>
 			</td><td>
-				<input size='60' maxlength='150' type='text' name='site_folder_dir' value='/var/www/html/' />
+				<input size='60' maxlength='150' type='text' name='site_folder_dir' value='$site_folder_dir' />
+			</td>
+			<td>
+				EX: /var/www/html/
 			</td>
 		</tr><tr>
 			<td>
 				<label>Website Description:</label>
 			</td><td>
-				<textarea rows='4' cols='45' type='text' maxlength='255' name='site_gbl_descript'>My Website and Stuff</textarea>
+				<textarea rows='4' cols='45' type='text' maxlength='255' name='site_gbl_descript'>$site_gbl_descript</textarea>
+			</td>
+			<td>
 			</td>
 		</tr><tr>
 			<td>
 				<label>Website Keywords:</label>
 			</td><td>
-				<textarea rows='4' cols='45' type='text' maxlength='255' name='site_gbl_keywords'>UserApplePie, UserCake</textarea>
+				<textarea rows='4' cols='45' type='text' maxlength='255' name='site_gbl_keywords'>$site_gbl_keywords</textarea>
+			</td>
+			<td>
 			</td>
 		</tr><tr>
 			<td>
 				<label>Site Email:</label>
 			</td><td>
-				<input size='60' maxlength='255' type='text' name='email' value='admin@website.com' />
+				<input size='60' maxlength='255' type='text' name='site_email' value='$site_email' />
+			</td>
+			<td>
 			</td>
 		</tr>
-		<tr><td colspan=2>
+		<tr><td colspan=3>
 		<hr>
 		<strong>Google reCAPTCHA Settings</strong> - <a href='https://www.google.com/recaptcha/' target='_blank'>Google reCAPTCHA</a>
 		</td></tr>
@@ -1083,17 +1240,21 @@ else if($pass_requirements == 'TRUE')
 			<td>
 				<label>Site Key:</label>
 			</td><td>
-				<input size='60' maxlength='255' type='text' name='recap_sitekey' value='Get Site Key From Google' />
+				<input size='60' maxlength='255' type='text' name='recap_sitekey' value='$recap_sitekey' />
+			</td>
+			<td>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<label>Secret Key:</label>
 			</td><td>
-				<input size='60' maxlength='255' type='text' name='recap_secretkey' value='Get Secret Key From Google' />
+				<input size='60' maxlength='255' type='text' name='recap_secretkey' value='$recap_secretkey' />
+			</td>
+			<td>
 			</td>
 		</tr>
-		<tr><td colspan=2>
+		<tr><td colspan=3>
 		<hr>
 		<strong>Admin Login Username/Password</strong><Br>
 		We are now going to create the Admin's account so that you can get right to work on your website after install.
@@ -1102,39 +1263,49 @@ else if($pass_requirements == 'TRUE')
 			<td>
 				<label>Admin User Name:</label>
 			</td><td>
-				<input id='username' type='text' name='username' value='Admin' /> 
+				<input id='username' type='text' name='username' value='$username' /> 
+			</td>
+			<td>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<label>Admin Display Name:</label>
 			</td><td>
-				<input id='displayname' type='text' name='displayname' value='Admin' /> 
+				<input id='displayname' type='text' name='displayname' value='$displayname' /> 
+			</td>
+			<td>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<label>Admin Password:</label>
 			</td><td>
-				<input type='password' name='password' id='passwordInput' />
+				<input type='password' name='password' id='passwordInput' value='$password' />
+			</td>
+			<td>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<label>Confirm Password:</label>
 			</td><td>
-				<input type='password' name='passwordc' id='confirmPasswordInput' />
+				<input type='password' name='passwordc' id='confirmPasswordInput' value='$confirm_pass' />
+			</td>
+			<td>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<label>Admin E-Mail:</label>
 			</td><td>
-				<input type='text' name='email' value='' />
+				<input type='text' name='email' value='$email' />
+			</td>
+			<td>
 			</td>
 		</tr>
 		<tr>
-			<td colspan=2>
+			<td colspan=3>
 		<hr><center>
 		<input type='hidden' name='install' value='TRUE'>
 		<strong>Please make sure information above is correct before installing.</strong><br>
@@ -1248,7 +1419,7 @@ else if($pass_requirements == 'TRUE')
 		echo "</form></center>";
 	}
 
-	
+
 }
 
 echo "

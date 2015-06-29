@@ -6,10 +6,10 @@ http://usercake.com
 
 //Database Information
 $db_host = "localhost"; //Host address (most likely localhost)
-$db_name = "userapplepie"; //Name of Database
-$db_user = "userapplepie"; //Name of database user
+$db_name = "database"; //Name of Database
+$db_user = "username"; //Name of database user
 $db_pass = "password"; //Password for database user
-$db_table_prefix = "uc_";
+$db_table_prefix = "uap_";
 
 // Sets globals for sql with updated sql
 $conn=($GLOBALS["___mysqli_ston"] = mysqli_connect("$db_host",  "$db_user",  "$db_pass", "$db_name", "3306")) or die ('Cannot connect to the database because: ' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
