@@ -38,7 +38,7 @@ Thank you for downloading UserApplePie, the simple user management package.
 
 6. Make images, small, and thumb folders that are in /content/profile/ folder writeable by Web Server.
 
-7. Enable/Install mod_rewrite and add the following to your sites Apache Config:
+7. Enable/Install mod_rewrite and add the following to your sites Apache Config (global config, or vhost/directory, or .htaccess):
 <pre>
 	RewriteEngine On
 	RewriteBase /
@@ -60,7 +60,16 @@ Thank you for downloading UserApplePie, the simple user management package.
 The Above will enable your site url links to look better than http://www.website.com/index.php?page=login
 The urls will be much like http://www.website.com/login/
 
-8. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
+8. Setup Apache mod_access so that intruders can not open the *.inc files (shows full code as text file if not disabled). 
+Add the following to either apache global config, or vhost/directory, or .htaccess
+<pre>
+	<Files  ~ "\.inc$">
+	  Order allow,deny
+	  Deny from all
+	</Files> 
+</pre>
+
+9. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
    delete the install folder.  The install script checks to make sure all requirements match UserApplePie's needs.  Also has links if not.
 
 - UserApplePie was tested with a Ubuntu Linux server with all the latest updates.  
