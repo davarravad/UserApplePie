@@ -34,8 +34,32 @@ Thank you for downloading UserApplePie, the simple user management package.
 
 4. UserApplePie supports MySQLi and requires MySQL server version 4.1.3 or newer.
 
-5. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
-   delete the install folder.
+5. Enable/Install ImageMagic
+
+6. Make images, small, and thumb folders that are in /content/profile/ folder writeable by Web Server.
+
+7. Enable/Install mod_rewrite and add the following to your sites Apache Config:
+		RewriteEngine On
+		RewriteBase /
+		RewriteRule ^([A-Za-z0-9\_\s]+)$ /index.php?page=$1 [QSA,L,NC]
+		RewriteRule ^([A-Za-z0-9\_\s]+)/$ /index.php?page=$1 [QSA,L,NC]
+		RewriteRule ^YummyAsPie/([A-Za-z0-9\_\s]+)/$ /index.php?page=admin/admin&adp=$1 [QSA,L,NC]
+		RewriteRule ^YummyAsPie/locations/([A-Za-z0-9\_\s]+)/$ /index.php?page=admin/admin&adp2=$1 [QSA,L,NC]
+		RewriteRule ^rp/([A-Za-z0-9\_\s]+)$ /index.php?rc_view=$1 [QSA,L,NC]
+		RewriteRule ^rp/([A-Za-z0-9\_\s]+)/$ /index.php?rc_view=$1 [QSA,L,NC]
+		RewriteRule ^member/([A-Za-z0-9\_\s]+)$ /index.php?profile=$1 [QSA,L,NC]
+		RewriteRule ^member/([A-Za-z0-9\_\s]+)/$ /index.php?profile=$1 [QSA,L,NC]
+		RewriteRule ^([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)$ /index.php?page=$1&pee=$2&fsp=$2 [QSA,L,NC]
+		RewriteRule ^([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/$ /index.php?page=$1&pee=$2&fsp=$2 [QSA,L,NC]
+		RewriteRule ^([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)$ /index.php?page=$1&pee=$2&fsp=$2&fsid=$3 [QSA,L,NC]
+		RewriteRule ^([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/$ /index.php?page=$1&pee=$2&fsp=$2&fsid=$3 [QSA,L,NC]
+		RewriteRule ^([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)$ /index.php?page=$1&pee=$2&fsp=$2&fsid=$3&fsid2=$4 [QSA,L,NC]
+		RewriteRule ^([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/([A-Za-z0-9\_\s]+)/$ /index.php?page=$1&pee=$2&fsp=$2&fsid=$3&fsid2=$4 [QSA,L,NC]
+	The Above will enable your site url links to look better than http://www.website.com/index.php?page=login
+	The urls will be much like http://www.website.com/login/
+
+8. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
+   delete the install folder.  The install script checks to make sure all requirements match UserApplePie's needs.  Also has links if not.
 
 -  That's it you're good to go! In only five steps you have a fully functional user management system.
    For further documentation visit http://www.thedavar.net or http://usercake.com
