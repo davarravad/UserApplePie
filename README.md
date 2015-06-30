@@ -1,5 +1,19 @@
 # UserApplePie
 UserApplePie is a web site portal based on UserCake
+Features:
+- Forum.
+- User Profiles with Photos.
+- Friends.
+- Status Updates.
+- Status Comments.
+- Clean URL Links.
+- Smart Registration with recapcha.
+- Sweets feature.  Identical to Like button.
+- Advanced User Account Settings.
+- User Messages. Members can message each other in site with email notifications.
+- Member profile comments.
+- Added Security Functions
+- And Much More!
 
 Copyright (c) 2015
 
