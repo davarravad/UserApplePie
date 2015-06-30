@@ -9,11 +9,6 @@ if(isset($pee)){}else{ $pee = ""; }
 echo "<table width=100% cellspacing=0 class=index_headertable3tbl><tr><td class=index_headertable3><center>";
 
 	//view one status
-		if($pee == "invites"){
-			$ity_title = "Car Truck Clubs Invites";
-		}
-
-	//view one status
 		if($pee == "viewstatus"){
 			$ity_title = "Viewing Status";
 		}
@@ -24,15 +19,6 @@ echo "<table width=100% cellspacing=0 class=index_headertable3tbl><tr><td class=
 		}
 		else{
 			echo "<a href='${site_url_link}community/friendstatus/'>FriendsStatus</a>";
-		}
-	if($usemobile == "TRUE"){ echo "<br>"; }else{ echo " - "; } //changes look for mobile
-	//friendvehicles
-		if($pee == "friendvehicles"){
-			echo "FriendsVehicles";
-			$ity_title = "My Friend's Vehicle Collection";
-		}
-		else{
-			echo "<a href='${site_url_link}community/friendvehicles/'>FriendsVehicles</a>";
 		}
 
 	if($usemobile == "TRUE"){ echo "<br>"; }else{ echo " - "; } //changes look for mobile
@@ -54,15 +40,6 @@ echo "<table width=100% cellspacing=0 class=index_headertable3tbl><tr><td class=
 		}
 		else{
 			echo "<a href='${site_url_link}community/mystatus/'>MyStatus</a>";
-		}
-	if($usemobile == "TRUE"){ echo "<br>"; }else{ echo " - "; } //changes look for mobile
-	//myvehicles
-		if($pee == "myvehicles"){
-			echo "MyVehicles";
-			$ity_title = "My Vehicle Profiles";
-		}
-		else{
-			echo "<a href='${site_url_link}community/myvehicles/'>MyVehicles</a>";
 		}
 
 	if($usemobile == "TRUE"){ echo "<br>"; }else{ echo " - "; } //changes look for mobile

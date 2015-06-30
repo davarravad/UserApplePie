@@ -13,6 +13,8 @@ if(isUserLoggedIn())
 
 	}else{
 
+		global $websiteName;
+	
 		// Page title
 		$stc_page_title = "$websiteName Forum";
 		// Page Description

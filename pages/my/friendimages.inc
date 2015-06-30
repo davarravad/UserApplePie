@@ -29,8 +29,8 @@ if(isset($_REQUEST['imgn'])){ $imgn = $_REQUEST['imgn']; }else{ $imgn = ""; }
 	$queryWFC = "
 	(SELECT ep3.id, ep3.userId, ep3.nname, ep3.content1, ep3.imgdir, ep3.imgname, ep3.timestamp,
 					friend.userId1, friend.userId2, friend.status1, friend.status2, 
-	'ep3' AS post_type FROM ep3
-	LEFT JOIN friend
+	'ep3' AS post_type FROM ".$db_table_prefix."ep3 ep3
+	LEFT JOIN ".$db_table_prefix."friend friend
 	ON (ep3.userId = friend.userId1 AND friend.userId2 = $userIdme)
 	OR (ep3.userId = friend.userId2 AND friend.userId1 = $userIdme)
 	WHERE friend.status1 = '1' AND friend.status2 = '1'

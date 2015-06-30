@@ -55,8 +55,8 @@ if(isUserLoggedIn())
 		// Create new topic
 		// Save the information to the database
 		if($insert_new_topic == "TRUE"){
-				$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."forum_posts(forum_id, forum_user_id, forum_title, forum_content, forum_timestamp, forum_year, forum_make, forum_model, forum_engine, subcribe_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				$stmt->bind_param("iissssssss", $forum_id, $userIdme, $forum_title, $forum_content, $cur_date_time, $forum_year, $forum_make, $forum_model, $forum_engine, $subcribe_email);
+				$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."forum_posts(forum_id, forum_user_id, forum_title, forum_content, forum_timestamp, subcribe_email) VALUES (?, ?, ?, ?, ?, ?)");
+				$stmt->bind_param("iissss", $forum_id, $userIdme, $forum_title, $forum_content, $cur_date_time, $subcribe_email);
 				$stmt->execute();
 				$newId = $stmt->insert_id;
 				
@@ -72,8 +72,6 @@ if(isUserLoggedIn())
 				
 				//Disables auto refresh for debug stuff
 				if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
-					//Redirects the user
-					global $site_url_link;
 					
 					// Redirect member to their post
 					header("Location: $redir_link_url");

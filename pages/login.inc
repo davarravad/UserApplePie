@@ -73,11 +73,13 @@ if(!empty($_POST))
 			//Check to see if username is an email or not
 			if(emailExists($username)){
 				$email = TRUE;
+			}else{
+				$email = FALSE;
 			}
 			
 			// If email is true we are searching via email instead of username
 			if($email){
-				echo "Getting email stuff";
+				//echo "Getting email stuff";
 				$userdetails = fetchUserDetails(NULL, NULL, NULL, $username);
 			}else{
 				$userdetails = fetchUserDetails($username);

@@ -2,7 +2,7 @@
 
 $uriref = $_SERVER['REQUEST_URI'];
 
-$querym = "SELECT * FROM friend WHERE `userId2`='$userId' AND `status2`='0' ";
+$querym = "SELECT * FROM ".$db_table_prefix."friend WHERE `userId2`='$userId' AND `status2`='0' ";
 $resultm = mysqli_query($GLOBALS["___mysqli_ston"], $querym);
 	//or die ("Couldn't ececute query. 56141205");
 

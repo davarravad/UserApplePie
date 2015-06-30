@@ -16,7 +16,7 @@ if(isUserLoggedIn())
 			}else{
 			
 				//echo "Remove Friend Yes";
-				$query = "DELETE FROM `friend` WHERE `id`='$remove_friend_id' LIMIT 1 "; 
+				$query = "DELETE FROM `".$db_table_prefix."friend` WHERE `id`='$remove_friend_id' LIMIT 1 "; 
 				
 				$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
 

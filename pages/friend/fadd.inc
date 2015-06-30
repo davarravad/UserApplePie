@@ -10,7 +10,7 @@ if(isUserLoggedIn())
 
 	}else{
 
-		$query = "INSERT INTO `friend` SET `userId1` = '$userId1', `userId2` = '$userId2', `status1` = '1' ";
+		$query = "INSERT INTO `".$db_table_prefix."friend` SET `userId1` = '$userId1', `userId2` = '$userId2', `status1` = '1' ";
 		
 		$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
 

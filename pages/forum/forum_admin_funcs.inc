@@ -451,6 +451,7 @@ function forumCreateNewTopic(){
 					$f_order_title = $row['forum_order_title'];
 					$next_order_number = $f_order_title + 1;
 				}
+				if(empty($next_order_number)){ $next_order_number = "1"; }
 				
 				// Update Database with new title
 				$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."forum_cat SET forum_name=?, forum_title=?, forum_order_title=?");
@@ -748,7 +749,7 @@ function forumCatNew($f_title){
 						global $websiteUrl, $site_forum_title;
 						$form_redir_link = "${websiteUrl}${site_forum_title}/";
 						// Redirect member to their post
-						//header("Location: $form_redir_link");
+						header("Location: $form_redir_link");
 						exit;
 					}
 
@@ -761,8 +762,9 @@ function forumCatNew($f_title){
 					if(isset($session_token_num)){$session_token_num = $session_token_num + 1;}else{$session_token_num = "1";}
 					form_token();
 					echo " <label>Create New Category:</label> ";
-					echo "<input name=\"forum_cat_create\" type=\"text\" value=\"New Category\" style='width:200px;font-family:verdana;font-size:12px;font-weight:bold'>";
-					echo "<input name=\"forum_des_create\" type=\"text\" value=\"Description\" style='width:200px;font-family:verdana;font-size:12px;font-weight:bold'>";
+					echo "<input name=\"forum_cat_create\" type=\"text\" value=\"New Category\" style='width:50%;font-family:verdana;font-size:12px;font-weight:bold'><br>";
+					echo " <label>Category Description:</label> ";
+					echo "<input name=\"forum_des_create\" type=\"text\" value=\"Description\" style='width:75%;font-family:verdana;font-size:12px;font-weight:normal'>";
 					echo "<input type=\"hidden\" name=\"AdminCreateCat\" value=\"TRUE\" />";
 					echo "<input type=\"hidden\" name=\"forum_title\" value=\"$f_title\" />";
 					echo "<input type=\"submit\" value=\"Create Category\" name=\"Create Category\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";

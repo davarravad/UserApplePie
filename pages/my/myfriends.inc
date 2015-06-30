@@ -5,7 +5,7 @@ $userIdme = $userId;
 
 	$uriref = $_SERVER['REQUEST_URI'];
 	
-	$querym = "SELECT * FROM friend WHERE `userId2`='$userIdme' AND `status2`='0'  ";
+	$querym = "SELECT * FROM ".$db_table_prefix."friend WHERE `userId2`='$userIdme' AND `status2`='0'  ";
 	$resultm = mysqli_query($GLOBALS["___mysqli_ston"], $querym);
 	
 	$num_rows = mysqli_num_rows($resultm);
@@ -73,7 +73,7 @@ echo "</td></tr></table>";
 
 echo "<br><br>";
 
-	$query414 = "SELECT * FROM friend WHERE ((`userId1`='$userIdme' AND `status2`='1') OR (`userId2`='$userIdme' AND `status2`='1'))";
+	$query414 = "SELECT * FROM ".$db_table_prefix."friend WHERE ((`userId1`='$userIdme' AND `status2`='1') OR (`userId2`='$userIdme' AND `status2`='1'))";
 	$result414 = mysqli_query($GLOBALS["___mysqli_ston"], $query414);
 	
 	$num_rows44 = mysqli_num_rows($result414);
@@ -112,7 +112,7 @@ echo "</td></tr></table>";
     $limit = 20; 
     
     // simple query to get total no of entries
-    $queryPN = "select count(*) from friend WHERE ((`userId1`='$userIdme' AND `status2`='1') OR (`userId2`='$userIdme' AND `status2`='1')) "; 
+    $queryPN = "select count(*) from ".$db_table_prefix."friend WHERE ((`userId1`='$userIdme' AND `status2`='1') OR (`userId2`='$userIdme' AND `status2`='1')) "; 
 	// simple query to get total no of entries
 	$resultPN = $mysqli->query("$queryPN");
 	/* determine number of rows result set */
@@ -130,7 +130,7 @@ echo "</td></tr></table>";
 //Check to see if user has any friends
 if($total > 0){
 	
-	$query44 = "SELECT * FROM friend WHERE ((`userId1`='$userIdme' AND `status2`='1') OR (`userId2`='$userIdme' AND `status2`='1'))  ORDER BY `id` DESC LIMIT $offset, $limit ";
+	$query44 = "SELECT * FROM ".$db_table_prefix."friend WHERE ((`userId1`='$userIdme' AND `status2`='1') OR (`userId2`='$userIdme' AND `status2`='1'))  ORDER BY `id` DESC LIMIT $offset, $limit ";
 	$result44 = mysqli_query($GLOBALS["___mysqli_ston"], $query44);
 	
 		echo "<center>";

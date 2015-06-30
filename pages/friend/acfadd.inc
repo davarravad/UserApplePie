@@ -13,7 +13,7 @@ if(isUserLoggedIn())
 
 		$id = $_REQUEST['id'];
 
-		$query = "UPDATE `friend` SET `status2` = '1' WHERE `id`='$id'";
+		$query = "UPDATE `".$db_table_prefix."friend` SET `status2` = '1' WHERE `id`='$id'";
 		
 		$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
 
