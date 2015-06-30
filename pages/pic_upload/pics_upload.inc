@@ -71,7 +71,10 @@ if(is_valid_referer())
 							$random_number = rand( );
 							//$ranimgname = "$random_number";
 							$ranimgname = genRandomString();
-							$ran_taz = "cartruckclubs_${userIdme}_";
+							global $websiteName;
+							$new_img_name_start = trim($websiteName); // Removes spaces
+							$new_img_name_start = preg_replace('/[^A-Za-z0-9\-]/', '', $new_img_name_start);  // Cleans out any chars
+							$ran_taz = "${new_img_name_start}_${userIdme}_";
 							$ranimgname = $ran_taz.$ranimgname.$random_number;
 							//echo "$ranimgname2";
 							//End Random img name gen.
@@ -160,53 +163,16 @@ if(is_valid_referer())
 												if($puf_pic_cat == "ep3"){
 													require "pages/profile/setpicasmain.inc";
 												}
-
-												//if club pics check for main pic
-												if($puf_pic_cat == "club_pics"){
-													require "pages/club/pics/setpicasmain_club.inc";
-												}
-												
-												//if club events pics check for main pic
-												if($puf_pic_cat == "club_events_pics"){
-													require "pages/club/events/setpicasmain.inc";
-												}
-													
-												//if show events pics check for main pic
-												if($puf_pic_cat == "show_events_pics"){
-													require "pages/shows/setpicasmain.inc";
-												}
-													
-												//Run query if vehicle pics
-												if($puf_pic_cat == "art"){
-													$query = "INSERT INTO `$puf_pic_cat` SET `usrida`='$userId',`vehicle_id`='$vehicle_id',`name`='$name',`type`='$type',`title`='$title',`content1`='$content1',`imgdir`='$imgdir',`imgname`='$imgname',`imgsize`='$imgsize' ";
-												}
 												
 												//Run query if profile pics
 												if($puf_pic_cat == "ep3"){
-													$query = "INSERT INTO `".$db_table_prefix."ep3` SET `userId`='$userId', `nname`='$nname', `content1`='$content1',`imgdir`='$imgdir',`imgname`='$imgname',`imgsize`='$imgsize'";
+													//$query = "INSERT INTO `".$db_table_prefix."ep3` SET `userId`='$userId', `nname`='$nname', `content1`='$content1',`imgdir`='$imgdir',`imgname`='$imgname',`imgsize`='$imgsize'";
+													$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."ep3(userId, nname, content1, imgdir, imgname, imgsize) VALUES (?, ?, ?, ?, ?, ?)");
+													$stmt->bind_param("isssss", $userId, $nname, $content1, $imgdir, $imgname, $imgsize);
+													$stmt->execute();
+													//echo $stmt->error;
+													$stmt->close();	
 												}
-												
-												//Run query if swapmeet pics
-												if($puf_pic_cat == "fs3"){
-													$query = "INSERT INTO `fs3` SET `userId`='$userId', `nname`='$nname', `fsid`='$fsid',`imgdir`='$imgdir',`imgname`='$imgname',`imgsize`='$imgsize'";
-												}
-												
-												//Run query if club events pics
-												if($puf_pic_cat == "club_events_pics"){
-													$query = "INSERT INTO `club_events_pics` SET `userId`='$userId', `nname`='$club_id', `fsid`='$fsid',`imgdir`='$imgdir',`imgname`='$imgname',`imgsize`='$imgsize'";
-												}
-
-												//Run query if shows events pics
-												if($puf_pic_cat == "show_events_pics"){
-													$query = "INSERT INTO `show_events_pics` SET `userId`='$userId', `fsid`='$fsid',`imgdir`='$imgdir',`imgname`='$imgname',`imgsize`='$imgsize'";
-												}
-												
-												//Run query if club pics
-												if($puf_pic_cat == "club_pics"){
-													$query = "INSERT INTO `club_pics` SET `userId`='$userId', `nname`='$club_id', `content1`='$content1', `imgdir`='$imgdir',`imgname`='$imgname',`imgsize`='$imgsize'";
-												}
-												
-												$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
 								
 												// print out the results
 												if( $results )
@@ -223,7 +189,7 @@ if(is_valid_referer())
 												
 											//End of file work check
 											}else{
-												echo "<br><Br>CarTruckClubs.com Submit try again?";
+												echo "<br><Br>Submit try again?";
 											}
 	
 										}else{
@@ -260,29 +226,9 @@ if(is_valid_referer())
 				}else{
 				
 					//Sets where to send user when success
-					//If vehicle photos use this
-					if($puf_pic_cat == "art"){
-						$page_after_success = "/community/myvehicles/";
-					}
 					//If profile photo use this
 					if($puf_pic_cat == "ep3"){
 						$page_after_success = "/member/$userId/";
-					}
-					//If swapmeet photo use this
-					if($puf_pic_cat == "fs3"){
-						$page_after_success = "/SwapMeet/viewlisting/?fsid=$fsid";
-					}
-					//If club events photo use this
-					if($puf_pic_cat == "club_events_pics"){
-						$page_after_success = "/Clubs/?pee=events/events_list&club_id=$club_id&club_events_edit=TRUE&fsp=viewEvent&fsid=$fsid";
-					}
-					//If club photo use this
-					if($puf_pic_cat == "club_pics"){
-						$page_after_success = "/Club/$club_id/";
-					}
-					//If show events photo use this
-					if($puf_pic_cat == "show_events_pics"){
-						$page_after_success = "/Shows/viewEvent/$fsid/";
 					}
 					
 					//Sends success message to session
