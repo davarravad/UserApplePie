@@ -33,18 +33,18 @@ $body             = "$usermsg <br><br> $usermsg2 <br><br> $sitemsg";
 //$body             = eregi_replace("[\]",'',$body);
 
 $mail->IsSMTP(); // telling the class to use SMTP
-$mail->Host       = "mail.cartruckclubs.com"; // SMTP server
+$mail->Host       = "mail.website.com"; // SMTP server
 $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
                                            // 1 = errors and messages
                                            // 2 = messages only
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->SMTPSecure = "tls";                 // sets the prefix to the servier
-$mail->Host       = "localhost";      // sets Car Truck Clubs as the SMTP server
-$mail->Port       = 587;                   // set the SMTP port for the Car Truck Clubs server
-$mail->Username   = "noreply@cartruckclubs.com";  // Car Truck Clubs username
-$mail->Password   = "WAhts1596";            // Car Truck Clubs password
+$mail->Host       = "localhost";      // sets Mail Server as the SMTP server
+$mail->Port       = 587;                   // set the SMTP port for the Mail Server server
+$mail->Username   = "noreply@website.com";  // Mail Server username
+$mail->Password   = "password";            // Mail Server password
 
-$mail->SetFrom('noreply@cartruckclubs.com', 'Car Truck Clubs Mail No Reply');
+$mail->SetFrom('noreply@website.com', 'Mail Server Mail No Reply');
 
 //$mail->AddReplyTo("user2@gmail.com', 'First Last");
 
