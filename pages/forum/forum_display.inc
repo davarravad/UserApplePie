@@ -143,6 +143,8 @@
 						echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td align='left'>";
 							//echo "($tstamp)"; // Test timestamp
 							echo "<strong><font size='2'>";
+							// Add text to blank Topic Titles
+							if(empty($f_p_title)){ $f_p_title = "Oops! Title is Missing for this Topic."; }
 							echo "<a href='${site_url_link}${site_forum_title}/display_topic/$f_p_id/' title='$f_p_title' ALT='$f_p_title'>$f_p_title</a>";
 							echo "</font></strong>";
 							echo "<br>";
