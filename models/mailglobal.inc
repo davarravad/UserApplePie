@@ -5,7 +5,7 @@ function mailmessage() {
 
 	//Function mailmessage(); is set up to get userEmail for sending message alerts
 
-	global $mysqli, $site_url_link, $db_table_prefix;
+	global $mysqli, $site_url_link, $db_table_prefix, $websiteUrl, $websiteName;
 	
 	$mto = $_POST['mto'];
 	$mfrom = $_POST['mfrom'];
@@ -62,9 +62,9 @@ function mailmessage() {
 		if($email){
 		
 			$adminmail = $touserEmail;
-			$usersub = "NEW message from $mfrom on CarTruckClubs.com";
+			$usersub = "NEW message from $mfrom";
 			$usermsg = ":<strong> $mfrom </strong>: has sent you a NEW message.";
-			$usermsg2 = "You may check your message at www.cartruckclubs.com. &gt; Community &gt; My Messages";
+		$usermsg2 = "You may check your message at ${websiteUrl}message/";
 			$username = "$mto";
 							
 			require_once "models/mail.inc";
@@ -83,7 +83,7 @@ function mailprofilecomment() {
 
 //Function mailprofilecomment(); is set up to get userEmail for sending message alerts
 
-		global $mysqli, $site_url_link, $db_table_prefix;
+		global $mysqli, $site_url_link, $db_table_prefix, $websiteUrl, $websiteName;
 
 		$com_id = $_REQUEST['com_id'];
 		$com_name = $_REQUEST['com_name'];
@@ -121,9 +121,9 @@ function mailprofilecomment() {
 			if($userEmail){
 			
 			$adminmail = $touserEmail;
-			$usersub = "NEW profile comment on www.cartruckclubs.com";
+			$usersub = "NEW profile comment on $websiteUrl";
 			$usermsg = ": <strong>$com_name</strong> : has sent you a NEW profile comment.";
-			$usermsg2 = "You may check your new comment at http://www.cartruckclubs.com/member/$com_id.";
+			$usermsg2 = "You may check your new comment at $websiteUrl/member/$com_id.";
 			$username = "$com_name";
 			
 			
@@ -146,7 +146,7 @@ function mailcomment() {
 
 //Function mailcomment(); is set up to get userEmail for sending message alerts
 
-		global $mysqli, $site_url_link, $db_table_prefix;
+		global $mysqli, $site_url_link, $db_table_prefix, $websiteUrl, $websiteName;
 
 		$usrida = $_POST['usrida'];
 		$com_type = $_POST['com_type'];
@@ -190,9 +190,9 @@ function mailcomment() {
 		
 		$com_type = "Vehicle Profile";
 		$adminmail = $touserEmail;
-		$usersub = "NEW comment on your Vehicle Profile at www.cartruckclubs.com";
+		$usersub = "NEW comment on your Vehicle Profile at $websiteUrl";
 		$usermsg = "You have a NEW vehicle profile comment from <strong>$com_name</strong>.";
-		$usermsg2 = "You may check your comment at http://www.cartruckclubs.com/writingview/?int=$com_id";
+		$usermsg2 = "You may check your comment at $websiteUrl/writingview/?int=$com_id";
 		$username = "$com_name";
 		
 		
@@ -214,7 +214,7 @@ function mailcommentart() {
 
 //Function mailcommentart(); is set up to get userEmail for sending message alerts
 
-		global $mysqli, $site_url_link, $db_table_prefix;
+		global $mysqli, $site_url_link, $db_table_prefix, $websiteUrl, $websiteName;
 
 		$usrida = $_POST['usrida'];
 		//$com_type = $_POST['com_type'];
@@ -257,9 +257,9 @@ function mailcommentart() {
 		require_once "models/members/getuserinfo.inc";
 		
 		$adminmail = $touserEmail;
-		$usersub = "NEW comment on your Vehicle Photo at www.cartruckclubs.com";
+		$usersub = "NEW comment on your Vehicle Photo at $websiteUrl";
 		$usermsg = "You have a NEW vehicle photo comment from <strong>$com_name</strong>.";
-		$usermsg2 = "You may check your comment at http://www.cartruckclubs.com/artview/?id=$com_id";
+		$usermsg2 = "You may check your comment at $websiteUrl/artview/?id=$com_id";
 		$username = "$com_name";
 		
 		
