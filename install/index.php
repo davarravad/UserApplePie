@@ -295,6 +295,11 @@ if($install == "TRUE")
 	) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 	";
 	
+	$table_forum_cat_data = "INSERT INTO `".$db_table_prefix."forum_cat` 
+		(`forum_id`, `forum_name`, `forum_title`, `forum_cat`, `forum_des`, `forum_perm`, `forum_order_title`, `forum_order_cat`)
+		VALUES
+		(1, 'Forum', 'Forum', 'Welcome', 'Welcome to the Forum.', 1, 1, 1);";
+	
 	$table_forum_posts = "CREATE TABLE IF NOT EXISTS `".$db_table_prefix."forum_posts` (
 	  `forum_post_id` int(20) NOT NULL AUTO_INCREMENT,
 	  `forum_id` int(20) NOT NULL,
@@ -836,6 +841,17 @@ if($install == "TRUE")
 	else
 	{
 		echo "<p>Error constructing ".$db_table_prefix."forum_cat table.....</p>";
+		$db_issue = true;
+	}
+	
+	$stmt = $mysqli->prepare($table_forum_cat_data);
+	if($stmt->execute())
+	{
+		echo "<p>".$db_table_prefix."forum_cat data added to table.....</p>";
+	}
+	else
+	{
+		echo "<p>Error adding data to ".$db_table_prefix."forum_cat table.....</p>";
 		$db_issue = true;
 	}
 	
