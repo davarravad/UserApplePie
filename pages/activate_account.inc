@@ -1,8 +1,12 @@
-<?php 
-/*
-UserCake Version: 2.0.1
-http://usercake.com
-*/
+<?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
+
 require_once("models/config.inc");
 // Build Security for Current Page if Any
 $cur_page_get = "pages/".$_GET['page'].".inc";

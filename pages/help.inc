@@ -1,5 +1,12 @@
- <?php 
-	//echo "<title>Car Truck Clubs Help and FAQ</title>";
+<?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
+
 	echo "<meta name=\"description\" content=\"Car Truck Clubs Help and FAQ.\">";
 
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0' align='center'><tr><td class='hr2'>";

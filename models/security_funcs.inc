@@ -1,6 +1,12 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
-	// Check to see if user's IP is already registered in database
+// Check to see if user's IP is already registered in database
 	// Blocks user from registration if there is an IP match
 	function check_reg_ip_inuse(){
 		/////////////////////////

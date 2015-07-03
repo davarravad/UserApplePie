@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 //Loads requested page
 	$tazibPH2_dir = "$ph2dir";
 	$tazibPH2_ext = ".inc";

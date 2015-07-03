@@ -1,8 +1,12 @@
 <?php
-/*
-UserCake Version: 2.0.2
-http://usercake.com
-*/
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
+
 
 class userCakeMail {
 	//UserCake uses a text based system with hooks to replace various strs in txt email templates

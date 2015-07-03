@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 //This script gets all new information for admin and displays it in the welcome member section of main page
 
 //Make sure member is an Admin

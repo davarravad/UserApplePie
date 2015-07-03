@@ -1,6 +1,12 @@
-<?php 
+<?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
-	require "models/members/getuserinfo.inc";
+require "models/members/getuserinfo.inc";
 
 	#David Sargent - www.cartruckclubs.com - davarravad@gmail.com
 	#This script is built to get all possible information about a visitor

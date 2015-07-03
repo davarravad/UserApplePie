@@ -1,10 +1,12 @@
-<?php 
-/*
-UserApple Pie Version: 0.0.1
-http://www.thedavar.net
-UserCake Version: 2.0.2
-http://usercake.com
-*/
+<?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
+
 require_once("../models/db-settings.inc");
 
 // Current Version
@@ -167,13 +169,14 @@ if($install == "TRUE")
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(150) NOT NULL,
 	PRIMARY KEY (`id`)
-	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 	";
 	
 	$permissions_entry = "
 	INSERT INTO `".$db_table_prefix."permissions` (`id`, `name`) VALUES
 	(1, 'New Member'),
 	(2, 'Administrator');
+	(3, 'Moderator');
 	";
 	
 	$users_sql = "

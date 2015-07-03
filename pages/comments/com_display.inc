@@ -1,5 +1,12 @@
 
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 //Settings needed for comments to work
 //$com_top_title = "Event Comments";  //Displays the title of comments at top of comments
 //$com_query_database = "club_events_com"; //Comments database

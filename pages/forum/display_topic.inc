@@ -1,6 +1,12 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
-	// Main Page for forum
+// Main Page for forum
 	//echo "Welcome to the forum for diy stuff. ($load_cat)($load_id)<hr>";
 	
 	// Check database for sections

@@ -1,7 +1,12 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
-
-	// Get user profile information from database based on id
+// Get user profile information from database based on id
 	function get_up_info($get_info_id, $field){
 
 		// echo "Getting user info ($get_info_id-$field)";

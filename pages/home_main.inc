@@ -1,13 +1,12 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 /*
-Build by DaVaR - davar@thedavar.net
-UserApplePie Version: 1.0.0
-http://www.thedavar.net
-Based on:
-UserCake Version: 2.0.2
-http://usercake.com
-
 This is the default home page to visitors that are not logged in.
 You can use this page as a template to create any other pages for your site.
 */

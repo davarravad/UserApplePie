@@ -1,6 +1,12 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
-	// Get globals
+// Get globals
 	global $mysqli, $site_url_link, $site_forum_title;
 
 	// get the id of content from the URL request

@@ -1,8 +1,11 @@
 <?php
-/*
-UserCake Version: 2.0.2
-http://usercake.com
-*/
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 
 
 class User 
@@ -170,7 +173,7 @@ class User
 				
 				//How about we send this new user a message within the site.
 				//New User Message
-				new_user_message_send();
+				new_user_message_send($username, $inserted_id);
 							
 				//Now get this users ID and make them friends with DaVaR ID=1
 				$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."friend  (

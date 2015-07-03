@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 echo "<div class='comt_cnt'>";
 
 if(isset($_POST['ed_com'])){ $ed_com = $_POST['ed_com']; }

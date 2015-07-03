@@ -1,8 +1,10 @@
 <?php
-/*
-UserCake Version: 2.0.2
-http://usercake.com
-*/
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 require_once("models/config.inc");
 // Build Security for Current Page if Any

@@ -1,10 +1,10 @@
 <?php
-////////////////////////////////////
-//   UserCake Forum by DaVaR
-//   http://www.thedavar.net
-//   Version 1.0.0
-//   Forum for User Cake 2.0.2
-////////////////////////////////////
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 // Save visitor information to database to build a view count
 

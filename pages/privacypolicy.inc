@@ -1,6 +1,12 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
-	echo "<center>";
+echo "<center>";
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
     ###Page Title###
 	//echo "<title>Car Truck Clubs Privacy Policy</title>";

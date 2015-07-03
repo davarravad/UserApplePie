@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 //Code by David Sargent (DaVaR) davarravad@gmail.com
 //Mysql error report 
 //This code submits an error to the database if there is a 

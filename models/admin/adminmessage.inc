@@ -1,209 +1,203 @@
 <?php
-if(isUserLoggedIn()){
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+// Admin Message Script
+// Allows admin to display a
+// Message to all users
 
-		if(is_admin()) {
-
-
+// Make sure user is Logged In and an Admin
+if(isUserLoggedIn() && is_admin()){
+	
 	echo "<center>";
 	echo "<strong>Admin Zone - Message To ALL!!!</strong>"; 
 	echo "</center><br><Br>";
 
-		if(isset($_POST['id'])){ $id = $_REQUEST['id']; }else{ $id = ""; } 
-		if(isset($_POST['save'])){ $save = $_REQUEST['save']; }else{ $save = ""; }
+	if(isset($_POST['id1'])){ $id1 = $_REQUEST['id1']; }else{ $id1 = ""; } 
+	if(isset($_POST['id2'])){ $id2 = $_REQUEST['id2']; }else{ $id2 = ""; } 
+	if(isset($_POST['save'])){ $save = $_REQUEST['save']; }else{ $save = ""; }
 
-if($save == 'save'){
-
-	if($id == '1'){
-
-		if(isset($_POST['adminID'])){ $adminID = $_REQUEST['adminID']; }else{ $adminID = ""; }
-		if(isset($_POST['adminuser'])){ $adminuser = $_REQUEST['adminuser']; }else{ $adminuser = ""; }
-		if(isset($_POST['admincontent'])){ $admincontent = $_REQUEST['admincontent']; }else{ $admincontent = ""; }
-	 	if(isset($_POST['adminshow'])){ $adminshow = $_REQUEST['adminshow']; }else{ $adminshow = ""; }
-     
-			$admincontent = htmlspecialchars($admincontent);
-			$admincontent = strip_tags($admincontent);	
-			$admincontent = addslashes($admincontent);
-			$admincontent = nl2br($admincontent);	
-   
-			if(isset($id))
-			{
-				$query = "UPDATE ".$db_table_prefix."admin SET `adminID`='$adminID',`adminuser`='$adminuser',`admincontent`='$admincontent',`adminshow`='$adminshow' WHERE `id`='$id' ";
-			}
-			else
-			{
-				$query = "INSERT INTO ".$db_table_prefix."admin SET `adminID`='$adminID',`adminuser`='$adminuser',`admincontent`='$admincontent',`adminshow`='$adminshow' ";
-			}
-  
-			$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
-
-			if( $results )
-			{
-				echo( "Admin Submit<br><br>" );
-				echo( "Successfully saved the entry." );
-			}
- 			else
-			{
-				//Code used to report mysql error
-				$mysql_error_report = "TRUE";
-				$sql_query = "$query";
-				require "models/mysql_error_report.inc";
-			}
-	}//end check 1
-
-
-	if($id == '2'){
-
-		if(isset($_POST['adminID'])){ $adminID = $_REQUEST['adminID']; }else{ $adminID = ""; }
-		if(isset($_POST['adminuser'])){ $adminuser = $_REQUEST['adminuser']; }else{ $adminuser = ""; }
-		if(isset($_POST['admincontent'])){ $admincontent = $_REQUEST['admincontent']; }else{ $admincontent = ""; }
-	 	if(isset($_POST['adminshow'])){ $adminshow = $_REQUEST['adminshow']; }else{ $adminshow = ""; }
-     
-			$admincontent = htmlspecialchars($admincontent);
-			$admincontent = strip_tags($admincontent);	
-			$admincontent = addslashes($admincontent);
-			$admincontent = nl2br($admincontent);	
-   
-			if(isset($id))
-			{
-				$query = "UPDATE ".$db_table_prefix."admin SET `adminID`='$adminID',`adminuser`='$adminuser',`admincontent`='$admincontent',`adminshow`='$adminshow' WHERE `id`='$id' ";
-			}
-			else
-			{
-				$query = "INSERT INTO ".$db_table_prefix."admin SET `adminID`='$adminID',`adminuser`='$adminuser',`admincontent`='$admincontent',`adminshow`='$adminshow' ";
-			}
-  
-			$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
-
-			if( $results )
-			{
-				echo( "Admin Submit<br><br>" );
-				echo( "Successfully saved the entry." );
-			}
- 			else
-			{
-				//Code used to report mysql error
-				$mysql_error_report = "TRUE";
-				$sql_query = "$query";
-				require "models/mysql_error_report.inc";
-			}
-	}//end check 2
-
+	global $mysqli, $db_table_prefix, $websiteUrl;
 	
-}
-else{
+	if($save == 'save'){
 
+		if(isset($_POST['adminID'])){ $adminID = $_REQUEST['adminID']; }else{ $adminID = ""; }
+		if(isset($_POST['adminuser'])){ $adminuser = $_REQUEST['adminuser']; }else{ $adminuser = ""; }
+		if(isset($_POST['admincontent'])){ $admincontent = $_REQUEST['admincontent']; }else{ $admincontent = ""; }
+		if(isset($_POST['adminshow'])){ $adminshow = $_REQUEST['adminshow']; }else{ $adminshow = ""; }
+		
+		if(isset($_POST['adminID2'])){ $adminID2 = $_REQUEST['adminID2']; }else{ $adminID2 = ""; }
+		if(isset($_POST['adminuser2'])){ $adminuser2 = $_REQUEST['adminuser2']; }else{ $adminuser2 = ""; }
+		if(isset($_POST['admincontent2'])){ $admincontent2 = $_REQUEST['admincontent2']; }else{ $admincontent2 = ""; }
+		if(isset($_POST['adminshow2'])){ $adminshow2 = $_REQUEST['adminshow2']; }else{ $adminshow2 = ""; }
+	 
+		$admincontent = htmlspecialchars($admincontent);
+		$admincontent = strip_tags($admincontent);	
+		$admincontent = addslashes($admincontent);
+		$admincontent = nl2br($admincontent);	
+		
+		$admincontent2 = htmlspecialchars($admincontent2);
+		$admincontent2 = strip_tags($admincontent2);	
+		$admincontent2 = addslashes($admincontent2);
+		$admincontent2 = nl2br($admincontent2);	
+		
+		//echo "<hr>$id1 = $id2<hr>";
+		
+		// First Set
+		if(!empty($id1))
+		{
+			$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."admin SET adminID=?, adminuser=?, admincontent=?, adminshow=? WHERE id=?");
+			$stmt->bind_param("isssi", $adminID, $adminuser, $admincontent, $adminshow, $id1);
+			if (!$stmt->execute()) {
+			   err_message("Error Saving Information to Database!");
+			   die;
+			}
+			$stmt->close();
+		}
+		else
+		{
+			$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."admin SET adminID=?, adminuser=?, admincontent=?, adminshow=?");
+			$stmt->bind_param("isss", $adminID, $adminuser, $admincontent, $adminshow);
+			if (!$stmt->execute()) {
+			   err_message("Error Saving Information to Database!");
+			   die;
+			}
+			$stmt->close();
+		}
+
+		// Second set
+		if(!empty($id2))
+		{
+			$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."admin SET adminID=?, adminuser=?, admincontent=?, adminshow=? WHERE id=?");
+			$stmt->bind_param("isssi", $adminID2, $adminuser2, $admincontent2, $adminshow2, $id2);
+			if (!$stmt->execute()) {
+			   err_message("Error Saving Information to Database!");
+			   die;
+			}
+			$stmt->close();
+		}
+		else
+		{
+			$stmt = $mysqli->prepare("INSERT INTO ".$db_table_prefix."admin SET adminID=?, adminuser=?, admincontent=?, adminshow=?");
+			$stmt->bind_param("isss", $adminID2, $adminuser2, $admincontent2, $adminshow2);
+			if (!$stmt->execute()) {
+			   err_message("Error Saving Information to Database!");
+			   die;
+			}
+			$stmt->close();
+		}
+		// No errors, lets redirect admin back
+		//Sends success message to session
+		//Shows user success when they are redirected
+		$success_msg = "Successfully Updated Admin Messages!";
+		$_SESSION['success_msg'] = $success_msg;
+		
+		//Disables auto refresh for debug stuff
+		if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
+			//Redirects the user
+			$form_redir_link = "${websiteUrl}YummyAsPie/adminmessage/";
+			// Redirect member to their post
+			header("Location: $form_redir_link");
+			exit;
+		}
+	
+	}else{
+	
+		$user_disp_name = get_up_info_mem_disp_name($userId);
+	
 		echo "<strong>Admin Message for Logged In users!</strong>";
-   		$query = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='1' ";
-		$result = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
-
-		if( $result && $contact = mysqli_fetch_object( $result ) )
-		{
-			$id = $contact -> id;
-			$adminID = $contact -> adminID;
-			$adminuser = $contact -> adminuser;
-			$admincontent = $contact -> admincontent;
-			$adminshow = $contact -> adminshow;
+		$query = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='1' ";
+		if($result = $mysqli->query($query)){
+			while ($row = $result->fetch_assoc()) {
+				$id1 = $row['id'];
+				$adminID = $row['adminID'];
+				$adminuser = $row['adminuser'];
+				$admincontent = $row['admincontent'];
+				$adminshow = $row['adminshow'];
+			}
 		}
-		if(!isset($adminID)){ $adminID = ""; }
-		if(!isset($adminuser)){ $adminuser = ""; }
+		if(!isset($adminID)){ $adminID = "$userId"; }
+		if(!isset($adminuser)){ $adminuser = "$user_disp_name"; }
 		if(!isset($admincontent)){ $admincontent = ""; }
-	 	if(!isset($adminshow)){ $adminshow = ""; }
-		
-			$admincontent = stripslashes($admincontent);
-			$admincontent = stripslashes($admincontent);
-			$admincontent = stripslashes($admincontent);
-			$admincontent = str_replace("<br />", "", $admincontent );
-
-?>
-
-	<form method="post" action="<?php
-echo "${site_url_link}"; ?>YummyAsPie/adminmessage/">
+		if(!isset($adminshow)){ $adminshow = ""; }
 	
-	<input type='hidden' name='save' value='save'>
-	<input type='hidden' name='id' value='1'>
-	
-	<label>Admin ID Name:</label><Br>
-	<input name="adminID" type="text" size="11" maxlength="10" value="<?php
-echo "$adminID"; ?>"><br>
-	<input name="adminuser" type="text" size="40" maxlength="50" value="<?php
-echo "$adminuser"; ?>"><br>
-	<label>Message Content:</label><br><textarea name="admincontent" cols="50" rows="10"><?php echo "$admincontent"; ?></textarea><br>
-	<select name="adminshow" id="adminshow">
-	<option value="yes" <?php if($adminshow == 'yes'){echo "SELECTED";} ?>>Show Message</option>
-	<option value="no" <?php if($adminshow == 'no'){echo "SELECTED";} ?>>Hide Message</option>
-	</select>
-	<Br><Br>
-	<label title="Send"><input type="submit" value="Save Message" /></label>
-	</form>
+		$admincontent = stripslashes($admincontent);
+		$admincontent = stripslashes($admincontent);
+		$admincontent = stripslashes($admincontent);
+		$admincontent = str_replace("<br />", "", $admincontent );
 
-	<?php
-//Un Set Vars
-	unset($id, $adminID, $adminuser, $admincontent, $adminshow);
+		echo "<form method='post' action='${site_url_link}YummyAsPie/adminmessage/'>";
+			echo "<input type='hidden' name='save' value='save'>";
+			// See if this is first time admin is using this func
+			if(!empty($id1)){
+				echo "<input type='hidden' name='id1' value='1'>";
+			}
+			echo "<label>Admin ID:</label>";
+			echo "<input name='adminID' type='text' size='11' maxlength='10' value='${adminID}'><br>";
+			echo "<label>Admin Name:</label>";
+			echo "<input name='adminuser' type='text' size='40' maxlength='50' value='${adminuser}'><br>";
+			echo "<label>Message Content:</label><br>";
+			echo "<textarea name='admincontent' cols='50' rows='10'>${admincontent}</textarea><br>";
+			echo "<select name='adminshow' id='adminshow'>";
+				if($adminshow == 'yes'){$as1 = "SELECTED";}else{$as1 = "";}
+				if($adminshow == 'no'){$as2 = "SELECTED";}else{$as2 = "";}
+				echo "<option value='yes' $as1>Show Message</option>";
+				echo "<option value='no' $as2>Hide Message</option>";
+			echo "</select>";
+			echo "<Br><Br>";
+			echo "<label title='Send'><input type='submit' value='Save Message' /></label>";
 
 
-		echo "<hr><strong>Admin Message for not logged in users!</strong>";
-   		$query = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='2' ";
-		$result = mysqli_query($GLOBALS["___mysqli_ston"],  $query );
-
-		if( $result && $contact = mysqli_fetch_object( $result ) )
-		{
-			$id = $contact -> id;
-			$adminID = $contact -> adminID;
-			$adminuser = $contact -> adminuser;
-			$admincontent = $contact -> admincontent;
-			$adminshow = $contact -> adminshow;
+		echo "<hr><strong>Admin Message for not logged in users!</strong><Br>";
+		$query2 = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='2' ";
+		if($result2 = $mysqli->query($query2)){
+			while ($row2 = $result2->fetch_assoc()) {
+				$id2 = $row2['id'];
+				$adminID2 = $row2['adminID'];
+				$adminuser2 = $row2['adminuser'];
+				$admincontent2 = $row2['admincontent'];
+				$adminshow2 = $row2['adminshow'];
+			}
 		}
-		if(!isset($adminID)){ $adminID = ""; }
-		if(!isset($adminuser)){ $adminuser = ""; }
-		if(!isset($admincontent)){ $admincontent = ""; }
-	 	if(!isset($adminshow)){ $adminshow = ""; }
+		if(!isset($adminID2)){ $adminID2 = "$userId"; }
+		if(!isset($adminuser2)){ $adminuser2 = "$user_disp_name"; }
+		if(!isset($admincontent2)){ $admincontent2 = ""; }
+		if(!isset($adminshow2)){ $adminshow2 = ""; }
 		
-			$admincontent = stripslashes($admincontent);
-			$admincontent = stripslashes($admincontent);
-			$admincontent = stripslashes($admincontent);
-			$admincontent = str_replace("<br />", "", $admincontent );
+		$admincontent2 = stripslashes($admincontent2);
+		$admincontent2 = stripslashes($admincontent2);
+		$admincontent2 = stripslashes($admincontent2);
+		$admincontent2 = str_replace("<br />", "", $admincontent2 );
 
+			if(!empty($id2)){
+				echo "<input type='hidden' name='id2' value='2'>";
+			}
 
-?>
+			echo "<label>Admin ID:</label>";
+			echo "<input name='adminID2' type='text' size='11' maxlength='10' value='${adminID2}'><br>";
+			echo "<label>Admin Name:</label>";
+			echo "<input name='adminuser2' type='text' size='40' maxlength='50' value='${adminuser2}'><br>";
+			echo "<label>Message Content:</label><br><textarea name='admincontent2' cols='50' rows='10'>${admincontent2}</textarea><br>";
+			echo "<select name='adminshow2' id='adminshow2'>";
+				if($adminshow2 == 'yes'){$as12 = "SELECTED";}else{$as12 = "";}
+				if($adminshow2 == 'no'){$as22 = "SELECTED";}else{$as22 = "";}
+				echo "<option value='yes' $as12>Show Message</option>";
+				echo "<option value='no' $as22>Hide Message</option>";
+			echo "</select>";
+			echo "<Br><Br>";
+			echo "<label title='Send'><input type='submit' value='Save Message' /></label>";
+		echo "</form>";
 
-	<form method="post" action="<?php
-echo "${site_url_link}"; ?>YummyAsPie/adminmessage/">
-	
-	<input type='hidden' name='save' value='save'>
-	<input type='hidden' name='id' value='2'>
-	
-	<label>Admin ID Name:</label><Br>
-	<input name="adminID" type="text" size="11" maxlength="10" value="<?php
-echo "$adminID"; ?>"><br>
-	<input name="adminuser" type="text" size="40" maxlength="50" value="<?php
-echo "$adminuser"; ?>"><br>
-	<label>Message Content:</label><br><textarea name="admincontent" cols="50" rows="10"><?php echo "$admincontent"; ?></textarea><br>
-	<select name="adminshow" id="adminshow">
-	<option value="yes" <?php if($adminshow == 'yes'){echo "SELECTED";} ?>>Show Message</option>
-	<option value="no" <?php if($adminshow == 'no'){echo "SELECTED";} ?>>Hide Message</option>
-	</select>
-	<Br><Br>
-	<label title="Send"><input type="submit" value="Save Message" /></label>
-	</form>
+		//Un Set Vars
+		unset($id, $adminID, $adminuser, $admincontent, $adminshow, $id2, $adminID2, $adminuser2, $admincontent2, $adminshow2);
 
-	
-	
-<?php
-//Un Set Vars
-	unset($id, $adminID, $adminuser, $admincontent, $adminshow);
-
+	}
+}else{
+	echo "Admin Only.";
+	exit();
 }
-
-		}
-		else{
-			echo "Admin Only.";
-			exit();
-		}
-
-	}
-	else{
-		notlogedinmsg();
-		exit();
-	}
 
 ?>

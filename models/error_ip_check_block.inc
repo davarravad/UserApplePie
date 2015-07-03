@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 //This function checks to see if user's IP has created multi errors
 //If user has reached the max number of errors they will be blocked
 //And unable to view any and all content within the site

@@ -1,6 +1,12 @@
 ﻿<?php
-	
-	// PHP5 Implementation - uses MySQLi.
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
+// PHP5 Implementation - uses MySQLi.
 	require_once("../db-settings.inc");
 	global $db_host, $db_name, $db_user, $db_pass, $db_table_prefix;
 	

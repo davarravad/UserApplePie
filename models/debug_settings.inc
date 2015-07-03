@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 //Triggers debug stuff for the site
 $debug_website = "$site_debug";  //TRUE = ON OR FALSE = OFF
 

@@ -7,8 +7,14 @@
 	
 	
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
-	//Set the site style to use
+//Set the site style to use
 	$site_style_sel = "default";
 
 	// Gets the members zip code if they have one set

@@ -1,5 +1,12 @@
 <?php
-	if(isUserLoggedIn()){
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
+if(isUserLoggedIn()){
 
 		if(is_admin()) {
 
@@ -46,7 +53,7 @@
 				<a href='${site_url_link}YummyAsPie/admin_pages/'>Admin Pages</a>";
 			echo "<hr>";
 			echo "
-				<a href='${site_url_link}YummyAsPie/admin_forum/'>Admin Forum</a>";
+				<a href='${site_url_link}YummyAsPie/admin_wm/'>Welcome Message</a>";
 			echo "</center></td></tr></table><br>";
 
 

@@ -1,4 +1,10 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 // UserApplePie Forum Admin Page
 // Allows Admins to edit the site forum

@@ -1,4 +1,10 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 // Created by David "DaVaR" Sargent
 // These functions check to see if users have or have not 

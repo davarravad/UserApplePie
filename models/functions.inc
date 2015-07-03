@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 //include debug_settings file
 require "models/debug_settings.inc";
 	
@@ -357,8 +364,8 @@ function success_message(){
 
 
 
-function new_user_message_send(){
-	global $username;
+function new_user_message_send($username, $inserted_id){
+	global $websiteUrl, $mysqli, $db_table_prefix;
 	
 	//Testing stuff
 	//echo "Sending message to $username!";
