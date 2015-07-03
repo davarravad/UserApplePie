@@ -365,26 +365,17 @@ function success_message(){
 
 
 function new_user_message_send($username, $inserted_id){
-	global $websiteUrl, $mysqli, $db_table_prefix;
+	global $websiteUrl, $websiteName, $mysqli, $db_table_prefix;
 	
 	//Testing stuff
 	//echo "Sending message to $username!";
 	
 	//Message Subject
-	$msubject = "Welcome to Car Truck Clubs!";
+	$msubject = "Welcome to ".$websiteName."!";
 	
 	//Message Content
-	$mcontent = "
-Thank You for Signing Up!
-<br /><br />
-I can't wait to see your vehicle projects.  Create your vehicle profiles and start uploading as many photos as you wish.  
-<br /><br />
-The site is FREE and always will be!  
-<br /><br />
-If you have any issues, or questions about the site reply to this message.  This site is built for car and truck lovers like you!  If there is anything I can do with the site to improve your experience please let me know.  
-<br /><br />
-Thanks again for signing up for CarTruckClubs.com and enjoy!
-		";
+	// Get data from database for admin welcome message
+	$mcontent = "Welcome to the site!  Enjoy!";
 	
 	$msubject = htmlspecialchars($msubject);	
 	$mcontent = htmlspecialchars($mcontent);
@@ -395,7 +386,7 @@ Thanks again for signing up for CarTruckClubs.com and enjoy!
 	$mdatesent = date("YmdHis");
 	
 	//Submits welcome msg to users inbox
-	$query = "INSERT INTO `inbox` SET `mto` = '$username', `mfrom` = 'DaVaR', `msubject` = '$msubject', `mcontent` = '$mcontent', `mdatesent`='$mdatesent' ";
+	$query = "INSERT INTO `".$db_table_prefix."inbox` SET `mto` = '$username', `mfrom` = 'DaVaR', `msubject` = '$msubject', `mcontent` = '$mcontent', `mdatesent`='$mdatesent' ";
 	
 	//Runs query
 	$results = mysqli_query($GLOBALS["___mysqli_ston"],  $query );

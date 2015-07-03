@@ -66,6 +66,7 @@ if($reg_ipok == FALSE){
 //Forms posted
 if(!empty($_POST))
 {
+	global $captcha;
 	$errors = array();
 	$email = trim($_POST["email"]);
 	$username = trim($_POST["username"]);
@@ -80,20 +81,21 @@ if(!empty($_POST))
 		die;
 	}
 	// Google Captcha Check
-	require_once('models/recaptchalib.inc');
 	$privatekey = $recap_secretkey;
-	$resp = recaptcha_check_answer ($privatekey,
-								$_SERVER["REMOTE_ADDR"],
-								$_POST["recaptcha_challenge_field"],
-								$_POST["recaptcha_response_field"]);
-
-	if (!$resp->is_valid) {
+	if(isset($_POST['g-recaptcha-response'])){
+		$captcha=$_POST['g-recaptcha-response'];
+	}
+	if(!$captcha){
 		//What happens when the CAPTCHA was entered incorrectly
 		//err_message("Sorry, The reCAPTCHA was not entered correctly! Please try again!");
 		//die;	
 		$errors[] = lang("CAPTCHA_FAIL");
 	}
-		
+	$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$privatekey."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+	if($response.'success'==false)
+	{
+		$errors[] = lang("CAPTCHA_FAIL");
+	}
 	if(minMaxRange(5,25,$username))
 	{
 		$errors[] = lang("ACCOUNT_USER_CHAR_LIMIT",array(5,25));
@@ -362,9 +364,12 @@ echo"
 	form_token();
 
 	// Setup Google Captcha
-	require_once('models/recaptchalib.inc');
 	$publickey = $recap_sitekey; // you got this from the signup page
-	echo recaptcha_get_html($publickey);
+	echo "
+		<div class=\"g-recaptcha\" data-sitekey=\"".$publickey."\"></div>
+		<script type=\"text/javascript\" src=\"https://www.google.com/recaptcha/api.js?hl=en\">
+		</script>
+	";
 	
 echo "
 </td></tr><tr><td align=center colspan=3>

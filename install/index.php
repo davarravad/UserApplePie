@@ -175,7 +175,7 @@ if($install == "TRUE")
 	$permissions_entry = "
 	INSERT INTO `".$db_table_prefix."permissions` (`id`, `name`) VALUES
 	(1, 'New Member'),
-	(2, 'Administrator');
+	(2, 'Administrator'),
 	(3, 'Moderator');
 	";
 	
