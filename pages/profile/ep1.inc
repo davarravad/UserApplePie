@@ -40,8 +40,8 @@ else {echo "Error! EP3928383";}
 
 	<form method="post" action="/editprofilemain/ep1s/">
 
-<?
-	//Form token. Place within from tag
+<?php
+//Form token. Place within from tag
 	// create multi sessions
 	if(isset($session_token_num)){
 		$session_token_num = $session_token_num + 1;
@@ -85,7 +85,8 @@ else {echo "Error! EP3928383";}
 
 	 <tr class="mTr" ><td>City, State or Zip Code:</td>
 
-	  <td><? require "pages/city_lookup.inc"; ?></td></tr>
+	  <td><?php
+require "pages/city_lookup.inc"; ?></td></tr>
 
 
 	 <tr class="mTr"><td>AIM SN:</td><td>
@@ -127,7 +128,8 @@ else {echo "Error! EP3928383";}
 
 	 <tr class="mTr"><td colspan=2 align="center">
 	 		<input type="hidden" name="action" value="update">
-			<input type="hidden" name="userId" value="<? echo $_REQUEST['userId']; ?>">
+			<input type="hidden" name="userId" value="<?php
+echo $_REQUEST['userId']; ?>">
 			<input type="submit" name="submit" value="Update profile"></td></tr>
 
 	</table>
@@ -139,7 +141,8 @@ else {echo "Error! EP3928383";}
 
 <br>
 
-<? require "pages/profile/ep2.inc"; ?>
+<?php
+require "pages/profile/ep2.inc"; ?>
 
 
 

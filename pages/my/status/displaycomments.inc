@@ -1,5 +1,5 @@
 <center>
-<?
+<?php
 if(isset($_REQUEST['ID'])){
 	$id = $_REQUEST['ID'];
 	$ID = $_REQUEST['ID'];
@@ -30,7 +30,7 @@ if($view_only_one == "TRUE"){
     o.style.height = (10+o.scrollHeight)+"px";
 }
 </script>
-<?	
+<?php
 }else{
 	$query01 = "SELECT * FROM ".$db_table_prefix."status WHERE `com_id`='$userId' ORDER BY `id` DESC LIMIT $limitfriendstatus";
 }

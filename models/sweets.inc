@@ -1,4 +1,4 @@
-<?
+<?php
 //Sweets Main
 
 global $mysqli, $site_url_link, $db_table_prefix;

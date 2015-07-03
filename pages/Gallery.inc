@@ -13,9 +13,8 @@
 }
 </style>
 
-<?
-
-	//Include popup file
+<?php
+//Include popup file
 	require "pages/pic_upload/popupimgs/img_header.inc";
 
 	//Display all images uploaded to tazib

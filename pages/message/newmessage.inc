@@ -17,8 +17,8 @@ $userId = $userIdme;
 
 <form name="newmessage" method="post" action="/?page=message&mes=msend" onsubmit="submit.disabled = true; return true;">
 
-<?
-	// create multi sessions
+<?php
+// create multi sessions
 	if(isset($session_token_num)){
 		$session_token_num = $session_token_num + 1;
 	}else{
@@ -44,11 +44,13 @@ $userId = $userIdme;
     </tr>
     <tr> 
       <td width="0">SUBJECT: &nbsp;</td>
-      <td><input name="msubject" type="text" value="<? echo "$msub"; ?>" size="50"></td>
+      <td><input name="msubject" type="text" value="<?php
+echo "$msub"; ?>" size="50"></td>
     </tr>
     <tr> 
       <td colspan="2">MESSAGE CONTENT:<br>
-          <textarea name="mcontent" cols="80" rows="10"><? if($mbod){echo "This post relates to your post in Swap Meet
+          <textarea name="mcontent" cols="80" rows="10"><?php
+if($mbod){echo "This post relates to your post in Swap Meet
 *$mbod*
 -------------------------------------------------
 ";} ?></textarea>

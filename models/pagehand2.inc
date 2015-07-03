@@ -1,7 +1,5 @@
-<?
-
-
-	//Loads requested page
+<?php
+//Loads requested page
 	$tazibPH2_dir = "$ph2dir";
 	$tazibPH2_ext = ".inc";
 	

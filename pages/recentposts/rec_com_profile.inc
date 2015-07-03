@@ -1,5 +1,5 @@
-<?
-			$timestamp = $timestamp;
+<?php
+$timestamp = $timestamp;
 			$id = $int;
 			$com_uid = $usrida;
 			$com_id = $year;

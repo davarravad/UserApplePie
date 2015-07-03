@@ -1,5 +1,4 @@
-<?
-
+<?php
 global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix;
 
 $uriref = $_SERVER['REQUEST_URI'];

@@ -1,5 +1,4 @@
-<?
-
+<?php
 //shows how many new friend request a user has when logged in.
 
 	$querym = "SELECT * FROM ".$db_table_prefix."friend WHERE `userId2`='$userIdme' AND `status2`='0'  ";

@@ -1,4 +1,4 @@
-<?
+<?php
 //Check to see if user has a main pic
 //echo "(MainPic - $imgname - $userIdme)";
 

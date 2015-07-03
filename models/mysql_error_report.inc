@@ -1,4 +1,4 @@
-<?
+<?php
 //Code by David Sargent (DaVaR) davarravad@gmail.com
 //Mysql error report 
 //This code submits an error to the database if there is a 

@@ -32,8 +32,8 @@ img {
 }
 </style>
 
-<?
-	//Display all images uploaded to tazib for section
+<?php
+//Display all images uploaded to tazib for section
 
 	echo "<center>";
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";

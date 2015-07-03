@@ -1,5 +1,4 @@
-<?
-
+<?php
 if(isset($_REQUEST['stat'])){ $stat = $_REQUEST['stat']; }else{ $stat = ""; }
 
 $view_status = $_REQUEST['view_status'];

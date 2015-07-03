@@ -1,5 +1,5 @@
-<?
-	if(isset($_POST['approve'])){ $approve = $_POST['approve']; }else{ $approve = ""; }
+<?php
+if(isset($_POST['approve'])){ $approve = $_POST['approve']; }else{ $approve = ""; }
 	if(isset($_POST['acfriend'])){ $acfriend = $_POST['acfriend']; }else{ $acfriend = ""; }
 	if(isset($_POST['addfriend'])){ $addfriend = $_POST['addfriend']; }else{ $addfriend = ""; }
 	if(isset($_POST['userId1'])){ $userId1 = $_POST['userId1']; }else{ $userId1 = ""; }

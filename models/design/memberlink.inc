@@ -1,6 +1,5 @@
-<?
-
-	if(isUserLoggedIn())
+<?php
+if(isUserLoggedIn())
 	{
 
 		require "pages/profile/usernamememFL.inc";

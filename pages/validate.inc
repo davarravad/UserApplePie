@@ -1,4 +1,4 @@
-<?
+<?php
 # Rad User Manager Version 2.00
 # Copyright (C) Rad Inks (Pvt) Ltd. 2003-2004
 # http://www.radinks.net/

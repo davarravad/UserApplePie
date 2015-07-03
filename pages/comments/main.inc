@@ -1,5 +1,4 @@
-<?
-
+<?php
 echo "<div class='comt_cnt'>";
 
 if(isset($_POST['ed_com'])){ $ed_com = $_POST['ed_com']; }

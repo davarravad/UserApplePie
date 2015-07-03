@@ -1,4 +1,4 @@
-<?
+<?php
 //Display recent sweets
 
 	//reset vars to sweet

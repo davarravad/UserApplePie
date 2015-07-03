@@ -1,5 +1,4 @@
-<?
-
+<?php
 if(isset($_POST['statcom'])){ $statcom = $_POST['statcom']; }else{ $statcom = ""; }
 
 		require "pages/comments/com_b_display.inc";

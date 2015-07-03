@@ -1,5 +1,4 @@
-<?
-
+<?php
 if(isUserLoggedIn())
 {
 if(is_admin()){

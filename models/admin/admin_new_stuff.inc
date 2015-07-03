@@ -1,5 +1,4 @@
-<?
-
+<?php
 //This script gets all new information for admin and displays it in the welcome member section of main page
 
 //Make sure member is an Admin

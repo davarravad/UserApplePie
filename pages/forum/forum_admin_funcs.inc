@@ -63,15 +63,18 @@ function forumCleanOrderTitle(){
 			$total_rows = $stmt->num_rows;
 			$stmt->close();
 		}
+		if(empty($total_rows)){ $total_rows = ""; }
 		// Get the id of the last row to make sure nothing has been skipped
 		$query_order = $query." ORDER BY forum_order_title DESC LIMIT 1";
-		$result = $mysqli->query($query_order);
-		$arr = $result->fetch_all(MYSQLI_BOTH);
-		foreach($arr as $row)
-		{
-			$last_row = $row['forum_order_title'];
+		if($result43 = $mysqli->query($query_order)){
+			while ($row43 = $result43->fetch_assoc()) {
+				$last_row = $row43['forum_order_title'];
+			}
+			$result43->close();
+		}else{
+			$last_row = "";
 		}
-		$result->close();
+		
 		//echo " ( $total_rows - $last_row ) ";
 		// Only Clean up the table if it needs it
 		if($total_rows != $last_row){
@@ -100,15 +103,17 @@ function forumCleanOrderCat($forum_title){
 			$total_rows = $stmt->num_rows;
 			$stmt->close();
 		}
+		if(empty($total_rows)){ $total_rows = ""; }
 		// Get the id of the last row to make sure nothing has been skipped
 		$query_order = $query." ORDER BY forum_order_cat DESC LIMIT 1";
-		$result = $mysqli->query($query_order);
-		$arr = $result->fetch_all(MYSQLI_BOTH);
-		foreach($arr as $row)
-		{
-			$last_row = $row['forum_order_cat'];
+		if($result22 = $mysqli->query($query_order)){
+			while ($row22 = $result22->fetch_assoc()) {
+				$last_row = $row22['forum_order_cat'];
+				$result22->close();
+			}
+		}else{
+			$last_row = "";
 		}
-		$result->close();
 		
 		// Only Clean up the table if it needs it
 		if($total_rows != $last_row){

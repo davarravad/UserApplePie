@@ -1,5 +1,5 @@
-<?
-	// Get the totals for site stats
+<?php
+// Get the totals for site stats
 	// Give users more information with links
 
 	// Notes: Add total online members with link to view all online members

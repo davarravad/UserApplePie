@@ -1,5 +1,5 @@
-<?
-	unset($user_name);
+<?php
+unset($user_name);
 
 	// retrieve the row from the database
 	$query = "SELECT user_name FROM `".$db_table_prefix."users` WHERE `id`='$mto'";
@@ -40,7 +40,8 @@
 
 			<div>
 			<label>
-				<input autocomplete="off" name="mto" type="text" size="30" id="inputString" value="<? if(isset($user_name)){echo "$user_name";} ?>" onkeyup="lookup(this.value);" onblur="fill();" />
+				<input autocomplete="off" name="mto" type="text" size="30" id="inputString" value="<?php
+if(isset($user_name)){echo "$user_name";} ?>" onkeyup="lookup(this.value);" onblur="fill();" />
 			</label>
 			</div>
 			

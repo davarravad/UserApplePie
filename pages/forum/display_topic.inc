@@ -105,7 +105,7 @@
 				global $site_dir, $userIdme;
 				$ID02 = $f_p_user_id;
 				require('pages/forum/userimage_small.inc');
-				echo "$sw_user_sweeted_pic <br><a href='${site_url_link}member/$f_p_user_id/'>$f_p_user_name</a> ";
+				echo "<br><a href='${site_url_link}member/$f_p_user_id/'>$f_p_user_name</a> ";
 
 				//Show user's membership status
 				$up_get_mem_status = get_up_info_mem_status($ID02);
@@ -354,7 +354,7 @@
 							global $site_dir;
 							$ID02 = $rf_p_user_id;
 							require('pages/forum/userimage_small.inc');
-							echo "$sw_user_sweeted_pic <br><a href='${site_url_link}member/$rf_p_user_id/'>$rf_p_user_name</a> ";
+							echo "<br><a href='${site_url_link}member/$rf_p_user_id/'>$rf_p_user_name</a> ";
 
 							//Show user's membership status
 							$up_get_mem_status = get_up_info_mem_status($rf_p_user_id);

@@ -1,6 +1,5 @@
 <center>
-<?
-
+<?php
 $userIdme = $userId;
 
 	$uriref = $_SERVER['REQUEST_URI'];

@@ -1,5 +1,4 @@
-<?
-
+<?php
 if(isset($_REQUEST['profile'])){
 	if(intval($_REQUEST['profile'])){
 		$ID02 = intval($_REQUEST['profile']);

@@ -1,6 +1,5 @@
 
-<?
-
+<?php
 //Settings needed for comments to work
 //$com_top_title = "Event Comments";  //Displays the title of comments at top of comments
 //$com_query_database = "club_events_com"; //Comments database

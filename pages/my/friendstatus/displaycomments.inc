@@ -1,5 +1,5 @@
 <center>
-<?
+<?php
 if(isset($_REQUEST['ID'])){
 	$id = $_REQUEST['ID'];
 	$ID = $_REQUEST['ID'];

@@ -9,9 +9,10 @@ if(isUserLoggedIn())
 
 <?php $statcom_uid = $userIdme; ?>
 <?php // echo("ID = $statcom_id"); ?>
-<form enctype="multipart/form-data" action="<? echo "$view_status_save"; ?>" method="POST" onsubmit="submit.disabled = true; return true;" >
-<?
-			// create multi sessions
+<form enctype="multipart/form-data" action="<?php
+echo "$view_status_save"; ?>" method="POST" onsubmit="submit.disabled = true; return true;" >
+<?php
+// create multi sessions
 			if(isset($session_token_num)){
 				$session_token_num = $session_token_num + 1;
 			}else{
@@ -31,7 +32,8 @@ if(isUserLoggedIn())
 
 
 
-<textarea style='width:80%;height:14px;font-family:verdana;font-size:12px' id="txt1" name="statcom_content" cols="<? echo "$taw"; ?>" onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>
+<textarea style='width:80%;height:14px;font-family:verdana;font-size:12px' id="txt1" name="statcom_content" cols="<?php
+echo "$taw"; ?>" onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>
 
   <br>
 

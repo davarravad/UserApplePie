@@ -17,8 +17,8 @@ $mcontent = $_POST['mcontent'];
 
 <form name="newmessage" method="post" action="/?page=message&mes=msend" onsubmit="submit.disabled = true; return true;">
 
-<?
-	//Form token. Place within from tag
+<?php
+//Form token. Place within from tag
 	// create multi sessions
 	if(isset($session_token_num)){
 		$session_token_num = $session_token_num + 1;

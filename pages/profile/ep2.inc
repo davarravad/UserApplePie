@@ -137,80 +137,96 @@ $new = "yes";
       <td><div align="center"> 
           <label>:Title / Topic: </label>
           <br>
-          <input name="textfield" type="text" size="<? echo "$taw"; ?>" value="<?php if(isset($textfield)){ echo "$textfield"; } ?>">
+          <input name="textfield" type="text" size="<?php
+echo "$taw"; ?>" value="<?php if(isset($textfield)){ echo "$textfield"; } ?>">
           <br>
           <label>:Content of Title / Topic:</label>
           <br>
-          <textarea name="textarea" cols="<? echo "$taw"; ?>" rows="10"><?php echo "$textarea"; ?></textarea>
+          <textarea name="textarea" cols="<?php
+echo "$taw"; ?>" rows="10"><?php echo "$textarea"; ?></textarea>
         </div></td></tr><tr>
       <td><div align="center"> 
           <label>:Title / Topic: </label>
           <br>
-          <input name="textfield2" type="text" size="<? echo "$taw"; ?>" value="<?php echo "$textfield2"; ?>">
+          <input name="textfield2" type="text" size="<?php
+echo "$taw"; ?>" value="<?php echo "$textfield2"; ?>">
           <br>
           <label>:Content of Title / Topic:</label>
           <br>
-          <textarea name="textarea2" cols="<? echo "$taw"; ?>" rows="10"><?php echo "$textarea2"; ?></textarea>
+          <textarea name="textarea2" cols="<?php
+echo "$taw"; ?>" rows="10"><?php echo "$textarea2"; ?></textarea>
         </div></td>
     </tr>
     <tr> 
       <td><div align="center"> 
           <label>:Title / Topic: </label>
           <br>
-          <input name="textfield3" type="text" size="<? echo "$taw"; ?>" value="<?php echo "$textfield3"; ?>">
+          <input name="textfield3" type="text" size="<?php
+echo "$taw"; ?>" value="<?php echo "$textfield3"; ?>">
           <br>
           <label>:Content of Title / Topic:</label>
           <br>
-          <textarea name="textarea3" cols="<? echo "$taw"; ?>" rows="10"><?php echo "$textarea3"; ?></textarea>
+          <textarea name="textarea3" cols="<?php
+echo "$taw"; ?>" rows="10"><?php echo "$textarea3"; ?></textarea>
         </div></td></tr><tr>
       <td><div align="center"> 
           <label>:Title / Topic: </label>
           <br>
-          <input name="textfield4" type="text" size="<? echo "$taw"; ?>" value="<?php echo "$textfield4"; ?>">
+          <input name="textfield4" type="text" size="<?php
+echo "$taw"; ?>" value="<?php echo "$textfield4"; ?>">
           <br>
           <label>:Content of Title / Topic:</label>
           <br>
-          <textarea name="textarea4" cols="<? echo "$taw"; ?>" rows="10"><?php echo "$textarea4"; ?></textarea>
+          <textarea name="textarea4" cols="<?php
+echo "$taw"; ?>" rows="10"><?php echo "$textarea4"; ?></textarea>
         </div></td>
     </tr>
     <tr> 
       <td><div align="center"> 
           <label>:Title / Topic: </label>
           <br>
-          <input name="textfield5" type="text" size="<? echo "$taw"; ?>" value="<?php echo "$textfield5"; ?>">
+          <input name="textfield5" type="text" size="<?php
+echo "$taw"; ?>" value="<?php echo "$textfield5"; ?>">
           <br>
           <label>:Content of Title / Topic:</label>
           <br>
-          <textarea name="textarea5" cols="<? echo "$taw"; ?>" rows="10"><?php echo "$textarea5"; ?></textarea>
+          <textarea name="textarea5" cols="<?php
+echo "$taw"; ?>" rows="10"><?php echo "$textarea5"; ?></textarea>
         </div></td></tr><tr>
       <td><div align="center"> 
           <label>:Title / Topic: </label>
           <br>
-          <input name="textfield6" type="text" size="<? echo "$taw"; ?>" value="<?php echo "$textfield6"; ?>">
+          <input name="textfield6" type="text" size="<?php
+echo "$taw"; ?>" value="<?php echo "$textfield6"; ?>">
           <br>
           <label>:Content of Title / Topic:</label>
           <br>
-          <textarea name="textarea6" cols="<? echo "$taw"; ?>" rows="10"><?php echo "$textarea6"; ?></textarea>
+          <textarea name="textarea6" cols="<?php
+echo "$taw"; ?>" rows="10"><?php echo "$textarea6"; ?></textarea>
         </div></td>
     </tr>
     <tr> 
       <td><div align="center"> 
           <label>:Title / Topic: </label>
           <br>
-          <input name="textfield7" type="text" size="<? echo "$taw"; ?>" value="<?php echo "$textfield7"; ?>">
+          <input name="textfield7" type="text" size="<?php
+echo "$taw"; ?>" value="<?php echo "$textfield7"; ?>">
           <br>
           <label>:Content of Title / Topic:</label>
           <br>
-          <textarea name="textarea7" cols="<? echo "$taw"; ?>" rows="10"><?php echo "$textarea7"; ?></textarea>
+          <textarea name="textarea7" cols="<?php
+echo "$taw"; ?>" rows="10"><?php echo "$textarea7"; ?></textarea>
         </div></td></tr><tr>
       <td><div align="center"> 
           <label>:Title / Topic: </label>
           <br>
-          <input name="textfield8" type="text" size="<? echo "$taw"; ?>" value="<?php echo "$textfield8"; ?>">
+          <input name="textfield8" type="text" size="<?php
+echo "$taw"; ?>" value="<?php echo "$textfield8"; ?>">
           <br>
           <label>:Content of Title / Topic:</label>
           <br>
-          <textarea name="textarea8" cols="<? echo "$taw"; ?>" rows="10"><?php echo "$textarea8"; ?></textarea>
+          <textarea name="textarea8" cols="<?php
+echo "$taw"; ?>" rows="10"><?php echo "$textarea8"; ?></textarea>
         </div></td>
     </tr>
     <tr> 
@@ -224,7 +240,8 @@ else{
 $new = 'no';
 }
 ?>
-			<input type="hidden" name="userId" value="<? echo "$userId"; ?>">
+			<input type="hidden" name="userId" value="<?php
+echo "$userId"; ?>">
           <input type="submit" name="Submit" value="Save Your Information">
         </div></td>
     </tr>

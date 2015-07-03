@@ -23,7 +23,8 @@
 
 			<div>
 			<label>
-				<input autocomplete="off" name="userCity" type="text" size="20" id="inputString" value="<? echo "$userCity"; ?>" onkeyup="lookup(this.value);" onblur="fill();" />
+				<input autocomplete="off" name="userCity" type="text" size="20" id="inputString" value="<?php
+echo "$userCity"; ?>" onkeyup="lookup(this.value);" onblur="fill();" />
 			</label>
 			</div>
 			

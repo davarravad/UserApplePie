@@ -88,9 +88,8 @@ $mdateread = date("YmdHis");
 <label title="Reply"><input name="submit" type="submit" value="Reply" class="contSubmit" onClick="this.value = 'Please Wait....'"></label>
 </form>
 </td><td>
-<?
-
-				$taz_delete = "
+<?php
+$taz_delete = "
 					<form method=\"post\" action=\"${site_url_link}?page=message\">
 						<input type=\"hidden\" name=\"mes\" value=\"delmes$box\">
 						<input type=\"hidden\" name=\"mid\" value=\"$mid\">

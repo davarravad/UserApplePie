@@ -13,7 +13,7 @@
 }
 </style>
 
-<?
+<?php
 // Extened profile information
 // Display profile textboxes if they are set
 

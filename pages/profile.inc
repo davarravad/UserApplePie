@@ -149,7 +149,8 @@ echo "<tr><td class='content78'>";
 
 			  
 			<Br>
-			<strong>Basic Information About <? 	get_user_name($ID02); ?>!</strong>
+			<strong>Basic Information About <?php
+get_user_name($ID02); ?>!</strong>
 			</center>
 
 			<?php

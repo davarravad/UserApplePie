@@ -1,5 +1,5 @@
-<?
-	//Sets the title to the home page for website
+<?php
+//Sets the title to the home page for website
 	//echo "<title>Car Truck Clubs- www.cartruckclubs.com</title>";
 	echo "<meta name=\"description\" content=\"$site_gbl_descript\">";
 	//Page Content

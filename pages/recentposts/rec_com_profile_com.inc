@@ -1,4 +1,4 @@
-<?
+<?php
 //Displays Status updates
 
 			//reset vars to status

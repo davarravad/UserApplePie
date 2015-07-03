@@ -1,4 +1,4 @@
-<?
+<?php
 //include debug_settings file
 require "models/debug_settings.inc";
 	

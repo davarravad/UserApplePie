@@ -1,4 +1,4 @@
-<?
+<?php
 unset($timestamp, $userId);
 		if(isset($_GET['rc_view'])){ $rc_view = $_GET['rc_view']; }else{ $rc_view = ""; }
 

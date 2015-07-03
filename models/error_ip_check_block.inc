@@ -1,5 +1,4 @@
-<?
-
+<?php
 //This function checks to see if user's IP has created multi errors
 //If user has reached the max number of errors they will be blocked
 //And unable to view any and all content within the site

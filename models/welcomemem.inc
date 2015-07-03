@@ -1,4 +1,4 @@
-<?
+<?php
 //Displays top links for members and links for new stuff
 //Welcome Member Display
 

@@ -1,4 +1,4 @@
-<?
+<?php
 //Checks to see if user is loged in
 if(isUserLoggedIn())
 {

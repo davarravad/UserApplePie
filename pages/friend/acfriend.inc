@@ -1,5 +1,4 @@
-<?
-
+<?php
 $uriref = $_SERVER['REQUEST_URI'];
 
 $querym = "SELECT * FROM ".$db_table_prefix."friend WHERE `userId2`='$userId' AND `status2`='0' ";

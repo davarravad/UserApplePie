@@ -1,5 +1,4 @@
-<?
-
+<?php
 //Checks to see if user is loged in
 if(isUserLoggedIn())
 {
@@ -11,11 +10,11 @@ $com_content = str_replace("<br />", "", $com_content);
 
 ?>
 
-<form enctype="multipart/form-data" action="<? echo("$ed_com_url") ?>" method="POST" onsubmit="submit.disabled = true; return true;">
+<form enctype="multipart/form-data" action="<?php
+echo("$ed_com_url") ?>" method="POST" onsubmit="submit.disabled = true; return true;">
 
-<?
-
-		//Setup token in form
+<?php
+//Setup token in form
 			// create multi sessions
 			if(isset($session_token_num)){
 				$session_token_num = $session_token_num + 1;
@@ -32,13 +31,14 @@ $com_content = str_replace("<br />", "", $com_content);
 <input type='hidden' name='ed_com_url' value='<?php echo("$ed_com_url") ?>' />
 <input type="hidden" name="com_type_edit" value="<?php echo("$com_type_edit") ?>" >
 
-<textarea name="com_content" cols="<? echo "$taw2"; ?>" rows="3"><?php echo("$com_content") ?></textarea><br>    
+<textarea name="com_content" cols="<?php
+echo "$taw2"; ?>" rows="3"><?php echo("$com_content") ?></textarea><br>    
 
 <input type="submit" value="Update Comment" name="submit" class="sweet" onClick="this.value = 'Please Wait....'" />
 </form>
 
 
-<? 
+<?php
 }else{
 	notlogedinmsg();
 }

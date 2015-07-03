@@ -1,4 +1,4 @@
-<?
+<?php
 if($zip){
 
    // retrieve the row from the database

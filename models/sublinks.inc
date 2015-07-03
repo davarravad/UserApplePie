@@ -1,6 +1,5 @@
-<?
-
-	if(isset($_REQUEST['profile'])){ $profile = intval($_REQUEST['profile']); }else{ $profile = ""; }
+<?php
+if(isset($_REQUEST['profile'])){ $profile = intval($_REQUEST['profile']); }else{ $profile = ""; }
 	if(!isset($_REQUEST['page'])){ $taz = ""; }
 	
 	if(!empty($_REQUEST['page'])){

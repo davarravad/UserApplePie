@@ -1,5 +1,4 @@
-<?
-
+<?php
 //Triggers debug stuff for the site
 $debug_website = "$site_debug";  //TRUE = ON OR FALSE = OFF
 

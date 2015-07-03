@@ -1,4 +1,4 @@
-<?
+<?php
 //Report Abuse, Error, Suggestion button
 
 if(isUserLoggedIn())

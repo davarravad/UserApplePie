@@ -1,5 +1,5 @@
 <center>
-<?
+<?php
 if(isUserLoggedIn())
 {
 

@@ -1,4 +1,4 @@
-<?
+<?php
 //Profile Privacy
 
 //Checks for users profile privacy settings

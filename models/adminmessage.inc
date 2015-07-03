@@ -1,5 +1,4 @@
-<?
-
+<?php
 // Displays a message to users that was set by admin
 
 if(isUserLoggedIn())

@@ -1,5 +1,4 @@
-<?
-
+<?php
 if(isset($_POST['statcom'])){ $statcom = $_POST['statcom']; }else{ $statcom = ""; }
 
 

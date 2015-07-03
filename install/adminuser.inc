@@ -78,6 +78,9 @@ function uap_create_admin_user($email,$username,$displayname,$password){
 	$stmt->execute();
 	echo $stmt->error;
 	$stmt->close();
+	
+	echo "Admin User Added to Users Database.....<br>";
+	
 }				
 
 ?>

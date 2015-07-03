@@ -1,6 +1,5 @@
-<?
-
-	if(isUserLoggedIn()){
+<?php
+if(isUserLoggedIn()){
 
 		if(is_admin()) {
 
@@ -117,14 +116,17 @@ else{
 
 ?>
 
-	<form method="post" action="<? echo "${site_url_link}"; ?>YummyAsPie/adminmessage/">
+	<form method="post" action="<?php
+echo "${site_url_link}"; ?>YummyAsPie/adminmessage/">
 	
 	<input type='hidden' name='save' value='save'>
 	<input type='hidden' name='id' value='1'>
 	
 	<label>Admin ID Name:</label><Br>
-	<input name="adminID" type="text" size="11" maxlength="10" value="<? echo "$adminID"; ?>"><br>
-	<input name="adminuser" type="text" size="40" maxlength="50" value="<? echo "$adminuser"; ?>"><br>
+	<input name="adminID" type="text" size="11" maxlength="10" value="<?php
+echo "$adminID"; ?>"><br>
+	<input name="adminuser" type="text" size="40" maxlength="50" value="<?php
+echo "$adminuser"; ?>"><br>
 	<label>Message Content:</label><br><textarea name="admincontent" cols="50" rows="10"><?php echo "$admincontent"; ?></textarea><br>
 	<select name="adminshow" id="adminshow">
 	<option value="yes" <?php if($adminshow == 'yes'){echo "SELECTED";} ?>>Show Message</option>
@@ -134,9 +136,8 @@ else{
 	<label title="Send"><input type="submit" value="Save Message" /></label>
 	</form>
 
-	<?
-
-	//Un Set Vars
+	<?php
+//Un Set Vars
 	unset($id, $adminID, $adminuser, $admincontent, $adminshow);
 
 
@@ -165,14 +166,17 @@ else{
 
 ?>
 
-	<form method="post" action="<? echo "${site_url_link}"; ?>YummyAsPie/adminmessage/">
+	<form method="post" action="<?php
+echo "${site_url_link}"; ?>YummyAsPie/adminmessage/">
 	
 	<input type='hidden' name='save' value='save'>
 	<input type='hidden' name='id' value='2'>
 	
 	<label>Admin ID Name:</label><Br>
-	<input name="adminID" type="text" size="11" maxlength="10" value="<? echo "$adminID"; ?>"><br>
-	<input name="adminuser" type="text" size="40" maxlength="50" value="<? echo "$adminuser"; ?>"><br>
+	<input name="adminID" type="text" size="11" maxlength="10" value="<?php
+echo "$adminID"; ?>"><br>
+	<input name="adminuser" type="text" size="40" maxlength="50" value="<?php
+echo "$adminuser"; ?>"><br>
 	<label>Message Content:</label><br><textarea name="admincontent" cols="50" rows="10"><?php echo "$admincontent"; ?></textarea><br>
 	<select name="adminshow" id="adminshow">
 	<option value="yes" <?php if($adminshow == 'yes'){echo "SELECTED";} ?>>Show Message</option>
@@ -184,9 +188,8 @@ else{
 
 	
 	
-<?
-
-	//Un Set Vars
+<?php
+//Un Set Vars
 	unset($id, $adminID, $adminuser, $admincontent, $adminshow);
 
 }

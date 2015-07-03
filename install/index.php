@@ -1100,8 +1100,7 @@ if($install == "TRUE")
 		$db_issue = true;
 	}
 	
-	// Include the cities file for database
-	require('cities_sql.inc');
+
 	
 	// Database is now setup.  Lets add config to database.
 	
@@ -1109,6 +1108,11 @@ if($install == "TRUE")
 	// Include config to setup new user
 	require_once("adminuser.inc");
 	uap_create_admin_user($email,$username,$displayname,$password);
+	
+	// Include the cities file for database
+	echo "<hr>NOTE: Make sure to import the install/cities.sql file to your database.  
+	Aslo add the table prefix for the two tables it has (cities, cities_exteneded). 
+	The site uses this data to display where a user is from based on their zip code.<hr>";
 	
 	if(!$db_issue){
 		echo "<p><h1><strong>Database setup complete, please delete the install folder.</h1></strong></p>";

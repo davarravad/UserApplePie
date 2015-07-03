@@ -1,4 +1,4 @@
-<?
+<?php
 ////////////////////////////////////
 //   UserCake Forum by DaVaR
 //   http://www.thedavar.net

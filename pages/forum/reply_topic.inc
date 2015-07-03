@@ -15,7 +15,7 @@ if(isUserLoggedIn())
 					$ID02 = $userIdme;
 					require('pages/forum/userimage_small.inc');
 					$get_user_name_323 = get_user_name_2($userIdme);
-					echo "$sw_user_sweeted_pic <br><a href='${site_url_link}member/$userIdme/'>$get_user_name_323</a> ";
+					echo "<br><a href='${site_url_link}member/$userIdme/'>$get_user_name_323</a> ";
 
 					//Show user's membership status
 					$up_get_mem_status = get_up_info_mem_status($ID02);

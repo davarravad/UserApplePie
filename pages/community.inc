@@ -1,5 +1,4 @@
-<?
-
+<?php
 //Title and Description
 	//echo "<title>My Car Truck Clubs Zone</title>";
 		//Displays logged in users welcome pannel

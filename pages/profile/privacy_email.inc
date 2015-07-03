@@ -155,7 +155,8 @@ if(isUserLoggedIn())
 			
 			 <tr class="mTr"><td colspan=2 align="center">
 					<input type="hidden" name="update_em_pr" value="update">
-					<input type="hidden" name="userId" value="<? echo "$userId"; ?>">
+					<input type="hidden" name="userId" value="<?php
+echo "$userId"; ?>">
 					<input type="submit" name="update_em_pr_button" value="Update Privacy and E-Mail Settings"></td></tr>
 
 			</table>
@@ -164,8 +165,8 @@ if(isUserLoggedIn())
 			<br>
 			</td></tr></table></center>
 	
-<?
-	}
+<?php
+}
 }else {
 	notlogedinmsg();
 }

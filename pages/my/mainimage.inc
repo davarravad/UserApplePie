@@ -18,7 +18,7 @@ foreach($arr_33 as $row_33)
 		
 	}
 	if(isset($mainPicLinkA)){ echo "$mainPicLinkA"; }
-	echo "<img class='rounded_10' border='0' width='100' src='http://".$site_dir."/content/profile/thumb/${mainPic}'>";
+	echo "<img class='rounded_10' border='0' width='100' src='${websiteUrl}content/profile/thumb/${mainPic}'>";
 	if(isset($mainPicLinkB)){ echo "$mainPicLinkB"; }
 
 }
