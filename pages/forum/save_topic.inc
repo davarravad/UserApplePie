@@ -44,7 +44,7 @@ if(isUserLoggedIn())
 		
 		global $mysqli, $site_url_link, $userIdme, $site_forum_title, $db_table_prefix, $debug_website, $websiteName, $websiteUrl;
 		
-		echo "save now - $forum_id - $forum_title - $forum_content - $insert_new_topic - $userIdme";
+		echo "save now - $forum_id - $forum_title - $forum_content - $insert_new_topic or $edit_forum_topic - $userIdme";
 		echo " (ID=$id) ";
 		echo "<br> Subcribe to email: $subcribe_email";
 		
@@ -83,8 +83,8 @@ if(isUserLoggedIn())
 		// Edit topic
 		// Save the information to the database
 		if($edit_forum_topic == "TRUE"){		
-				$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."forum_posts SET forum_title=?, forum_content=?, forum_year=?, forum_make=?, forum_model=?, forum_engine=?, forum_edit_date=? WHERE forum_post_id=? LIMIT 1");
-				$stmt->bind_param("sssssssi", $forum_title, $forum_content, $forum_year, $forum_make, $forum_model, $forum_engine, $cur_date_time, $id);
+				$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."forum_posts SET forum_title=?, forum_content=?, forum_edit_date=? WHERE forum_post_id=? LIMIT 1");
+				$stmt->bind_param("sssi", $forum_title, $forum_content, $cur_date_time, $id);
 				$stmt->execute();
 				$newId = $stmt->insert_id;
 				
