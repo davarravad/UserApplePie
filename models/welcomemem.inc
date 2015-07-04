@@ -44,7 +44,7 @@
 
 					//If user is admin dispaly manage site link
 					if(is_admin()){
-						echo "<hr>(You are Car Truck Clubs Admin - <a href='${site_url_link}YummyAsPie/'>Manage Site</a>)";
+						echo "<hr>(You are ".$websiteName." Admin - <a href='${site_url_link}YummyAsPie/'>Manage Site</a>)";
 						echo "<br>";
 						require "models/admin/admin_new_stuff.inc";
 					}

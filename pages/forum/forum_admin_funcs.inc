@@ -112,8 +112,8 @@ function forumCleanOrderCat($forum_title){
 		if($result22 = $mysqli->query($query_order)){
 			while ($row22 = $result22->fetch_assoc()) {
 				$last_row = $row22['forum_order_cat'];
-				$result22->close();
 			}
+			$result22->close();
 		}else{
 			$last_row = "";
 		}

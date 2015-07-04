@@ -18,7 +18,7 @@ require("models/communitylinks.inc");
 
 
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
-	echo "Car Truck Clubs Message Center ";
+	echo $websiteName." Message Center ";
 	
 		if($mes == 'inbox'){
 			echo "&gt; My Inbox";	

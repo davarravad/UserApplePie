@@ -141,7 +141,7 @@ if(isUserLoggedIn()){}else{
 	if(isUserLoggedIn())
 	{} else {	
 		echo "<center><h3>";
-		echo "Welcome to CarTruckClubs.com.  Login or Register and Enjoy!";
+		echo "Welcome to ".$websiteName.".  Login or Register and Enjoy!";
 		echo "</h3></center>";
 
 	}

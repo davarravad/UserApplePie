@@ -8,7 +8,6 @@
 
 require "models/members/getuserinfo.inc";
 
-	#David Sargent - www.cartruckclubs.com - davarravad@gmail.com
 	#This script is built to get all possible information about a visitor
 	#Shows Current User Information
 

@@ -7,7 +7,7 @@
 //////////////////////////////////
 
 echo "<center>";
-	echo "<strong>Admin Zone - CarTruckClubs.com Reports</strong>"; 
+	echo "<strong>Admin Zone - ".$websiteName." Reports</strong>"; 
 	echo "</center><br><Br>";
 
 

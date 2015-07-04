@@ -18,11 +18,11 @@
 			require("models/welcomemem.inc");
 		}
 	
-	//echo "<title>Car Truck Clubs Site Members List</title>";
-	echo "<meta name=\"description\" content=\"Complete list of all Car Truck Clubs Site Members.\">";
+	//echo "<title>".$websiteName." Site Members List</title>";
+	echo "<meta name=\"description\" content=\"Complete list of all ".$websiteName." Site Members.\">";
 	
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
-	echo "Car Truck Clubs Members"; 
+	echo $websiteName." Members"; 
 	echo "</td></tr>";
 
 echo "<tr><td class='content78'>";

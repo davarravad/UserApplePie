@@ -95,7 +95,7 @@ class User
 					//Send the mail. Specify users email here and subject. 
 					//SendMail can have a third parementer for message if you do not wish to build a template.
 					
-					if(!$mail->sendMail($this->clean_email,"Welcome To CarTruckClubs.com - Account Activation"))
+					if(!$mail->sendMail($this->clean_email,"Welcome To ".$websiteUrl." - Account Activation"))
 					{
 						
 					}

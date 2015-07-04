@@ -14,7 +14,7 @@ if (!securePage($cur_page_get)){die();}
 //Displays table for content
 echo "<center>";
 echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
-echo "Welcome to Car Truck Clubs's Member Forgot Password Reset"; 
+echo "Welcome to ".$websiteName."'s Member Forgot Password Reset"; 
 echo "</td></tr>";
 echo "<tr><td class='content78' align='center'>";
 

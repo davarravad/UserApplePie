@@ -224,7 +224,7 @@ if(is_valid_referer())
 												
 											//End of file work check
 											}else{
-												echo "<br><Br>CarTruckClubs.com Submit try again?";
+												echo "<br><Br>".$websiteName." Submit try again?";
 											}
 	
 										}else{

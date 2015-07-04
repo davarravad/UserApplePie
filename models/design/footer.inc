@@ -26,15 +26,11 @@
 
 
 ?>	
-			Web Design and Graphics by: <a href='<?php
-echo "${site_url_link}"; ?>member/1' title="View DaVaRs Profile" ALT="DaVaR Profile">DaVaR</a> 
-			 | <a href="<?php
-echo "${site_url_link}"; ?>help" title="Help & FAQ" ALT="Help & FAQ">Help & FAQ</a>
-			 | <a href="<?php
-echo "${site_url_link}"; ?>disclaimer" title="Car Truck Clubs Site Disclaimer" ALT="Disclaimer">Disclaimer</a>
-			 | <a href='<?php
-echo "${site_url_link}"; ?>privacypolicy' title='Privacy Policy' alt='Privacy Policy'>Privacy Policy</a>
-			 | <a href='<?php echo "$site_url_link_m" ?>' title='Mobile Version' alt='Mobile Version'>Mobile Version</a>
+			<a href='http://www.thedavar.net' title="View UserApplePie Website" ALT="UserApplePie">UserApplePie</a> 
+			 | <a href="<?php echo "${site_url_link}"; ?>help" title="Help & FAQ" ALT="Help & FAQ">Help & FAQ</a>
+			 | <a href="<?php echo "${site_url_link}"; ?>disclaimer" title="Site Disclaimer" ALT="Disclaimer">Disclaimer</a>
+			 | <a href='<?php echo "${site_url_link}"; ?>privacypolicy' title='Privacy Policy' alt='Privacy Policy'>Privacy Policy</a>
+			 | <a href='<?php echo "${site_url_link_m}" ?>' title='Mobile Version' alt='Mobile Version'>Mobile Version</a>
 			 
 			<?php
 //Displays Admin Manage Site links if Admin is logged in
@@ -46,7 +42,7 @@ echo "${site_url_link}"; ?>privacypolicy' title='Privacy Policy' alt='Privacy Po
 			 
 			<br />	<?php //require("models/sitelogs/showcurrent.inc"); ?>
 			
-			©2013 cartruckclubs.com. All Rights Reserved.
+			©2015 <?php echo "$websiteUrl"; ?>. All Rights Reserved.
 			<br />
 
 

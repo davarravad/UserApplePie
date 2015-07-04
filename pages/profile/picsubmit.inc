@@ -1,6 +1,6 @@
 <?php
 //Title of pic upload form
-	$puf_title = "Submit Profile Photos to Car Truck Clubs";
+	$puf_title = "Submit Profile Photos to ".$websiteName;
 	//Catagory and database photos are being uploaded to
 	$puf_pic_cat = "ep3";
 	//Where to send user if no photos are uploaded

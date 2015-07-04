@@ -8,7 +8,7 @@
 //////////////////////////////////
 
 //Title and Description
-	//echo "<title>Car Truck Clubs Profile Editor</title>";
+	//echo "<title>".$websiteName." Profile Editor</title>";
 
 	require("models/communitylinks.inc");
 
@@ -26,7 +26,7 @@
 
 	echo "<center>";
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2' align=center>";
-	echo "Car Truck Clubs Profile Editor"; 
+	echo "".$websiteName." Profile Editor"; 
 	echo "</td></tr>";
 	echo "<tr><td class='content78'>";
 
@@ -75,17 +75,18 @@ if(isset($_REQUEST['pee'])){ $pee = $_REQUEST['pee']; }else{ $pee = ""; }
 		//END OF CONTENT
 
 	$up_get_show_display_name = get_up_info_mem_disp_name($userIdme);
+	global $websiteUrl, $websiteName;
 		
 	//Display URL info for user's profile
 	echo "<br>";
 	echo "<table width='100%'><tr><td class=epboxa align=center><center><strong>Your Profile URL by ID</strong><br>";
-	echo "<a href='http://www.cartruckclubs.com/member/$userIdme/'>http://www.cartruckclubs.com/member/$userIdme/</a><br>";
-	echo "<strong>HTML Link Code</strong><br> &lt;a href=&quot;http://www.cartruckclubs.com/member/$userIdme/&quot; ";
-	echo "target=&quot;_blank&quot;&gt;My Car Truck Clubs Profile&lt;/a&gt;";
+	echo "<a href='".$websiteUrl."member/$userIdme/'>".$websiteUrl."member/$userIdme/</a><br>";
+	echo "<strong>HTML Link Code</strong><br> &lt;a href=&quot;".$websiteUrl."member/$userIdme/&quot; ";
+	echo "target=&quot;_blank&quot;&gt;My ".$websiteName." Profile&lt;/a&gt;";
 	echo "<br><strong>Your Profile URL by Username</strong><br>";
-	echo "<a href='http://www.cartruckclubs.com/member/$up_get_show_display_name/'>http://www.cartruckclubs.com/member/$up_get_show_display_name/</a><br>";
-	echo "<strong>HTML Link Code</strong><br> &lt;a href=&quot;http://www.cartruckclubs.com/member/$up_get_show_display_name/&quot; ";
-	echo "target=&quot;_blank&quot;&gt;My Car Truck Clubs Profile&lt;/a&gt;";
+	echo "<a href='".$websiteUrl."member/$up_get_show_display_name/'>".$websiteUrl."member/$up_get_show_display_name/</a><br>";
+	echo "<strong>HTML Link Code</strong><br> &lt;a href=&quot;".$websiteUrl."member/$up_get_show_display_name/&quot; ";
+	echo "target=&quot;_blank&quot;&gt;My ".$websiteName." Profile&lt;/a&gt;";
 	echo "</center></td></tr></table></center><br>";
 	
 //END OF CONTENT

@@ -17,8 +17,8 @@ if (!securePage($cur_page_get)){die();}
 if(isUserLoggedIn()) { header("Location: /"); die(); }
 
 //Displays the page title
-//echo "<title>Car Truck Clubs Login</title>";
-echo "<meta name='Description' content='Member Login Form - Login and enjoy all that Car Truck Clubs has to offer members - CarTruckClubs.com' />";
+//echo "<title>".$websiteName." Login</title>";
+echo "<meta name='Description' content='Member Login Form - Login and enjoy all that ".$websiteName." has to offer members - ".$websiteUrl."' />";
 
 //Displays table for content
 echo "<center>";

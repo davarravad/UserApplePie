@@ -7,10 +7,10 @@
 //////////////////////////////////
 
 
-	echo "<meta name=\"description\" content=\"Car Truck Clubs Help and FAQ.\">";
+	echo "<meta name=\"description\" content=\"".$websiteName." Help and FAQ.\">";
 
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0' align='center'><tr><td class='hr2'>";
-	echo "Car Truck Clubs Help and FAQ"; 
+	echo $websiteName." Help and FAQ"; 
 	echo "</td></tr>";
 
 echo "<tr><td class='content78'>";
@@ -37,7 +37,7 @@ echo "${site_url_link}"; ?>reminder/">Click Here</a>. Enter your username and se
 if(isUserLoggedIn()){
 ?>
   
-<p align="left"><strong>How do I view all of the members of cartruckclubs.com?</strong><br>
+<p align="left"><strong>How do I view all of the members of <?php echo "$websiteName"; ?>?</strong><br>
   Select <a href="<?php
 echo "${site_url_link}"; ?>community/">Community</a> then select <a href="<?php
 echo "${site_url_link}"; ?>members/">Members</a> 

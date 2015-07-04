@@ -5,7 +5,7 @@ echo "<a class='anchor' name=imgs></a>";
 	//Photo Popup Title
 	$puf_popup_title = "Profile Photos";
 	//Title of pic upload form
-	$puf_title = "Submit Profile Photos to Car Truck Clubs";
+	$puf_title = "Submit Profile Photos to ".$websiteName;
 	//Title of pic upload edit form
 	$puf_title_edit = "Edit Profile Photos";
 	//Catagory and database photos are being uploaded to

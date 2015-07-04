@@ -6,18 +6,21 @@
 // http://usercake.com          //
 //////////////////////////////////
 
+global $websiteUrl, $websiteName;
+
 echo "<center>";
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
     ###Page Title###
-	//echo "<title>Car Truck Clubs Privacy Policy</title>";
-	echo "<meta name=\"description\" content=\"Car Truck Clubs Web Site Member Privacy Policy.\">";
+	//echo "<title>".$websiteName." Privacy Policy</title>";
+	echo "<meta name=\"description\" content=\"".$websiteName." Web Site Member Privacy Policy.\">";
 	echo "Privacy Policy"; 
 
 	echo "</td></tr>";
 	echo "<tr><td class='content78'>";
-?>
 
-This Privacy Policy governs the manner in which Car Truck Clubs collects, uses, maintains and discloses information collected from users (each, a "User") of the <a href="www.cartruckclubs.com">www.cartruckclubs.com</a> website ("Site"). This privacy policy applies to the Site and all products and services offered by Car Truck Clubs.<br><br>
+	echo "
+
+This Privacy Policy governs the manner in which ".$websiteName." collects, uses, maintains and discloses information collected from users (each, a User) of the <a href='".$websiteUrl."'>".$websiteUrl."</a> website (Site). This privacy policy applies to the Site and all products and services offered by ".$websiteName.".<br><br>
 
 <b>Personal identification information</b><br><br>
 
@@ -29,11 +32,11 @@ We may collect non-personal identification information about Users whenever they
 
 <b>Web browser cookies</b><br><br>
 
-Our Site may use "cookies" to enhance User experience. User's web browser places cookies on their hard drive for record-keeping purposes and sometimes to track information about them. User may choose to set their web browser to refuse cookies, or to alert you when cookies are being sent. If they do so, note that some parts of the Site may not function properly.<br><br>
+Our Site may use cookies to enhance User experience. User's web browser places cookies on their hard drive for record-keeping purposes and sometimes to track information about them. User may choose to set their web browser to refuse cookies, or to alert you when cookies are being sent. If they do so, note that some parts of the Site may not function properly.<br><br>
 
 <b>How we use collected information</b><br><br>
 
-Car Truck Clubs may collect and use Users personal information for the following purposes:<br>
+".$websiteName." may collect and use Users personal information for the following purposes:<br>
 <ul>
 <li><i>- To improve customer service</i><br>
 	Information you provide helps us respond to your customer service requests and support needs more efficiently.</li>
@@ -60,11 +63,11 @@ Users may find advertising or other content on our Site that link to the sites a
 
 <b>Google Adsense</b><br><br>
 
-Some of the ads may be served by Google. Google's use of the DART cookie enables it to serve ads to Users based on their visit to our Site and other sites on the Internet. DART uses "non personally identifiable information" and does NOT track personal information about you, such as your name, email address, physical address, etc. You may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy at <a href="http://www.google.com/privacy_ads.html">http://www.google.com/privacy_ads.html</a><br><br>
+Some of the ads may be served by Google. Google's use of the DART cookie enables it to serve ads to Users based on their visit to our Site and other sites on the Internet. DART uses (non personally identifiable information) and does NOT track personal information about you, such as your name, email address, physical address, etc. You may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy at <a href='http://www.google.com/privacy_ads.html'>http://www.google.com/privacy_ads.html</a><br><br>
 
 <b>Changes to this privacy policy</b><br><br>
 
-Car Truck Clubs has the discretion to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications.<br><br>
+".$websiteName." has the discretion to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications.<br><br>
 
 <b>Your acceptance of these terms</b><br><br>
 
@@ -73,15 +76,14 @@ By using this Site, you signify your acceptance of this policy. If you do not ag
 <b>Contacting us</b><br><br>
 
 If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at:<br>
-<a href="www.cartruckclubs.com">Car Truck Clubs</a><br>
-<a href="www.cartruckclubs.com">www.cartruckclubs.com</a><br>
-davarravad@gmail.com<br>
+<a href='".$websiteUrl."'>".$websiteName."</a><br>
+<a href='".$websiteUrl."'>".$websiteUrl."</a><br>
 <br>
-This document was last updated on November 05, 2013<br><br>
+This document was last updated on July 03, 2015<br><br>
 
-<div style="font-size:10px;color:gray;">Privacy policy created by <a style="font-size:10px;color:gray;text-decoration:none;cursor:default;" href="http://www.generateprivacypolicy.com" target="_blank">Generate Privacy Policy</a></div>
+<div style='font-size:10px;color:gray;'>Privacy policy created by <a style='font-size:10px;color:gray;text-decoration:none;cursor:default;' href='http://www.generateprivacypolicy.com' target='_blank'>Generate Privacy Policy</a></div>
 
-<?php
+";
 
 	echo "</td></tr></table>";
 	echo "</center>";

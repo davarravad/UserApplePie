@@ -20,7 +20,7 @@ if (!securePage($cur_page_get)){die();}
 if(isUserLoggedIn()) { header("Location: /"); die(); }
 
 //Displays the page title
-//echo "<title>Car Truck Clubs Member Registration</title>";
+//echo "<title>".$websiteName." Member Registration</title>";
 echo "<meta name='Description' content='Member Registration Form - Sign up and enjoy all that $websiteName has to offer members - $site_url_link' />";
 
 
@@ -56,7 +56,7 @@ if($iprowsec < 2){
 }
 				
 if($reg_ipok == FALSE){ 
-	err_message('Sorry, Your IP address has been used before! We can not allow you to register for this website. Contact Administrator for more info.  admin(at)cartruckclubs.com');
+	err_message('Sorry, Your IP address has been used before! We can not allow you to register for this website. Contact Administrator for more info.');
 	die;
 }
 //End ip check
@@ -350,7 +350,7 @@ echo"
 </td><td class=reg_form>
 		<input type='text' name='email' value='$email' />
 </td><td align=left class=reg_form>
-		<font size=1>Please use Current Working Email so you can activate your Car Truck Clubs account.  Check your Email and click the link provided.</font>
+		<font size=1>Please use Current Working Email so you can activate your ".$websiteName." account.  Check your Email and click the link provided.</font>
 </td></tr><tr><td align=center colspan=3>
 ";
 

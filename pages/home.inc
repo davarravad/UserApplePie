@@ -7,7 +7,6 @@
 //////////////////////////////////
 
 //Sets the title to the home page for website
-	//echo "<title>Car Truck Clubs- www.cartruckclubs.com</title>";
 	echo "<meta name=\"description\" content=\"$site_gbl_descript\">";
 	//Page Content
 	
@@ -47,7 +46,7 @@
 	if(isUserLoggedIn())
 	{} else {	
 		echo "<center><h3>";
-		echo "Welcome to CarTruckClubs.com.  Login or Register and Enjoy!";
+		echo "Welcome to ".$websiteName.".  Login or Register and Enjoy!";
 		echo "</h3></center>";
 
 	}

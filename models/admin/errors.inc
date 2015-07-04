@@ -12,7 +12,7 @@ if(isUserLoggedIn()){
 
 
 	echo "<center>";
-	echo "<strong>Admin Zone - CarTruckClubs.com Errors</strong>"; 
+	echo "<strong>Admin Zone - ".$websiteName." Errors</strong>"; 
 	echo "</center><br><Br>";
 
 

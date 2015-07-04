@@ -42,7 +42,7 @@ if(isUserLoggedIn())
 	}
 	else
 	{
-		echo "<h3 class='indented'>Welcome back to Car Truck Clubs</h3>";
+		echo "<h3 class='indented'>Welcome back to ".$websiteName."</h3>";
 	}
 
 	if(is_admin())

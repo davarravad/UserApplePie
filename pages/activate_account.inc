@@ -15,7 +15,7 @@ if (!securePage($cur_page_get)){die();}
 //Displays table for content
 echo "<center>";
 echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
-echo "Welcome to Car Truck Clubs's Member Login"; 
+echo "Welcome to ".$websiteName."'s Member Login"; 
 echo "</td></tr>";
 echo "<tr><td class='content78' align='center'>";
 

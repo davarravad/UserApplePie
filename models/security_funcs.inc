@@ -38,7 +38,7 @@
 			// IP is already in user database
 			// Block user from registering
 			return 0;
-			err_message('Sorry, Your IP address has been used before! We can not allow you to register for this website. Contact Administrator for more info.  admin(at)cartruckclubs.com');
+			err_message('Sorry, Your IP address has been used before! We can not allow you to register for this website. Contact Administrator for more info. ');
 		}
 	}
 		

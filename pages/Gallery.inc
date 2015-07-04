@@ -28,7 +28,7 @@
 	
 	//Title and Description
 	//echo "<title>Photo Gallery</title>";
-	echo "<meta name=\"description\" content=\"Listing of All Photos Uploaded to Car Truck Clubs\">";
+	echo "<meta name=\"description\" content=\"Listing of All Photos Uploaded to ".$websiteName."\">";
 
 	echo "<center>";
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
