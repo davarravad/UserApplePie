@@ -16,7 +16,9 @@ Features:
 - Added Security Functions
 - And Much More!
 
-Demo:
+Need Help or Want to Help with UserApplePie visit http://www.thedavar.net/
+
+Demo Website:
 http://userapplepie.thedavar.net/
 
 Copyright (c) 2015
