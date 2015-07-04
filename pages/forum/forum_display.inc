@@ -14,7 +14,7 @@
 	global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix, $websiteName;
 
 	// Get all Categories from database
-	$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_cat`='$load_cat' LIMIT 1";
+	$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_id`='$load_id' LIMIT 1";
 	$result = $mysqli->query($query);
 	$arr = $result->fetch_all(MYSQLI_BOTH);
 	foreach($arr as $row)
