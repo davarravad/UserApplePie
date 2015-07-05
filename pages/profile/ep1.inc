@@ -29,7 +29,7 @@ $result = mysqli_query($GLOBALS["___mysqli_ston"], $query)
 		$userFacebook = $contact -> userFacebook;
 		$userTwitter = $contact -> userTwitter;
 		$userWeb = $contact -> userWeb;
-		$userFax = $contact -> userFax;
+		$profile_privacy = $contact -> profile_privacy;
 		$userZip = $contact -> userZip;
 
 }
@@ -108,16 +108,16 @@ require "pages/city_lookup.inc"; ?></td></tr>
 	<tr><td colspan=2 class=epboxa>Privacy Settings</td></tr>
 	<tr class="mTr"><td class=epboxb>Who Can View Your Profile?</td><td class=epboxb>
 	<label>
-		<input type='radio' name='userFax' value='public' <?php if($userFax == "public"){echo "checked";} ?>> Public
+		<input type='radio' name='profile_privacy' value='public' <?php if($profile_privacy == "public"){echo "checked";} ?>> Public
 	</label>
 	<label>
-  		<input type='radio' name='userFax' value='members' <?php if($userFax == "members"){echo "checked";} ?>> Members
+  		<input type='radio' name='profile_privacy' value='members' <?php if($profile_privacy == "members"){echo "checked";} ?>> Members
 	</label><br>
 	<label>
-  		<input type='radio' name='userFax' value='friends' <?php if($userFax == "friends"){echo "checked";} ?>> Friends
+  		<input type='radio' name='profile_privacy' value='friends' <?php if($profile_privacy == "friends"){echo "checked";} ?>> Friends
 	</label>
 	<label>
-  		<input type='radio' name='userFax' value='me' <?php if($userFax == "me"){echo "checked";} ?>> Only Me
+  		<input type='radio' name='profile_privacy' value='me' <?php if($profile_privacy == "me"){echo "checked";} ?>> Only Me
 	</label>
 
 

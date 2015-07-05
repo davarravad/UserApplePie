@@ -23,7 +23,7 @@ if(isUserLoggedIn())
 				if(isset($_POST['userFacebook'])){ $userFacebook = $_POST['userFacebook']; }else{ $userFacebook = ""; }
 				if(isset($_POST['userTwitter'])){ $userTwitter = $_POST['userTwitter']; }else{ $userTwitter = ""; }
 				if(isset($_POST['userWeb'])){ $userWeb = $_POST['userWeb']; }else{ $userWeb = ""; }
-				if(isset($_POST['userFax'])){ $userFax = $_POST['userFax']; }else{ $userFax = ""; }
+				if(isset($_POST['profile_privacy'])){ $profile_privacy = $_POST['profile_privacy']; }else{ $profile_privacy = ""; }
 				if(isset($_POST['userZip'])){ $userZip = $_POST['userZip']; }else{ $userZip = ""; }
 				 
 				require "models/members/getuserinfo.inc";
@@ -39,7 +39,7 @@ if(isUserLoggedIn())
 							`userEmail` = '$userEmail', `userAddr1` = '$userAddr1', `userAddr2` = '$userAddr2', 
 							`userCity` = '$userCity', `userState` = '$userState', `userCountry` = '$userCountry', 
 							`userTel` = '$userTel', `userMobiTel` = '$userMobiTel', `userHomeTel` = '$userHomeTel', 
-							`userWeb` = '$userWeb', `userFax` = '$userFax', `userZip` = '$userZip',
+							`userWeb` = '$userWeb', `profile_privacy` = '$profile_privacy', `userZip` = '$userZip',
 							`userFacebook`='$userFacebook', `userTwitter`='$userTwitter' WHERE `userId`='$userId' ";
 
 			  

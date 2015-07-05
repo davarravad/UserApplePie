@@ -40,9 +40,9 @@
 				//echo "Owner = $mfrom";
 			}
 		
+			$nname2 = strtolower($nname);
 		
-		
-			if($mfrom == $nname) {
+			if($mfrom == $nname || $mfrom == $nname2) {
 		
 		
 		 

@@ -31,6 +31,7 @@ $userId = $get_loggedin_uid;
 
 require("models/members/funcs_user_info.inc");
 require("models/functions.inc");
+require("models/sublinks.inc");
 require("models/funcs_styles.inc");
 
 // Run the page handler

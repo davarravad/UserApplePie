@@ -40,7 +40,7 @@
 		forumEditTitleCheck($f_title);
 		
 		// Display Forum Title Edit Funcs.
-		if(userCheckForumAdmin() || userCheckForumMod()){
+		if((userCheckForumAdmin() || userCheckForumMod()) && forumSHAF()){
 			// Show admin feature if is admin
 			// Display current order id
 			echo "</td><td align='right'>";

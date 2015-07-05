@@ -1,4 +1,10 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.0  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 if(isUserLoggedIn())
 {
@@ -14,18 +20,16 @@ if(isUserLoggedIn())
 
 			}else{
 						if(isset($_POST['userId'])){ $userId = $_POST['userId']; }else{ $userId = ""; }
-						if(isset($_POST['userFax'])){ $userFax = $_POST['userFax']; }else{ $userFax = ""; }
+						if(isset($_POST['profile_privacy'])){ $profile_privacy = $_POST['profile_privacy']; }else{ $profile_privacy = ""; }
 						if(isset($_POST['user_email_msg'])){ $user_email_msg = $_POST['user_email_msg']; }else{ $user_email_msg = ""; }
 						if(isset($_POST['user_email_profile_com'])){ $user_email_profile_com = $_POST['user_email_profile_com']; }else{ $user_email_profile_com = ""; }
-						if(isset($_POST['user_email_vp_com'])){ $user_email_vp_com = $_POST['user_email_vp_com']; }else{ $user_email_vp_com = ""; }
-						if(isset($_POST['user_email_veh_pic_com'])){ $user_email_veh_pic_com = $_POST['user_email_veh_pic_com']; }else{ $user_email_veh_pic_com = ""; }
 						 
 						require "models/members/getuserinfo.inc";
 						$userId = $idofuser;
 						
 					//update script
 					$query = "UPDATE `".$db_table_prefix."userprofile` SET 
-								`userFax` = '$userFax', 
+								`profile_privacy` = '$profile_privacy', 
 								`user_email_msg` = '$user_email_msg',
 								`user_email_profile_com` = '$user_email_profile_com',
 								`user_email_vp_com` = '$user_email_vp_com',
@@ -72,11 +76,9 @@ if(isUserLoggedIn())
 				
 			if( $result && $contact = mysqli_fetch_object( $result ) )
 			{
-				$userFax = $contact -> userFax;
+				$profile_privacy = $contact -> profile_privacy;
 				$user_email_msg = $contact -> user_email_msg;
 				$user_email_profile_com = $contact -> user_email_profile_com;
-				$user_email_vp_com = $contact -> user_email_vp_com;
-				$user_email_veh_pic_com = $contact -> user_email_veh_pic_com;
 			}
 			else {echo "Error!";}
 
@@ -100,16 +102,16 @@ if(isUserLoggedIn())
 			<tr><td colspan=2 class=mTr><strong>Privacy Settings</strong></td></tr>
 			<tr class="mTr"><td>Who Can View Your Profile?</td><td>
 			<label>
-				<input type='radio' name='userFax' value='public' <?php if($userFax == "public"){echo "checked";} ?>> Public
+				<input type='radio' name='profile_privacy' value='public' <?php if($profile_privacy == "public"){echo "checked";} ?>> Public
 			</label>
 			<label>
-				<input type='radio' name='userFax' value='members' <?php if($userFax == "members"){echo "checked";} ?>> Members
+				<input type='radio' name='profile_privacy' value='members' <?php if($profile_privacy == "members"){echo "checked";} ?>> Members
 			</label><br>
 			<label>
-				<input type='radio' name='userFax' value='friends' <?php if($userFax == "friends"){echo "checked";} ?>> Friends
+				<input type='radio' name='profile_privacy' value='friends' <?php if($profile_privacy == "friends"){echo "checked";} ?>> Friends
 			</label>
 			<label>
-				<input type='radio' name='userFax' value='me' <?php if($userFax == "me"){echo "checked";} ?>> Only Me
+				<input type='radio' name='profile_privacy' value='me' <?php if($profile_privacy == "me"){echo "checked";} ?>> Only Me
 			</label>
 			</td></tr>
 
@@ -132,24 +134,6 @@ if(isUserLoggedIn())
 			</label>
 			<label>
 				<input type='radio' name='user_email_profile_com' value='no' <?php if($user_email_profile_com == "no"){echo "checked";} ?>> No
-			</label>
-			</td></tr>
-
-			<tr class="mTr"><td>Send me an E-Mail when <br> members comment on my vehicle profiles?</td><td>
-			<label>
-				<input type='radio' name='user_email_vp_com' value='yes' <?php if($user_email_vp_com == "yes"){echo "checked";} ?>> Yes
-			</label>
-			<label>
-				<input type='radio' name='user_email_vp_com' value='no' <?php if($user_email_vp_com == "no"){echo "checked";} ?>> No
-			</label>
-			</td></tr>
-
-			<tr class="mTr"><td>Send me an E-Mail when <br> members comment on my vehicle photos?</td><td>
-			<label>
-				<input type='radio' name='user_email_veh_pic_com' value='yes' <?php if($user_email_veh_pic_com == "yes"){echo "checked";} ?>> Yes
-			</label>
-			<label>
-				<input type='radio' name='user_email_veh_pic_com' value='no' <?php if($user_email_veh_pic_com == "no"){echo "checked";} ?>> No
 			</label>
 			</td></tr>
 			

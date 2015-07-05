@@ -48,6 +48,64 @@ function userCheckForumMod(){
 }
 
 //////////////////////////////////////////////////
+// Hides or shows forum admin features
+//////////////////////////////////////////////////
+function forumShowHideAdminFeatures(){
+	if(userCheckForumAdmin() || userCheckForumMod()){
+		// Check to see what current setting is
+		if(isset($_POST['forum_admin_features'])){ $forum_admin_features = $_POST['forum_admin_features']; }else{ $forum_admin_features = ""; }
+		if(isset($_SESSION['forum_admin_features_SES'])){ $forum_admin_features_SES = $_SESSION['forum_admin_features_SES']; }else{ $forum_admin_features_SES = ""; }
+		
+		if($forum_admin_features == 'TRUE'){
+			$_SESSION['forum_admin_features_SES'] = "TRUE";
+			$redir_link_url = "";
+			// Redirect member to their post
+			header("Location: $redir_link_url");
+			exit;
+		}else if($forum_admin_features == 'FALSE'){
+			$_SESSION['forum_admin_features_SES'] = "FALSE";
+			$redir_link_url = "";
+			// Redirect member to their post
+			header("Location: $redir_link_url");
+			exit;
+		}
+		
+		// Display buttons based on current setting
+		if($forum_admin_features_SES == "TRUE"){
+			//echo "Show Admin Features";
+			echo "<form method=\"post\" action=\"\" onsubmit=\"submit.disabled = true; return true;\">";
+			echo "<input type='hidden' name='forum_admin_features' value='FALSE'>"; 
+			echo "<input type=\"submit\" class=\"sweet\" value=\"Hide Admin Features\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
+			echo "</form>";
+		}else{
+			//echo "Hide Admin Features";
+			echo "<form method=\"post\" action=\"\" onsubmit=\"submit.disabled = true; return true;\">";
+			echo "<input type='hidden' name='forum_admin_features' value='TRUE'>"; 
+			echo "<input type=\"submit\" class=\"sweet\" value=\"Show Admin Features\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
+			echo "</form>";
+		}
+	}
+}
+
+//////////////////////////////////////////////////
+// Hides or shows forum admin features
+// True or false on current setting
+//////////////////////////////////////////////////
+function forumSHAF(){
+	if(userCheckForumAdmin() || userCheckForumMod()){
+		// Check to see what current setting is
+		if(isset($_SESSION['forum_admin_features_SES'])){ $forum_admin_features_SES = $_SESSION['forum_admin_features_SES']; }else{ $forum_admin_features_SES = ""; }
+		
+		// Set true or false
+		if($forum_admin_features_SES == "TRUE"){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+}
+		
+//////////////////////////////////////////////////
 // Cleans up forum_order_title for selected title
 // Just to make sure everything is in order and missing or deleted rows
 // are not creating gaps in the display order
@@ -337,7 +395,7 @@ function forumEditTitle($f_title){
 	echo "</form>";
 	
 	// Only Admins Can Delete Forum Titles
-	if(userCheckForumAdmin()){
+	if(userCheckForumAdmin() && forumSHAF()){
 		// Form button to delete forum title
 		echo "<form enctype=\"multipart/form-data\" action=\"${websiteUrl}${site_forum_title}/forum_delete_stuff/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
 			// Setup token in form // create multi sessions
@@ -429,6 +487,10 @@ function forumDisplayUserPerms(){
 	// If Admin or Mod Show settings to edit forum
 	echo "<table width='100%' class='content78'><tr><td>";
 		echo "Permission Level: $forum_perm_level";
+		if($forum_perm_level == "Admin" || $forum_perm_level == "Moderator"){
+			// Show or hide admin features
+			forumShowHideAdminFeatures();
+		}
 	echo "</td></tr></table>";
 }
 
@@ -438,7 +500,7 @@ function forumDisplayUserPerms(){
 function forumCreateNewTopic(){
 	// Check to see if admin or mod is viewing forum. 
 	// Only show new title form if admin or mod.
-	if(userCheckForumAdmin() || userCheckForumMod()){
+	if((userCheckForumAdmin() || userCheckForumMod()) && forumSHAF()){
 		// Check is user is creating a new title
 		if(isset($_POST['AdminCreateTitle'])){ $AdminCreateTitle = $_POST['AdminCreateTitle']; }else{ $AdminCreateTitle = "FALSE"; }
 		if(isset($_POST['forum_title_create'])){ $forum_title_create = $_POST['forum_title_create']; }else{ $forum_title_create = ""; }
@@ -694,7 +756,7 @@ function forumMoveCatOrder($fot_id,$f_title,$cat_order_id){
 function forumCatNew($f_title){
 	// Check to see if admin or mod is viewing forum. 
 	// Only show new cat form if admin or mod.
-	if(userCheckForumAdmin() || userCheckForumMod()){
+	if((userCheckForumAdmin() || userCheckForumMod()) && forumSHAF()){
 		// Check is user is creating a new cat
 		if(isset($_POST['AdminCreateCat'])){ $AdminCreateCat = $_POST['AdminCreateCat']; }else{ $AdminCreateCat = "FALSE"; }
 		if(isset($_POST['forum_cat_create'])){ $forum_cat_create = $_POST['forum_cat_create']; }else{ $forum_cat_create = ""; }
@@ -876,7 +938,7 @@ function forumEditCat($f_cat,$f_des,$f_id2){
 	echo "</form>";
 	
 	// Only Admins Can Delete Forum Cats
-	if(userCheckForumAdmin()){
+	if(userCheckForumAdmin() && forumSHAF()){
 		// Form button to delete forum cat
 		echo "<form enctype=\"multipart/form-data\" action=\"${websiteUrl}${site_forum_title}/forum_delete_stuff/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
 			// Setup token in form // create multi sessions
@@ -895,7 +957,7 @@ function forumEditCat($f_cat,$f_des,$f_id2){
 //////////////////////////////////////////////////
 function forumCatEditDelete($f_cat,$f_des,$f_id2){
 	// Double check to make sure user is admin or mod
-	if(userCheckForumAdmin() || userCheckForumMod()){
+	if((userCheckForumAdmin() || userCheckForumMod()) && forumSHAF()){
 		// Table to make forum look neat
 		echo "</td><td width='100px' align='right'>";
 		// Forum Cat Edit
@@ -908,7 +970,7 @@ function forumCatEditDelete($f_cat,$f_des,$f_id2){
 // Display the edit delete button for forum categories
 //////////////////////////////////////////////////
 function forumCatEdit($fot_id,$f_title,$cat_order_id,$f_cat,$f_des,$f_id2){
-	if(userCheckForumAdmin() || userCheckForumMod()){
+	if((userCheckForumAdmin() || userCheckForumMod()) && forumSHAF()){
 		// Display Edit, Delete, and Move Buttons
 		echo "</td></tr><tr><td colspan=2 align=right>";
 		// Display Edit and Move buttons to mods and admins
@@ -929,7 +991,7 @@ function forumTopicStatus($fs_setting, $f_status, $f_p_id){
 	}
 	// If admin or mod logged in let them lock or unlock the topic
 	if($fs_setting == "admin_topic"){
-		if(userCheckForumAdmin() || userCheckForumMod()){
+		if((userCheckForumAdmin() || userCheckForumMod()) && forumSHAF()){
 			// If topic is locked then show unlock button
 			if($f_status == "2"){
 				if(isset($_POST['forum_post_id'])){ $forum_post_id = $_POST['forum_post_id']; }else{ $forum_post_id = ""; }

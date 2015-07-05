@@ -13,10 +13,10 @@ $result_PPS = $mysqli->query($queryPPS);
 $arr_PPS = $result_PPS->fetch_all(MYSQLI_BOTH);
 foreach($arr_PPS as $row_PPS)
 {
-	$userFax = $row_PPS['userFax'];
+	$profile_privacy = $row_PPS['profile_privacy'];
 }
 
-//echo "Profile Privacy Setting : $userFax<br>"; //Testing - Displays Privacy Settings
+//echo "Profile Privacy Setting : $profile_privacy<br>"; //Testing - Displays Privacy Settings
 
 if(isUserLoggedIn())
 {
@@ -53,21 +53,21 @@ elseif($userIdme = !0){ $PPtype = "public"; }
 //echo "User Type : $PPtype<br>"; //Testing - Displays user type. public, member, friend, or me
 
 
-	if($userFax == "me"){
+	if($profile_privacy == "me"){
 		if($PPtype == "me"){ $allowPV = "TRUE"; }
 	}
-	if($userFax == "public"){
+	if($profile_privacy == "public"){
 		if($PPtype == "me"){ $allowPV = "TRUE"; }
 		if($PPtype == "public"){ $allowPV = "TRUE"; }
 		if($PPtype == "members"){ $allowPV = "TRUE"; }
 		if($PPtype == "friends"){ $allowPV = "TRUE"; }
 	}
-	if($userFax == "members"){
+	if($profile_privacy == "members"){
 		if($PPtype == "me"){ $allowPV = "TRUE"; }
 		if($PPtype == "members"){ $allowPV = "TRUE"; }
 		if($PPtype == "friends"){ $allowPV = "TRUE"; }
 	}
-	if($userFax == "friends"){
+	if($profile_privacy == "friends"){
 		if($PPtype == "me"){ $allowPV = "TRUE"; }
 		if($PPtype == "friends"){ $allowPV = "TRUE"; }
 	}
@@ -75,16 +75,16 @@ elseif($userIdme = !0){ $PPtype = "public"; }
 
 if(isset($allowPV)){}else{ $allowPV = "FALSE"; }
 if($allowPV == "FALSE"){
-	if($userFax == "me"){
+	if($profile_privacy == "me"){
 		echo "This user has requested that only they can view this profile.";
 	}
-	if($userFax == "public"){
+	if($profile_privacy == "public"){
 		echo "This user has requested that the public can view this profile.";
 	}
-	if($userFax == "members"){
+	if($profile_privacy == "members"){
 		echo "This user has requested that only members can view this profile.";
 	}
-	if($userFax == "friends"){
+	if($profile_privacy == "friends"){
 		echo "This user has requested that only friends can view this profile.";
 	}
 }

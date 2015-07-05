@@ -588,7 +588,7 @@ if($install == "TRUE")
 	  `userTel` varchar(255) NOT NULL,
 	  `userMobiTel` varchar(255) NOT NULL,
 	  `userHomeTel` varchar(255) NOT NULL,
-	  `userFax` varchar(20) NOT NULL DEFAULT 'public',
+	  `profile_privacy` varchar(20) NOT NULL DEFAULT 'public',
 	  `userZip` varchar(20) NOT NULL DEFAULT 'public',
 	  `userWeb` varchar(128) NOT NULL DEFAULT '',
 	  `userFacebook` varchar(255) NOT NULL,
