@@ -44,6 +44,11 @@ if(isset($_REQUEST['profile'])){
 		if($taz == "Register"){ $taz = "register"; }
 		if($taz == "Login"){ $taz = "login"; }
 		
+		//Common Error Stuff
+		if($taz == "style"){ $taz = ""; }
+		if($taz == "addfriend"){ $taz = "friend/addfriend"; }
+		
+		
 		//	if($taz == ""){$taz = ""; }
 
 		$tazib_file = "${tazib_dir}${taz}${tazib_ext}";

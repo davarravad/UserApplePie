@@ -86,7 +86,7 @@ if(isUserLoggedIn())
 		//echo "<a href=='${site_url_link}?page=message&mes=delmesinbox&mid=$mid&yes=yes'>Yes?</a> / <a href='../'>No?</a>";
 		
 				echo "<center>
-					<form method=\"post\" action=\"${site_url_link}?page=message\" onsubmit=\"submit.disabled = true; return true;\">
+					<form method=\"post\" action=\"${site_url_link}message\" onsubmit=\"submit.disabled = true; return true;\">
 						<input type=\"hidden\" name=\"mes\" value=\"delmesinbox\">
 						<input type=\"hidden\" name=\"mid\" value=\"$mid\">
 						<input type=\"hidden\" name=\"yes\" value=\"yes\">
@@ -107,7 +107,7 @@ if(isUserLoggedIn())
 				";
 				echo "</center>";
 				$taz_backz = "
-					<form method=\"post\" action=\"${site_url_link}?page=message\" onsubmit=\"submit.disabled = true; return true;\">
+					<form method=\"post\" action=\"${site_url_link}message\" onsubmit=\"submit.disabled = true; return true;\">
 						<input type=\"hidden\" name=\"mes\" value=\"inbox\">
 						<label title=\"Send\"><input type=\"submit\" value=\"NO\" onClick=\"this.value = 'Please Wait....'\" /></label>
 					</form>

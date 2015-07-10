@@ -88,19 +88,16 @@ echo "
             <li><a href='${site_url_link}member/$user_displayname/' title='View Your Member Profile'>View My Profile</a></li>
             <li><a href='${site_url_link}editprofilemain/' title='Edit Your Member Profile'>Edit Profile</a></li>
             <li><a href='${site_url_link}editprofilemain/editimages/' title='Edit Your Profile Images'>Edit Profile Images</a></li>
-            <li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a></li>
-            <li><a href='${site_url_link}editprofilemain/editvehicles/' title ='Edit Your Vehicles'>Edit Vehicles</a><hr></li>
+            <li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a><hr></li>
             <li><a href='${site_url_link}editprofilemain/account/' title='Change Your Account Settings'>Account Settings</a></li>
 			<li><a href='${site_url_link}editprofilemain/account_email/' title='Change Your Privacy and Email Settings'>Privacy Settings</a></li>
           </ul>
       </li>
         <li><a href='${site_url_link}message/'>My Messages</a></li>
         <li><a href='${site_url_link}community/mystatus/'>My Status</a></li>
-        <li><a href='${site_url_link}community/myvehicles/'>My Vehicles</a></li>
         <li><a href='${site_url_link}community/myimages/'>My Images</a><hr></li>
         <li><a href='${site_url_link}community/myfriends/'>Friends</a></li>
         <li><a href='${site_url_link}community/friendstatus/'>Friends Status</a></li>
-        <li><a href='${site_url_link}community/friendvehicles/'>Friends Vehicles</a></li>
         <li><a href='${site_url_link}community/friendimages/'>Friends Images</a></li>
       </ul>
     </li>
@@ -134,8 +131,7 @@ echo "
             <li><a href='${site_url_link}member/$user_displayname/' title='View Your Member Profile'>View My Profile</a></li>
             <li><a href='${site_url_link}editprofilemain/' title='Edit Your Member Profile'>Edit Profile</a></li>
             <li><a href='${site_url_link}editprofilemain/editimages/' title='Edit Your Profile Images'>Edit Profile Images</a></li>
-            <li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a></li>
-            <li><a href='${site_url_link}editprofilemain/editvehicles/' title ='Edit Your Vehicles'>Edit Vehicles</a><hr></li>
+            <li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a><hr></li>
             <li><a href='${site_url_link}editprofilemain/account/' title='Change Your Account Settings'>Account Settings</a></li>
 			<li><a href='${site_url_link}editprofilemain/account_email/' title='Change Your Privacy and Email Settings'>Privacy Settings</a></li>
         </ul>

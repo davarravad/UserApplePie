@@ -78,7 +78,7 @@ $mdateread = date("YmdHis");
 
 ?>
 <table><tr><td>
-<form name="newmessage" method="post" action="/?page=message" onsubmit="submit.disabled = true; return true;">
+<form name="newmessage" method="post" action="/message/" onsubmit="submit.disabled = true; return true;">
 <input name="mes" type="hidden" value="mesreply">
 <input name="mto" type="hidden" value="<?php echo "$mto"; ?>">
 <input name="mfrom" type="hidden" value="<?php echo "$mfrom"; ?>">
@@ -90,7 +90,7 @@ $mdateread = date("YmdHis");
 </td><td>
 <?php
 $taz_delete = "
-					<form method=\"post\" action=\"${site_url_link}?page=message\">
+					<form method=\"post\" action=\"${site_url_link}message/\">
 						<input type=\"hidden\" name=\"mes\" value=\"delmes$box\">
 						<input type=\"hidden\" name=\"mid\" value=\"$mid\">
 						<label title=\"Delete Message\"><input type=\"submit\" value=\"Delete\" /></label>

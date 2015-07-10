@@ -15,7 +15,7 @@ $userId = $userIdme;
 	
 ?>
 
-<form name="newmessage" method="post" action="/?page=message&mes=msend" onsubmit="submit.disabled = true; return true;">
+<form name="newmessage" method="post" action="/message/?mes=msend" onsubmit="submit.disabled = true; return true;">
 
 <?php
 // create multi sessions

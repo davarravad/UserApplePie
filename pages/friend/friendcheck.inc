@@ -21,7 +21,7 @@ $querym = "SELECT * FROM ".$db_table_prefix."friend WHERE ((`userId1`='$userId1'
 if($num_rows == "0"){
 	//echo " <a href='${site_url_link}?page=friend/addfriend&userId1=$userId1&userId2=$userId2&uriref=$uriref&addfriend=TRUE'>Add to Friends</a> ";
 				echo "<center>
-					<form method=\"post\" action=\"${site_url_link}?page=friend/addfriend\">
+					<form method=\"post\" action=\"${site_url_link}addfriend\">
 				";
 				// create multi sessions
 				if(isset($session_token_num)){

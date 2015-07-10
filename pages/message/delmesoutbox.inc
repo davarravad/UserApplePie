@@ -95,7 +95,7 @@
 		//echo "<a href=='${site_url_link}?page=message&mes=delmesoutbox&mid=$mid&yes=yes'>Yes?</a> / <a href='../'>No?</a>";
 		
 				echo "<center>
-					<form method=\"post\" action=\"${site_url_link}?page=message\" onsubmit=\"submit.disabled = true; return true;\">
+					<form method=\"post\" action=\"${site_url_link}message\" onsubmit=\"submit.disabled = true; return true;\">
 				";
 			// create multi sessions
 			if(isset($session_token_num)){
@@ -114,7 +114,7 @@
 				";
 				echo "</center>";
 				$taz_backz = "
-					<form method=\"post\" action=\"${site_url_link}?page=message\" onsubmit=\"submit.disabled = true; return true;\">
+					<form method=\"post\" action=\"${site_url_link}message\" onsubmit=\"submit.disabled = true; return true;\">
 						<input type=\"hidden\" name=\"mes\" value=\"outbox\">
 						<label title=\"Send\"><input type=\"submit\" value=\"NO\" class=\"contSubmit\" onClick=\"this.value = 'Please Wait....'\" /></label>
 					</form>

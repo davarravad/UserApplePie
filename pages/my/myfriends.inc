@@ -48,7 +48,7 @@ echo "</td></tr></table>";
 		//echo "  (<a href='${site_url_link}?page=friend/addfriend&id=$id&approve=TRUE'>Approve Friendship</a>)<br>";	
 
 				echo "
-					<form method=\"post\" action=\"${site_url_link}?page=friend/addfriend\">
+					<form method=\"post\" action=\"${site_url_link}addfriend/\">
 				";
 				// create multi sessions
 				if(isset($session_token_num)){

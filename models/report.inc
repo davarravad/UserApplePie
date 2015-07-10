@@ -153,7 +153,7 @@ if(isUserLoggedIn())
 						if(isset($_POST['report_pageURL'])){ $report_pageURL = $_POST['report_pageURL']; }else{ $report_pageURL = ""; }
 						
 						//Insert error information to database
-						$query = "INSERT INTO `report` SET 
+						$query = "INSERT INTO `".$db_table_prefix."report` SET 
 									`report_type`='$report_type',`report_msg`='$report_msg',`report_user`='$report_user',
 									`report_refer`='$report_refer',`report_useragent`='$report_useragent',`report_cfile`='$report_cfile',
 									`report_uri`='$report_uri',`report_ipaddy`='$report_ipaddy',`report_server`='$report_server',

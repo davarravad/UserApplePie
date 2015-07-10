@@ -30,59 +30,59 @@ if(isUserLoggedIn())
 			$com_content = ALB($com_content);
 			 
 			if($ed_com_database == "profilecomments"){
-				$queryUC = "UPDATE `profilecomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$queryUC = "UPDATE `".$db_table_prefix."profilecomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "profilecomments_b"){
-				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$queryUC = "UPDATE `".$db_table_prefix."$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "writingcomments"){
-				$queryUC = "UPDATE `writingcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$queryUC = "UPDATE `".$db_table_prefix."writingcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "writingcomments_b"){
-				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$queryUC = "UPDATE `".$db_table_prefix."$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "artcomments"){
-				$queryUC = "UPDATE `artcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$queryUC = "UPDATE `".$db_table_prefix."artcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "artcomments_b"){
-				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$queryUC = "UPDATE `".$db_table_prefix."$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "clubcomments"){
-				$queryUC = "UPDATE `clubcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$queryUC = "UPDATE `".$db_table_prefix."clubcomments` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "clubcomments_b"){
-				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$queryUC = "UPDATE `".$db_table_prefix."$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "status"){
-				$queryUC = "UPDATE `status` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_id`='$userIdme' LIMIT 1";
+				$queryUC = "UPDATE `".$db_table_prefix."status` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_id`='$userIdme' LIMIT 1";
 				$comment_type_yeah = "Status";
 			}
 			if($ed_com_database == "statcom"){
-				$queryUC = "UPDATE `statcom` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$queryUC = "UPDATE `".$db_table_prefix."statcom` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "club_events_com"){
-				$queryUC = "UPDATE `$ed_com_database` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$queryUC = "UPDATE `".$db_table_prefix."$ed_com_database` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "club_events_com_b"){
-				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$queryUC = "UPDATE `".$db_table_prefix."$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "location_comments"){
-				$queryUC = "UPDATE `$ed_com_database` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
+				$queryUC = "UPDATE `".$db_table_prefix."$ed_com_database` SET `com_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1";
 				$comment_type_yeah = "Comment";
 			}
 			if($ed_com_database == "location_comments_b"){
-				$queryUC = "UPDATE `$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
+				$queryUC = "UPDATE `".$db_table_prefix."$ed_com_database` SET `statcom_content`='$com_content' WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme'";
 				$comment_type_yeah = "Comment";
 			}
 		  

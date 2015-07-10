@@ -29,66 +29,66 @@ if($ed_com_delete == "yesdelete"){
 
 
 	if($ed_com_database == "profilecomments"){
-		$queryDC = "DELETE FROM `profilecomments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
-		$queryDC2 = "DELETE FROM `profilecomments_b` WHERE `statcom_id`='$ed_com_id_form' ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."profilecomments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
+		$queryDC2 = "DELETE FROM `".$db_table_prefix."profilecomments_b` WHERE `statcom_id`='$ed_com_id_form' ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "profilecomments_b"){
-		$queryDC = "DELETE FROM `profilecomments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."profilecomments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "writingcomments"){
-		$queryDC = "DELETE FROM `writingcomments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
-		$queryDC2 = "DELETE FROM `writingcomments_b` WHERE `statcom_id`='$ed_com_id_form' ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."writingcomments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
+		$queryDC2 = "DELETE FROM `".$db_table_prefix."writingcomments_b` WHERE `statcom_id`='$ed_com_id_form' ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "writingcomments_b"){
-		$queryDC = "DELETE FROM `writingcomments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."writingcomments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "artcomments"){
-		$queryDC = "DELETE FROM `artcomments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
-		$queryDC2 = "DELETE FROM `artcomments_b` WHERE `statcom_id`='$ed_com_id_form' ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."artcomments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
+		$queryDC2 = "DELETE FROM `".$db_table_prefix."artcomments_b` WHERE `statcom_id`='$ed_com_id_form' ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "artcomments_b"){
-		$queryDC = "DELETE FROM `artcomments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."artcomments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "clubcomments"){
-		$queryDC = "DELETE FROM `clubcomments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
-		$queryDC2 = "DELETE FROM `clubcomments_b` WHERE `statcom_id`='$ed_com_id_form' ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."clubcomments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
+		$queryDC2 = "DELETE FROM `".$db_table_prefix."clubcomments_b` WHERE `statcom_id`='$ed_com_id_form' ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "clubcomments_b"){
-		$queryDC = "DELETE FROM `clubcomments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."clubcomments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "status"){
-		$queryDC = "DELETE FROM `status` WHERE `id`='$ed_com_id_form' AND `com_id`='$userIdme' LIMIT 1 ";
-		$queryDC2 = "DELETE FROM `statcom` WHERE `statcom_id`='$ed_com_id_form' ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."status` WHERE `id`='$ed_com_id_form' AND `com_id`='$userIdme' LIMIT 1 ";
+		$queryDC2 = "DELETE FROM `".$db_table_prefix."statcom` WHERE `statcom_id`='$ed_com_id_form' ";
 		$comment_type_yeah = "Status";
 	}
 	if($ed_com_database == "statcom"){
-		$queryDC = "DELETE FROM `statcom` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."statcom` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "club_events_com"){
-		$queryDC = "DELETE FROM `club_events_com` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
-		$queryDC2 = "DELETE FROM `club_events_com_b` WHERE `statcom_id`='$ed_com_id_form' ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."club_events_com` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
+		$queryDC2 = "DELETE FROM `".$db_table_prefix."club_events_com_b` WHERE `statcom_id`='$ed_com_id_form' ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "club_events_com_b"){
-		$queryDC = "DELETE FROM `club_events_com_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."club_events_com_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "location_comments"){
-		$queryDC = "DELETE FROM `location_comments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
-		$queryDC2 = "DELETE FROM `location_comments_b` WHERE `statcom_id`='$ed_com_id_form' ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."location_comments` WHERE `id`='$ed_com_id_form' AND `com_uid`='$userIdme' LIMIT 1 ";
+		$queryDC2 = "DELETE FROM `".$db_table_prefix."location_comments_b` WHERE `statcom_id`='$ed_com_id_form' ";
 		$comment_type_yeah = "Comment";
 	}
 	if($ed_com_database == "location_comments_b"){
-		$queryDC = "DELETE FROM `location_comments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
+		$queryDC = "DELETE FROM `".$db_table_prefix."location_comments_b` WHERE `id`='$ed_com_id_form' AND `statcom_uid`='$userIdme' LIMIT 1 ";
 		$comment_type_yeah = "Comment";
 	}
 	
