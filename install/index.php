@@ -654,28 +654,6 @@ if($install == "TRUE")
 	) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 	";
 	
-	$table_cities = "
-	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."cities` (
-	  `city` varchar(50) NOT NULL,
-	  `state_code` char(2) NOT NULL,
-	  KEY `idx_state_code` (`state_code`)
-	) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-	";
-	
-	$table_cities_extended = "
-	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."cities_extended` (
-	  `ID` int(11) NOT NULL AUTO_INCREMENT,
-	  `city` varchar(50) NOT NULL,
-	  `state_code` char(2) NOT NULL,
-	  `zip` int(5) unsigned zerofill NOT NULL,
-	  `latitude` double NOT NULL,
-	  `longitude` double NOT NULL,
-	  `county` varchar(50) NOT NULL,
-	  `Type` varchar(255) NOT NULL,
-	  PRIMARY KEY (`ID`)
-	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-	";
-	
 	$configuration_entry = "
 	INSERT INTO `".$db_table_prefix."configuration` (`id`, `name`, `value`) VALUES
 	(1, 'website_name', '$website_name'),
@@ -1097,29 +1075,6 @@ if($install == "TRUE")
 		$db_issue = true;
 	}
 	
-	$stmt = $mysqli->prepare($table_cities);
-	if($stmt->execute())
-	{
-		echo "<p>".$db_table_prefix."cities table created.....</p>";
-	}
-	else
-	{
-		echo "<p>Error constructing ".$db_table_prefix."cities table.....</p>";
-		$db_issue = true;
-	}
-	
-	$stmt = $mysqli->prepare($table_cities_extended);
-	if($stmt->execute())
-	{
-		echo "<p>".$db_table_prefix."cities table_extended created.....</p>";
-	}
-	else
-	{
-		echo "<p>Error constructing ".$db_table_prefix."cities_extended table.....</p>";
-		$db_issue = true;
-	}
-	
-
 	
 	// Database is now setup.  Lets add config to database.
 	

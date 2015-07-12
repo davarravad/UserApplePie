@@ -23,20 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `uc_cities`
+-- Table structure for table `uap_cities`
 --
 
-CREATE TABLE IF NOT EXISTS `uc_cities` (
+CREATE TABLE IF NOT EXISTS `uap_cities` (
   `city` varchar(50) NOT NULL,
   `state_code` char(2) NOT NULL,
   KEY `idx_state_code` (`state_code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `uc_cities`
+-- Dumping data for table `uap_cities`
 --
 
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Aaronsburg', 'PA'),
 ('Abbeville', 'AL'),
 ('Abbeville', 'GA'),
@@ -2841,7 +2841,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Bowling Green', 'IN'),
 ('Bowling Green', 'KY'),
 ('Bowling Green', 'MO');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Bowling Green', 'OH'),
 ('Bowling Green', 'SC'),
 ('Bowling Green', 'VA'),
@@ -5515,7 +5515,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('College Corner', 'OH'),
 ('College Grove', 'TN'),
 ('College Park', 'MD');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('College Place', 'WA'),
 ('College Point', 'NY'),
 ('College Springs', 'IA'),
@@ -8247,7 +8247,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Elmer', 'LA'),
 ('Elmer', 'MO'),
 ('Elmer', 'NJ');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Elmer', 'OK'),
 ('Elmer City', 'WA'),
 ('Elmhurst', 'IL'),
@@ -10947,7 +10947,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Greenville', 'MS'),
 ('Greenville', 'NC'),
 ('Greenville', 'NH');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Greenville', 'NY'),
 ('Greenville', 'OH'),
 ('Greenville', 'PA'),
@@ -13695,7 +13695,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Kennerdell', 'PA'),
 ('Kennesaw', 'GA'),
 ('Kenneth', 'MN');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Kennett', 'MO'),
 ('Kennett Square', 'PA'),
 ('Kennewick', 'WA'),
@@ -16429,7 +16429,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Martindale', 'PA'),
 ('Martindale', 'TX'),
 ('Martinez', 'CA');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Martins Creek', 'PA'),
 ('Martins Ferry', 'OH'),
 ('Martinsburg', 'IA'),
@@ -19076,7 +19076,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Nielsville', 'MN'),
 ('Nightmute', 'AK'),
 ('Nikiski', 'AK');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Nikolai', 'AK'),
 ('Nikolski', 'AK'),
 ('Niland', 'CA'),
@@ -21759,7 +21759,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Prestonsburg', 'KY'),
 ('Pretty Prairie', 'KS'),
 ('Prewitt', 'NM');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Price', 'MD'),
 ('Price', 'TX'),
 ('Price', 'UT'),
@@ -24432,7 +24432,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Shepherd', 'MI'),
 ('Shepherd', 'MT'),
 ('Shepherd', 'TX');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Shepherdstown', 'WV'),
 ('Shepherdsville', 'KY'),
 ('Sheppard Afb', 'TX'),
@@ -27083,7 +27083,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Uncasville', 'CT'),
 ('Uncle Sam', 'LA'),
 ('Underhill', 'VT');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Underhill Center', 'VT'),
 ('Underwood', 'IA'),
 ('Underwood', 'IN'),
@@ -29741,7 +29741,7 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 ('Zaleski', 'OH'),
 ('Zalma', 'MO'),
 ('Zamora', 'CA');
-INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
+INSERT INTO `uap_cities` (`city`, `state_code`) VALUES
 ('Zanesfield', 'OH'),
 ('Zanesville', 'IN'),
 ('Zanesville', 'OH'),
@@ -29790,10 +29790,10 @@ INSERT INTO `uc_cities` (`city`, `state_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `uc_cities_extended`
+-- Table structure for table `uap_cities_extended`
 --
 
-CREATE TABLE IF NOT EXISTS `uc_cities_extended` (
+CREATE TABLE IF NOT EXISTS `uap_cities_extended` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `city` varchar(50) NOT NULL,
   `state_code` char(2) NOT NULL,
@@ -29806,10 +29806,10 @@ CREATE TABLE IF NOT EXISTS `uc_cities_extended` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41756 ;
 
 --
--- Dumping data for table `uc_cities_extended`
+-- Dumping data for table `uap_cities_extended`
 --
 
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (1, 'Holtsville', 'NY', 00501, 40.8152, -73.0455, 'Suffolk', ''),
 (2, 'Holtsville', 'NY', 00544, 40.8152, -73.0455, 'Suffolk', ''),
 (3, 'Adjuntas', 'PR', 00601, 18.1788, -66.7516, 'Adjuntas', ''),
@@ -30545,7 +30545,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (733, 'Brookline Village', 'MA', 02447, 42.332778, -71.116667, 'Norfolk', ''),
 (734, 'Waltham', 'MA', 02451, 42.3954, -71.2508, 'Middlesex', ''),
 (735, 'Waltham', 'MA', 02452, 42.3919, -71.2205, 'Middlesex', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (736, 'Waltham', 'MA', 02453, 42.371111, -71.234444, 'Middlesex', ''),
 (737, 'Waltham', 'MA', 02454, 42.3888, -71.2426, 'Middlesex', ''),
 (738, 'North Waltham', 'MA', 02455, 42.393056, -71.220278, 'Middlesex', ''),
@@ -31251,7 +31251,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (1438, 'Richmond', 'ME', 04357, 44.104213, -69.821077, 'Sagadahoc', ''),
 (1439, 'South China', 'ME', 04358, 44.395334, -69.58036, 'Kennebec', ''),
 (1440, 'South Gardiner', 'ME', 04359, 44.18, -69.757222, 'Kennebec', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (1441, 'Vienna', 'ME', 04360, 44.533333, -69.985278, 'Kennebec', ''),
 (1442, 'Windsor', 'ME', 04363, 44.300878, -69.580587, 'Kennebec', ''),
 (1443, 'Winthrop', 'ME', 04364, 44.314031, -69.973128, 'Kennebec', ''),
@@ -31952,7 +31952,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (2138, 'West Hartford', 'CT', 06110, 41.732566, -72.733691, 'Hartford', ''),
 (2139, 'Newington', 'CT', 06111, 41.686402, -72.729747, 'Hartford', ''),
 (2140, 'Hartford', 'CT', 06112, 41.79053, -72.69641, 'Hartford', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (2141, 'Hartford', 'CT', 06114, 41.740293, -72.680726, 'Hartford', ''),
 (2142, 'Hartford', 'CT', 06115, 41.7636, -72.6855, 'Hartford', ''),
 (2143, 'West Hartford', 'CT', 06117, 41.790021, -72.745689, 'Hartford', ''),
@@ -32670,7 +32670,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (2855, 'Millington', 'NJ', 07946, 40.672716, -74.518292, 'Morris', ''),
 (2856, 'Greystone Park', 'NJ', 07950, 40.843982, -74.479645, 'Morris', ''),
 (2857, 'Morristown', 'NJ', 07960, 40.795236, -74.487288, 'Morris', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (2858, 'Morristown', 'NJ', 07961, 40.7966, -74.4819, 'Morris', ''),
 (2859, 'Morristown', 'NJ', 07962, 40.8051, -74.4647, 'Morris', ''),
 (2860, 'Morristown', 'NJ', 07963, 40.8051, -74.4647, 'Morris', ''),
@@ -33382,7 +33382,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (3566, 'Sparkill', 'NY', 10976, 41.025573, -73.92288, 'Rockland', ''),
 (3567, 'Spring Valley', 'NY', 10977, 41.117977, -74.046253, 'Rockland', ''),
 (3568, 'Sterling Forest', 'NY', 10979, 41.1825, -74.319167, 'Orange', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (3569, 'Stony Point', 'NY', 10980, 41.229174, -73.996164, 'Rockland', ''),
 (3570, 'Sugar Loaf', 'NY', 10981, 41.320833, -74.285833, 'Orange', ''),
 (3571, 'Tallman', 'NY', 10982, 41.111111, -74.100278, 'Rockland', ''),
@@ -34100,7 +34100,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (4283, 'Salisbury Mills', 'NY', 12577, 41.449714, -74.121378, 'Orange', ''),
 (4284, 'Salt Point', 'NY', 12578, 41.805041, -73.801329, 'Dutchess', ''),
 (4285, 'Staatsburg', 'NY', 12580, 41.850193, -73.898838, 'Dutchess', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (4286, 'Stanfordville', 'NY', 12581, 41.887726, -73.694467, 'Dutchess', ''),
 (4287, 'Stormville', 'NY', 12582, 41.551193, -73.725548, 'Dutchess', ''),
 (4288, 'Tivoli', 'NY', 12583, 42.057945, -73.902514, 'Dutchess', ''),
@@ -34807,7 +34807,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (4989, 'Dunkirk', 'NY', 14048, 42.475907, -79.329366, 'Chautauqua', ''),
 (4990, 'East Amherst', 'NY', 14051, 43.029168, -78.705035, 'Erie', ''),
 (4991, 'East Aurora', 'NY', 14052, 42.770138, -78.601992, 'Erie', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (4992, 'East Bethany', 'NY', 14054, 42.916619, -78.134206, 'Genesee', ''),
 (4993, 'East Concord', 'NY', 14055, 42.546585, -78.610972, 'Erie', ''),
 (4994, 'East Pembroke', 'NY', 14056, 42.995556, -78.310278, 'Genesee', ''),
@@ -35521,7 +35521,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (5702, 'Jacobs Creek', 'PA', 15448, 40.133056, -79.741944, 'Westmoreland', ''),
 (5703, 'Keisterville', 'PA', 15449, 39.961389, -79.782778, 'Fayette', ''),
 (5704, 'La Belle', 'PA', 15450, 39.973829, -79.937024, 'Fayette', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (5705, 'Lake Lynn', 'PA', 15451, 39.750065, -79.86184, 'Fayette', ''),
 (5706, 'Leckrone', 'PA', 15454, 39.861389, -79.870278, 'Fayette', ''),
 (5707, 'Leisenring', 'PA', 15455, 39.998333, -79.643056, 'Fayette', ''),
@@ -36237,7 +36237,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (6417, 'Liberty', 'PA', 16930, 41.565571, -77.119505, 'Tioga', ''),
 (6418, 'Mainesburg', 'PA', 16932, 41.790029, -76.968156, 'Tioga', ''),
 (6419, 'Mansfield', 'PA', 16933, 41.812288, -77.07163, 'Tioga', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (6420, 'Middlebury Center', 'PA', 16935, 41.891706, -77.314764, 'Tioga', ''),
 (6421, 'Millerton', 'PA', 16936, 41.962467, -76.974766, 'Tioga', ''),
 (6422, 'Mills', 'PA', 16937, 41.902482, -77.762051, 'Potter', ''),
@@ -36946,7 +36946,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (7125, 'Scranton', 'PA', 18515, 41.4476, -75.6669, 'Lackawanna', ''),
 (7126, 'Taylor', 'PA', 18517, 41.390442, -75.715848, 'Lackawanna', ''),
 (7127, 'Old Forge', 'PA', 18518, 41.370076, -75.739075, 'Lackawanna', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (7128, 'Dickson City', 'PA', 18519, 41.462306, -75.624343, 'Lackawanna', ''),
 (7129, 'Scranton', 'PA', 18522, 41.4303, -75.6437, 'Lackawanna', ''),
 (7130, 'Scranton', 'PA', 18540, 41.3731, -75.6841, 'Lackawanna', ''),
@@ -37640,7 +37640,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (7818, 'Manassas', 'VA', 20113, 38.7776, -77.5197, 'Manassas Park City', ''),
 (7819, 'Marshall', 'VA', 20115, 38.8237, -77.897, 'Fauquier', ''),
 (7820, 'Marshall', 'VA', 20116, 38.8256, -77.8947, 'Fauquier', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (7821, 'Middleburg', 'VA', 20117, 38.9871, -77.7465, 'Loudoun', ''),
 (7822, 'Middleburg', 'VA', 20118, 39.0039, -77.7226, 'Loudoun', ''),
 (7823, 'Catlett', 'VA', 20119, 38.653611, -77.640833, 'Fauquier', ''),
@@ -38308,7 +38308,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (8485, 'Cumberland', 'MD', 21505, 39.592778, -78.833611, 'Allegany', ''),
 (8486, 'Accident', 'MD', 21520, 39.635504, -79.308467, 'Garrett', ''),
 (8487, 'Barton', 'MD', 21521, 39.533135, -79.02813, 'Allegany', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (8488, 'Bittinger', 'MD', 21522, 39.597786, -79.214247, 'Garrett', ''),
 (8489, 'Bloomington', 'MD', 21523, 39.487764, -79.113707, 'Garrett', ''),
 (8490, 'Corriganville', 'MD', 21524, 39.692778, -78.793056, 'Allegany', ''),
@@ -39008,7 +39008,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (9184, 'Williamsburg', 'VA', 23188, 37.317768, -76.763424, 'James City', ''),
 (9185, 'Woods Cross Roads', 'VA', 23190, 37.436389, -76.545833, 'Gloucester', ''),
 (9186, 'Montpelier', 'VA', 23192, 37.817729, -77.692441, 'Hanover', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (9187, 'Richmond', 'VA', 23218, 37.5594, -77.4472, 'Richmond City', ''),
 (9188, 'Richmond', 'VA', 23219, 37.546265, -77.437798, 'Richmond City', ''),
 (9189, 'Richmond', 'VA', 23220, 37.549808, -77.458798, 'Richmond City', ''),
@@ -39708,7 +39708,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (9883, 'Anawalt', 'WV', 24808, 37.335833, -81.436667, 'Mcdowell', ''),
 (9884, 'Avondale', 'WV', 24811, 37.4125, -81.784444, 'Mcdowell', ''),
 (9885, 'Bartley', 'WV', 24813, 37.340556, -81.737778, 'Mcdowell', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (9886, 'Berwind', 'WV', 24815, 37.2475, -81.641111, 'Mcdowell', ''),
 (9887, 'Big Sandy', 'WV', 24816, 37.464167, -81.698333, 'Mcdowell', ''),
 (9888, 'Bradshaw', 'WV', 24817, 37.35, -81.801667, 'Mcdowell', ''),
@@ -40431,7 +40431,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (10605, 'Morgantown', 'WV', 26507, 39.6276, -79.9574, 'Monongalia', ''),
 (10606, 'Morgantown', 'WV', 26508, 39.556667, -80, 'Monongalia', ''),
 (10607, 'Albright', 'WV', 26519, 39.570116, -79.635811, 'Preston', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (10608, 'Arthurdale', 'WV', 26520, 39.495, -79.815278, 'Preston', ''),
 (10609, 'Blacksville', 'WV', 26521, 39.695821, -80.232646, 'Monongalia', ''),
 (10610, 'Bretz', 'WV', 26524, 39.542222, -79.800833, 'Preston', ''),
@@ -41149,7 +41149,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (11322, 'Wingate', 'NC', 28174, 34.984666, -80.447595, 'Union', ''),
 (11323, 'Charlotte', 'NC', 28201, 35.2269, -80.8433, 'Mecklenburg', ''),
 (11324, 'Charlotte', 'NC', 28202, 35.229002, -80.841864, 'Mecklenburg', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (11325, 'Charlotte', 'NC', 28203, 35.208139, -80.858279, 'Mecklenburg', ''),
 (11326, 'Charlotte', 'NC', 28204, 35.213178, -80.823149, 'Mecklenburg', ''),
 (11327, 'Charlotte', 'NC', 28205, 35.219951, -80.788129, 'Mecklenburg', ''),
@@ -41853,7 +41853,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (12025, 'North Charleston', 'SC', 29420, 32.933096, -80.086463, 'Dorchester', ''),
 (12026, 'Charleston', 'SC', 29422, 32.6823, -79.9575, 'Charleston', ''),
 (12027, 'Charleston', 'SC', 29423, 32.9521, -80.0641, 'Charleston', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (12028, 'Charleston', 'SC', 29424, 32.7836, -79.937, 'Charleston', ''),
 (12029, 'Charleston', 'SC', 29425, 32.7848, -79.9493, 'Charleston', ''),
 (12030, 'Adams Run', 'SC', 29426, 32.749318, -80.368197, 'Charleston', ''),
@@ -42574,7 +42574,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (12745, 'Ellijay', 'GA', 30536, 34.6725, -84.500278, 'Gilmer', ''),
 (12746, 'Dillard', 'GA', 30537, 34.979659, -83.380113, 'Rabun', ''),
 (12747, 'Eastanollee', 'GA', 30538, 34.50366, -83.258685, 'Stephens', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (12748, 'East Ellijay', 'GA', 30539, 34.682636, -84.473062, 'Gilmer', ''),
 (12749, 'Ellijay', 'GA', 30540, 34.677514, -84.481226, 'Gilmer', ''),
 (12750, 'Epworth', 'GA', 30541, 34.944249, -84.441593, 'Fannin', ''),
@@ -43298,7 +43298,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (13468, 'Tallahassee', 'FL', 32301, 30.428563, -84.259337, 'Leon', ''),
 (13469, 'Tallahassee', 'FL', 32302, 30.4418, -84.284, 'Leon', ''),
 (13470, 'Tallahassee', 'FL', 32303, 30.487433, -84.318946, 'Leon', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (13471, 'Tallahassee', 'FL', 32304, 30.447752, -84.321132, 'Leon', ''),
 (13472, 'Tallahassee', 'FL', 32305, 30.348, -84.2844, 'Leon', ''),
 (13473, 'Tallahassee', 'FL', 32306, 30.442152, -84.295594, 'Leon', ''),
@@ -44005,7 +44005,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (14174, 'Hobe Sound', 'FL', 33475, 27.059167, -80.136667, 'Martin', ''),
 (14175, 'Pahokee', 'FL', 33476, 26.814199, -80.662897, 'Palm Beach', ''),
 (14176, 'Jupiter', 'FL', 33477, 26.921701, -80.077034, 'Palm Beach', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (14177, 'Jupiter', 'FL', 33478, 26.921242, -80.214388, 'Palm Beach', ''),
 (14178, 'Palm Beach', 'FL', 33480, 26.72065, -80.038825, 'Palm Beach', ''),
 (14179, 'Boca Raton', 'FL', 33481, 26.3583, -80.0833, 'Palm Beach', ''),
@@ -44718,7 +44718,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (14886, 'Birmingham', 'AL', 35214, 33.555445, -86.886989, 'Jefferson', ''),
 (14887, 'Birmingham', 'AL', 35215, 33.635447, -86.693197, 'Jefferson', ''),
 (14888, 'Birmingham', 'AL', 35216, 33.41531, -86.790425, 'Jefferson', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (14889, 'Birmingham', 'AL', 35217, 33.5887, -86.764995, 'Jefferson', ''),
 (14890, 'Birmingham', 'AL', 35218, 33.505972, -86.892993, 'Jefferson', ''),
 (14891, 'Birmingham', 'AL', 35219, 33.4735, -86.8259, 'Jefferson', ''),
@@ -45437,7 +45437,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (15604, 'Beechgrove', 'TN', 37018, 35.644733, -86.204644, 'Coffee', ''),
 (15605, 'Belfast', 'TN', 37019, 35.406905, -86.709482, 'Marshall', ''),
 (15606, 'Bell Buckle', 'TN', 37020, 35.638105, -86.394908, 'Bedford', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (15607, 'Bethpage', 'TN', 37022, 36.518575, -86.314572, 'Sumner', ''),
 (15608, 'Big Rock', 'TN', 37023, 36.571606, -87.737838, 'Stewart', ''),
 (15609, 'Brentwood', 'TN', 37024, 36.033056, -86.782778, 'Williamson', ''),
@@ -46153,7 +46153,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (16319, 'Five Points', 'TN', 38457, 35.031046, -87.296128, 'Lawrence', ''),
 (16320, 'Frankewing', 'TN', 38459, 35.177854, -86.781818, 'Lincoln', ''),
 (16321, 'Goodspring', 'TN', 38460, 35.116709, -87.127788, 'Giles', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (16322, 'Hampshire', 'TN', 38461, 35.591482, -87.325135, 'Maury', ''),
 (16323, 'Hohenwald', 'TN', 38462, 35.540837, -87.55461, 'Lewis', ''),
 (16324, 'Iron City', 'TN', 38463, 35.056283, -87.647321, 'Lawrence', ''),
@@ -46872,7 +46872,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (17037, 'Radcliff', 'KY', 40159, 37.840278, -85.949167, 'Hardin', ''),
 (17038, 'Radcliff', 'KY', 40160, 37.826652, -85.940408, 'Hardin', ''),
 (17039, 'Rhodelia', 'KY', 40161, 37.968538, -86.304079, 'Meade', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (17040, 'Rineyville', 'KY', 40162, 37.75249, -85.995395, 'Hardin', ''),
 (17041, 'Shepherdsville', 'KY', 40165, 38.004515, -85.688767, 'Bullitt', ''),
 (17042, 'Stephensport', 'KY', 40170, 37.904781, -86.523961, 'Breckinridge', ''),
@@ -47596,7 +47596,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (17760, 'Morgantown', 'KY', 42261, 37.19102, -86.703726, 'Butler', ''),
 (17761, 'Oak Grove', 'KY', 42262, 36.665225, -87.425514, 'Christian', ''),
 (17762, 'Olmstead', 'KY', 42265, 36.78463, -86.981846, 'Logan', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (17763, 'Pembroke', 'KY', 42266, 36.798221, -87.331892, 'Christian', ''),
 (17764, 'Rochester', 'KY', 42273, 37.204778, -86.85921, 'Butler', ''),
 (17765, 'Rockfield', 'KY', 42274, 36.939859, -86.585389, 'Warren', ''),
@@ -48309,7 +48309,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (18472, 'Cleveland', 'OH', 44102, 41.473508, -81.739791, 'Cuyahoga', ''),
 (18473, 'Cleveland', 'OH', 44103, 41.515726, -81.640475, 'Cuyahoga', ''),
 (18474, 'Cleveland', 'OH', 44104, 41.480924, -81.624502, 'Cuyahoga', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (18475, 'Cleveland', 'OH', 44105, 41.450912, -81.619002, 'Cuyahoga', ''),
 (18476, 'Cleveland', 'OH', 44106, 41.508359, -81.60757, 'Cuyahoga', ''),
 (18477, 'Lakewood', 'OH', 44107, 41.482654, -81.797143, 'Cuyahoga', ''),
@@ -49023,7 +49023,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (19185, 'Latham', 'OH', 45646, 39.080436, -83.328294, 'Pike', ''),
 (19186, 'Londonderry', 'OH', 45647, 39.272283, -82.783288, 'Ross', ''),
 (19187, 'Lucasville', 'OH', 45648, 38.893832, -82.994009, 'Scioto', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (19188, 'Lynx', 'OH', 45650, 38.773056, -83.413056, 'Adams', ''),
 (19189, 'Mc Arthur', 'OH', 45651, 39.255326, -82.490699, 'Vinton', ''),
 (19190, 'Mc Dermott', 'OH', 45652, 38.836203, -83.068892, 'Scioto', ''),
@@ -49741,7 +49741,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (19902, 'Grantsburg', 'IN', 47123, 38.289183, -86.466043, 'Crawford', ''),
 (19903, 'Greenville', 'IN', 47124, 38.353533, -86.008299, 'Floyd', ''),
 (19904, 'Hardinsburg', 'IN', 47125, 38.462599, -86.317983, 'Washington', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (19905, 'Henryville', 'IN', 47126, 38.539829, -85.773403, 'Clark', ''),
 (19906, 'Clarksville', 'IN', 47129, 38.537273, -85.524438, 'Clark', ''),
 (19907, 'Jeffersonville', 'IN', 47130, 38.307767, -85.735885, 'Clark', ''),
@@ -50454,7 +50454,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (20614, 'Hartland', 'MI', 48353, 42.63561, -83.714674, 'Livingston', ''),
 (20615, 'Highland', 'MI', 48356, 42.669187, -83.58951, 'Oakland', ''),
 (20616, 'Highland', 'MI', 48357, 42.659453, -83.637013, 'Oakland', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (20617, 'Lake Orion', 'MI', 48359, 42.720779, -83.291701, 'Oakland', ''),
 (20618, 'Lake Orion', 'MI', 48360, 42.742212, -83.282792, 'Oakland', ''),
 (20619, 'Lake Orion', 'MI', 48361, 42.784444, -83.239722, 'Oakland', ''),
@@ -51175,7 +51175,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (21334, 'Alpena', 'MI', 49707, 45.079018, -83.4602, 'Alpena', ''),
 (21335, 'Atlanta', 'MI', 49709, 44.992371, -84.147982, 'Montmorency', ''),
 (21336, 'Barbeau', 'MI', 49710, 46.284753, -84.217332, 'Chippewa', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (21337, 'Bay Shore', 'MI', 49711, 45.318056, -85.258333, 'Charlevoix', ''),
 (21338, 'Boyne City', 'MI', 49712, 45.205203, -85.018294, 'Charlevoix', ''),
 (21339, 'Boyne Falls', 'MI', 49713, 45.211563, -84.891584, 'Charlevoix', ''),
@@ -51895,7 +51895,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (22053, 'Marcus', 'IA', 51035, 42.819959, -95.803431, 'Cherokee', ''),
 (22054, 'Maurice', 'IA', 51036, 42.962647, -96.165531, 'Sioux', ''),
 (22055, 'Meriden', 'IA', 51037, 42.787416, -95.640797, 'Cherokee', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (22056, 'Merrill', 'IA', 51038, 42.704737, -96.228324, 'Plymouth', ''),
 (22057, 'Moville', 'IA', 51039, 42.481924, -96.065583, 'Woodbury', ''),
 (22058, 'Onawa', 'IA', 51040, 42.036967, -96.107213, 'Monona', ''),
@@ -52609,7 +52609,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (22766, 'Milwaukee', 'WI', 53259, 43.0388, -87.9063, 'Milwaukee', ''),
 (22767, 'Milwaukee', 'WI', 53263, 43.0388, -87.9063, 'Milwaukee', ''),
 (22768, 'Milwaukee', 'WI', 53267, 43.0439, -87.9097, 'Milwaukee', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (22769, 'Milwaukee', 'WI', 53268, 43.0388, -87.9063, 'Milwaukee', ''),
 (22770, 'Milwaukee', 'WI', 53274, 43.0345, -87.9153, 'Milwaukee', ''),
 (22771, 'Milwaukee', 'WI', 53278, 43.0343, -87.9151, 'Milwaukee', ''),
@@ -53330,7 +53330,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (23486, 'Brook Park', 'MN', 55007, 45.938694, -92.98347, 'Pine', ''),
 (23487, 'Cambridge', 'MN', 55008, 45.557591, -93.288935, 'Isanti', ''),
 (23488, 'Cannon Falls', 'MN', 55009, 44.495985, -92.863995, 'Goodhue', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (23489, 'Castle Rock', 'MN', 55010, 44.594216, -93.109241, 'Dakota', ''),
 (23490, 'Cedar', 'MN', 55011, 45.336494, -93.265834, 'Anoka', ''),
 (23491, 'Center City', 'MN', 55012, 45.393889, -92.816389, 'Chisago', ''),
@@ -54042,7 +54042,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (24197, 'Pennock', 'MN', 56279, 45.131031, -95.175333, 'Kandiyohi', ''),
 (24198, 'Porter', 'MN', 56280, 44.656532, -96.15812, 'Yellow Medicine', ''),
 (24199, 'Prinsburg', 'MN', 56281, 44.937088, -95.18654, 'Kandiyohi', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (24200, 'Raymond', 'MN', 56282, 45.018097, -95.220788, 'Kandiyohi', ''),
 (24201, 'Redwood Falls', 'MN', 56283, 44.531753, -95.10713, 'Redwood', ''),
 (24202, 'Renville', 'MN', 56284, 44.777609, -95.198879, 'Renville', ''),
@@ -54760,7 +54760,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (24914, 'Amenia', 'ND', 58004, 47.019395, -97.204808, 'Cass', ''),
 (24915, 'Argusville', 'ND', 58005, 47.10664, -96.905764, 'Cass', ''),
 (24916, 'Arthur', 'ND', 58006, 47.104774, -97.209737, 'Cass', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (24917, 'Ayr', 'ND', 58007, 47.019576, -97.572841, 'Cass', ''),
 (24918, 'Barney', 'ND', 58008, 46.249621, -96.970772, 'Richland', ''),
 (24919, 'Blanchard', 'ND', 58009, 47.353664, -97.262079, 'Traill', ''),
@@ -55475,7 +55475,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (25628, 'Silver Star', 'MT', 59751, 45.757105, -112.177604, 'Madison', ''),
 (25629, 'Three Forks', 'MT', 59752, 45.881068, -111.543643, 'Gallatin', ''),
 (25630, 'Twin Bridges', 'MT', 59754, 45.531055, -112.349461, 'Madison', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (25631, 'Virginia City', 'MT', 59755, 45.247216, -112.002619, 'Madison', ''),
 (25632, 'Warm Springs', 'MT', 59756, 46.162593, -112.820041, 'Deer Lodge', ''),
 (25633, 'West Yellowstone', 'MT', 59758, 44.912502, -111.18595, 'Gallatin', ''),
@@ -56202,7 +56202,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (26354, 'Dana', 'IL', 61321, 40.954675, -88.962793, 'La Salle', ''),
 (26355, 'Depue', 'IL', 61322, 41.326111, -89.301111, 'Bureau', ''),
 (26356, 'Dover', 'IL', 61323, 41.436667, -89.393333, 'Bureau', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (26357, 'Eldena', 'IL', 61324, 41.771111, -89.41, 'Lee', ''),
 (26358, 'Grand Ridge', 'IL', 61325, 41.238621, -88.816836, 'La Salle', ''),
 (26359, 'Granville', 'IL', 61326, 41.264212, -89.225029, 'Putnam', ''),
@@ -56921,7 +56921,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (27072, 'Mason City', 'IL', 62664, 40.199938, -89.699256, 'Mason', ''),
 (27073, 'Meredosia', 'IL', 62665, 39.797631, -90.549542, 'Morgan', ''),
 (27074, 'Middletown', 'IL', 62666, 40.096668, -89.58182, 'Logan', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (27075, 'Modesto', 'IL', 62667, 39.475965, -89.979386, 'Macoupin', ''),
 (27076, 'Murrayville', 'IL', 62668, 39.572952, -90.231189, 'Morgan', ''),
 (27077, 'New Berlin', 'IL', 62670, 39.736048, -89.905721, 'Sangamon', ''),
@@ -57620,7 +57620,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (27770, 'Lexington', 'MO', 64067, 39.174249, -93.871438, 'Lafayette', ''),
 (27771, 'Liberty', 'MO', 64068, 39.241916, -94.433664, 'Clay', ''),
 (27772, 'Liberty', 'MO', 64069, 39.246111, -94.418889, 'Clay', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (27773, 'Lone Jack', 'MO', 64070, 38.891837, -94.161453, 'Jackson', ''),
 (27774, 'Mayview', 'MO', 64071, 39.045898, -93.835306, 'Lafayette', ''),
 (27775, 'Missouri City', 'MO', 64072, 39.240833, -94.287778, 'Clay', ''),
@@ -58340,7 +58340,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (28489, 'Cummings', 'KS', 66016, 39.482976, -95.286281, 'Atchison', ''),
 (28490, 'Denton', 'KS', 66017, 39.715358, -95.274377, 'Doniphan', ''),
 (28491, 'De Soto', 'KS', 66018, 38.956563, -94.964713, 'Johnson', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (28492, 'Clearview City', 'KS', 66019, 38.979167, -94.968333, 'Johnson', ''),
 (28493, 'Easton', 'KS', 66020, 39.362054, -95.054352, 'Leavenworth', ''),
 (28494, 'Edgerton', 'KS', 66021, 38.781084, -95.009377, 'Johnson', ''),
@@ -59062,7 +59062,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (29210, 'Kendall', 'KS', 67857, 37.963657, -101.596883, 'Hamilton', ''),
 (29211, 'Kismet', 'KS', 67859, 37.133601, -100.750645, 'Seward', ''),
 (29212, 'Lakin', 'KS', 67860, 37.938197, -101.271297, 'Kearny', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (29213, 'Leoti', 'KS', 67861, 38.498726, -101.358851, 'Wichita', ''),
 (29214, 'Manter', 'KS', 67862, 37.545094, -101.910869, 'Stanton', ''),
 (29215, 'Marienthal', 'KS', 67863, 38.482523, -101.199231, 'Wichita', ''),
@@ -59785,7 +59785,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (29932, 'New Orleans', 'LA', 70125, 29.951225, -90.102785, 'Orleans', ''),
 (29933, 'New Orleans', 'LA', 70126, 30.015341, -90.018913, 'Orleans', ''),
 (29934, 'New Orleans', 'LA', 70127, 30.033811, -89.980688, 'Orleans', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (29935, 'New Orleans', 'LA', 70128, 30.052691, -89.956421, 'Orleans', ''),
 (29936, 'New Orleans', 'LA', 70129, 30.047984, -89.906206, 'Orleans', ''),
 (29937, 'New Orleans', 'LA', 70130, 29.932438, -90.073949, 'Orleans', ''),
@@ -60485,7 +60485,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (30631, 'Emerson', 'AR', 71740, 33.089054, -93.198699, 'Columbia', ''),
 (30632, 'Fordyce', 'AR', 71742, 33.817648, -92.422475, 'Dallas', ''),
 (30633, 'Gurdon', 'AR', 71743, 33.912493, -93.141691, 'Clark', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (30634, 'Hampton', 'AR', 71744, 33.537613, -92.52951, 'Calhoun', ''),
 (30635, 'Harrell', 'AR', 71745, 33.510865, -92.391243, 'Calhoun', ''),
 (30636, 'Huttig', 'AR', 71747, 33.045888, -92.194153, 'Union', ''),
@@ -61200,7 +61200,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (31345, 'Mulhall', 'OK', 73063, 36.053678, -97.409809, 'Logan', ''),
 (31346, 'Mustang', 'OK', 73064, 35.388498, -97.730888, 'Canadian', ''),
 (31347, 'Newcastle', 'OK', 73065, 35.245269, -97.621573, 'Mcclain', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (31348, 'Nicoma Park', 'OK', 73066, 35.491111, -97.322778, 'Oklahoma', ''),
 (31349, 'Ninnekah', 'OK', 73067, 34.91435, -97.933277, 'Grady', ''),
 (31350, 'Noble', 'OK', 73068, 35.141742, -97.340929, 'Cleveland', ''),
@@ -61926,7 +61926,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (32070, 'Allen', 'TX', 75013, 33.103056, -96.670278, 'Collin', ''),
 (32071, 'Irving', 'TX', 75014, 32.842, -96.9719, 'Dallas', ''),
 (32072, 'Irving', 'TX', 75015, 32.8297, -96.9815, 'Dallas', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (32073, 'Irving', 'TX', 75016, 32.8138, -96.9486, 'Dallas', ''),
 (32074, 'Irving', 'TX', 75017, 32.8118, -96.9473, 'Dallas', ''),
 (32075, 'Coppell', 'TX', 75019, 32.96727, -96.980516, 'Dallas', ''),
@@ -62663,7 +62663,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (32806, 'Wichita Falls', 'TX', 76308, 33.863258, -98.533965, 'Wichita', ''),
 (32807, 'Wichita Falls', 'TX', 76309, 33.893084, -98.534288, 'Wichita', ''),
 (32808, 'Wichita Falls', 'TX', 76310, 33.858122, -98.575548, 'Wichita', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (32809, 'Sheppard Afb', 'TX', 76311, 33.982353, -98.508771, 'Wichita', ''),
 (32810, 'Archer City', 'TX', 76351, 33.595556, -98.625278, 'Archer', ''),
 (32811, 'Bluegrove', 'TX', 76352, 33.673889, -98.229722, 'Clay', ''),
@@ -63395,7 +63395,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (33537, 'Port Bolivar', 'TX', 77650, 29.459788, -94.611678, 'Galveston', ''),
 (33538, 'Port Neches', 'TX', 77651, 29.976983, -93.962624, 'Jefferson', ''),
 (33539, 'Sabine Pass', 'TX', 77655, 29.733333, -93.894167, 'Jefferson', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (33540, 'Silsbee', 'TX', 77656, 30.324387, -94.190726, 'Hardin', ''),
 (33541, 'Lumberton', 'TX', 77657, 30.253056, -94.189722, 'Hardin', ''),
 (33542, 'Sour Lake', 'TX', 77659, 30.149134, -94.373341, 'Hardin', ''),
@@ -64117,7 +64117,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (34258, 'Masterson', 'TX', 79058, 35.685278, -102.332778, 'Moore', ''),
 (34259, 'Miami', 'TX', 79059, 35.719301, -100.702715, 'Roberts', ''),
 (34260, 'Mobeetie', 'TX', 79061, 35.529717, -100.424158, 'Wheeler', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (34261, 'Morse', 'TX', 79062, 36.059579, -101.47288, 'Hansford', ''),
 (34262, 'Nazareth', 'TX', 79063, 34.544356, -102.106914, 'Castro', ''),
 (34263, 'Olton', 'TX', 79064, 34.184418, -102.141415, 'Lamb', ''),
@@ -64844,7 +64844,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (34984, 'Fountain', 'CO', 80817, 38.699563, -104.700469, 'El Paso', ''),
 (34985, 'Genoa', 'CO', 80818, 39.338328, -103.460689, 'Lincoln', ''),
 (34986, 'Green Mountain Falls', 'CO', 80819, 38.934444, -105.0175, 'El Paso', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (34987, 'Guffey', 'CO', 80820, 38.814584, -105.57835, 'Park', ''),
 (34988, 'Hugo', 'CO', 80821, 39.084318, -103.498971, 'Lincoln', ''),
 (34989, 'Joes', 'CO', 80822, 39.672771, -102.615134, 'Yuma', ''),
@@ -65551,7 +65551,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (35690, 'Murphy', 'ID', 83650, 43.207296, -116.605379, 'Owyhee', ''),
 (35691, 'Nampa', 'ID', 83651, 43.58342, -116.584818, 'Canyon', ''),
 (35692, 'Nampa', 'ID', 83652, 43.5677, -116.5735, 'Canyon', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (35693, 'Nampa', 'ID', 83653, 43.5677, -116.5735, 'Canyon', ''),
 (35694, 'New Meadows', 'ID', 83654, 44.993969, -116.287438, 'Adams', ''),
 (35695, 'New Plymouth', 'ID', 83655, 43.959021, -116.804818, 'Payette', ''),
@@ -66269,7 +66269,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (36407, 'Miami', 'AZ', 85539, 33.431928, -110.881182, 'Gila', ''),
 (36408, 'Morenci', 'AZ', 85540, 33.043593, -109.311517, 'Greenlee', ''),
 (36409, 'Payson', 'AZ', 85541, 34.219779, -111.287774, 'Gila', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (36410, 'Peridot', 'AZ', 85542, 33.478874, -110.37252, 'Gila', ''),
 (36411, 'Pima', 'AZ', 85543, 32.909661, -109.856009, 'Graham', ''),
 (36412, 'Pine', 'AZ', 85544, 34.390915, -111.473483, 'Gila', ''),
@@ -66983,7 +66983,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (37120, 'El Paso', 'TX', 88532, 31.7691, -106.4264, 'El Paso', ''),
 (37121, 'El Paso', 'TX', 88533, 31.7691, -106.4264, 'El Paso', ''),
 (37122, 'El Paso', 'TX', 88534, 31.7691, -106.4264, 'El Paso', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (37123, 'El Paso', 'TX', 88535, 31.7691, -106.4264, 'El Paso', ''),
 (37124, 'El Paso', 'TX', 88536, 31.7691, -106.4264, 'El Paso', ''),
 (37125, 'El Paso', 'TX', 88538, 31.7691, -106.4264, 'El Paso', ''),
@@ -67678,7 +67678,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (37814, 'Valencia', 'CA', 91354, 34.446608, -118.537437, 'Los Angeles', ''),
 (37815, 'Valencia', 'CA', 91355, 34.398456, -118.55352, 'Los Angeles', ''),
 (37816, 'Tarzana', 'CA', 91356, 34.16708, -118.541354, 'Los Angeles', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (37817, 'Tarzana', 'CA', 91357, 34.173333, -118.553056, 'Los Angeles', ''),
 (37818, 'Thousand Oaks', 'CA', 91358, 34.170556, -118.836667, 'Ventura', ''),
 (37819, 'Westlake Village', 'CA', 91359, 34.1656, -118.8307, 'Ventura', ''),
@@ -68356,7 +68356,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (38491, 'Anaheim', 'CA', 92850, 33.8415, -117.9364, 'Orange', ''),
 (38492, 'Orange', 'CA', 92856, 33.7877, -117.8755, 'Orange', ''),
 (38493, 'Orange', 'CA', 92857, 33.7877, -117.8755, 'Orange', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (38494, 'Orange', 'CA', 92859, 33.7877, -117.8755, 'Orange', ''),
 (38495, 'Norco', 'CA', 92860, 33.94, -117.553333, 'Riverside', ''),
 (38496, 'Villa Park', 'CA', 92861, 33.8165, -117.8112, 'Orange', ''),
@@ -69050,7 +69050,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (39184, 'Pope Valley', 'CA', 94567, 38.678192, -122.472244, 'Napa', ''),
 (39185, 'Dublin', 'CA', 94568, 37.716597, -121.922589, 'Alameda', ''),
 (39186, 'Port Costa', 'CA', 94569, 38.046013, -122.186649, 'Contra Costa', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (39187, 'Moraga', 'CA', 94570, 37.8603, -122.1238, 'Contra Costa', ''),
 (39188, 'Rio Vista', 'CA', 94571, 38.163734, -121.701635, 'Solano', ''),
 (39189, 'Rodeo', 'CA', 94572, 38.03069, -122.258139, 'Contra Costa', ''),
@@ -69744,7 +69744,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (39877, 'Cedar Ridge', 'CA', 95924, 39.198889, -121.02, 'Nevada', ''),
 (39878, 'Challenge', 'CA', 95925, 39.4875, -121.2225, 'Yuba', ''),
 (39879, 'Chico', 'CA', 95926, 39.756466, -121.851806, 'Butte', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (39880, 'Chico', 'CA', 95927, 39.8117, -121.9398, 'Butte', ''),
 (39881, 'Chico', 'CA', 95928, 39.729523, -121.81555, 'Butte', ''),
 (39882, 'Chico', 'CA', 95929, 39.7301, -121.8414, 'Butte', ''),
@@ -70454,7 +70454,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (40586, 'Midland', 'OR', 97634, 42.130833, -121.819167, 'Klamath', ''),
 (40587, 'New Pine Creek', 'OR', 97635, 42.027759, -120.28939, 'Lake', ''),
 (40588, 'Paisley', 'OR', 97636, 42.703089, -120.553208, 'Lake', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (40589, 'Plush', 'OR', 97637, 42.503493, -119.894722, 'Lake', ''),
 (40590, 'Silver Lake', 'OR', 97638, 43.258164, -120.780109, 'Lake', ''),
 (40591, 'Sprague River', 'OR', 97639, 42.455556, -121.503056, 'Klamath', ''),
@@ -71174,7 +71174,7 @@ INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`,
 (41305, 'Creston', 'WA', 99117, 47.797681, -118.530656, 'Lincoln', ''),
 (41306, 'Curlew', 'WA', 99118, 48.910775, -118.645182, 'Ferry', ''),
 (41307, 'Cusick', 'WA', 99119, 48.391513, -117.329464, 'Pend Oreille', '');
-INSERT INTO `uc_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
+INSERT INTO `uap_cities_extended` (`ID`, `city`, `state_code`, `zip`, `latitude`, `longitude`, `county`, `Type`) VALUES
 (41308, 'Danville', 'WA', 99121, 48.972524, -118.488408, 'Ferry', ''),
 (41309, 'Davenport', 'WA', 99122, 47.680855, -118.166657, 'Lincoln', ''),
 (41310, 'Electric City', 'WA', 99123, 47.926446, -119.036728, 'Grant', ''),

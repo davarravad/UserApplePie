@@ -713,7 +713,7 @@ function display_pages_in_pages($dir, $page, $default, $load_cat, $load_id){
 // ex=(sweet_id, sweet_sec_id, sweet_sub, sweet_location)
 function total_topic_sweets($sweet_id, $sweet_sec_id, $sweet_sub, $sweet_location){
 
-	global $mysqli, $site_url_link, $site_forum_title;
+	global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix;
 
 	// Test to make sure everything is extracted
 	//echo "($sweet_id, $sweet_sec_id, $sweet_sub, $sweet_location)";
@@ -722,7 +722,7 @@ function total_topic_sweets($sweet_id, $sweet_sec_id, $sweet_sub, $sweet_locatio
 		// Get number of rows from database
 		$query_s = "
 			SELECT * 
-			FROM sweet
+			FROM ".$db_table_prefix."sweet
 			WHERE `sweet_id`='$sweet_id'
 			AND `sweet_sec_id`='$sweet_sec_id'
 			AND `sweet_sub`='$sweet_sub'
@@ -732,7 +732,7 @@ function total_topic_sweets($sweet_id, $sweet_sec_id, $sweet_sub, $sweet_locatio
 		// Get number of rows from database
 		$query_s = "
 			SELECT * 
-			FROM sweet 
+			FROM ".$db_table_prefix."sweet 
 			WHERE `sweet_id`='$sweet_id'
 			AND `sweet_sub`='$sweet_sub'
 			AND `sweet_location`='$sweet_location'
