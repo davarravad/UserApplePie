@@ -16,16 +16,14 @@ if (!securePage($cur_page_get)){die();}
 //Prevent the user visiting the logged in page if he/she is already logged in
 if(isUserLoggedIn()) { header("Location: /"); die(); }
 
-//Displays the page title
-//echo "<title>".$websiteName." Login</title>";
-echo "<meta name='Description' content='Member Login Form - Login and enjoy all that ".$websiteName." has to offer members - ".$websiteUrl."' />";
+// Page title
+$stc_page_title = "$websiteName Member Login";
+// Page Description
+$stc_page_description = "Member Login Form - Login and enjoy all that $websiteName has to offer - $site_url_link";
 
-//Displays table for content
-echo "<center>";
-echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
-echo "Welcome to $websiteName Member Login"; 
-echo "</td></tr>";
-echo "<tr><td class='content78'>";
+// Run Header of page func
+style_header_content($stc_page_title, $stc_page_description);
+
 		
 	// Login Error check limiter
 	if(!check_multi_logins()){ 
@@ -217,10 +215,9 @@ echo "<a href='${site_url_link}resend_activation/'>Resend Activation Email</a>";
 
 echo "
 </center>
-</body>
-</html>";
+";
 
-	echo "</td></tr></table>";
-	echo "</center>";
+// Run Footer of page func
+style_footer_content();
 
 ?>

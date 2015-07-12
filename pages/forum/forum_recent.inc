@@ -74,24 +74,24 @@
 					$rp_timestamp2 = $row2['fpr_timestamp'];
 					
 					// Set the incrament of each post
-					if(isset($vm_id_a)){ $vm_id_a++; }else{ $vm_id_a = '1'; };
-					//echo "$vm_id_a";
+					if(isset($vm_id_a_rp)){ $vm_id_a_rp++; }else{ $vm_id_a_rp = "1"; };
+					//echo "$vm_id_a_rp";
 					
 					// Sets style between posts
 					// Don't style first post
-					if($vm_id_a == '1'){
-						echo "<div class=''>";
+					if($vm_id_a_rp == "1"){
+						echo "<div class='comt_cnt1'>";
 					}else{
 						echo "<div class='comt_cnt2'>";
 						echo "</td></tr><tr><td class='main_tbl_nav_links_sub'>";
 					}
 					
 					
-					$f_p_title = strlen($f_p_title) > 19 ? substr($f_p_title, 0, 19) . ".." : $f_p_title;
+					$f_p_title = strlen($f_p_title) > 30 ? substr($f_p_title, 0, 30) . ".." : $f_p_title;
 					
 					//If no reply show created by
 					if($rp_timestamp2 == NULL){
-						echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td valign='top' width='100%' class=''>";
+						echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td valign='top' width='100%'>";
 							echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td align='left'>";
 								//echo "($tstamp)"; // Test timestamp
 								echo "<a href='${site_url_link}member/$f_p_user_id/'>$f_p_user_name</a> created.. <br>";
@@ -109,7 +109,7 @@
 					}else{
 						$rp_user_name2 = get_user_name_2($rp_user_id2);
 						//If reply show the following
-						echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td valign='top' width='100%' class=''>";
+						echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td valign='top' width='100%'>";
 							echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td align='left'>";
 								//echo "($tstamp)"; // Test timestamp
 								echo "<a href='${site_url_link}member/$rp_user_id2/'>$rp_user_name2</a> posted on.. <br>";

@@ -14,7 +14,7 @@ You can use this page as a template to create any other pages for your site.
 // Page title
 $stc_page_title = "Welcome to $websiteName UserApplePie";
 // Page Description
-$stc_page_description = "Welcome to $websiteName home page. - $websiteUrl";
+$stc_page_description = "Welcome to $websiteName. - $websiteUrl";
 
 
 

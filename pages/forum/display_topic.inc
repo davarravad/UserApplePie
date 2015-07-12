@@ -104,7 +104,7 @@
 		echo "<strong>$f_p_title</strong>";
 		// Display Locked Message if Topic has been locked by admin
 		forumTopicStatus('display_note', $f_p_status, NULL);
-		echo "</td></tr><tr><td class='content78' width='100' valign='top'>";
+		echo "</td></tr><tr><td class='forum_content' width='100px' valign='top'>";
 			echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr>";
 			echo "<td align='center' width='100px'>";
 				// Show user main pic
@@ -123,7 +123,7 @@
 				echo "<br><font color=green> " . dateDiff("now", "$timestart", 1) . " ago</font> ";
 				echo "<br>";
 			echo "</td></tr></table>";
-		echo "</td><td class='content78' valign='top' width=''>";
+		echo "</td><td class='forum_content' valign='top' width=''>";
 		
 				// If year make model engine are set show them
 				if(!empty($f_p_year) && !empty($f_p_make) && !empty($f_p_model) && !empty($f_p_engine)){
@@ -138,7 +138,7 @@
 		
 		echo "<pre class='forum'>$f_p_content_bb</pre>";
 		
-		echo "</td><td class='content78' valign='top' width='100px'>";
+		echo "</td><td class='forum_content' valign='top' width='100px'>";
 		
 			echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td align='center' valign='top'>";
 			
@@ -353,7 +353,7 @@
 				$rf_p_content = stripslashes($rf_p_content);
 					echo "<a class='anchor' name='topicreply$rf_p_main_id'></a>";
 					echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'>";
-					echo "<tr><td class='content78_b' width='100' valign='top'>";
+					echo "<tr><td class='forum_content_b' width='100' valign='top'>";
 						echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr>";
 						echo "<td align='center'>";
 							// Show user main pic
@@ -372,7 +372,7 @@
 							echo "<br><font color=green> " . dateDiff("now", "$timestart", 1) . " ago</font> ";
 													
 						echo "</td></tr></table>";
-					echo "</td><td class='content78' valign='top'>";
+					echo "</td><td class='forum_content' valign='top'>";
 					
 					//Format the content with bbcode
 					require_once('models/bbParser.php');
@@ -380,7 +380,7 @@
 					$rf_p_content_bb = $parser->getHtml($rf_p_content);
 					echo "<pre class='forum'>$rf_p_content_bb</pre>";
 					
-					echo "</td><td class='content78' valign='top' width='100'>";
+					echo "</td><td class='forum_content' valign='top' width='100'>";
 					
 						echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td align='center' valign='top'>";
 						

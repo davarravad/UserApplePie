@@ -6,37 +6,6 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-
-
-ob_start();
-
-require_once("models/config.inc");
-	//Get the Page the user has requested to view
-	if(isset($_REQUEST['page']) || isset($_REQUEST['taz'])){
-		if(isset($_REQUEST['page'])){ $taz = $_REQUEST['page']; }
-		if(isset($_REQUEST['taz'])){ $taz = $_REQUEST['taz']; }
-		if (!securePage($taz)){die();}
-	}else{
-		if (!securePage($_SERVER['PHP_SELF'])){die();}
-	}
-
-
-// Get user information
-if(isset($loggedInUser->user_id)){
-	$get_loggedin_uid = $loggedInUser->user_id;
-}else{
-	$get_loggedin_uid = "0";
-}
-$userId = $get_loggedin_uid;
-
-require("models/members/funcs_user_info.inc");
-require("models/functions.inc");
-require("models/sublinks.inc");
-require("models/funcs_styles.inc");
-
-// Run the page handler
-require("models/pagehand.inc");
-
 // Header of the site
 require_once("models/design/header.inc");
 	

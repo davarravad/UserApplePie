@@ -13,7 +13,7 @@
 
 	echo "<center><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='epboxc'>";
 
-		echo "<table width=100%><tr><td width=100><a href='${site_url_link}member/$userIdme/'>";
+		echo "<table width=100%><tr><td class='wm_img'><a href='${site_url_link}member/$userIdme/'>";
 			require "pages/my/mainimage.inc";
 		echo "</a></td><td align=left>";
 			echo "Welcome back ";

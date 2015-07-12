@@ -64,7 +64,7 @@
 			$result_usr_online->close();
 		}
 
-		echo "<table width='150' border='0' cellpadding='0' cellspacing='0'><tr><td class='main_tbl_nav_links_title2'>";
+		echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td class='main_tbl_nav_links_title2'>";
 			echo "Site Stats";
 		echo "</td></tr>";
 

@@ -19,11 +19,16 @@ if (!securePage($cur_page_get)){die();}
 //Prevent the user visiting the logged in page if he/she is already logged in
 if(isUserLoggedIn()) { header("Location: /"); die(); }
 
-//Displays the page title
-//echo "<title>".$websiteName." Member Registration</title>";
-echo "<meta name='Description' content='Member Registration Form - Sign up and enjoy all that $websiteName has to offer members - $site_url_link' />";
+
+// Page title
+$stc_page_title = "$websiteName Member Registration";
+// Page Description
+$stc_page_description = "Member Registration Form - Sign up and enjoy all that $websiteName has to offer - $site_url_link";
 
 
+
+// Run Header of page func
+style_header_content($stc_page_title, $stc_page_description);
 
 
 
@@ -312,25 +317,27 @@ echo"
 <form name='newUser' action='".$site_url_link."register/' method='post'>
 
 <table width='80%' align='center' class='index_headertable3tbl'>
-<tbody><tr><td align=right class=reg_form>
+<tr><td class='epboxb'>
 		<label>User Name:</label>
-</td><td class=reg_form>
+</td><td class='epboxa'>
 		<input id='username' type='text' name='username' value='$username' /> 
-</td><td align=left class=reg_form>
+</td></tr><tr><td class='epboxa' colspan='2'>
 		<font size=1>Pick a username you will remember.</font>
 		<br><span id='status'></span>
-</td></tr><tr><td align=right class=reg_form>
+		
+</td></tr><tr><td class='epboxb'>
 		<label>Display Name:</label>
-</td><td class=reg_form>
+</td><td class='epboxa'>
 		<input id='displayname' type='text' name='displayname' value='$displayname' /> 
-</td><td align=left class=reg_form>
+</td></tr><tr><td class='epboxa' colspan='2'>
 		<font size=1>Your Display Name can be changed at any time.</font>
 		<br><span id='status2'></span>
-</td></tr><tr><td align=right class=reg_form>
+		
+</td></tr><tr><td class='epboxb'>
 		<label>Password:</label>
-</td><td class=reg_form>
+</td><td class='epboxa'>
 		<input type='password' name='password' id='passwordInput' />
-</td><td align=left class=reg_form>
+</td></tr><tr><td class='epboxa' colspan='2'>
 		<font size=1>Pick a password you will remember.</font>
 		
 	<table width=100% border=0><tr><td width=102px>
@@ -339,19 +346,20 @@ echo"
 		<div class='' id='passwordStrength'></div>
 	</td></tr></table>
 		
-</td></tr><tr><td align=right class=reg_form>
+</td></tr><tr><td class='epboxb'>
 		<label>Confirm:</label>
-</td><td class=reg_form>
+</td><td class='epboxa'>
 		<input type='password' name='passwordc' id='confirmPasswordInput' />
-</td><td align=left class=reg_form>
+</td></tr><tr><td class='epboxa' colspan='2'>
 		<font size=1>Confirm Your Password.</font>
-</td></tr><tr><td align=right class=reg_form>
+		
+</td></tr><tr><td class='epboxb'>
 		<label>Email:</label>
-</td><td class=reg_form>
+</td><td class='epboxa'>
 		<input type='text' name='email' value='$email' />
-</td><td align=left class=reg_form>
+</td></tr><tr><td class='epboxa' colspan='2'>
 		<font size=1>Please use Current Working Email so you can activate your ".$websiteName." account.  Check your Email and click the link provided.</font>
-</td></tr><tr><td align=center colspan=3>
+</td></tr><tr><td colspan='2' align='center'>
 ";
 
 	// Form token. Place within from tag
@@ -372,18 +380,18 @@ echo"
 	";
 	
 echo "
-</td></tr><tr><td align=center colspan=3>
-		<label>&nbsp;<br>
+</td></tr><tr><td align=center colspan='2'>
 		<input type='submit' value='Register'/>
 </td></tr></table>
 </form>
 </div>
 
 </div>
-<div id='bottom'></div>
+
 </div>
 ";
 
-
+// Run Footer of page func
+style_footer_content();
 
 ?>

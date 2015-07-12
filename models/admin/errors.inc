@@ -24,7 +24,7 @@ $result = mysqli_query($GLOBALS["___mysqli_ston"], $query)
 //HTML Stuff
 
 
-echo "<table cellspacing=2>";
+
 
 while ($row = mysqli_fetch_array($result))
 {
@@ -32,30 +32,31 @@ while ($row = mysqli_fetch_array($result))
 
 	extract($row);
 
+	echo "<table cellspacing=2 width='100%'>";
 	echo "<tr>";
-	echo "<td class=$bgcolor rowspan=2>($er_id)";
+	echo "<td class=$bgcolor rowspan=2 width='50px'>($er_id)";
 	echo "
 		<form method=\"post\" action=\"${site_url_link}YummyAsPie/delete_error/ \">
 		<input type=\"hidden\" name=\"er_id\" value=\"$er_id\">
 		<label title=\"Delete this Location!\"><input type=\"submit\" value=\"Delete!\" /></label>
 		</form>
 	";
-	echo "</td>";
-	echo "<td class=$bgcolor>$er_type</td>";
-	echo "<td class=$bgcolor colspan=2>$er_location</td>";
-	echo "<td class=$bgcolor colspan=4>$er_uri</td>";
-	echo "</tr><tr><td class=$bgcolor>$er_refer</td>";
-	echo "<td class=$bgcolor>$er_useragent</td>";
-	echo "<td class=$bgcolor>$er_msg</td>";
-	echo "<td class=$bgcolor>$er_cfile</td>";
-	echo "<td class=$bgcolor>$er_ipaddy</td>";
-	echo "<td class=$bgcolor>$er_server</td>";
-	echo "<td class=$bgcolor>$er_date";
-	echo "</td></tr><tr><td>&nbsp;";		
+	echo "</td><td>";
+		echo "<table width='100%'><tr><td class=$bgcolor>$er_type</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_location</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_uri</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_refer</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_useragent</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_msg</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_cfile</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_ipaddy</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_server</td>";
+		echo "</tr><tr><td class=$bgcolor>$er_date";		
+		echo "</td></tr></table>";
 	echo "</td></tr>";
-	
+	echo "</table><hr>";
 }
-echo "</table>";
+
 
 
 		}

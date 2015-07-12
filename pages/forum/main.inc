@@ -1,8 +1,8 @@
 <?php
 
-	global $site_forum_title;
+	global $site_forum_title, $websiteName;
 	// Page title
-	$stc_page_title = $site_forum_title;
+	$stc_page_title = "$websiteName - ".$site_forum_title;
 	// Page Description
 	$stc_page_description = "Welcome to the Forum.  Ask questions and get answers from fellow Forum members.";
 	// Run Top of page func

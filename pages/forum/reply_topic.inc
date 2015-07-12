@@ -7,7 +7,7 @@ if(isUserLoggedIn())
 				
 			global $mysqli, $site_url_link, $site_forum_title, $userIdme, $db_table_prefix;
 			
-			echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='content78' valign='top' width='100'>";
+			echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='forum_content' valign='top' width='100'>";
 				echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr>";
 				echo "<td align='center'>";
 					// Show user main pic
@@ -23,7 +23,7 @@ if(isUserLoggedIn())
 					
 					echo "<br>";
 				echo "</td></tr></table>";
-			echo "</td><td class='content78' valign='top'>";
+			echo "</td><td class='forum_content' valign='top'>";
 			
 			echo "<form enctype=\"multipart/form-data\" action=\"${site_url_link}${site_forum_title}/save_topic/${f_p_id_cat}/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" >";
 				

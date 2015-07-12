@@ -6,10 +6,11 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-//Sets the title to the home page for website
-	echo "<meta name=\"description\" content=\"$site_gbl_descript\">";
-	//Page Content
-	
+/*
+This is the default home page to visitors that are logged in.
+You can use this page as a template to create any other pages for your site.
+*/
+
 	//Displays logged in user pannel
 	if(isUserLoggedIn()){
 
@@ -23,32 +24,29 @@
 		header("Location: $redir_link_home");
 		exit;
 	}
-	echo "<table width='100%' border='0' cellspacing='0' cellpadding='4' align='center'><tr>";
-	echo "<td width='100%'  align='center' valign='middle' class='hr2'>";
-	echo "Newest Content<br>";
-
 	if(isUserLoggedIn())
 	{
 		if(isset($_REQUEST['rc_view'])){ $rc_view = $_REQUEST['rc_view']; }else{ $rc_view = ""; }
-		if($rc_view == "status"){ echo "<font color=#E89104>Status</font>"; }
-		else{ echo "<a href='${site_url_link}rp/status/'>Status</a>"; } echo " - ";
-		if($rc_view == "sweets"){ echo "<font color=#E89104>Sweets</font>"; }
-		else{ echo "<a href='${site_url_link}rp/sweets/'>Sweets</a>"; } echo " - ";
-		if($rc_view == "comments"){ echo "<font color=#E89104>Comments</font>"; }
-		else{ echo "<a href='${site_url_link}rp/comments/'>Comments</a>"; } echo "  ";
+		if($rc_view == "status"){ $link_status = "<font color=#E89104>Status</font>"; }
+		else{ $link_status = "<a href='${site_url_link}rp/status/'>Status</a>"; };
+		if($rc_view == "sweets"){ $link_sweets = "<font color=#E89104>Sweets</font>"; }
+		else{ $link_sweets = "<a href='${site_url_link}rp/sweets/'>Sweets</a>"; };
+		if($rc_view == "comments"){ $link_comments = "<font color=#E89104>Comments</font>"; }
+		else{ $link_comments = "<a href='${site_url_link}rp/comments/'>Comments</a>"; };
 	}
 
-	echo "</td></tr><tr><td width='100%'  align='center' valign='top' class='content78'>";
+// Page title
+$stc_page_title = "$websiteName Newest Content";
+// Page Description
+$stc_page_description = "Welcome to $websiteName. - $websiteUrl";
+	
+// Run Header of page func
+style_header_content($stc_page_title, $stc_page_description);
+	
+	echo " <div class='epboxb'><center><strong> $link_status - $link_sweets - $link_comments</strong></center></div><br>";
 	require "pages/recentpost.inc";
-	echo "</td></tr></table>";
-
-	//if user is not logged in Show the signup form
-	if(isUserLoggedIn())
-	{} else {	
-		echo "<center><h3>";
-		echo "Welcome to ".$websiteName.".  Login or Register and Enjoy!";
-		echo "</h3></center>";
-
-	}
+	
+// Run Footer of page func
+style_footer_content();
 
  ?>

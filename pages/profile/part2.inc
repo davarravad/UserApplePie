@@ -1,11 +1,4 @@
 <style type="text/css">
-#ext_profile li {
-	float:left;
-	height:auto;
-	list-style:none outside;
-	width:200px;
-	text-align:center;
-}
 #img_thumb {
 	border:0;
 	outline:none;
@@ -68,90 +61,80 @@ if($num_rowsCKP2 != 0){
 		if(!empty($textfield)){
 				echo "<hr align='center' width='100%' />";
 				echo "<center>";
-				echo "<table><tr><td align='center'>";
+				echo "<table width='100%'><tr><td align='center'>";
 				
 				echo "<strong>More Information About ";
 				get_user_name($ID02);
 				echo "</strong>";
 				
 				echo "</td></tr><tr><td align='center'>";
-				echo "<ul id='ext_profile'>";
 
 				echo "
 					
-					<li class='epboxa' width='200'>
-						  <strong>:$textfield:</strong>
-						  <br>
+					<div class='epboxa' width='100%'>
+						  <div align='center' class='profile_about_title'><strong>:$textfield:</strong></div>
 						  $textarea
-					</li>
+					</div>
 					
 			";
 		}
 		if(!empty($textarea2)){
 			echo "
-				<li class='epboxa' width='200'> 
-					 <strong>:$textfield2:</strong>
-					  <br>
+				<div class='epboxa' width='100%'> 
+					 <div align='center' class='profile_about_title'><strong>:$textfield2:</strong></div>
 					  $textarea2
-					</li>
+					</div>
 			";
 		}
 		if(!empty($textarea3)){
 			echo "	
-				<li class='epboxa' width='200'> 
-					  <strong>:$textfield3:</strong>
-					  <br>
+				<div class='epboxa' width='100%'> 
+					  <div align='center' class='profile_about_title'><strong>:$textfield3:</strong></div>
 					  $textarea3
-					</li>
+					</div>
 			";
 		}
 		if(!empty($textarea4)){
 			echo "
-				<li class='epboxa' width='200'>
-					 <strong>:$textfield4:</strong>
-					  <br>
+				<div class='epboxa' width='100%'>
+					 <div align='center' class='profile_about_title'><strong>:$textfield4:</strong></div>
 					  $textarea4
-					</li>
+					</div>
 			";
 		}
 		if(!empty($textarea5)){
 			echo "
-			<li class='epboxa' width='200'>
-				  <strong>:$textfield5:</strong>
-				  <br>
+			<div class='epboxa' width='100%'>
+				  <div align='center' class='profile_about_title'><strong>:$textfield5:</strong></div>
 				  $textarea5
-				</li>
+				</div>
 			";
 		}
 		if(!empty($textarea6)){
 			echo "
-				<li class='epboxa' width='200'>
-				  <strong>:$textfield6:</strong>
-				  <br>
+				<div class='epboxa' width='100%'>
+				  <div align='center' class='profile_about_title'><strong>:$textfield6:</strong></div>
 				  $textarea6
-				</li>
+				</div>
 			";
 		}
 		if(!empty($textarea7)){
 			echo "
-			<li class='epboxa' width='200'>
-				 <strong>:$textfield7:</strong>
-				  <br>
+			<div class='epboxa' width='100%'>
+				<div align='center' class='profile_about_title'><strong>:$textfield7:</strong></div>
 				  $textarea7
-				</li>
+				</div>
 			";
 		}
 		if(!empty($textarea8)){
 			echo "
-				<li class='epboxa' width='200'>
-				  <strong>:$textfield8:</strong>
-				  <br>
+				<div class='epboxa' width='100%'>
+				  <div align='center' class='profile_about_title'><strong>:$textfield8:</strong></div>
 				  $textarea8
-				</li>
+				</div>
 			";
 		}
 		if(!empty($textfield)){
-			echo "</ul>";
 			echo "</td></tr></table>";
 			echo "</center>";
 		}

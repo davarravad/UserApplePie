@@ -75,9 +75,9 @@ echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td cla
 					get_user_name($ID02);
 
 				//Title and Description
-					//echo "<title>";
-					//get_user_name($ID02);
-					//echo "'s $websiteName Profile</title>";
+					echo "<title>";
+					get_user_name($ID02);
+					echo "'s Profile - $websiteName</title>";
 					echo "<meta name=\"description\" content=\"";
 					get_user_name($ID02);
 					echo "'s $websiteName Member Profile.\">";
