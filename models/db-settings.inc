@@ -11,8 +11,8 @@
 //Database Information
 $db_host = "localhost"; //Host address (most likely localhost)
 $db_name = "userapplepie"; //Name of Database
-$db_user = "userapplepie"; //Name of database user
-$db_pass = "JhGdhxFwdE4rSWUF"; //Password for database user
+$db_user = "user"; //Name of database user
+$db_pass = "password"; //Password for database user
 $db_table_prefix = "uap_";
 
 // Sets globals for sql with updated sql
