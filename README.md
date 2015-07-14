@@ -104,7 +104,7 @@ If not using default table prefix uc_ you will need to change it after import.
 
 UserApplePie created by: David Sargent aka DaVaR
 Vers: 0.0.1
-http://www.thedavar.net
+http://www.userapplepie.com/
    
 //--Credits for UserCake Backbone
 
