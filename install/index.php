@@ -534,30 +534,6 @@ if($install == "TRUE")
 	) ENGINE=MyISAM  DEFAULT CHARSET=latin1 PACK_KEYS=0 AUTO_INCREMENT=1 ;
 	";
 
-	$table_submit = "
-	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."submit` (
-	  `int` int(11) NOT NULL AUTO_INCREMENT,
-	  `usrida` int(15) NOT NULL,
-	  `veh_type` varchar(255) NOT NULL,
-	  `name` varchar(50) DEFAULT NULL,
-	  `year` varchar(255) DEFAULT NULL,
-	  `make` varchar(255) DEFAULT NULL,
-	  `model` varchar(255) DEFAULT NULL,
-	  `type` varchar(255) DEFAULT NULL,
-	  `engine` varchar(255) DEFAULT NULL,
-	  `color` varchar(255) NOT NULL,
-	  `content1` text,
-	  `content2` text,
-	  `content3` text,
-	  `content4` text,
-	  `youtube1` varchar(255) NOT NULL,
-	  `use` char(3) NOT NULL DEFAULT 'yes',
-	  `new` varchar(4) NOT NULL DEFAULT 'yes',
-	  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	  PRIMARY KEY (`int`)
-	) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-	";
-
 	$table_sweet = "
 	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."sweet` (
 	  `sid` int(10) NOT NULL AUTO_INCREMENT,
@@ -1006,17 +982,6 @@ if($install == "TRUE")
 	else
 	{
 		echo "<p>Error constructing ".$db_table_prefix."status table.....</p>";
-		$db_issue = true;
-	}
-	
-	$stmt = $mysqli->prepare($table_submit);
-	if($stmt->execute())
-	{
-		echo "<p>".$db_table_prefix."submit table created.....</p>";
-	}
-	else
-	{
-		echo "<p>Error constructing ".$db_table_prefix."submit table.....</p>";
 		$db_issue = true;
 	}
 	
