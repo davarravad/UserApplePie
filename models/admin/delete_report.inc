@@ -6,9 +6,12 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-if(isUserLoggedIn())
-{
-if(is_admin()){
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
+
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc != $demo_server_name_dc){
+
 
       if(isset($_POST['yes'])){ $yes = $_POST['yes']; }else{$yes = "";}
       $report_id = $_POST['report_id'];
@@ -103,11 +106,8 @@ if(is_admin()){
 				echo "$taz_backz</center>";
 
 	}
-
-}//end admin check
 }
-else {
-	notlogedinmsg();
-}	
+
+}
 
 ?>

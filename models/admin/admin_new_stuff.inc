@@ -8,8 +8,8 @@
 
 //This script gets all new information for admin and displays it in the welcome member section of main page
 
-//Make sure member is an Admin
-if(is_admin()){
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
 	echo " ( ";
 
 		

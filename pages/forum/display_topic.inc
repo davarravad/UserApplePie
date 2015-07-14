@@ -113,6 +113,9 @@
 				require('pages/forum/userimage_small.inc');
 				echo "<br><a href='${site_url_link}member/$f_p_user_id/'>$f_p_user_name</a> ";
 
+				// Set the author to meta
+				echo "<meta name='author' content='".$f_p_user_name."'>";
+				
 				//Show user's membership status
 				$up_get_mem_status = get_up_info_mem_status($ID02);
 				echo "<br> $up_get_mem_status ";

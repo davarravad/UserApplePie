@@ -6,12 +6,13 @@
 // http://usercake.com          //
 //////////////////////////////////
 
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
 
 require_once("models/config.inc");
-// Build Security for Current Page if Any
-$cur_page_get = "pages/".$_GET['page'].".inc";
-if (!securePage($cur_page_get)){die();}
 
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc != $demo_server_name_dc){
 //Forms posted
 if(!empty($_POST))
 {
@@ -43,6 +44,7 @@ if(!empty($_POST))
 			}
 		}
 	}
+}
 }
 
 $permissionData = fetchAllPermissions(); //Retrieve list of all permission levels
@@ -81,5 +83,7 @@ echo "
 </div>
 </body>
 </html>";
+
+}
 
 ?>

@@ -6,9 +6,8 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-if(isUserLoggedIn()){
-
-		if(is_admin()) {
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
 
 
 			echo "<center>";
@@ -19,16 +18,7 @@ if(isUserLoggedIn()){
 			echo "<br>";
 			require "models/admin/stats/members.inc";
 
-		}
-		else{
-			echo "Admin Only.";
-			exit();
-		}
+}
 
-	}
-	else{
-		notlogedinmsg();
-		exit();
-	}
 	
 ?>

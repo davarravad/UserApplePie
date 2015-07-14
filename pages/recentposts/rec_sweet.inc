@@ -40,424 +40,52 @@
 
 
 	//Display post for each sweeted post
-	////Vehicle Profile Start
-		if($sweet_location == "submit"){
-			// retrieve the row from the database
-			$querySAS2 = "SELECT * FROM `".$db_table_prefix."submit` WHERE `int`='$sweet_id' ";
-   
-			$resultSAS2 = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2 );
-			$num_row33 = mysqli_num_rows($resultSAS2);
-			if($num_row33 > 0){
 
-			// print out the results
-			if( $resultSAS2 && $contactSAS2 = mysqli_fetch_object( $resultSAS2 ) )
-			{
-				$int = $contactSAS2 -> int;	
-				$usrida = $contactSAS2 -> usrida;	
-				$name = $contactSAS2 -> name;	
-				$color = $contactSAS2 -> color;	
-				$year = $contactSAS2 -> year;	
-				$make = $contactSAS2 -> make;	
-				$model = $contactSAS2 -> model;	
-				$type = $contactSAS2 -> type; 
-				$sw_u_timestamp = $contactSAS2 -> timestamp;
-			}
-
-			$color = stripslashes($color);
-			$model = stripslashes($model);
-
-			//Display how long ago this was posted
-			unset($timestart);
-			$timestart = "$sweet_timestamp";  //Time of post
-			require_once "models/timediff.inc";
-			$sweet_timestamp_ago = " " . dateDiff("now", "$timestart", 1) . " ago ";
+	////Forum Topic Sweet Start
+		if($sweet_location == "forum_posts"){
 			
-			$ID02 = $sweet_userid;
-			require('pages/recentposts/userimage_small.inc');
-			$sw_user_sweeted =  "<table width=100% height=18><tr><td align=left>$sw_user_sweeted_pic <strong> $sw_usernameB sweeted... </strong></td><td align=right>$sweet_timestamp_ago</td></tr></table><hr>";
-			unset($timestart, $timestamp);
-			$timestamp = $sw_u_timestamp;
-			require "pages/recentposts/rec_veh_pro.inc";
+			$query_RP_FP = "SELECT * FROM `".$db_table_prefix."forum_posts` WHERE `forum_post_id`='$sweet_id' ";
 
-			}else{
-				//content missing, now to delete sweet from database
-
-	
-				//echo " - Content missing, Sweet to be removed ( $sid ) current url= $cur_pageURL - ";
-					$queryUS = "DELETE FROM `".$db_table_prefix."sweet` WHERE `sid`='$sid' LIMIT 1";
-					$resultsUS = mysqli_query($GLOBALS["___mysqli_ston"], $queryUS);
-
-					// print out the results
-					if( $resultsUS )
-					{
-						//echo( "Successfully deleted the entry.<br><br>" );
-						//Disables auto refresh for debug stuff
-						if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
-							echo "<meta HTTP-EQUIV='REFRESH' content='0; url='$cur_pageURL>";
-						}
-					}
-
-			}
-			unset($num_row33);
-
-
-		}
-	////Vehicle Profile End
-	
-	////Club Start
-		if($sweet_location == "clubview"){
-			// retrieve the row from the database
-			$querySAS2 = "SELECT * FROM `".$db_table_prefix."club` WHERE `club_id`='$sweet_id' ";
-   
-			$resultSAS2 = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2 );
-			$num_row33 = mysqli_num_rows($resultSAS2);
-			if($num_row33 > 0){
-
-			// print out the results
-			if( $resultSAS2 && $contactSAS2 = mysqli_fetch_object( $resultSAS2 ) )
-			{
-				$int = $contactSAS2 -> club_id;	
-				$usrida = $contactSAS2 -> club_admin1;	
+			if($result_RP_FP = $mysqli->query($query_RP_FP)){
+				$arr_RP_FP = $result_RP_FP->fetch_all(MYSQLI_BOTH);
+				foreach($arr_RP_FP as $row_RP_FP)
+				{
+					$f_p_id = $row_RP_FP['forum_post_id'];
+					$f_p_id_cat = $row_RP_FP['forum_id'];
+					$f_p_title = $row_RP_FP['forum_title'];
+					$f_p_timestamp = $row_RP_FP['forum_timestamp'];
+					$f_p_user_id = $row_RP_FP['forum_user_id'];
+					$f_p_status = $row_RP_FP['forum_status'];
+					$tstamp = $row_RP_FP['forum_timestamp'];
+					$f_p_user_name = get_user_name_2($f_p_user_id);
 					
-				$color = $contactSAS2 -> club_name;	
-				$year = $contactSAS2 -> club_city;	
-				$make = $contactSAS2 -> club_state;	
-				$model = $contactSAS2 -> club_about;	
-				$type = $contactSAS2 -> club_privacy; 
-				$sw_u_timestamp = $contactSAS2 -> timestamp;
+					$f_p_title = stripslashes($f_p_title);
+
+
+					//Display how long ago this was posted
+					unset($timestart);
+					$timestart = "$sweet_timestamp";  //Time of post
+					require_once "models/timediff.inc";
+					$sweet_timestamp_ago = " " . dateDiff("now", "$timestart", 1) . " ago ";
+					
+					$ID02 = $sweet_userid;
+					echo "<table width='100%' class='$bgcolor'>";
+					echo "<tr><td>";
+					echo "<a href='${site_url_link}member/$ID02/'>";
+						require "pages/profile/userimage_small.inc";
+					echo "</a>";
+					echo "<strong> $sw_usernameB sweeted a Forum Topic..";
+					echo "</td><td align=right>$sweet_timestamp_ago</td></tr>";
+					echo "<tr><td colspan='2'> <hr>";
+					echo "<a href='$sweet_url'>$f_p_title</a>. </strong>";
+					echo "</td></tr></table><br>";
+					unset($timestart, $timestamp);
+				}
 			}
-
-			$color = stripslashes($color);
-			$model = stripslashes($model);
-
-			//Display how long ago this was posted
-			unset($timestart);
-			$timestart = "$sweet_timestamp";  //Time of post
-			require_once "models/timediff.inc";
-			$sweet_timestamp_ago = " " . dateDiff("now", "$timestart", 1) . " ago ";
-			
-			$ID02 = $sweet_userid;
-			require('pages/recentposts/userimage_small.inc');
-			$sw_user_sweeted =  "<table width=100% height=18><tr><td align=left>$sw_user_sweeted_pic <strong> $sw_usernameB sweeted... </strong></td><td align=right>$sweet_timestamp_ago</td></tr></table><hr>";
-			unset($timestart, $timestamp);
-			$timestamp = $sw_u_timestamp;
-			require "pages/recentposts/rec_club.inc";
-
-			}else{
-				//content missing, now to delete sweet from database
-
-	
-				//echo " - Content missing, Sweet to be removed ( $sid ) current url= $cur_pageURL - ";
-					$queryUS = "DELETE FROM `".$db_table_prefix."sweet` WHERE `sid`='$sid' LIMIT 1";
-					$resultsUS = mysqli_query($GLOBALS["___mysqli_ston"], $queryUS);
-
-					// print out the results
-					if( $resultsUS )
-					{
-						//echo( "Successfully deleted the entry.<br><br>" );
-						//Disables auto refresh for debug stuff
-						if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
-							echo "<meta HTTP-EQUIV='REFRESH' content='0; url='$cur_pageURL>";
-						}
-					}
-
-			}
-			unset($num_row33);
-
+			unset($arr2);
 		}
-	////Club End
-	
-	////Vehicle Pic Start
-		if($sweet_location == "art"){
-			// retrieve the row from the database
-			$querySAS2 = "SELECT * FROM `".$db_table_prefix."art` WHERE `id`='$sweet_id' ";
-   
-			$resultSAS2 = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2 );
-			$num_row33 = mysqli_num_rows($resultSAS2);
-			if($num_row33 > 0){
-			// print out the results
-			if( $resultSAS2 && $contactSAS2 = mysqli_fetch_object( $resultSAS2 ) )
-			{
-				$int = $contactSAS2 -> id;	
-				$usrida = $contactSAS2 -> usrida;	
-				$name = $contactSAS2 -> name;	
-				$color = $contactSAS2 -> type;	
-				$year = $contactSAS2 -> title;	
-				$make = $contactSAS2 -> imgname;	
-				$model = $contactSAS2 -> content1;	
-				$type = $contactSAS2 -> vehicle_id; 
-				$sw_u_timestamp = $contactSAS2 -> timestamp;
-			}
+	////Forum Topic Sweet End
 
-			$color = stripslashes($color);
-			$model = stripslashes($model);
-
-			//Display how long ago this was posted
-			unset($timestart);
-			$timestart = "$sweet_timestamp";  //Time of post
-			require_once "models/timediff.inc";
-			$sweet_timestamp_ago = " " . dateDiff("now", "$timestart", 1) . " ago ";
-			
-			$ID02 = $sweet_userid;
-			require('pages/recentposts/userimage_small.inc');
-			$sw_user_sweeted =  "<table width=100% height=18><tr><td align=left>$sw_user_sweeted_pic <strong> $sw_usernameB sweeted... </strong></td><td align=right>$sweet_timestamp_ago</td></tr></table><hr>";
-			$timestamp = $sw_u_timestamp;
-			require "pages/recentposts/rec_veh_pic.inc";
-			unset($sw_u_timestamp, $sweet_timestamp);
-			unset($timestart, $timestamp);
-			}else{
-				//content missing, now to delete sweet from database
-
-	
-				//echo " - Content missing, Sweet to be removed ( $sid ) current url= $cur_pageURL - ";
-					$queryUS = "DELETE FROM `".$db_table_prefix."sweet` WHERE `sid`='$sid' LIMIT 1";
-					$resultsUS = mysqli_query($GLOBALS["___mysqli_ston"], $queryUS);
-
-					// print out the results
-					if( $resultsUS )
-					{
-						//echo( "Successfully deleted the entry.<br><br>" );
-						//Disables auto refresh for debug stuff
-						if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
-							echo "<meta HTTP-EQUIV='REFRESH' content='0; url='$cur_pageURL>";
-						}
-					}
-
-			}
-			unset($num_row33);
-		}
-	////Vehicle Pic End
-
-	//Display post for each sweeted comment post
-	////Vehicle Profile Comment Start
-		if($sweet_location == "vpcom"){
-			// retrieve the row from the database
-			$querySAS2 = "SELECT * FROM `".$db_table_prefix."submit` WHERE `int`='$sweet_sec_id' ";
-   
-			$resultSAS2 = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2 );
-			$num_row33 = mysqli_num_rows($resultSAS2);
-
-			//Check to see if comment exist
-			//echo " ( $sweet_url ... $sweet_id ) ";
-			$querySAS2B = "SELECT * FROM `writingcomments` WHERE `id`='$sweet_id' ";
-			$resultSAS2B = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2B );
-			$num_row33B = mysqli_num_rows($resultSAS2B);
-			//echo " ( $num_row33 ... $num_row33B ) ";
-
-			if($num_row33 > 0 && $num_row33B > 0){
-
-			// print out the results
-			if( $resultSAS2 && $contactSAS2 = mysqli_fetch_object( $resultSAS2 ) )
-			{
-				$int = $contactSAS2 -> int;	
-				$usrida = $contactSAS2 -> usrida;	
-				$name = $contactSAS2 -> name;	
-				$color = $contactSAS2 -> color;	
-				$year = $contactSAS2 -> year;	
-				$make = $contactSAS2 -> make;	
-				$model = $contactSAS2 -> model;	
-				$type = $contactSAS2 -> type; 
-				$sw_u_timestamp = $contactSAS2 -> timestamp;
-			}
-
-			$color = stripslashes($color);
-			$model = stripslashes($model);
-
-			//Display how long ago this was posted
-			unset($timestart);
-			$timestart = "$sweet_timestamp";  //Time of post
-			require_once "models/timediff.inc";
-			$sweet_timestamp_ago = " " . dateDiff("now", "$timestart", 1) . " ago ";
-			
-			$ID02 = $sweet_userid;
-			require('pages/recentposts/userimage_small.inc');
-			$sw_user_sweeted =  "<table width=100% height=18><tr><td align=left>
-					$sw_user_sweeted_pic <strong> $sw_usernameB sweeted a <a href='$sweet_url'>comment</a> on... </strong>
-					</td><td align=right>$sweet_timestamp_ago</td></tr></table><hr>";
-			unset($timestart, $timestamp);
-			$timestamp = $sw_u_timestamp;
-			//$int = $sweet_owner_userid;
-			require "pages/recentposts/rec_veh_pro.inc";
-
-
-			}else{
-				//content missing, now to delete sweet from database
-
-	
-				//echo " - Content missing, Sweet to be removed ( $sid ) current url= $cur_pageURL - ";
-					$queryUS = "DELETE FROM `".$db_table_prefix."sweet` WHERE `sid`='$sid' LIMIT 1";
-					$resultsUS = mysqli_query($GLOBALS["___mysqli_ston"], $queryUS);
-
-					// print out the results
-					if( $resultsUS )
-					{
-						//echo( "Successfully deleted the entry.<br><br>" );
-						//Disables auto refresh for debug stuff
-						if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
-							echo "<meta HTTP-EQUIV='REFRESH' content='0; url='$cur_pageURL>";
-						}
-					}
-
-			}
-			unset($num_row33);
-
-
-		}
-	////Vehicle Profile Comment End
-	
-	////Club Comment Start
-		if($sweet_location == "club"){
-			// retrieve the row from the database
-			$querySAS2 = "SELECT * FROM `".$db_table_prefix."club` WHERE `club_id`='$sweet_sec_id' ";
-   
-			$resultSAS2 = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2 );
-			$num_row33 = mysqli_num_rows($resultSAS2);
-
-			//Check to see if comment exist
-			//echo " ( $sweet_url ... $sweet_id ) ";
-			$querySAS2B = "SELECT * FROM `clubcomments` WHERE `id`='$sweet_id' ";
-			$resultSAS2B = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2B );
-			$num_row33B = mysqli_num_rows($resultSAS2B);
-
-			//echo " ( $num_row33 ... $num_row33B ) ";
-
-			if($num_row33 > 0 && $num_row33B > 0){			
-
-			// print out the results
-			if( $resultSAS2 && $contactSAS2 = mysqli_fetch_object( $resultSAS2 ) )
-			{
-				$int = $contactSAS2 -> club_id;	
-				$usrida = $contactSAS2 -> club_admin1;	
-				$color = $contactSAS2 -> club_name;	
-				$year = $contactSAS2 -> club_city;	
-				$make = $contactSAS2 -> club_state;	
-				$model = $contactSAS2 -> club_about;	
-				$type = $contactSAS2 -> club_privacy; 
-				$sw_u_timestamp = $contactSAS2 -> timestamp;
-			}
-
-			$color = stripslashes($color);
-			$model = stripslashes($model);
-
-			//Display how long ago this was posted
-			unset($timestart);
-			$timestart = "$sweet_timestamp";  //Time of post
-			require_once "models/timediff.inc";
-			$sweet_timestamp_ago = " " . dateDiff("now", "$timestart", 1) . " ago ";
-			
-			$ID02 = $sweet_userid;
-			require('pages/recentposts/userimage_small.inc');
-			$sw_user_sweeted =  "<table width=100% height=18><tr><td align=left>
-					$sw_user_sweeted_pic <strong> $sw_usernameB sweeted a <a href='$sweet_url'>comment</a> on... </strong>
-					</td><td align=right>$sweet_timestamp_ago</td></tr></table><hr>";
-			unset($timestart, $timestamp);
-			$timestamp = $sw_u_timestamp;
-			require "pages/recentposts/rec_club.inc";
-
-
-			}else{
-				//content missing, now to delete sweet from database
-
-	
-				
-					$queryUS = "DELETE FROM `".$db_table_prefix."sweet` WHERE `sid`='$sid' LIMIT 1";
-					$resultsUS = mysqli_query($GLOBALS["___mysqli_ston"], $queryUS);
-
-					// print out the results
-					if( $resultsUS )
-					{
-						//echo( "Successfully deleted the entry.<br><br>" );
-						//Disables auto refresh for debug stuff
-						if($debug_website == 'TRUE'){ 
-							echo " - Content missing, Sweet to be removed ( $sid ) current url= $cur_pageURL - ";
-							echo "<br> - DEBUG SITE ON - <BR>"; 
-						}else{
-							echo "<meta HTTP-EQUIV='REFRESH' content='0; url='$cur_pageURL>";
-						}
-					}
-
-			}
-			unset($num_row33);
-
-
-		}
-	////Club Comment End
-	
-	////Vehicle Pic Comment Start
-		if($sweet_location == "artcom"){
-			// retrieve the row from the database
-			$querySAS2 = "SELECT * FROM `".$db_table_prefix."art` WHERE `id`='$sweet_sec_id' ";
-   
-			$resultSAS2 = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2 );
-			$num_row33 = mysqli_num_rows($resultSAS2);
-
-			//Check to see if comment exist
-			//echo " ( $sweet_url ... $sweet_id ) ";
-			$querySAS2B = "SELECT * FROM `artcomments` WHERE `id`='$sweet_id' ";
-			$resultSAS2B = mysqli_query($GLOBALS["___mysqli_ston"],  $querySAS2B );
-			$num_row33B = mysqli_num_rows($resultSAS2B);
-			//echo " ( $num_row33 ... $num_row33B ) ";
-
-			if($num_row33 > 0 && $num_row33B > 0){
-			
-			// print out the results
-			if( $resultSAS2 && $contactSAS2 = mysqli_fetch_object( $resultSAS2 ) )
-			{
-				$int = $contactSAS2 -> id;	
-				$usrida = $contactSAS2 -> usrida;	
-				$name = $contactSAS2 -> name;	
-				$color = $contactSAS2 -> type;	
-				$year = $contactSAS2 -> title;	
-				$make = $contactSAS2 -> imgname;	
-				$model = $contactSAS2 -> content1;	
-				$type = $contactSAS2 -> vehicle_id; 
-				$sw_u_timestamp = $contactSAS2 -> timestamp;
-			}
-
-			$color = stripslashes($color);
-			$model = stripslashes($model);
-
-			//Display how long ago this was posted
-			unset($timestart);
-			$timestart = "$sweet_timestamp";  //Time of post
-			require_once "models/timediff.inc";
-			$sweet_timestamp_ago = " " . dateDiff("now", "$timestart", 1) . " ago ";
-			
-			$ID02 = $sweet_userid;
-			require('pages/recentposts/userimage_small.inc');
-			$sw_user_sweeted =  "<table width=100% height=18><tr><td align=left>
-					$sw_user_sweeted_pic <strong> $sw_usernameB sweeted a <a href='$sweet_url'>comment</a> on... </strong>
-					</td><td align=right>$sweet_timestamp_ago</td></tr></table><hr>";
-			unset($timestart, $timestamp);
-			$timestamp = $sw_u_timestamp;
-			require "pages/recentposts/rec_veh_pic.inc";
-
-			}else{
-				//content missing, now to delete sweet from database
-
-	
-				
-					$queryUS = "DELETE FROM `".$db_table_prefix."sweet` WHERE `sid`='$sid' LIMIT 1";
-					$resultsUS = mysqli_query($GLOBALS["___mysqli_ston"], $queryUS);
-
-					// print out the results
-					if( $resultsUS )
-					{
-						//echo( "Successfully deleted the entry.<br><br>" );
-						//Disables auto refresh for debug stuff
-						if($debug_website == 'TRUE'){
-							echo "<br> - DEBUG SITE ON - <BR>"; 
-							echo " - Content missing, Sweet to be removed ( $sid ) current url= $cur_pageURL - ";
-						}else{
-							echo "<meta HTTP-EQUIV='REFRESH' content='0; url='$cur_pageURL>";
-						}
-					}
-
-			}
-			unset($num_row33);
-
-		}
-	////Vehicle Pic Comment End
 
 	////Profile Comment Start
 		if($sweet_location == "profile"){
@@ -496,7 +124,7 @@
 			$sw_usernameC = "<a href='${site_url_link}member/$sweet_sec_id'>$sw_usernameB</a>";
 
 
-			echo "<table width=$tblw500>";
+			echo "<table width='100%'>";
 			echo "<tr><td class='$bgcolor'>";
 			echo "$sw_user_sweeted";
 			$ID02 = $sweet_sec_id;

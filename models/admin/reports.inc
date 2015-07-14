@@ -6,6 +6,9 @@
 // http://usercake.com          //
 //////////////////////////////////
 
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
+
 echo "<center>";
 	echo "<strong>Admin Zone - ".$websiteName." Reports</strong>"; 
 	echo "</center><br><Br>";
@@ -45,7 +48,7 @@ while ($row = mysqli_fetch_array($result))
 echo "</table>";
 
 
-
+}
 
 
 ?>

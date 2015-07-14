@@ -6,11 +6,10 @@
 // http://usercake.com          //
 //////////////////////////////////
 
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
 
-require_once("models/config.inc");
-// Build Security for Current Page if Any
-$cur_page_get = "pages/".$_GET['page'].".inc";
-if (!securePage($cur_page_get)){die();}
+
 $userId = $_GET['id'];
 
 //Check if selected user exists
@@ -20,6 +19,8 @@ if(!userIdExists($userId)){
 
 $userdetails = fetchUserDetails(NULL, NULL, $userId); //Fetch user details
 
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc != $demo_server_name_dc){
 //Forms posted
 if(!empty($_POST))
 {	
@@ -64,17 +65,6 @@ if(!empty($_POST))
 		else {
 			$displayname = $userdetails['display_name'];
 		}
-
-// Test Edit	
-//		//Activate account
-//		if(isset($_POST['activate']) && $_POST['activate'] == "activate"){
-//			if (setUserActive($userdetails['activation_token'])){
-//				$successes[] = lang("ACCOUNT_MANUALLY_ACTIVATED", array($displayname));
-//			}
-//			else {
-//				$errors[] = lang("SQL_ERROR");
-//			}
-//		}
 
 		//Activate account
 		if(isset($_POST['activate']) && $_POST['activate'] == "activate"){
@@ -161,6 +151,7 @@ if(!empty($_POST))
 		
 		$userdetails = fetchUserDetails(NULL, NULL, $userId);
 	}
+}
 }
 
 $userPermission = fetchUserPermissions($userId);
@@ -278,5 +269,7 @@ echo"
 </div>
 </body>
 </html>";
+
+}
 
 ?>

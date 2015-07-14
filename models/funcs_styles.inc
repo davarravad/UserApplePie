@@ -15,7 +15,9 @@ function style_header_content($stc_page_title, $stc_page_description){
 
 	// Title and Description
 	echo "<title>$stc_page_title</title>";
-	echo "<meta name=\"description\" content=\"$stc_page_description\">";
+	if(!empty($stc_page_description)){
+		echo "<meta name=\"description\" content=\"$stc_page_description\">";
+	}
 	
 	// Start the top of the content
 	echo "<center>";

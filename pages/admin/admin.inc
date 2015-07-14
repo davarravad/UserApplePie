@@ -6,11 +6,13 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-if(isUserLoggedIn()){
+if(isUserLoggedIn() && is_admin()) {
 
-		if(is_admin()) {
-
-
+// Current Server Name
+$cur_server_name_dc = $_SERVER['SERVER_NAME'];
+// Demo Server Name: 
+$demo_server_name_dc = "demo.userapplepie.com";
+	
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
 	echo "Admin Manage Site System"; 
 	echo "</td></tr>";
@@ -78,17 +80,11 @@ if(isUserLoggedIn()){
 	echo "</center></td></tr></table>";
 	echo "</center><br>";
 
-		}
-		else{
-			echo "Admin Only.";
-			exit();
-		}
-
-	}
-	else{
-		notlogedinmsg();
-		exit();
-	}
+}
+else{
+	echo "Admin Only.";
+	exit();
+}
 
 
 ?>

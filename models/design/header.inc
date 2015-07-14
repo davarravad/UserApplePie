@@ -114,11 +114,10 @@ echo "<div class='logo'>";
 	</td></tr><tr><td height='25px' align='left' valign='middle' class='header_links' width='100%'>
 
 		<ul id='MenuBar1' class='MenuBarHorizontal'>
-		  <li><a href='${site_url_link}' title='Home' class='MenuBarItemSubmenu'>Home</a>
-		  </li>
-	 
-
-		<li><a href='${site_url_link}Forum/' title='Forum'>Forum</a></li>
+			<li><a href='${site_url_link}' title='Home' class='MenuBarItemSubmenu'>Home</a></li>
+			<li><a href='${site_url_link}Downloads/' title='Downloads'>Downloads</a></li>
+			<li><a href='${site_url_link}Docs/' title='Docs'>Docs</a></li>
+			<li><a href='${site_url_link}Forum/' title='Forum'>Forum</a></li>
 	";
 	if(isUserLoggedIn()){ 
 	$user_displayname = get_up_info_mem_disp_name($userIdme);
@@ -180,11 +179,11 @@ echo "<div class='logo'>";
 				<li><a href='${site_url_link}editprofilemain/account_email/' title='Change Your Privacy and Email Settings'>Privacy Settings</a></li>
 			</ul>
 		  </li>
-		  <li><a href='${site_url_link}logout/' title='Logout from Site'>Logout</a></li>
+		  <li><a href='${site_url_link}logout/' title='Logout'>Logout</a></li>
 	";}else{
 	echo "
-		<li><a href='${site_url_link}Login/' title='Logout from Site'>Login</a></li>
-		<li><a href='${site_url_link}Register/' title='Logout from Site'>Register</a></li>
+		<li><a href='${site_url_link}Login/' title='Login'>Login</a></li>
+		<li><a href='${site_url_link}Register/' title='Register'>Register</a></li>
 	";
 	}
 	echo "

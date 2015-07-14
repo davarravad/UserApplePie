@@ -7,11 +7,11 @@
 //////////////////////////////////
 
 
-require_once("models/config.inc");
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
 
-// Build Security for Current Page if Any
-$cur_page_get = "pages/".$_GET['page'].".inc";
-if (!securePage($cur_page_get)){die();}
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc != $demo_server_name_dc){
 
 //Forms posted
 if(!empty($_POST))
@@ -23,6 +23,8 @@ if(!empty($_POST))
 	else {
 		$errors[] = lang("SQL_ERROR");
 	}
+}
+
 }
 
 $userData = fetchAllUsers(); //Fetch information for all users
@@ -71,5 +73,7 @@ echo "
 </div>
 </body>
 </html>";
+
+}
 
 ?>

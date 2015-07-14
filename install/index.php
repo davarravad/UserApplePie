@@ -216,7 +216,7 @@ if($install == "TRUE")
 	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."configuration` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(150) NOT NULL,
-	`value` varchar(150) NOT NULL,
+	`value` text NOT NULL,
 	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 	";

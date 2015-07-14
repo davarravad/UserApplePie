@@ -6,10 +6,8 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-if(isUserLoggedIn()){
-
-		if(is_admin()) {
-
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
 
 	echo "<center>";
 	echo "<strong>Admin Zone - ".$websiteName." Errors</strong>"; 
@@ -59,18 +57,7 @@ while ($row = mysqli_fetch_array($result))
 
 
 
-		}
-		else{
-			echo "Admin Only.";
-			exit();
-		}
-
-	}
-	else{
-		notlogedinmsg();
-		exit();
-	}
-
+}
 
 ?>
 

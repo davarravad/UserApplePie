@@ -6,10 +6,9 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-require_once("models/config.inc");
-// Build Security for Current Page if Any
-$cur_page_get = "pages/".$_GET['page'].".inc";
-if (!securePage($cur_page_get)){die();}
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
+
 $pageId = $_GET['id'];
 
 //Check if selected pages exist
@@ -19,6 +18,8 @@ if(!pageIdExists($pageId)){
 
 $pageDetails = fetchPageDetails($pageId); //Fetch information specific to page
 
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc != $demo_server_name_dc){
 //Forms posted
 if(!empty($_POST)){
 	$update = 0;
@@ -69,6 +70,7 @@ if(!empty($_POST)){
 	}
 	
 	$pageDetails = fetchPageDetails($pageId);
+}
 }
 
 $pagePermissions = fetchPagePermissions($pageId);
@@ -147,5 +149,7 @@ echo"
 </div>
 </body>
 </html>";
+
+}
 
 ?>

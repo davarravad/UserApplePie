@@ -6,11 +6,8 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-
-require_once("models/config.inc");
-// Build Security for Current Page if Any
-$cur_page_get = "pages/".$_GET['page'].".inc";
-if (!securePage($cur_page_get)){die();}
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
 
 $pages = getPageFiles(); //Retrieve list of pages in root usercake folder
 $dbpages = fetchAllPages(); //Retrieve list of pages in pages table
@@ -83,5 +80,7 @@ echo "
 </div>
 </body>
 </html>";
+
+}
 
 ?>

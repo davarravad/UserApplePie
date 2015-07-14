@@ -23,7 +23,9 @@ if(isUserLoggedIn() && is_admin()){
 	global $mysqli, $db_table_prefix, $websiteUrl;
 	
 	if($save == 'save'){
-
+	//Check to see is site is demo site.  If so disable editing.
+	if($cur_server_name_dc != $demo_server_name_dc){
+		
 		if(isset($_POST['adminID'])){ $adminID = $_REQUEST['adminID']; }else{ $adminID = ""; }
 		if(isset($_POST['adminuser'])){ $adminuser = $_REQUEST['adminuser']; }else{ $adminuser = ""; }
 		if(isset($_POST['admincontent'])){ $admincontent = $_REQUEST['admincontent']; }else{ $admincontent = ""; }
@@ -103,7 +105,7 @@ if(isUserLoggedIn() && is_admin()){
 			header("Location: $form_redir_link");
 			exit;
 		}
-	
+	}
 	}else{
 	
 		$user_disp_name = get_up_info_mem_disp_name($userId);

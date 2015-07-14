@@ -30,114 +30,137 @@ unset($timestamp, $userId);
 		require "pages/my/status/commentnew.inc";
 		echo "<br>";
 
-//Status Comments		
-$q_status = "
-(SELECT 
-st.timestamp, 
-st.id, 
-st.com_uid, 
-st.com_name, 
-st.com_content, 
-st.com_id, 
-fr.userId1, 
-fr.userId2, 
-fr.status1, 
-fr.status2, 
-'status' AS post_type FROM ".$db_table_prefix."status st
-LEFT JOIN ".$db_table_prefix."friend fr
-ON (st.com_id = fr.userId1 AND fr.userId2 = $userIdme)
-OR (st.com_id = fr.userId2 AND fr.userId1 = $userIdme)
-WHERE fr.status1 = '1' AND fr.status2 = '1'
-OR st.com_id = '$userIdme'
-GROUP BY st.id)
-";
+		// Order of data selected as from database
+		// AS RP_01 - AS RP_02 - AS RP_03 - AS RP_04 - AS RP_05 - AS RP_06 - AS RP_07 - AS RP_08 - AS RP_09 - AS RP_10
+		
+		// Get recent status comments
+		$q_status = "
+		(SELECT 
+			st.timestamp AS RP_01, 
+			st.id AS RP_02, 
+			st.com_uid AS RP_03, 
+			st.com_name AS RP_04, 
+			st.com_content AS RP_05, 
+			st.com_id AS RP_06, 
+			fr.userId1 AS RP_07, 
+			fr.userId2 AS RP_08, 
+			fr.status1 AS RP_09, 
+			fr.status2 AS RP_10, 
+			'status' AS post_type 
+		FROM ".$db_table_prefix."status st
+			LEFT JOIN ".$db_table_prefix."friend fr
+				ON (st.com_id = fr.userId1 AND fr.userId2 = $userIdme)
+				OR (st.com_id = fr.userId2 AND fr.userId1 = $userIdme)
+			WHERE fr.status1 = '1' AND fr.status2 = '1'
+				OR st.com_id = '$userIdme'
+			GROUP BY st.id)
+		";
 
-//Status Comments Sub Comments
-$q_status_com = "
-(SELECT 
-	sc.timestamp, sc.id, sc.statcom_uid, sc.statcom_name, 
-	sc.statcom_content, sc.statcom_id, 
-	f.userId1, f.userId2, f.status1, f.status2, 
-	'statcom' AS post_type 
-FROM ".$db_table_prefix."statcom sc
-	JOIN (SELECT statcom_id,MAX(timestamp) timestamp
-			FROM ".$db_table_prefix."statcom GROUP BY statcom_id) t
-		ON t.statcom_id = sc.statcom_id
-		AND t.timestamp = sc.timestamp
-	LEFT JOIN ".$db_table_prefix."friend f
-		ON (sc.statcom_uid = f.userId1 AND f.userId2 = $userIdme)
-		OR (sc.statcom_uid = f.userId2 AND f.userId1 = $userIdme)
-	WHERE f.status1 = '1' AND f.status2 = '1'
-		OR sc.statcom_uid = '$userIdme'
-		GROUP BY sc.statcom_id)
-";
+		// Get Recent Status Comment Sub Comments
+		$q_status_com = "
+		(SELECT 
+			sc.timestamp AS RP_01, 
+			sc.id AS RP_02, 
+			sc.statcom_uid AS RP_03, 
+			sc.statcom_name AS RP_04, 
+			sc.statcom_content AS RP_05, 
+			sc.statcom_id AS RP_06, 
+			f.userId1 AS RP_07, 
+			f.userId2 AS RP_08, 
+			f.status1 AS RP_09, 
+			f.status2 AS RP_10, 
+			'statcom' AS post_type 
+		FROM ".$db_table_prefix."statcom sc
+			JOIN (SELECT statcom_id,MAX(timestamp) timestamp
+					FROM ".$db_table_prefix."statcom GROUP BY statcom_id) t
+				ON t.statcom_id = sc.statcom_id
+				AND t.timestamp = sc.timestamp
+			LEFT JOIN ".$db_table_prefix."friend f
+				ON (sc.statcom_uid = f.userId1 AND f.userId2 = $userIdme)
+				OR (sc.statcom_uid = f.userId2 AND f.userId1 = $userIdme)
+			WHERE f.status1 = '1' AND f.status2 = '1'
+				OR sc.statcom_uid = '$userIdme'
+			GROUP BY sc.statcom_id)
+		";
 
-//Sweets
-$s_status = "
-(SELECT swe.timestamp, swe.sid, 
-swe.sweet_location, swe.sweet_sec_id, 
-swe.sweet_owner_userid, swe.sweet_userid, 
-fri.userId1, fri.userId2, 
-fri.status1, fri.status2,
-'sweet' AS post_type FROM ".$db_table_prefix."sweet swe
-LEFT JOIN ".$db_table_prefix."friend fri
-ON (swe.sweet_userid = fri.userId1 AND fri.userId2 = $userIdme)
-OR (swe.sweet_userid = fri.userId2 AND fri.userId1 = $userIdme)
-WHERE ( fri.status1 = '1' AND fri.status2 = '1'
-OR swe.sweet_userid = '$userIdme' )
-AND NOT swe.sweet_location = 'status' AND NOT swe.sweet_location = 'statuscom'
-AND NOT swe.sweet_location = 'profilecomments_b' AND NOT swe.sweet_location = 'writingcomments_b'
-AND NOT swe.sweet_location = 'artcomments_b' AND NOT swe.sweet_location = 'club_events_com' 
-AND NOT swe.sweet_location = 'clubevent' AND NOT swe.sweet_location = 'club_events_com_b' 
-AND NOT swe.sweet_location = 'profilecomments' AND NOT swe.sweet_location = 'clubcomments'
-AND NOT swe.sweet_location = 'clubcomments_b' AND NOT swe.sweet_location = 'artcomments'
-AND NOT swe.sweet_location = 'writingcomments' AND NOT swe.sweet_location = 'locations'
-AND NOT swe.sweet_location = 'location_comments' AND NOT swe.sweet_location = 'location_comments_b'
-AND NOT swe.sweet_location = 'forum_posts' AND NOT swe.sweet_location = 'forum_posts_replys'
-AND NOT swe.sweet_location = 'showevent'
-GROUP BY swe.sid)
-";
+		// Get Recent Sweets
+		$s_status = "
+		(SELECT 
+			swe.timestamp AS RP_01, 
+			swe.sid AS RP_02, 
+			swe.sweet_location AS RP_03, 
+			swe.sweet_sec_id AS RP_04, 
+			swe.sweet_owner_userid AS RP_05, 
+			swe.sweet_userid AS RP_06, 
+			fri.userId1 AS RP_07, 
+			fri.userId2 AS RP_08, 
+			fri.status1 AS RP_09, 
+			fri.status2 AS RP_10,
+			'sweet' AS post_type 
+		FROM ".$db_table_prefix."sweet swe
+			LEFT JOIN ".$db_table_prefix."friend fri
+				ON (swe.sweet_userid = fri.userId1 AND fri.userId2 = $userIdme)
+				OR (swe.sweet_userid = fri.userId2 AND fri.userId1 = $userIdme)
+			WHERE ( fri.status1 = '1' AND fri.status2 = '1'
+				OR swe.sweet_userid = '$userIdme' )
+				AND NOT swe.sweet_location = 'status' 
+				AND NOT swe.sweet_location = 'statuscom'
+				AND NOT swe.sweet_location = 'profilecomments_b' 
+				AND NOT swe.sweet_location = 'writingcomments_b'
+				AND NOT swe.sweet_location = 'profilecomments'
+				AND NOT swe.sweet_location = 'forum_posts_replys'
+			GROUP BY swe.sid)
+		";
 
-//Profile Comments
-$pc_status = "
-(SELECT procom.timestamp, procom.id, 
-procom.com_uid, procom.com_name, 
-procom.com_content, procom.com_id, 
-frie.userId1, frie.userId2, 
-frie.status1, frie.status2,
-'profilecomment' AS post_type FROM ".$db_table_prefix."profilecomments procom
-LEFT JOIN ".$db_table_prefix."friend frie
-ON (procom.com_uid = frie.userId1 AND frie.userId2 = $userIdme)
-OR (procom.com_uid = frie.userId2 AND frie.userId1 = $userIdme)
-WHERE frie.status1 = '1' AND frie.status2 = '1'
-OR procom.com_uid = '$userIdme'
-GROUP BY procom.id)
-";
+		// Get Recent Profile Comments
+		$pc_status = "
+		(SELECT 
+			procom.timestamp AS RP_01, 
+			procom.id AS RP_02, 
+			procom.com_uid AS RP_03, 
+			procom.com_name AS RP_04, 
+			procom.com_content AS RP_05, 
+			procom.com_id AS RP_06, 
+			frie.userId1 AS RP_07, 
+			frie.userId2 AS RP_08, 
+			frie.status1 AS RP_09, 
+			frie.status2 AS RP_10,
+			'profilecomment' AS post_type 
+		FROM ".$db_table_prefix."profilecomments procom
+			LEFT JOIN ".$db_table_prefix."friend frie
+				ON (procom.com_uid = frie.userId1 AND frie.userId2 = $userIdme)
+				OR (procom.com_uid = frie.userId2 AND frie.userId1 = $userIdme)
+			WHERE frie.status1 = '1' AND frie.status2 = '1'
+				OR procom.com_uid = '$userIdme'
+			GROUP BY procom.id)
+		";
 
-//Profile Comments Sub Comments
-$pc_statcom = "
-(SELECT 
-	pcb.timestamp, pcb.id, pcb.statcom_uid, pcb.statcom_name, pcb.statcom_content, pcb.statcom_id,
-	f.userId1, f.userId2, f.status1, f.status2,
-	'profilestatcom' AS post_type 
-FROM ".$db_table_prefix."profilecomments_b pcb
-    JOIN (SELECT statcom_id,MAX(timestamp) timestamp
-          FROM ".$db_table_prefix."profilecomments_b GROUP BY statcom_id) t
-        ON t.statcom_id = pcb.statcom_id
-        AND t.timestamp = pcb.timestamp
-	LEFT JOIN ".$db_table_prefix."friend f
-		ON (pcb.statcom_uid = f.userId1 AND f.userId2 = $userIdme)
-		OR (pcb.statcom_uid = f.userId2 AND f.userId1 = $userIdme)
-	WHERE f.status1 = '1' AND f.status2 = '1'
-		OR pcb.statcom_uid = '$userIdme'
-	GROUP BY pcb.statcom_id)
-";
-
-
-		$vp_updateS = "
-			(SELECT sub.timestamp, sub.int, sub.usrida, sub.name, sub.color, sub.year,
-				sub.make, sub.model, sub.type, null,
-			'submit2' AS post_type FROM ".$db_table_prefix."submit sub LIMIT 0)";
+		// Get Recent Profile Comment Sub Comments
+		$pc_statcom = "
+		(SELECT 
+			pcb.timestamp AS RP_01, 
+			pcb.id AS RP_02, 
+			pcb.statcom_uid AS RP_03, 
+			pcb.statcom_name AS RP_04, 
+			pcb.statcom_content AS RP_05, 
+			pcb.statcom_id AS RP_06,
+			f.userId1 AS RP_07, 
+			f.userId2 AS RP_08, 
+			f.status1 AS RP_09, 
+			f.status2 AS RP_10,
+			'profilestatcom' AS post_type 
+		FROM ".$db_table_prefix."profilecomments_b pcb
+			JOIN (SELECT statcom_id,MAX(timestamp) timestamp
+				  FROM ".$db_table_prefix."profilecomments_b GROUP BY statcom_id) t
+				ON t.statcom_id = pcb.statcom_id
+				AND t.timestamp = pcb.timestamp
+			LEFT JOIN ".$db_table_prefix."friend f
+				ON (pcb.statcom_uid = f.userId1 AND f.userId2 = $userIdme)
+				OR (pcb.statcom_uid = f.userId2 AND f.userId1 = $userIdme)
+			WHERE f.status1 = '1' AND f.status2 = '1'
+				OR pcb.statcom_uid = '$userIdme'
+			GROUP BY pcb.statcom_id)
+		";
 
 
 	}else{
@@ -145,21 +168,20 @@ FROM ".$db_table_prefix."profilecomments_b pcb
 	}
 		
 		if($rc_view){
-			if($rc_view == "status"){ $query = "$vp_updateS UNION ALL $q_status UNION ALL $q_status_com ORDER BY timestamp DESC"; }
-			if($rc_view == "sweets"){ $query = "$vp_updateS UNION $s_status ORDER BY timestamp DESC"; }
-			if($rc_view == "comments"){ $query = "$vp_updateS UNION ALL $pc_statcom UNION ALL $pc_status ORDER BY timestamp DESC"; }
+			if($rc_view == "status"){ $query = "$q_status UNION ALL $q_status_com ORDER BY RP_01 DESC"; }
+			if($rc_view == "sweets"){ $query = "$s_status ORDER BY RP_01 DESC"; }
+			if($rc_view == "comments"){ $query = "$pc_statcom UNION ALL $pc_status ORDER BY RP_01 DESC"; }
 		}else{
 
 			if(isUserLoggedIn())
 			{
 			$query = "
-				$vp_updateS UNION ALL
 				$q_status UNION ALL
 				$q_status_com UNION ALL
 				$s_status UNION ALL
 				$pc_status UNION ALL
 				$pc_statcom
-				ORDER BY timestamp DESC
+				ORDER BY RP_01 DESC
 			";
 			}else{
 				// Redirect user to not logged in homepage
@@ -171,8 +193,6 @@ FROM ".$db_table_prefix."profilecomments_b pcb
 		$queryA = "$query LIMIT $limitfriendstatus";
 		$queryB = "$query";
 		
-		// Ouput the full sql query
-		//echo "<br><br>  $queryA  <br><br>";
 		
 		if ($result = $mysqli->query("$queryB")) {
 
@@ -192,16 +212,18 @@ FROM ".$db_table_prefix."profilecomments_b pcb
 		
 		foreach($arr_am as $row_am)
 		{
+			//sub.timestamp, sub.int, sub.usrida, sub.name, sub.color, sub.year, sub.make, sub.model, sub.type, null,
 			$post_type = $row_am['post_type'];
-			$timestamp = $row_am['timestamp'];
-			$int = $row_am['int'];
-			$usrida = $row_am['usrida'];
-			$name = $row_am['name'];
-			$color = $row_am['color'];
-			$year = $row_am['year'];
-			$make = $row_am['make'];
-			$model = $row_am['model'];
-			$type = $row_am['type'];
+			$timestamp = $row_am['RP_01'];
+			$int = $row_am['RP_02'];
+			$usrida = $row_am['RP_03'];
+			$name = $row_am['RP_04'];
+			$color = $row_am['RP_05'];
+			$year = $row_am['RP_06'];
+			$make = $row_am['RP_07'];
+			$model = $row_am['RP_08'];
+			$type = $row_am['RP_09'];
+			$RP_10 = $row_am['RP_10'];
 
 				$bgcolor = "epboxa";
 
@@ -217,24 +239,6 @@ FROM ".$db_table_prefix."profilecomments_b pcb
 
 			$color = stripslashes($color);
 			$model = stripslashes($model);
-
-			////Vehicle Profile Start
-				if($post_type == "submit"){
-					require "pages/recentposts/rec_veh_pro.inc";
-				}
-			////Vehicle Profile End
-
-			////Club Start
-				if($post_type == "club"){
-					require "pages/recentposts/rec_club.inc";
-				}
-			////Club End
-
-			////Vehicle Pic Start
-				if($post_type == "art"){
-					require "pages/recentposts/rec_veh_pic.inc";
-				}
-			////Vehicle Pic End
 
 
 			////Status Start

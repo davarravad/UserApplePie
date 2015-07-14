@@ -6,8 +6,10 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-//Make sure user is admin
-if(is_admin()){
+// Check to make sure current user is logged in and a site admin	
+if(isUserLoggedIn() && is_admin()){
+
+//Forms posted
 	//Check to see if admin is updating site settings
 	//If yes then send the update
 	if(isset($_POST['site_settings_update'])){ 
@@ -16,7 +18,8 @@ if(is_admin()){
 		$site_settings_update = "FALSE";
 	}
 	if($site_settings_update == "TRUE"){
-	
+	//Check to see is site is demo site.  If so disable editing.
+	if($cur_server_name_dc != $demo_server_name_dc){
 		// get the variables from the URL request string
 		$site_dir_settings = $_REQUEST['site_dir_settings'];
 		$site_gbl_descript_settings = $_REQUEST['site_gbl_descript'];
@@ -49,7 +52,7 @@ if(is_admin()){
 		{
 			die( "Trouble saving information to the database: " . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) );
 		}
-
+	}
 	}else{
 		//Not submitting an update so show form
 		echo "<hr><strong>Web Site Settings for Search Engines. Google, Bing, Yahoo, ets...</strong><br><br>";

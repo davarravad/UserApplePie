@@ -14,7 +14,7 @@ You can use this page as a template to create any other pages for your site.
 // Page title
 $stc_page_title = "Welcome to $websiteName UserApplePie";
 // Page Description
-$stc_page_description = "Welcome to $websiteName. - $websiteUrl";
+$stc_page_description = "";
 
 
 
@@ -23,10 +23,23 @@ style_header_content($stc_page_title, $stc_page_description);
 
 	// Start of page content
 	echo "
-	Welcome to $websiteName!  <br><br>
-	This website is based on UserCake.  I have created this website as a base for a project called UserApplePie.<br><br>
-	The goal of this website is to make adding pages quick and easy with minimal effort.  <br><br>
-	Check back soon for updates as this site is not yet fully functional.  
+	<strong>Welcome to UserApplePie's Mother Web Site.</strong><br>
+	UserApplePie is a fully open source user management system.<hr>
+	<h3><a href='".$websiteUrl."Downloads/'>Download UserApplePie</a></h3><hr>
+	UserApplePie was created as an improved version of <a href='http://usercake.com/' target='_blank'>UserCake 2.0.2</a>.<hr>
+	The goal of UserApplePie is to create a simple to use User Management System based on MySQL and PHP.  <Br><br>
+	Security functions have been updated and added. <Br><br>
+	We have changed the site to behave like a web site portal.  Everything is opened from the index.php file. <br><br>
+	Apache's mod_rewrite has enabled us to clean the URLs within the site.<br><br>
+	ImageMagick has enabled us to allow profile photo uploads. <br>
+	It resizes the photos to reduce the amount of storage space needed on a server.<br><br>
+	You can visit the <a href='".$websiteUrl."Docs/'>Docs</a> page for detailed information on all Features.<hr>
+	UserApplePie and <a href='http://www.usercake.com/' target='_blank'>UserCake</a> are fully opensource! You may download and re-distribute the code in any form.<br>
+	A link back to the projects would be appreciated, but are not required.<br><br>
+	UserApplePie is a non-profit project, however donations are greatly appreciated.<hr>
+	If you need any assistance with UserApplePie, please read the <a href='".$websiteUrl."Docs/'>Docs</a> page 
+	or go to our <a href='".$websiteUrl."Forum/'>Forum</a>.<br><br>
+	Thanks You For Your Interest in UserApplePie!  Enjoy!
 	";
 	// End of page content
 
