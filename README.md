@@ -16,10 +16,10 @@ Features:
 - Added Security Functions
 - And Much More!
 
-Need Help or Want to Help with UserApplePie visit http://www.thedavar.net/
+Need Help or Want to Help with UserApplePie visit http://www.userapplepie.com/
 
 Demo Website:
-http://userapplepie.thedavar.net/
+http://demo.userapplepie.com/
 
 Copyright (c) 2015
 
@@ -98,7 +98,7 @@ If not using default table prefix uc_ you will need to change it after import.
    
 - UserApplePie was tested with a Ubuntu Linux server with all the latest updates.  
 
--  For further documentation visit http://www.thedavar.net or http://usercake.com
+-  For further documentation visit http://www.userapplepie.com/ or http://usercake.com
 
 //--Credits for UserApplePie
 
