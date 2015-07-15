@@ -58,6 +58,30 @@ if(!empty($_POST)){
 			}
 		}
 		
+		//Update permission level font color
+		if($permissionDetails['color'] != $_POST['color']) {
+			$permission = trim($_POST['color']);
+			
+			if (updatePermissionColor($permissionId, $permission)){
+				$successes[] = lang("PERMISSION_COLOR_UPDATE", array($permission));
+			}
+			else {
+				$errors[] = lang("SQL_ERROR");
+			}
+		}
+		
+		//Update permission level font weight
+		if($permissionDetails['weight'] != $_POST['weight']) {
+			$permission = trim($_POST['weight']);
+			
+			if (updatePermissionWeight($permissionId, $permission)){
+				$successes[] = lang("PERMISSION_WEIGHT_UPDATE", array($permission));
+			}
+			else {
+				$errors[] = lang("SQL_ERROR");
+			}
+		}
+		
 		//Remove access to pages
 		if(!empty($_POST['removePermission'])){
 			$remove = $_POST['removePermission'];
@@ -129,6 +153,21 @@ echo "
 <p>
 <label>Name:</label>
 <input type='text' name='name' value='".$permissionDetails['name']."' />
+</p>
+<p>
+<label>Font Color:</label>
+<input type='text' name='color' maxlength='20' value='".$permissionDetails['color']."' />
+</p>
+<p>
+<label>Bold Font:</label>
+<select name='weight'>
+	<option value='TRUE'";
+if($permissionDetails['weight'] == "TRUE"){ echo "SELECTED"; }
+echo "/>Bold</option>
+	<option value='FALSE'";
+if($permissionDetails['weight'] == "FALSE"){ echo "SELECTED"; }
+echo "/>Normal</option>
+</select>
 </p>
 <label>Delete:</label>
 <input type='checkbox' name='delete[".$permissionDetails['id']."]' id='delete[".$permissionDetails['id']."]' value='".$permissionDetails['id']."'>

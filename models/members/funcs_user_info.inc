@@ -101,22 +101,24 @@
 			
 		global $mysqli,$db_table_prefix;
 		
-		$stmt = $mysqli->prepare("SELECT title FROM ".$db_table_prefix."users WHERE id=? LIMIT 1");
-
-		$stmt->bind_param("i", $get_info_id);
-		$stmt->execute();
-
-		$stmt->bind_result($val);
+		$userPermission = fetchUserPermissions($get_info_id);
+		$permissionData = fetchAllPermissions();
 		
-		$stmt->fetch();
-		$stmt->close();
+		//List of permission levels user is apart of
+		foreach ($permissionData as $v1) {
+			if(isset($userPermission[$v1['id']])){
+				echo " <font style='";
+					if(isset($v1['color'])){ echo "color:".$v1['color'].";"; }
+					if($v1['weight'] == "TRUE"){ echo "font-weight:bold"; }
+				echo "'>";
+				echo $v1['name'];
+				echo "</font><br>";
+			}
+		}
 		
-		// Clean up the data
-		$val = stripslashes($val);
+		//return "$val";
 		
-		return "$val";
-		
-		unset($val);
+		//unset($val);
 	
 	}
 	

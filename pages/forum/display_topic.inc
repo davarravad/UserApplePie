@@ -117,8 +117,9 @@
 				echo "<meta name='author' content='".$f_p_user_name."'>";
 				
 				//Show user's membership status
-				$up_get_mem_status = get_up_info_mem_status($ID02);
-				echo "<br> $up_get_mem_status ";
+				echo "<br>";
+				get_up_info_mem_status($ID02);
+				
 				
 				// Display how long ago this was posted
 				$timestart = "$f_p_timestamp";  //Time of post
@@ -366,9 +367,9 @@
 							echo "<br><a href='${site_url_link}member/$rf_p_user_id/'>$rf_p_user_name</a> ";
 
 							//Show user's membership status
-							$up_get_mem_status = get_up_info_mem_status($rf_p_user_id);
-							echo "<br> $up_get_mem_status ";
-							
+							echo "<br>";
+							get_up_info_mem_status($rf_p_user_id);
+
 							// Display how long ago this was posted
 							$timestart = "$rf_p_timestamp";  //Time of post
 							require_once "models/timediff.inc";

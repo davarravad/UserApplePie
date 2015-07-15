@@ -168,6 +168,8 @@ if($install == "TRUE")
 	CREATE TABLE IF NOT EXISTS `".$db_table_prefix."permissions` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(150) NOT NULL,
+	`color` varchar(20) DEFAULT NULL,
+	`weight` varchar(20) DEFAULT 'FALSE',
 	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 	";

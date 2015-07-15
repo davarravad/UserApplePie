@@ -18,8 +18,8 @@ if(isUserLoggedIn())
 					echo "<br><a href='${site_url_link}member/$userIdme/'>$get_user_name_323</a> ";
 
 					//Show user's membership status
-					$up_get_mem_status = get_up_info_mem_status($ID02);
-					echo "<br> $up_get_mem_status ";
+					echo "<br>";
+					get_up_info_mem_status($ID02);
 					
 					echo "<br>";
 				echo "</td></tr></table>";

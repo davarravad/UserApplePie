@@ -137,7 +137,7 @@ function resultBlock($errors,$successes){
 	//Error block
 	if(count($errors) > 0)
 	{
-		echo "<div id='error'><div class='error_yeah'>
+		echo "<div id='error'>
 		<a href='#' onclick=\"showHide('error');\">[X]</a>
 		<ul>";
 		foreach($errors as $error)
@@ -145,12 +145,12 @@ function resultBlock($errors,$successes){
 			echo "<li>".$error."</li>";
 		}
 		echo "</ul>";
-		echo "</div></div>";
+		echo "</div>";
 	}
 	//Success block
 	if(count($successes) > 0)
 	{
-		echo "<div id='success'><div class='success_yeah'>
+		echo "<div id='success'>
 		<a href='#' onclick=\"showHide('success');\">[X]</a>
 		<ul>";
 		foreach($successes as $success)
@@ -158,7 +158,7 @@ function resultBlock($errors,$successes){
 			echo "<li>".$success."</li>";
 		}
 		echo "</ul>";
-		echo "</div></div>";
+		echo "</div>";
 	}
 }
 
@@ -639,12 +639,14 @@ function fetchAllPermissions()
 	global $mysqli,$db_table_prefix; 
 	$stmt = $mysqli->prepare("SELECT 
 		id,
-		name
+		name,
+		color,
+		weight
 		FROM ".$db_table_prefix."permissions");
 	$stmt->execute();
-	$stmt->bind_result($id, $name);
+	$stmt->bind_result($id, $name, $color, $weight);
 	while ($stmt->fetch()){
-		$row[] = array('id' => $id, 'name' => $name);
+		$row[] = array('id' => $id, 'name' => $name, 'color' => $color, 'weight' => $weight);
 	}
 	$stmt->close();
 	return ($row);
@@ -656,16 +658,18 @@ function fetchPermissionDetails($id)
 	global $mysqli,$db_table_prefix; 
 	$stmt = $mysqli->prepare("SELECT 
 		id,
-		name
+		name,
+		color,
+		weight
 		FROM ".$db_table_prefix."permissions
 		WHERE
 		id = ?
 		LIMIT 1");
 	$stmt->bind_param("i", $id);
 	$stmt->execute();
-	$stmt->bind_result($id, $name);
+	$stmt->bind_result($id, $name, $color, $weight);
 	while ($stmt->fetch()){
-		$row = array('id' => $id, 'name' => $name);
+		$row = array('id' => $id, 'name' => $name, 'color' => $color, 'weight' => $weight);
 	}
 	$stmt->close();
 	return ($row);
@@ -731,6 +735,36 @@ function updatePermissionName($id, $name)
 		id = ?
 		LIMIT 1");
 	$stmt->bind_param("si", $name, $id);
+	$result = $stmt->execute();
+	$stmt->close();	
+	return $result;	
+}
+
+//Change a permission level's font color
+function updatePermissionColor($id, $color)
+{
+	global $mysqli,$db_table_prefix;
+	$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."permissions
+		SET color = ?
+		WHERE
+		id = ?
+		LIMIT 1");
+	$stmt->bind_param("si", $color, $id);
+	$result = $stmt->execute();
+	$stmt->close();	
+	return $result;	
+}
+
+//Change a permission level's font weight
+function updatePermissionWeight($id, $weight)
+{
+	global $mysqli,$db_table_prefix;
+	$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."permissions
+		SET weight = ?
+		WHERE
+		id = ?
+		LIMIT 1");
+	$stmt->bind_param("si", $weight, $id);
 	$result = $stmt->execute();
 	$stmt->close();	
 	return $result;	

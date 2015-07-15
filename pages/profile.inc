@@ -62,31 +62,31 @@
 	}else{
 	}
 
+		//Title and Description
+			echo "<title>";
+			get_user_name($ID02);
+			echo "'s Profile - $websiteName</title>";
+			echo "<meta name=\"description\" content=\"";
+			get_user_name($ID02);
+			echo "'s $websiteName Member Profile.\">";
+	
 //Start of Top Table
 echo "<center>";
 echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>"; 
 
-					echo "<table><tr><td align=center>";
+					echo "<table width='100%'><tr><td width='100px' align='center' valign='top'>";
 
 					require "pages/profile/epimagemain.inc";
 
-					echo "</td><td>";
-
+					echo "</td><td align='left' valign='top'>";
+					echo "<h2>";
 					get_user_name($ID02);
-
-				//Title and Description
-					echo "<title>";
-					get_user_name($ID02);
-					echo "'s Profile - $websiteName</title>";
-					echo "<meta name=\"description\" content=\"";
-					get_user_name($ID02);
-					echo "'s $websiteName Member Profile.\">";
-
-					echo " <br> ";
+					echo "</h2>";
 
 				//Show user's membership status
-					$up_get_mem_status = get_up_info_mem_status($ID02);
-					echo " $up_get_mem_status ";
+					get_up_info_mem_status($ID02);
+					
+					echo "</td><td align='right' valign='top'>";
 					
 				//start is user online
 							if(!isset($ID02)){ $ID = $_REQUEST['ID']; }else{ $ID = $ID02; }

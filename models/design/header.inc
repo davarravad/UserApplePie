@@ -78,8 +78,8 @@ echo "
 echo "
 <link href=\"/style/".$site_style_sel."/style.css\" rel=\"stylesheet\" type=\"text/css\" />
 <script src=\"/SpryAssets/SpryMenuBar.js\" type=\"text/javascript\"></script>
+<script src='/models/funcs.js' type='text/javascript'></script>
 ";
-//<link href='/style/".$site_style_sel."/default.css' rel='stylesheet' type='text/css' />
 
 // IE 9 Settings
 echo "
