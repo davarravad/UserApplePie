@@ -561,7 +561,7 @@ if($install == "TRUE")
 	  `userAddr1` varchar(64) NOT NULL DEFAULT '',
 	  `userAddr2` varchar(64) NOT NULL DEFAULT '',
 	  `userCity` varchar(64) NOT NULL DEFAULT '',
-	  `userState` varchar(64) NOT NULL DEFAULT '',
+	  `userAdds` varchar(5) NOT NULL DEFAULT 'TRUE',
 	  `userCountry` varchar(64) NOT NULL DEFAULT '',
 	  `userTel` varchar(255) NOT NULL,
 	  `userMobiTel` varchar(255) NOT NULL,

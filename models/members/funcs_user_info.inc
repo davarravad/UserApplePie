@@ -179,11 +179,12 @@
 	
 	// Shows account settings links
 	function account_settings_links(){
-		global $site_url_link;
+		global $websiteUrl;
 		// DisplayName, Password, and Email update page
-		echo "<a href='${site_url_link}editprofilemain/account_displayname/' name='Update Display Name'>Update Display Name</a> <hr> ";
-		echo "<a href='${site_url_link}editprofilemain/account/' name='Update Pass/Email'>Update Password/Email</a> | ";
-		echo "<a href='${site_url_link}editprofilemain/account_email/' name='Privacy and Email Settings'>Privacy and Email Settings</a>";
+		echo "<a href='${websiteUrl}editprofilemain/account_displayname/' name='Update Display Name'>Update Display Name</a> <hr> ";
+		echo "<a href='${websiteUrl}editprofilemain/account/' name='Update Pass/Email'>Update Password/Email</a> | ";
+		echo "<a href='${websiteUrl}editprofilemain/account_email/' name='Privacy and Email Settings'>Privacy and Email Settings</a><br>";
+		echo "<a href='${websiteUrl}editprofilemain/adds/'>Advertisement Settings</a>";
 		echo "<hr>";
 	}
 	

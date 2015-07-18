@@ -1213,6 +1213,38 @@ function securePage($uri){
 	}
 }
 
+// Check for current user's advertisement setting
+function get_user_adds_setting($userId){
+	global $mysqli,$db_table_prefix; 
+	$stmt = $mysqli->prepare("SELECT 
+		userAdds
+		FROM ".$db_table_prefix."userprofile
+		WHERE
+		userId = ?
+		LIMIT 1");
+		$stmt->bind_param("i", $userId);
+	
+	$stmt->execute();
+	$stmt->bind_result($userAdds);
+	while ($stmt->fetch()){
+		$userAdds = array('userAdds' => $userAdds);
+	}
+	$stmt->close();
+	return ($userAdds);
+}
 
+// Update current user's advertisement setting
+function update_user_adds_setting($userId, $userAdds){
+	global $mysqli,$db_table_prefix;
+	$stmt = $mysqli->prepare("UPDATE ".$db_table_prefix."userprofile
+		SET 
+		userAdds = ?
+		WHERE
+		userId = ?");
+	$stmt->bind_param("si", $userAdds, $userId);
+	$result = $stmt->execute();
+	$stmt->close();	
+	return $result;	
+}
 
 ?>
