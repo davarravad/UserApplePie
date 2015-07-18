@@ -36,6 +36,7 @@ $recap_sitekey = $settings['recap_sitekey']['value'];
 $recap_secretkey = $settings['recap_secretkey']['value'];
 $site_adds_top = $settings['site_adds_top']['value'];
 $site_adds_bot = $settings['site_adds_bot']['value'];
+$site_style_sel = $settings['template']['value'];
 
 $site_url_link = $websiteUrl;
 

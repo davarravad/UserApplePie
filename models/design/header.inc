@@ -36,9 +36,6 @@ require("models/funcs_styles.inc");
 // Run the page handler
 require("models/pagehand.inc");
 
-// Set the style sheet selected
-$site_style_sel = "default";
-
 // Gets the members zip code if they have one set
 $userCity = get_up_info($userIdme, 'userCity');
 
@@ -76,7 +73,7 @@ echo "
 
 // Style Sheet CSS
 echo "
-<link href=\"/style/".$site_style_sel."/style.css\" rel=\"stylesheet\" type=\"text/css\" />
+<link href=\"/".$site_style_sel."/style.css\" rel=\"stylesheet\" type=\"text/css\" />
 <script src=\"/SpryAssets/SpryMenuBar.js\" type=\"text/javascript\"></script>
 <script src='/models/funcs.js' type='text/javascript'></script>
 ";
@@ -212,3 +209,6 @@ echo "
 			
 			<div class='content'>
 ";
+
+// Check to see if user has updated their profile.
+require("models/members/user_checks_func.inc");

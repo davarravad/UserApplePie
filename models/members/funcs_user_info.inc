@@ -176,7 +176,6 @@
 	
 	}
 	
-	
 	// Shows account settings links
 	function account_settings_links(){
 		global $websiteUrl;
@@ -186,36 +185,6 @@
 		echo "<a href='${websiteUrl}editprofilemain/account_email/' name='Privacy and Email Settings'>Privacy and Email Settings</a><br>";
 		echo "<a href='${websiteUrl}editprofilemain/adds/'>Advertisement Settings</a>";
 		echo "<hr>";
-	}
-	
-	// Check for old password format and give error if old version.
-	function check_old_password($username, $password){
-		// Check users database for password length
-		global $mysqli;
-		
-		$stmt = $mysqli->prepare("SELECT password FROM ".$db_table_prefix."users WHERE user_name=? LIMIT 1");
-
-		$stmt->bind_param("s", $username);
-		$stmt->execute();
-
-		$stmt->bind_result($val);
-		
-		$stmt->fetch();
-		$stmt->close();
-		
-		// Clean up the data
-		$val = strlen($val);
-
-		//echo " ($val) ";
-		
-		// If val is 60, user is ok
-		// If val is not 60, user is not ok
-		if($val == "60"){
-			return 1;
-		}else{
-			return 0;
-		}
-		
 	}
 	
 ?>

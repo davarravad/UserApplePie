@@ -37,7 +37,7 @@ if(isUserLoggedIn())
 
 				  $query = "UPDATE `".$db_table_prefix."userprofile` SET `userFirstName` = '$userFirstName', `userLastName` = '$userLastName', 
 							`userEmail` = '$userEmail', `userAddr1` = '$userAddr1', `userAddr2` = '$userAddr2', 
-							`userCity` = '$userCity', `userState` = '$userState', `userCountry` = '$userCountry', 
+							`userCity` = '$userCity', `userAdds` = '$userState', `userCountry` = '$userCountry', 
 							`userTel` = '$userTel', `userMobiTel` = '$userMobiTel', `userHomeTel` = '$userHomeTel', 
 							`userWeb` = '$userWeb', `profile_privacy` = '$profile_privacy', `userZip` = '$userZip',
 							`userFacebook`='$userFacebook', `userTwitter`='$userTwitter' WHERE `userId`='$userId' ";

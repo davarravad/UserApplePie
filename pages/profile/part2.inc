@@ -70,66 +70,66 @@ if($num_rowsCKP2 != 0){
 				echo "</td></tr><tr><td align='center'>";
 
 				echo "
-					
+					<div align='center' class='epboxb'><strong>$textfield</strong></div>
 					<div class='epboxa' width='100%'>
-						  <div align='center' class='profile_about_title'><strong>:$textfield:</strong></div>
 						  $textarea
-					</div>
-					
+					</div><br>
 			";
 		}
 		if(!empty($textarea2)){
 			echo "
-				<div class='epboxa' width='100%'> 
-					 <div align='center' class='profile_about_title'><strong>:$textfield2:</strong></div>
+				
+					<div align='center' class='epboxb'><strong>$textfield2</strong></div>
+					<div class='epboxa' width='100%'> 
 					  $textarea2
-					</div>
+					</div><br>
 			";
 		}
 		if(!empty($textarea3)){
 			echo "	
-				<div class='epboxa' width='100%'> 
-					  <div align='center' class='profile_about_title'><strong>:$textfield3:</strong></div>
+					<div align='center' class='epboxb'><strong>$textfield3</strong></div>
+					<div class='epboxa' width='100%'> 
 					  $textarea3
-					</div>
+					</div><br>
 			";
 		}
 		if(!empty($textarea4)){
 			echo "
-				<div class='epboxa' width='100%'>
-					 <div align='center' class='profile_about_title'><strong>:$textfield4:</strong></div>
+					<div align='center' class='epboxb'><strong>$textfield4</strong></div>
+					<div class='epboxa' width='100%'>
 					  $textarea4
-					</div>
+					</div><br>
 			";
 		}
 		if(!empty($textarea5)){
 			echo "
-			<div class='epboxa' width='100%'>
-				  <div align='center' class='profile_about_title'><strong>:$textfield5:</strong></div>
+				<div align='center' class='epboxb'><strong>$textfield5</strong></div>
+				<div class='epboxa' width='100%'>
 				  $textarea5
-				</div>
+				</div><br>
 			";
 		}
 		if(!empty($textarea6)){
 			echo "
+				
+				<div align='center' class='epboxb'><strong>$textfield6</strong></div>
 				<div class='epboxa' width='100%'>
-				  <div align='center' class='profile_about_title'><strong>:$textfield6:</strong></div>
 				  $textarea6
-				</div>
+				</div><br>
 			";
 		}
 		if(!empty($textarea7)){
 			echo "
-			<div class='epboxa' width='100%'>
-				<div align='center' class='profile_about_title'><strong>:$textfield7:</strong></div>
+				<div align='center' class='epboxb'><strong>$textfield7</strong></div>
+				<div class='epboxa' width='100%'>
 				  $textarea7
-				</div>
+				</div><br>
 			";
 		}
 		if(!empty($textarea8)){
 			echo "
+				<div align='center' class='epboxb'><strong>$textfield8</strong></div>
 				<div class='epboxa' width='100%'>
-				  <div align='center' class='profile_about_title'><strong>:$textfield8:</strong></div>
 				  $textarea8
 				</div>
 			";

@@ -73,7 +73,7 @@ if(isUserLoggedIn()){
 		echo " <br> ";
 		echo " $check_message_output ";
 		echo " <br><br> ";
-		echo " </center></td></tr></table> ";
+		echo " </center></td></tr></table><br> ";
 	}
 		
 
