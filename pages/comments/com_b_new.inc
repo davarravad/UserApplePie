@@ -30,9 +30,6 @@ echo "$view_status_save"; ?>" method="POST" onsubmit="submit.disabled = true; re
 <input type="hidden" name="statcom_id" value="<?php echo("$statcom_id") ?>" />
 <input type="hidden" name="statcom" value="save" />
 
-
-<?php require "models/members/getuserinfo.inc"; //echo "$nname"; ?>
-
 <?php echo "<input type='hidden' name='statcom_id' value='$statcom_id'>"; ?>
 <?php echo "<input type='hidden' name='statcom_name' value='$nname'>"; ?>
 <?php echo "<input type='hidden' name='statcom_uid' value='$statcom_uid'>"; ?>

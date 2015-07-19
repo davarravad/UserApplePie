@@ -138,8 +138,6 @@ if($delete == 'yes'){
 
 	}else{
 
-
-					require "models/members/getuserinfo.inc";
 					$userone = $nname;
 
 

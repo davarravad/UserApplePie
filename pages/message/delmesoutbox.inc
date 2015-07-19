@@ -19,7 +19,6 @@
 
 	}else{
 
-			require "models/members/getuserinfo.inc";
 			$userone = $nname;
 		
 		

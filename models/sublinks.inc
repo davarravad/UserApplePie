@@ -37,7 +37,6 @@
 		if($taz == 'message') {
 				if(isUserLoggedIn())
 				{
-						require "models/members/getuserinfo.inc";
 
 						$query = "SELECT * FROM `".$db_table_prefix."inbox` WHERE `mto` = '$nname' AND `mread` = 'unread' ";
 						$result = mysqli_query($GLOBALS["___mysqli_ston"], $query)

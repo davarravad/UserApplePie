@@ -23,8 +23,6 @@ if(isUserLoggedIn())
 
 <input type="hidden" name="com_id" value="<?php echo("$com_id") ?>" />
 
-<?php require "models/members/getuserinfo.inc"; //echo "$nname"; ?>
-
 <?php echo "<input type='hidden' name='com_name' value='$nname'>"; ?>
 
 	<script>

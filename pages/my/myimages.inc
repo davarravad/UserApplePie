@@ -8,8 +8,7 @@ if(isset($_REQUEST['vimg'])){ $vimg = $_REQUEST['vimg']; }else{ $vimg = ""; }
 if(isset($_REQUEST['imgn'])){ $imgn = $_REQUEST['imgn']; }else{ $imgn = ""; }
 
 echo "Your Profile Photos only show up on your ".$websiteName." Member Profile. <a href='${site_url_link}member/$userId'>My Profile</a>";
-echo "<br>If uploading <b>Vehicle Photos</b> <a href='${site_url_link}editprofilemain/editvehicles/#uvp'>Click Here</a>.";
-echo "<br><font color=green size=0.5>Note: Profile Photos and Vehicle Photos are not linked within the site.  Profile Photos are only shown within your Member Profile.</font>";
+
 if($vimg == 'yes'){
 
 	echo "<div>";

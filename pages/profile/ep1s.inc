@@ -26,7 +26,6 @@ if(isUserLoggedIn())
 				if(isset($_POST['profile_privacy'])){ $profile_privacy = $_POST['profile_privacy']; }else{ $profile_privacy = ""; }
 				if(isset($_POST['userZip'])){ $userZip = $_POST['userZip']; }else{ $userZip = ""; }
 				 
-				require "models/members/getuserinfo.inc";
 				$userId = $idofuser;
 
 				$userWeb = preg_replace('/(http:\/\/)/i', '', $userWeb);

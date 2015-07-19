@@ -91,7 +91,7 @@ if($delete_vp == 'yes'){
 
 	}else{
 
-	require "models/members/getuserinfo.inc";
+
 	$userone = $nname;
 
 

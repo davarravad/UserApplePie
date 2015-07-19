@@ -60,8 +60,6 @@ if(isUserLoggedIn())
 				$session_token_num = "1";
 			}
 			form_token();
-					
-			require "models/members/getuserinfo.inc"; 
 			
 			//Testing info
 			if($debug_website == 'TRUE'){ 

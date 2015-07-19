@@ -142,15 +142,9 @@ if($delete == 'yes'){
 
 	}else{
 
-
-					require "models/members/getuserinfo.inc";
 					$userone = $nname;
 
-
-
 					  $id = $_POST['id'];
-
-				 
 
 					$query = "SELECT * FROM `$puf_pic_cat` WHERE `id`='$id' ";
 

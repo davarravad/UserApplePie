@@ -40,9 +40,6 @@ echo "$view_status_save"; ?>" method="POST" onsubmit="submitmystat.disabled = tr
 	<input type="hidden" name="com_uid" value="<?php if(isset($com_id)){ echo "$com_uid"; } ?>" />
 	<input type="hidden" name="stat" value="save" />
 
-
-	<?php require "models/members/getuserinfo.inc"; //echo "$nname"; ?>
-
 	<?php echo "<input type='hidden' name='com_name' value='$nname'>"; ?>
 
 	<script>

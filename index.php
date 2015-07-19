@@ -8,7 +8,7 @@
 
 // Header of the site
 require_once("models/design/header.inc");
-	
+
 	//Displays all the main content stuff
 
 	//Site adds
@@ -45,4 +45,6 @@ require_once("models/design/header.inc");
 	
 // Footer of the site
 require_once("models/design/footer.inc");
+
+
 ?>

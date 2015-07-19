@@ -1,6 +1,5 @@
 <?php
 
- require "models/members/getuserinfo.inc";
 
 		//Start Page Number Math
 		function getPagerData($numHits, $limit, $pnum) 

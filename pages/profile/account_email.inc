@@ -32,8 +32,7 @@ if(isUserLoggedIn())
 						if(isset($_POST['profile_privacy'])){ $profile_privacy = $_POST['profile_privacy']; }else{ $profile_privacy = ""; }
 						if(isset($_POST['user_email_msg'])){ $user_email_msg = $_POST['user_email_msg']; }else{ $user_email_msg = ""; }
 						if(isset($_POST['user_email_profile_com'])){ $user_email_profile_com = $_POST['user_email_profile_com']; }else{ $user_email_profile_com = ""; }
-						 
-						require "models/members/getuserinfo.inc";
+					
 						$userId = $idofuser;
 						
 					//update script
@@ -74,8 +73,6 @@ if(isUserLoggedIn())
 		}else{ //if not update then show form
 
 			//If not updating show privacy and email form
-			require "models/members/getuserinfo.inc";
-			$nname = $nname;
 			$userId = $idofuser;
 
 			$query = "SELECT * FROM ".$db_table_prefix."userprofile WHERE `userId`='$userId' ";

@@ -143,7 +143,6 @@ if(isset($_POST['mainPic'])){ $mainPic = $_POST['mainPic']; }else{ $mainPic = ""
 			}else{  //token
 
 
-					require "models/members/getuserinfo.inc";
 					$userone = '$nname';
 
 

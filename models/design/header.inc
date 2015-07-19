@@ -174,6 +174,11 @@ echo "<div class='logo'>";
 				<li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a><hr></li>
 				<li><a href='${site_url_link}editprofilemain/account/' title='Change Your Account Settings'>Account Settings</a></li>
 				<li><a href='${site_url_link}editprofilemain/account_email/' title='Change Your Privacy and Email Settings'>Privacy Settings</a></li>
+	";
+	if(isUserLoggedIn() && is_admin()) {
+		echo "<li><hr><a href='${site_url_link}YummyAsPie/' title='Admin Panel'>Admin Panel</a></li>";
+	}
+	echo "
 			</ul>
 		  </li>
 		  <li><a href='${site_url_link}logout/' title='Logout'>Logout</a></li>

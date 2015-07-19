@@ -6,11 +6,8 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-require "models/members/getuserinfo.inc";
-
 	#This script is built to get all possible information about a visitor
 	#Shows Current User Information
-
  	
 	#Get the Refering Page if There is one
 	if(isset($_SERVER['HTTP_REFERER'])){ $er_refer = $_SERVER['HTTP_REFERER']; }else{ $er_refer = ""; } 

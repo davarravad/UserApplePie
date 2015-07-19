@@ -49,8 +49,7 @@ echo "<center>";
 					echo "<a href='${site_url_link}member/$userId/'>$userName</a><br>";
 						
 					//Show user's membership status
-					$up_get_mem_status = get_up_info_mem_status($ID02);
-					echo " $up_get_mem_status ";
+					echo get_up_info_mem_status($ID02);
 
 					echo "<a href='${site_url_link}member/$userId/'>";
 					require "pages/profile/epimagemain.inc";

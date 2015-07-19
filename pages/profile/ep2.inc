@@ -5,9 +5,6 @@
 if(isUserLoggedIn())
 {
 
-
-
-require "models/members/getuserinfo.inc";
 $nname = $nname;
 $userId = $idofuser;
 

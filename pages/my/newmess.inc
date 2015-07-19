@@ -2,8 +2,6 @@
 
 global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix;
 
- require "models/members/getuserinfo.inc";
-
 
 $query = "SELECT * FROM `".$db_table_prefix."inbox` WHERE `mto` = '$nname' AND `mread` = 'unread' ";
 

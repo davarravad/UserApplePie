@@ -112,7 +112,6 @@
 						form_token();
 
 					//Gets the users name for img upload
-					require "models/members/getuserinfo.inc"; 
 					echo "<input type='hidden' name='name' value='$nname'>";
 					echo "<label>Name/Author:</label>";
 					echo "$nname";
