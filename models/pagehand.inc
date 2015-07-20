@@ -43,6 +43,7 @@ if(isset($_REQUEST['profile'])){
 		if($taz == "diy"){ $taz = "Forum"; }
 		if($taz == "Register"){ $taz = "register"; }
 		if($taz == "Login"){ $taz = "login"; }
+		if($taz == "docs"){ $taz = "Docs"; }
 		
 		//Common Error Stuff
 		if($taz == "style"){ $taz = ""; }

@@ -87,10 +87,7 @@ echo "
 
 // Fav Icon Settings
 echo "
-<link rel='shortcut icon' href='images/favicon.ico'>
-<link rel='apple-touch-icon' href='images/apple-touch-icon.png'>
-<link rel='apple-touch-icon' sizes='72x72' href='images/apple-touch-icon-72x72.png'>
-<link rel='apple-touch-icon' sizes='114x114' href='images/apple-touch-icon-114x114.png'>
+<link rel='shortcut icon' href='/images/favicon.ico'>
 ";
 
 // End of head
@@ -106,8 +103,8 @@ if(isset($_REQUEST['page'])){ $taz = $_REQUEST['page']; }else{ $taz = ""; }
 echo "<div class='logo'>";
 
 	echo "
-	<table width='100%' border='0' cellpadding='0' cellspacing='0' class='top_header_fixed'><tr><td class='header_title' height='50px' colspan='2'>
-		$websiteName
+	<table width='100%' border='0' cellpadding='0' cellspacing='0' class='top_header_fixed'><tr><td class='header_title' height='50px' colspan='2' valign='middle'>
+		<img src='/images/logo.gif'>$websiteName
 	</td></tr><tr><td height='25px' align='left' valign='middle' class='header_links' width='100%'>
 
 		<ul id='MenuBar1' class='MenuBarHorizontal'>
