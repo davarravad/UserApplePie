@@ -6,8 +6,8 @@
 // http://usercake.com          //
 //////////////////////////////////
 
-//include debug_settings file
-require "models/debug_settings.inc";
+//Triggers debug stuff for the site
+$debug_website = "$site_debug";  //TRUE = ON OR FALSE = OFF
 	
 //Get current page's url for redirect back
 $cur_pageURL = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";

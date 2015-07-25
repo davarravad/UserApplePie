@@ -12,9 +12,7 @@ require_once("models/design/header.inc");
 	//Displays all the main content stuff
 
 	//Site adds
-	if($debug_addsoff == 'TRUE'){}else{
-		require "models/adds.inc"; 
-	}
+	require "models/adds.inc"; 
 	
 	//Shows a success_message if there is one.
 	success_message();
@@ -37,9 +35,7 @@ require_once("models/design/header.inc");
 			}
 			
 	//Shows adds if FALSE
-	if($debug_addsoff == 'TRUE'){}else{
-		require "models/adds2.inc"; 
-	}
+	require "models/adds2.inc"; 
 			
 	require "models/report.inc";
 	
