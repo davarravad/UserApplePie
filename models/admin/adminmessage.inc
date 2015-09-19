@@ -14,7 +14,7 @@ if(isUserLoggedIn() && is_admin()){
 	
 	echo "<center>";
 	echo "<strong>Admin Zone - Message To ALL!!!</strong>"; 
-	echo "</center><br><Br>";
+	echo "</center><hr>";
 
 	if(isset($_POST['id1'])){ $id1 = $_REQUEST['id1']; }else{ $id1 = ""; } 
 	if(isset($_POST['id2'])){ $id2 = $_REQUEST['id2']; }else{ $id2 = ""; } 
@@ -111,6 +111,10 @@ if(isUserLoggedIn() && is_admin()){
 		$user_disp_name = get_up_info_mem_disp_name($userId);
 	
 		echo "<strong>Admin Message for Logged In users!</strong>";
+	echo "<br>";
+	echo "<font color='green' size='1'>";
+	echo "This message is displayed to all members that are logged into this website.  Members can hide this message after they read it.";
+	echo "</font><Br><br>";
 		$query = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='1' ";
 		if($result = $mysqli->query($query)){
 			while ($row = $result->fetch_assoc()) {
@@ -144,16 +148,25 @@ if(isUserLoggedIn() && is_admin()){
 			echo "<label>Message Content:</label><br>";
 			echo "<textarea name='admincontent' cols='50' rows='10'>${admincontent}</textarea><br>";
 			echo "<select name='adminshow' id='adminshow'>";
-				if($adminshow == 'yes'){$as1 = "SELECTED";}else{$as1 = "";}
-				if($adminshow == 'no'){$as2 = "SELECTED";}else{$as2 = "";}
-				echo "<option value='yes' $as1>Show Message</option>";
-				echo "<option value='no' $as2>Hide Message</option>";
+				if(empty($adminshow)){
+					$as1 = "";
+					$as2 = "SELECTED";
+				}else{
+					if($adminshow == 'TRUE'){$as1 = "SELECTED";}else{$as1 = "";}
+					if($adminshow == 'FALSE'){$as2 = "SELECTED";}else{$as2 = "";}
+				}
+				echo "<option value='TRUE' $as1>Show Message</option>";
+				echo "<option value='FALSE' $as2>Hide Message</option>";
 			echo "</select>";
 			echo "<Br><Br>";
 			echo "<label title='Send'><input type='submit' value='Save Message' /></label>";
 
 
 		echo "<hr><strong>Admin Message for not logged in users!</strong><Br>";
+		echo "<font color='green' size='1'>";
+		echo "This message is displayed to all visitors that are not logged into this website.  This message can not be hidden unless the visitor logsin.";
+		echo "</font><br>";
+		echo "<br>";
 		$query2 = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='2' ";
 		if($result2 = $mysqli->query($query2)){
 			while ($row2 = $result2->fetch_assoc()) {
@@ -184,10 +197,15 @@ if(isUserLoggedIn() && is_admin()){
 			echo "<input name='adminuser2' type='text' size='40' maxlength='50' value='${adminuser2}'><br>";
 			echo "<label>Message Content:</label><br><textarea name='admincontent2' cols='50' rows='10'>${admincontent2}</textarea><br>";
 			echo "<select name='adminshow2' id='adminshow2'>";
-				if($adminshow2 == 'yes'){$as12 = "SELECTED";}else{$as12 = "";}
-				if($adminshow2 == 'no'){$as22 = "SELECTED";}else{$as22 = "";}
-				echo "<option value='yes' $as12>Show Message</option>";
-				echo "<option value='no' $as22>Hide Message</option>";
+				if(empty($adminshow2)){
+					$as12 = "";
+					$as22 = "SELECTED";
+				}else{
+					if($adminshow2 == 'TRUE'){$as12 = "SELECTED";}else{$as12 = "";}
+					if($adminshow2 == 'FALSE'){$as22 = "SELECTED";}else{$as22 = "";}
+				}
+				echo "<option value='TRUE' $as12>Show Message</option>";
+				echo "<option value='FALSE' $as22>Hide Message</option>";
 			echo "</select>";
 			echo "<Br><Br>";
 			echo "<label title='Send'><input type='submit' value='Save Message' /></label>";
