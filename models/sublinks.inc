@@ -1,4 +1,4 @@
-<?
+<?php
 
 	if(isset($_REQUEST['profile'])){ $profile = intval($_REQUEST['profile']); }else{ $profile = ""; }
 	if(!isset($_REQUEST['page'])){ $taz = ""; }
