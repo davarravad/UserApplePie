@@ -111,7 +111,7 @@
 		font-size: 12px;
 	}
 	.logo {
-		height: 90px;
+		height: 92px;
 		margin: 0 auto 0 auto;
 		background-image: url('images/logo.jpg');
 		background-repeat: no-repeat;
@@ -248,7 +248,7 @@
 		font-size: 12px;
 	}
 	.logo {
-		height: 90px;
+		height: 92px;
 		margin: 0 auto 0 auto;
 		background-image: url('images/logo.jpg');
 		background-repeat: no-repeat;
@@ -372,7 +372,7 @@
 		display: none;
 	}
 	.logo {
-		height: 90px;
+		height: 95px;
 		margin: 0 auto 0 auto;
 		background-image: url('images/logo.jpg');
 		background-repeat: no-repeat;
@@ -514,7 +514,7 @@
 		display: none;
 	}
 	.logo {
-		height: 120px;
+		height: 148px;
 		margin: 0 auto 0 auto;
 		background-image: url('images/logo.jpg');
 		background-repeat: no-repeat;
@@ -642,7 +642,7 @@
 		display: none;
 	}
 	.logo {
-		height: 90px;
+		height: 120px;
 		margin: 0 auto 0 auto;
 		background-image: url('images/logo.jpg');
 		background-repeat: no-repeat;
@@ -1250,6 +1250,7 @@ ul.MenuBarHorizontal ul.MenuBarSubmenuVisible ul.MenuBarSubmenuVisible
 }
 ul.MenuBarHorizontal ul
 {
+	font-weight: bold;
 	border: 1px solid #C8D2DB;
 	border-bottom-left-radius:5px;
 	border-bottom-right-radius:5px;
@@ -1260,6 +1261,7 @@ ul.MenuBarHorizontal ul
 }
 ul.MenuBarHorizontal a
 {
+	font-weight: bold;
 	display: block;
 	cursor: pointer;
 	padding: 0.5em 0.75em;
@@ -1272,7 +1274,9 @@ ul.MenuBarHorizontal a
 }
 ul.MenuBarHorizontal a:hover, ul.MenuBarHorizontal a:focus
 {
+	font-weight: bold;
 	color: #425666;
+	text-shadow: 1px 1px #fff;
 }
 ul.MenuBarHorizontal a.MenuBarItemHover, ul.MenuBarHorizontal a.MenuBarItemSubmenuHover, ul.MenuBarHorizontal a.MenuBarSubmenuVisible
 {
