@@ -132,7 +132,14 @@
 	.wm_img {
 		width:100px;
 	}
-	
+	.codeblock {
+		width:650px;
+		border:0px;
+	}
+	.forum_img {
+		max-height:400px;
+		max-width:650px
+	}
 }
 
 /* #OldMonitor 1024-1279
@@ -262,6 +269,14 @@
 	.wm_img {
 		width:100px;
 	}
+	.codeblock {
+		width:450px;
+		border:0px;
+	}
+	.forum_img {
+		max-height:400px;
+		max-width:450px
+	}
 }
 
 /* #Tablet (Portrait)
@@ -377,6 +392,14 @@
 	}
 	.wm_img {
 		width:100px;
+	}
+	.codeblock {
+		width:250px;
+		border:0px;
+	}
+	.forum_img {
+		max-height:400px;
+		max-width:250px
 	}
 }
 
@@ -516,6 +539,14 @@
 	.wm_img {
 		width:50px;
 	}
+	.codeblock {
+		width:200px;
+		border:0px;
+	}
+	.forum_img {
+		max-height:400px;
+		max-width:200px
+	}
 
 }
 
@@ -631,6 +662,14 @@
 	}
 	.wm_img {
 		width:50px;
+	}
+	.codeblock {
+		width:200px;
+		border:0px;
+	}
+	.forum_img {
+		max-height:400px;
+		max-width:200px
 	}
 }
 
@@ -766,11 +805,15 @@ pre.forum {
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:11px;
 	width:100%;
+	word-wrap: break-word;      /* IE 5.5-7 */
+	white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+	white-space: pre-wrap;      /* current browsers */
 }
 pre.code {
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:11px;
-	overflow:scroll;
+	width:100%;
+	overflow:auto;
 }
 nav {
   position: relative;
@@ -1133,6 +1176,19 @@ text-decoration:none;
 color:#E7EEF2;
 background-color:#96a7b6;
 text-decoration:none;
+}
+
+div.php {
+	overflow:auto;
+	width:95%;
+	max-height: 400px;
+	border:1px solid #DDDDDD;
+	background-color:#EEEEEE;
+	padding: 5px 5px 5px 10px;
+	white-space:nowrap;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
 }
 
 @charset "UTF-8";
