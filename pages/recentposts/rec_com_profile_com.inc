@@ -27,7 +27,7 @@
 			
 						unset($ID02);
 			
-				$query01 = "SELECT * FROM profilecomments WHERE `id`='$statcom_id' GROUP BY `id` ORDER BY `id` DESC LIMIT 1";
+				$query01 = "SELECT * FROM ".$db_table_prefix."profilecomments WHERE `id`='$statcom_id' GROUP BY `id` ORDER BY `id` DESC LIMIT 1";
 				$result01 = mysqli_query($GLOBALS["___mysqli_ston"], $query01)
 					or die ("Couldn't ececute query.");
 
