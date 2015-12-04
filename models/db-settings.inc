@@ -34,6 +34,15 @@ if(mysqli_connect_errno()) {
 	exit();
 }
 
+/*PDO Settings*/
+try {
+     $DB = new PDO("mysql:host={$db_host};dbname={$db_name}",$db_user,$db_pass);
+     $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e) {
+     echo $e->getMessage();
+}
+
 //Direct to install directory, if it exists
 if(is_dir("install/"))
 {
