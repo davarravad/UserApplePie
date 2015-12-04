@@ -54,7 +54,7 @@ Step #3. Fill out the connection details in db-settings.inc
 
 Step #4. UserApplePie supports MySQLi and requires MySQL server version 4.1.3 or newer.
 
-Step #5. Enable/Install ImageMagic
+Step #5. Enable/Install ImageMagic (Optional)
 
 Step #6. Make images, small, and thumb folders that are in /content/profile/ folder writeable by Web Server.
 
