@@ -1,7 +1,7 @@
 <?php
 
 //////////////////////////////////
-// UserApplePie Version: 1.0.0  //
+// UserApplePie Version: 1.0.1  //
 // http://www.thedavar.com      //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
@@ -123,10 +123,12 @@ echo "<div class='logo'>";
 			<li><a href='${site_url_link}member/$user_displayname/' class='MenuBarItemSubmenu' title='View Your Member Profile'>My Profile</a><hr>
 			  <ul>
 				<li><a href='${site_url_link}member/$user_displayname/' title='View Your Member Profile'>View My Profile</a></li>
-				<li><a href='${site_url_link}editprofilemain/' title='Edit Your Member Profile'>Edit Profile</a></li>
-				<li><a href='${site_url_link}editprofilemain/editimages/' title='Edit Your Profile Images'>Edit Profile Images</a></li>
-				<li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a><hr></li>
-				<li><a href='${site_url_link}editprofilemain/account/' title='Change Your Account Settings'>Account Settings</a></li>
+				<li><a href='${site_url_link}editprofilemain/' title='Edit Your Member Profile'>Edit Profile</a></li>";
+				if($enable_photos == "TRUE"){
+					echo "<li><a href='${site_url_link}editprofilemain/editimages/' title='Edit Your Profile Images'>Edit Profile Images</a></li>";
+					echo "<li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a><hr></li>";
+				}
+				echo "<li><a href='${site_url_link}editprofilemain/account/' title='Change Your Account Settings'>Account Settings</a></li>
 				<li><a href='${site_url_link}editprofilemain/account_email/' title='Change Your Privacy and Email Settings'>Privacy Settings</a></li>
 			  </ul>
 		  </li>
@@ -155,21 +157,21 @@ echo "<div class='logo'>";
 	if(isUserLoggedIn()){ 
 			require "pages/profile/usernamememFL.inc";
 			require "pages/profile/mainimagetiny.inc";
-
 			if(isset($mainPicLinkA)){}else{ $mainPicLinkA = ""; }
 			if(isset($mainPicLinkB)){}else{ $mainPicLinkB = ""; }
-			
 			$user_displayname = get_up_info_mem_disp_name($userIdme);
-
-	echo "	
-		   <li>  <img class='usr_main_img' border='0' height='18px' src='/content/profile/thumb/${mainPic}'></li>
-		  <li> <a href='${site_url_link}member/$user_displayname/' title='$user_displayname' class='MenuBarItemSubmenu'>&nbsp;&nbsp;&nbsp; $user_displayname &nbsp;&nbsp;&nbsp;</a>
+		if($enable_photos == "TRUE"){
+			echo "<li>  <img class='usr_main_img' border='0' height='18px' src='/content/profile/thumb/${mainPic}'></li>";
+		}
+	echo " <li> <a href='${site_url_link}member/$user_displayname/' title='$user_displayname' class='MenuBarItemSubmenu'>&nbsp;&nbsp;&nbsp; $user_displayname &nbsp;&nbsp;&nbsp;</a>
 			<ul>
 				<li><a href='${site_url_link}member/$user_displayname/' title='View Your Member Profile'>View My Profile</a></li>
-				<li><a href='${site_url_link}editprofilemain/' title='Edit Your Member Profile'>Edit Profile</a></li>
-				<li><a href='${site_url_link}editprofilemain/editimages/' title='Edit Your Profile Images'>Edit Profile Images</a></li>
-				<li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a><hr></li>
-				<li><a href='${site_url_link}editprofilemain/account/' title='Change Your Account Settings'>Account Settings</a></li>
+				<li><a href='${site_url_link}editprofilemain/' title='Edit Your Member Profile'>Edit Profile</a></li>";
+				if($enable_photos == "TRUE"){
+					echo "<li><a href='${site_url_link}editprofilemain/editimages/' title='Edit Your Profile Images'>Edit Profile Images</a></li>";
+					echo "<li><a href='${site_url_link}editprofilemain/picsubmit/' title='Upload Profile Images'>Upload Profile Images</a><hr></li>";
+				}
+				echo "<li><a href='${site_url_link}editprofilemain/account/' title='Change Your Account Settings'>Account Settings</a></li>
 				<li><a href='${site_url_link}editprofilemain/account_email/' title='Change Your Privacy and Email Settings'>Privacy Settings</a></li>
 	";
 	if(isUserLoggedIn() && is_admin()) {

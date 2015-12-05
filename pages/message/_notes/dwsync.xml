@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="member_lookup.inc" server="//DAVAR-PC/wamp/www/" local="130803545994383954" remote="130803545990000000" />
+<file name="mesreply.inc" server="//DAVAR-PC/wamp/www/" local="130803545994463958" remote="130803545990000000" />
+<file name="newmessage.inc" server="//DAVAR-PC/wamp/www/" local="130803545994573965" remote="130803545990000000" />
+<file name="viewmessage.inc" server="//DAVAR-PC/wamp/www/" local="130803545994813978" remote="130803545990000000" />
+<file name="delmesinbox.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130810352590000000" remote="130810352590000000" />
+<file name="delmesoutbox.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130810352590000000" remote="130810352590000000" />
+<file name="inbox.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130803408460000000" remote="130803408460000000" />
+<file name="member_lookup.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130803545990000000" remote="130803545990000000" />
+<file name="mesreply.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130810352590000000" remote="130810352590000000" />
+<file name="msend.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130803408480000000" remote="130803408480000000" />
+<file name="newmessage.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130810352590000000" remote="130810352590000000" />
+<file name="outbox.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130803408490000000" remote="130803408490000000" />
+<file name="touserdrop.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130803408500000000" remote="130803408500000000" />
+<file name="viewmessage.inc" server="//WEBSERVER/websites/userapplepie.thedavar.net/" local="130810352580000000" remote="130810352580000000" />
+<file name="delmesinbox.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="delmesoutbox.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="inbox.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="member_lookup.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="mesreply.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="msend.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="newmessage.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="outbox.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="touserdrop.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="viewmessage.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937600780000000" remote="130937600780000000" />
+<file name="delmesoutbox.inc" server="//WEBSERVER/websites/demo.userapplepie.com/" local="130817823721092404" remote="130817823720000000" />
+<file name="inbox.inc" server="//WEBSERVER/websites/demo.userapplepie.com/" local="130817823720992403" remote="130817823720000000" />
+<file name="outbox.inc" server="//WEBSERVER/websites/demo.userapplepie.com/" local="130817823720792403" remote="130817823720000000" />
+<file name="delmesoutbox.inc" server="//WEBSERVER/websites/userapplepie.com/" local="130817823721092404" remote="130817823720000000" />
+<file name="inbox.inc" server="//WEBSERVER/websites/userapplepie.com/" local="130817823720992403" remote="130817823720000000" />
+<file name="outbox.inc" server="//WEBSERVER/websites/userapplepie.com/" local="130817823720792403" remote="130817823720000000" />
+</dwsync>

@@ -1,6 +1,6 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.0  //
+// UserApplePie Version: 1.0.1  //
 // http://www.thedavar.com      //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
@@ -266,6 +266,16 @@ if($cur_server_name_dc != $demo_server_name_dc){
 			}
 		}
 		
+		//Validate site_adds_bot
+		if ($newSettings[18] != $enable_photos) {
+			$new_enable_photos = $newSettings[18];
+			if (count($errors) == 0) {
+				$cfgId[] = 18;
+				$cfgValue[18] = $new_enable_photos;
+				$enable_photos = $new_enable_photos;
+			}
+		}
+		
 		//Update configuration table with new settings
 		if (count($errors) == 0 AND count($cfgId) > 0) {
 			updateConfig($cfgId, $cfgValue);
@@ -406,7 +416,8 @@ else {
 
 echo "
 	</td>
-</tr><tr>
+</tr>
+<tr>
 	<td>
 <label>Template:</label>
 </td><td>
@@ -462,6 +473,43 @@ echo "
 		<textarea rows='4' cols='45' type='text' name='settings[".$settings['site_adds_bot']['id']."]'>".$site_adds_bot."</textarea>
 	</td>
 </tr>
+<tr><td colspan=2>
+<hr>
+<strong>Photo Settings (ImageMagick)</strong>
+</td></tr>
+<tr>
+	<td>
+
+<label>Users Image Display/Uploads:</label>
+</td><td>";
+
+	// Check to make sure php is version is good enough
+	if (!extension_loaded('imagick')) {
+		// php version isn't high enough
+		echo " - <font color=red><strong>ImageMagick does not seem to be installed.</strong></font>";
+		echo " - <a href='http://www.imagemagick.org' target='_blank'>ImageMagick Website</a>";
+		echo "<br> Images have been disabled throughout the site.";
+		echo "<input type=\"hidden\" name=\"settings[".$settings['enable_photos']['id']."]\" value=\"FALSE\" />";
+	} else {
+		echo "<select name='settings[".$settings['enable_photos']['id']."]'>";
+		//Display email activation options
+		if ($enable_photos == "TRUE"){
+			echo "
+			<option value='TRUE' selected>Enable</option>
+			<option value='FALSE'>Disable</option>
+			</select>";
+		}
+		else {
+			echo "
+			<option value='TRUE'>Enable</option>
+			<option value='FALSE' selected>Disable</option>
+			</select>";
+		}
+	}
+echo "
+	</td>
+</tr>
+
 <tr>
 	<td colspan=2>
 <hr>

@@ -1,6 +1,6 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.0  //
+// UserApplePie Version: 1.0.1  //
 // http://www.thedavar.com      //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
@@ -37,6 +37,7 @@ $recap_secretkey = $settings['recap_secretkey']['value'];
 $site_adds_top = $settings['site_adds_top']['value'];
 $site_adds_bot = $settings['site_adds_bot']['value'];
 $site_style_sel = $settings['template']['value'];
+$enable_photos = $settings['enable_photos']['value'];
 
 $site_url_link = $websiteUrl;
 

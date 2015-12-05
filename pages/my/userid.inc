@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 // Delete this file I think
 $queryw = "SELECT * FROM ".$db_table_prefix."users WHERE `userName`='$name' ";
 $resultw = mysqli_query($GLOBALS["___mysqli_ston"], $queryw)

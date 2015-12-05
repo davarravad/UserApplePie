@@ -1,5 +1,10 @@
 <?php
-
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 $query = "SELECT * FROM art WHERE `name` = '$nname'";
 $result = mysqli_query($GLOBALS["___mysqli_ston"], $query)

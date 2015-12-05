@@ -1,6 +1,6 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.0  //
+// UserApplePie Version: 1.0.1  //
 // http://www.thedavar.com      //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
@@ -74,11 +74,14 @@
 echo "<center>";
 echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>"; 
 
-					echo "<table width='100%'><tr><td width='100px' align='center' valign='top'>";
-
-					require "pages/profile/epimagemain.inc";
-
-					echo "</td><td align='left' valign='top'>";
+					echo "<table width='100%'><tr>";
+					
+					if($enable_photos == "TRUE"){
+						echo "<td width='100px' align='center' valign='top'>";
+						require "pages/profile/epimagemain.inc";
+						echo "</td>";
+					}
+					echo "<td align='left' valign='top'>";
 					echo "<h2>";
 					get_user_name($ID02);
 					echo "</h2>";
@@ -257,29 +260,29 @@ get_user_name($ID02); ?>!</strong>
 						echo "</table>";
 						echo "</td></tr>";
 
-
-							//Check to see if there are any profile images
-							$queryCKPI = "SELECT * FROM ".$db_table_prefix."ep3 WHERE `userId`='$ID02' ";
-							$resultCKPI = mysqli_query($GLOBALS["___mysqli_ston"], $queryCKPI);
+			// Check to see if site images are enabled
+			if($enable_photos == "TRUE"){
+				//Check to see if there are any profile images
+				$queryCKPI = "SELECT * FROM ".$db_table_prefix."ep3 WHERE `userId`='$ID02' ";
+				$resultCKPI = mysqli_query($GLOBALS["___mysqli_ston"], $queryCKPI);
+	
+				$num_rowsCKPI = mysqli_num_rows($resultCKPI);
+	
+				//echo "$num_rowsCKPI";
+				if($num_rowsCKPI != 0){
+					echo "<tr><td width='50%'>";
+					echo "<hr align='center' width='100%' />";
+					echo "<div align='center'><strong>Images</strong><br>";
 				
-							$num_rowsCKPI = mysqli_num_rows($resultCKPI);
-				
-							//echo "$num_rowsCKPI";
-			if($num_rowsCKPI != 0){
+					require "pages/profile/epimage.inc";
 
-
-						echo "<tr><td width='50%'>";
-						echo "<hr align='center' width='100%' />";
-						echo "<div align='center'><strong>Images</strong><br>";
-				
-				require "pages/profile/epimage.inc";
-
-				echo "</div></td></tr>";
-			}elseif(isUserLoggedIn() && $userIdme == $ID02){
-				echo "<tr><td width='100%'>";
-				echo "<div align='center'><strong>:Images:</strong><br>";
-				echo "(<a href='${site_url_link}editprofilemain/picsubmit/'>Add Photos to Your Member Profile!</a>)";
-				echo "</div></td></tr>";
+					echo "</div></td></tr>";
+				}elseif(isUserLoggedIn() && $userIdme == $ID02){
+					echo "<tr><td width='100%'>";
+					echo "<div align='center'><strong>:Images:</strong><br>";
+					echo "(<a href='${site_url_link}editprofilemain/picsubmit/'>Add Photos to Your Member Profile!</a>)";
+					echo "</div></td></tr>";
+				}
 			}
 				echo "<tr><td>";
 				require "pages/profile/part2.inc";

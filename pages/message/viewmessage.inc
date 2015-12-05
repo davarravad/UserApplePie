@@ -1,5 +1,11 @@
 <center>
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 if(isset($_POST['read'])){ $read = $_POST['read']; }else{ $read = ""; }
 if(isset($_POST['mid'])){ $mid = $_POST['mid']; }else{ $mid = ""; }

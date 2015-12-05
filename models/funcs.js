@@ -1,7 +1,9 @@
-/*
-UserCake Version: 2.0.2
-http://usercake.com
-*/
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 function showHide(div){
 	if(document.getElementById(div).style.display = 'block'){
 		document.getElementById(div).style.display = 'none';

@@ -1,4 +1,11 @@
-
+<?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+?>
 
 <table width=100% border=0 >
 <tr><td colspan="2" align="center"><h3>Profile Manager for <?php

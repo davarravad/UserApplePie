@@ -1,7 +1,7 @@
 
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.0  //
+// UserApplePie Version: 1.0.1  //
 // http://www.thedavar.com      //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
@@ -97,12 +97,14 @@ while ($row01 = mysqli_fetch_array($result01))
 	
 	echo "<table width='$tblw500' border=0 cellpadding=0 cellspacing=0>";
 	echo "<tr>";
-	echo "<td valign=top width=$tblw3 class=epboxb>";
-		$ID02 = $com_uid;
-	echo "<a href='${site_url_link}member/$ID02/'>";
-		require "pages/profile/userimage.inc";
-	echo "</a>";
-	echo "</td> ";
+			$ID02 = $com_uid;
+	if($enable_photos == "TRUE"){
+		echo "<td valign=top width=$tblw3 class=epboxb>";
+		echo "<a href='${site_url_link}member/$ID02/'>";
+			require "pages/profile/userimage.inc";
+		echo "</a>";
+		echo "</td> ";
+	}
 	echo "<td class='$bgcolor' valign=top>";
 	echo "<a href='${site_url_link}member/$ID02/'>";
 	echo "<font class='comt_nm'>$com_name</font>";

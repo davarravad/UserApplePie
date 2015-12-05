@@ -1,7 +1,7 @@
 <center>
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.0  //
+// UserApplePie Version: 1.0.1  //
 // http://www.thedavar.com      //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
@@ -55,11 +55,12 @@ while ($row02 = mysqli_fetch_array($result02))
 	echo "<a class='anchor' name='statcom$id'></a>";
 	echo "<table width='99%' border=0 cellpadding=2 cellspacing=2>";
 	echo "<tr>";
+	$ID02 = $statcom_uid;
 	echo "<td valign=top class=$bgcolor>";
-		$ID02 = $statcom_uid;
 	echo "<div class='comt_nm2'><a href='${site_url_link}member/$ID02/'>";
 		require "pages/profile/userimage_small.inc";
-	echo "</a> Comment by ";
+	echo "</a>";
+	echo "Comment by ";
 	echo "<a href='${site_url_link}member/$ID02/'>";
 	echo " $statcom_name</div>";
 	echo "</a>";

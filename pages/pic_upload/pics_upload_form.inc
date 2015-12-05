@@ -1,5 +1,15 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
+// Check to see if image uploads are enabled
+if($enable_photos == "FALSE"){
+	echo "<font color=red><strong>Sorry.. Photos are Disabled!</strong></font>";
+}else{
 	echo "<center>";
 	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
 	echo "$puf_title"; 
@@ -170,5 +180,5 @@
 
 	echo "</td></tr></table>";
 	echo "</center><br><br>";
-
+}
 ?>

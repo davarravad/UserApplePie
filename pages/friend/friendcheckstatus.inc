@@ -1,4 +1,11 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
 $query31 = "SELECT status1, status2 FROM ".$db_table_prefix."friend WHERE ((`userId1`='$userId1a' AND `userId2`='$userId2a') OR (`userId1`='$userId2a' AND `userId2`='$userId1a')) LIMIT 1";
 $result31 = mysqli_query($GLOBALS["___mysqli_ston"], $query31);
 	//or die ("Couldn't ececute query.");

@@ -1,4 +1,13 @@
-<style type="text/css">
+<?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+
+echo "
+<style type='text/css'>
 #pictures li {
 	float:left;
 	height:110px;
@@ -31,8 +40,8 @@ img {
 	z-index: 6000;
 }
 </style>
+";
 
-<?php
 //Display all images uploaded to tazib for section
 
 	echo "<center>";

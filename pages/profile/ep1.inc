@@ -1,6 +1,10 @@
-
-
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 $userId = $idofuser;
 
@@ -19,7 +23,6 @@ $result = mysqli_query($GLOBALS["___mysqli_ston"], $query)
 		$userAddr1 = $contact -> userAddr1;
 		$userAddr2 = $contact -> userAddr2;
 		$userCity = $contact -> userCity;
-		$userState = $contact -> userState;
 		$userCountry = $contact -> userCountry;
 		$userTel = $contact -> userTel;
 		$userMobiTel = $contact -> userMobiTel;

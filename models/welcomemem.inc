@@ -1,6 +1,6 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.0  //
+// UserApplePie Version: 1.0.1  //
 // http://www.thedavar.com      //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
@@ -13,9 +13,13 @@
 
 	echo "<center><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='epboxc'>";
 
-		echo "<table width=100%><tr><td class='wm_img'><a href='${site_url_link}member/$userIdme/'>";
-			require "pages/my/mainimage.inc";
-		echo "</a></td><td align=left>";
+		echo "<table width=100%><tr>";
+		if($enable_photos == "TRUE"){
+			echo "<td class='wm_img'><a href='${site_url_link}member/$userIdme/'>";
+				require "pages/my/mainimage.inc";
+			echo "</a></td>";
+		}
+		echo "<td align=left>";
 			echo "Welcome back ";
 			require "pages/my/username.inc";
 			echo ".";
@@ -39,9 +43,10 @@
 				echo "<center>";
 
 					echo "<a href='${site_url_link}member/$userIdme/'>View My Profile</a> - ";
-					echo "<a href='${site_url_link}editprofilemain/'>Edit My Profile</a> - ";
-					echo "<a href='${site_url_link}community/myimages/'>Edit/Upload My <b>Profile Photos</b></a>";
-
+					echo "<a href='${site_url_link}editprofilemain/'>Edit My Profile</a> ";
+					if($enable_photos == "TRUE"){
+						echo " - <a href='${site_url_link}community/myimages/'>Edit/Upload My <b>Profile Photos</b></a>";
+					}
 					//If user is admin dispaly manage site link
 					if(is_admin()){
 						echo "<hr>(You are ".$websiteName." Admin - <a href='${site_url_link}YummyAsPie/'>Manage Site</a>)";

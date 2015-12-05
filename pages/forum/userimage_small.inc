@@ -1,14 +1,22 @@
 <?php
-global $mysqli, $db_table_prefix, $websiteUrl;
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
-$query_uis = "SELECT up.mainPic FROM ".$db_table_prefix."userprofile up WHERE `userId`='$ID02' LIMIT 1 ";
+	global $mysqli, $db_table_prefix, $websiteUrl, $enable_photos;
 
-if($result_uis = $mysqli->query($query_uis)){
-	while ($row_uis = $result_uis->fetch_assoc()) {
-		$mainPic = $row_uis['mainPic'];
-		echo "<a href='${websiteUrl}member/$ID02/'><img class='rounded_5' border='0' height='50' src='${websiteUrl}content/profile/thumb/${mainPic}'></a>";
+if($enable_photos == "TRUE"){
+	$query_uis = "SELECT up.mainPic FROM ".$db_table_prefix."userprofile up WHERE `userId`='$ID02' LIMIT 1 ";
+
+	if($result_uis = $mysqli->query($query_uis)){
+		while ($row_uis = $result_uis->fetch_assoc()) {
+			$mainPic = $row_uis['mainPic'];
+			echo "<a href='${websiteUrl}member/$ID02/'><img class='rounded_5' border='0' height='50' src='${websiteUrl}content/profile/thumb/${mainPic}'></a>";
+		}
+		$result_uis->close();
 	}
-	$result_uis->close();
 }
-
 ?>

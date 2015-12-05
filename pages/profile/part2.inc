@@ -1,3 +1,12 @@
+<?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
+?>
+
 <style type="text/css">
 #img_thumb {
 	border:0;

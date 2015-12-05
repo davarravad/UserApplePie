@@ -1,4 +1,10 @@
 <?php
+//////////////////////////////////
+// UserApplePie Version: 1.0.1  //
+// http://www.thedavar.com      //
+// UserCake Version: 2.0.2      //
+// http://usercake.com          //
+//////////////////////////////////
 
 		$query_vtvp = "SELECT * FROM art WHERE `vehicle_id`='$int' AND `use`='yes' ORDER BY `id` DESC LIMIT 1";
 		
