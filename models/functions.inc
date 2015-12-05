@@ -365,17 +365,22 @@ function success_message(){
 
 
 function new_user_message_send($username, $inserted_id){
-	global $websiteUrl, $websiteName, $mysqli, $db_table_prefix;
+	global $websiteUrl, $websiteName, $mysqli, $db_table_prefix, $DBH;
 	
 	//Testing stuff
 	//echo "Sending message to $username!";
-	
-	//Message Subject
-	$msubject = "Welcome to ".$websiteName."!";
-	
-	//Message Content
-	// Get data from database for admin welcome message
-	$mcontent = "Welcome to the site!  Enjoy!";
+
+	// Get information from database if any for welcome message
+	$query = "SELECT * FROM ".$db_table_prefix."admin_message WHERE `id`='1' ";
+	if($result = $DBH->query($query)){
+		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$id = $row['id'];
+			$sub = $row['sub'];
+			$con = $row['con'];
+		}
+	}
+	if(isset($sub)){ $msubject = "$sub"; }else{$msubject = "Welcome to ".$websiteName."!";}
+	if(isset($con)){ $mcontent = "$con"; }else{$mcontent = "Welcome to the site!  Enjoy!";}
 	
 	$msubject = htmlspecialchars($msubject);	
 	$mcontent = htmlspecialchars($mcontent);

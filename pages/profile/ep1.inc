@@ -122,15 +122,11 @@ require "pages/city_lookup.inc"; ?></td></tr>
 	</label>
 
 
-
-
-
 	</td></tr>
 
 	 <tr class="mTr"><td colspan=2 align="center">
 	 		<input type="hidden" name="action" value="update">
-			<input type="hidden" name="userId" value="<?php
-echo $_REQUEST['userId']; ?>">
+			<input type="hidden" name="userId" value="<?php echo $userId; ?>">
 			<input type="submit" name="submit" value="Update profile"></td></tr>
 
 	</table>
@@ -142,8 +138,7 @@ echo $_REQUEST['userId']; ?>">
 
 <br>
 
-<?php
-require "pages/profile/ep2.inc"; ?>
+<?php require "pages/profile/ep2.inc"; ?>
 
 
 
