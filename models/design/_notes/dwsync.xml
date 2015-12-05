@@ -8,6 +8,13 @@
 <file name="footer.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937581575639385" remote="130937581570000000" />
 <file name="header.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937588152858941" remote="130937588150000000" />
 <file name="memberlink.inc" server="//WEBSERVER/websites/thedavar.net/" local="130937581575874861" remote="130937581570000000" />
-<file name="header.inc" server="//WEBSERVER/websites/demo.userapplepie.com/" local="130877521360000000" remote="130877521360000000" />
-<file name="header.inc" server="//WEBSERVER/websites/userapplepie.com/" local="130877521360000000" remote="130877521360000000" />
+<file name="header.inc" server="//WEBSERVER/websites/demo.userapplepie.com/" local="130937588152858941" remote="130937588150000000" />
+<file name="header.inc" server="//WEBSERVER/websites/userapplepie.com/" local="130937588152858941" remote="130937588150000000" />
+<file name="footer.inc" server="//WEBSERVER/websites/demo.userapplepie.com/" local="130937581575639385" remote="130937581570000000" />
+<file name="memberlink.inc" server="//WEBSERVER/websites/demo.userapplepie.com/" local="130937581575874861" remote="130937581570000000" />
+<file name="footer.inc" server="//WEBSERVER/websites/dms-srv.com/" local="130937581575639385" remote="130937581570000000" />
+<file name="header.inc" server="//WEBSERVER/websites/dms-srv.com/" local="130937588152858941" remote="130937588150000000" />
+<file name="memberlink.inc" server="//WEBSERVER/websites/dms-srv.com/" local="130937581575874861" remote="130937581570000000" />
+<file name="footer.inc" server="//WEBSERVER/websites/userapplepie.com/" local="130937581575639385" remote="130937581570000000" />
+<file name="memberlink.inc" server="//WEBSERVER/websites/userapplepie.com/" local="130937581575874861" remote="130937581570000000" />
 </dwsync>

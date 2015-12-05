@@ -6,6 +6,10 @@
 // http://usercake.com          //
 //////////////////////////////////
 
+if($enable_photos == "FALSE"){
+	echo "<font color=red><strong>Sorry.. Photos are Disabled!</strong></font>";
+}else{
+
 echo "<a class='anchor' name=imgsview></a>";
 
 	//Include popup file
@@ -131,5 +135,5 @@ if($num_rows > 0){
 		}	
 		echo "</td></tr></table><hr>";
 }//End rows check
-
+}// End enable photos 
 ?>

@@ -6,6 +6,10 @@
 // http://usercake.com          //
 //////////////////////////////////
 
+if($enable_photos == "FALSE"){
+	echo "<font color=red><strong>Sorry.. Photos are Disabled!</strong></font>";
+}else{
+
 echo "
 <style type='text/css'>
 #pictures li {
@@ -228,7 +232,7 @@ img {
 		}
 	
 	echo "</center><br><br>";
-
+}// End enable photos
 ?>
 
 

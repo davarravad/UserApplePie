@@ -7,6 +7,10 @@
 // http://usercake.com          //
 //////////////////////////////////
 
+if($enable_photos == "FALSE"){
+	echo "<font color=red><strong>Sorry.. Photos are Disabled!</strong></font>";
+}else{
+
 if(isUserLoggedIn())
 {
 
@@ -397,4 +401,6 @@ echo "</center>";
 else {
 	notlogedinmsg();
 }
+
+}// End enable photos
 ?>
