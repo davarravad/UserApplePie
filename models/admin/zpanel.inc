@@ -65,10 +65,11 @@ echo "
 
 if(isUserLoggedIn() && is_admin()) {
 
+// If demo server, editing of configs is disabled.
 // Current Server Name
 $cur_server_name_dc = $_SERVER['SERVER_NAME'];
 // Demo Server Name: 
-$demo_server_name_dc = "213demo.userapplepie.com";
+$demo_server_name_dc = "demo.userapplepie.com";
 	
 // Get Current User's Display Name
 $user_displayname = get_up_info_mem_disp_name($userIdme);

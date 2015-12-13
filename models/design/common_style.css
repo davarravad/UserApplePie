@@ -84,13 +84,10 @@ div.php {
 	display:inline;
 	margin:0;
 }
-pre.forum {
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;
-	width:100%;
-	word-wrap: break-word;      /* IE 5.5-7 */
-	white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
-	white-space: pre-wrap;      /* current browsers */
+.forum{
+	white-space: pre-line; 
+	display: block; 
+	unicode-bidi: embed;	
 }
 pre.code {
 	font-family:Verdana, Geneva, sans-serif;

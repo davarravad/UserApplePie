@@ -80,12 +80,12 @@ if(isUserLoggedIn())
 	if($user_sweet_status == "alreadysweet"){
 		echo "$unsweet_button";
 			if($sweet_location == "forum_posts_replys" || $sweet_location == "forum_posts"){
-				echo "<br>";
+				echo " ";
 			}
 	}else{
 		if(isset($sweet_button)){ echo "$sweet_button"; }
 			if($sweet_location == "forum_posts_replys" || $sweet_location == "forum_posts"){
-				echo "<br>";
+				echo " ";
 			}
 	}
 	

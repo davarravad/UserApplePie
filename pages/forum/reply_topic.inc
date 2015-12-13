@@ -65,18 +65,18 @@ if(isUserLoggedIn())
 
 			echo "
 				<center><strong>Your Reply Preview</strong></center>
-				<pre class='forum'>
-				<DIV id=preview class=scroll style=\"BORDER-RIGHT: #c0c0c0 1px solid; PADDING-RIGHT: 3px;
+				<div class='forum'>
+				<DIV id=preview_display class=scroll style=\"BORDER-RIGHT: #c0c0c0 1px solid; PADDING-RIGHT: 3px;
 				BORDER-TOP: #c0c0c0 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #c0c0c0 1px solid; WIDTH: 98%;
 				PADDING-TOP: 3px; BORDER-BOTTOM: #c0c0c0 1px solid; HEIGHT: 100px; overflow:scroll\"></DIV>
-				</pre>
+				</div>
 			";
 			
 			echo "</td></tr></table>";
 
 ?>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+	
 	<script src='/models/jquery.bbcode.js' type='text/javascript'></script>
 	<script type=text/javascript>
 	  $(document).ready(function(){
@@ -95,7 +95,7 @@ if(isUserLoggedIn())
 			  bbcode: bbcode
 			},
 			function(txt){
-			  $("#preview").html(txt);
+			  $("#preview_display").html(txt);
 			})
 		  }
 		setTimeout("process()", 2000);

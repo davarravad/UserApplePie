@@ -25,6 +25,19 @@ style_header_content($stc_page_title, $stc_page_description);
 	echo "
 	<strong>Welcome to UserApplePie's Mother Web Site.</strong><br>
 	UserApplePie is a fully open source user management system.<hr>
+	<div class='panel panel-info'>
+		<div class='panel-heading'>
+			UserApplePie v1.1.0 is here!
+		</div>
+		<div class='panel-body' style='text-align:center'>
+			<h3>What's new?</h3>
+			Bootstrap Enabled!<br>
+			More mobile friendly!<br>
+			Registration form updated!<br>
+			CSRF Tokens updated!<br>
+			Much more!
+		</div>
+	</div>
 	<h3><a href='".$websiteUrl."Downloads/'>Download UserApplePie</a></h3><hr>
 	UserApplePie was created as an improved version of <a href='http://usercake.com/' target='_blank'>UserCake 2.0.2</a>.<hr>
 	The goal of UserApplePie is to create a simple to use User Management System based on MySQL and PHP.  <Br><br>

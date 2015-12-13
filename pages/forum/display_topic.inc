@@ -92,7 +92,10 @@
 
 				$f_cat = stripslashes($f_cat);
 				$f_des = stripslashes($f_des);
-		
+
+				// Set the author to meta
+				echo "<meta name='author' content='".$f_p_user_name."'>";
+				
 		// Display Link of where we are at on the forum
 		echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td>";
 			echo "<a href='${site_url_link}${site_forum_title}/'>Forum Home</a> / ";
@@ -100,103 +103,96 @@
 			echo "<a href=''>$f_p_title</a>";
 		echo "</td></tr></table>";
 		
-		echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class=hr2 colspan=3>";
-		echo "<strong>$f_p_title</strong>";
-		// Display Locked Message if Topic has been locked by admin
-		forumTopicStatus('display_note', $f_p_status, NULL);
-		echo "</td></tr><tr><td class='forum_content' width='100px' valign='top'>";
-			echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr>";
-			echo "<td align='center' width='100px'>";
-				// Show user main pic
-				global $site_dir, $userIdme;
-				$ID02 = $f_p_user_id;
-				require('pages/forum/userimage_small.inc');
-				echo "<br><a href='${site_url_link}member/$f_p_user_id/'>$f_p_user_name</a> ";
-
-				// Set the author to meta
-				echo "<meta name='author' content='".$f_p_user_name."'>";
-				
-				//Show user's membership status
-				echo "<br>";
-				get_up_info_mem_status($ID02);
-				
-				
-				// Display how long ago this was posted
-				$timestart = "$f_p_timestamp";  //Time of post
-				require_once "models/timediff.inc";
-				echo "<br><font color=green> " . dateDiff("now", "$timestart", 1) . " ago</font> ";
-				echo "<br>";
-			echo "</td></tr></table>";
-		echo "</td><td class='forum_content' valign='top' width=''>";
+		echo "<div class='panel panel-default'>";
+			echo "<div class='panel-heading'>";
+				echo "<h4>$f_p_title</h4>";
+				// Display Locked Message if Topic has been locked by admin
+				forumTopicStatus('display_note', $f_p_status, NULL);
+			echo "</div>";
+		echo "</div>";
 		
-				// If year make model engine are set show them
-				if(!empty($f_p_year) && !empty($f_p_make) && !empty($f_p_model) && !empty($f_p_engine)){
-					echo "<strong>$f_p_year - $f_p_make - $f_p_model - $f_p_engine</strong>";
-					echo "<hr>";
-				}
+		// Topic Display
+		echo "<div class='panel panel-primary'>";
+			echo "<div class='panel-heading'>";
+				echo "<div class='row'>";
+					echo "<div class='col-lg-4 col-md-4 col-sm-4'>";
+						// Show user main pic
+						global $site_dir, $userIdme;
+						$ID02 = $f_p_user_id;
+						require('pages/forum/userimage_small.inc');
+						echo " <a href='${site_url_link}member/$f_p_user_id/'>$f_p_user_name</a> ";
+					echo "</div>";
+					echo "<div class='col-lg-4 col-md-4 col-sm-4' style='text-align:center'>";
+						//Show user's membership status
+						get_up_info_mem_status($ID02);
+					echo "</div>";
+					echo "<div class='col-lg-4 col-md-4 col-sm-4' style='text-align:right'>";
+						// Display how long ago this was posted
+						$timestart = "$f_p_timestamp";  //Time of post
+						require_once "models/timediff.inc";
+						echo "<font color=green> " . dateDiff("now", "$timestart", 1) . " ago</font> ";
+					echo "</div>";
+				echo "</div>";
+			echo "</div>";
+
 		
 				//Format the content with bbcode
 				require_once('models/bbParser.php');
 				$parser = new bbParser();
 				$f_p_content_bb = $parser->getHtml($f_p_content);
-		
-		echo "<pre class='forum'>$f_p_content_bb</pre>";
-		
-		echo "</td><td class='forum_content' valign='top' width='100px'>";
-		
-			echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td align='center' valign='top'>";
-			
-				if($f_p_edit_date != NULL){
-					// Display how long ago this was posted
-					$timestart = "$f_p_edit_date";  //Time of post
-					require_once "models/timediff.inc";
-					echo "<font color=red>Edited</font><br><font color=red> " . dateDiff("now", "$timestart", 1) . " ago</font> <br><br>";
-				}
-
-			echo "</td></tr><tr><td align='center' valign='bottom'>";
-				//Start Sweet
-				if(empty($userIdme)){ $userIdme = ""; }
-				$sweet_location = "forum_posts"; //Location on site where sweet is
-				$sweet_id = "$f_p_id";  //Post Id number
-				$sweet_userid = "$userIdme";  //User's Id
-				$sweet_url = "${site_url_link}${site_forum_title}/display_topic/${f_p_id}/";
-				$sweet_owner_userid = "$f_p_user_id";  //Post owners userid
-				$sweet_sec_id = $f_p_id; //Main topic id
-				require "models/sweets.inc";
-				//End Sweet 
-					
-					
-				// If user owns this content show forum buttons for edit and delete
-				if(isUserLoggedIn()){
-					global $userIdme;
-					if($f_p_user_id == $userIdme){
-
-						echo "</td></tr><tr><td align='center' valign='bottom'><br>";
-					
-							echo "<form enctype=\"multipart/form-data\" action=\"${site_url_link}${site_forum_title}/new_topic/${f_p_id_cat}/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
-								
-								//Setup token in form
-								// create multi sessions
-								if(isset($session_token_num)){
-									$session_token_num = $session_token_num + 1;
-								}else{
-									$session_token_num = "1";
-								}
-								form_token();
-
-								echo "<input type=\"hidden\" name=\"id\" value=\"$f_p_id\" />";
-								echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$f_p_id\" />";
-								echo "<input type=\"hidden\" name=\"forum_id\" value=\"$f_p_id_cat\" />";
-								echo "<input type=\"hidden\" name=\"edit_forum_topic\" value=\"TRUE\" />";
-
-								echo "<input type=\"submit\" value=\"Edit\" name=\"Edit\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
-							echo "</form>";
+			echo "<div class='panel-body forum'>";
+				echo "$f_p_content_bb";
+			echo "</div>";
+			echo "<div class='panel-footer'>";
+				echo "<div class='row'>";
+					echo "<div class='col-lg-6 col-md-6 col-sm-6' style='text-align:left'>";
+						if($f_p_edit_date != NULL){
+							// Display how long ago this was posted
+							$timestart = "$f_p_edit_date";  //Time of post
+							require_once "models/timediff.inc";
+							echo " <font color=red>Edited</font><font color=red> " . dateDiff("now", "$timestart", 1) . " ago</font> ";
+						}
+					echo "</div>";
+					echo "<div class='col-lg-6 col-md-6 col-sm-6' style='text-align:right'>";
+						//Start Sweet
+						if(empty($userIdme)){ $userIdme = ""; }
+						$sweet_location = "forum_posts"; //Location on site where sweet is
+						$sweet_id = "$f_p_id";  //Post Id number
+						$sweet_userid = "$userIdme";  //User's Id
+						$sweet_url = "${site_url_link}${site_forum_title}/display_topic/${f_p_id}/";
+						$sweet_owner_userid = "$f_p_user_id";  //Post owners userid
+						$sweet_sec_id = $f_p_id; //Main topic id
+						require "models/sweets.inc";
+						//End Sweet 				
 							
-					} // End user own check
-				} // End login check
-			echo "</td></tr></table>";				
-		echo "</td></tr></table>";
-		
+						// If user owns this content show forum buttons for edit and delete
+						if(isUserLoggedIn()){
+							global $userIdme;
+							if($f_p_user_id == $userIdme){
+							
+									echo "<form enctype=\"multipart/form-data\" action=\"${site_url_link}${site_forum_title}/new_topic/${f_p_id_cat}/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
+										
+										//Setup token in form
+										// create multi sessions
+										if(isset($session_token_num)){
+											$session_token_num = $session_token_num + 1;
+										}else{
+											$session_token_num = "1";
+										}
+										form_token();
+										echo "<input type=\"hidden\" name=\"id\" value=\"$f_p_id\" />";
+										echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$f_p_id\" />";
+										echo "<input type=\"hidden\" name=\"forum_id\" value=\"$f_p_id_cat\" />";
+										echo "<input type=\"hidden\" name=\"edit_forum_topic\" value=\"TRUE\" />";
+										echo "<button type='submit' class='btn btn-warning btn-xs' value='Edit' name='Edit' style='margin-bottom: 5px' data-loading-text='Please wait...' >Edit</button>";
+									echo "</form>";
+									
+							} // End user own check
+						} // End login check
+					echo "</div>";
+				echo "</div>"; // End row
+			echo "</div>";
+		echo "</div>";  // END panel
 
 		// Start Get Page Number Stuff
 		function getPagerData($numHits, $limit, $pnum) 
@@ -261,7 +257,7 @@
 			
 				// Display page count and links
 				if($total > $limit){
-					echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td align='center' valign='top' class='hr2'>";
+					echo "<table width='100%' border='0' cellspacing='0' cellpadding='0' class='table'><tr><td align='center' valign='top' class='hr2'>";
 						echo "<center><table width=100%><tr><td align=left width='25%'>";
 						// use $result here to output page content 
 
@@ -356,92 +352,86 @@
 				
 				$rf_p_content = stripslashes($rf_p_content);
 					echo "<a class='anchor' name='topicreply$rf_p_main_id'></a>";
-					echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'>";
-					echo "<tr><td class='forum_content_b' width='100' valign='top'>";
-						echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr>";
-						echo "<td align='center'>";
-							// Show user main pic
-							global $site_dir;
-							$ID02 = $rf_p_user_id;
-							require('pages/forum/userimage_small.inc');
-							echo "<br><a href='${site_url_link}member/$rf_p_user_id/'>$rf_p_user_name</a> ";
-
-							//Show user's membership status
-							echo "<br>";
-							get_up_info_mem_status($rf_p_user_id);
-
-							// Display how long ago this was posted
-							$timestart = "$rf_p_timestamp";  //Time of post
-							require_once "models/timediff.inc";
-							echo "<br><font color=green> " . dateDiff("now", "$timestart", 1) . " ago</font> ";
-													
-						echo "</td></tr></table>";
-					echo "</td><td class='forum_content' valign='top'>";
 					
-					//Format the content with bbcode
-					require_once('models/bbParser.php');
-					$parser = new bbParser();
-					$rf_p_content_bb = $parser->getHtml($rf_p_content);
-					echo "<pre class='forum'>$rf_p_content_bb</pre>";
-					
-					echo "</td><td class='forum_content' valign='top' width='100'>";
-					
-						echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td align='center' valign='top'>";
-						
-							if($rf_p_edit_date != NULL){
-								// Display how long ago this was posted
-								$timestart = "$rf_p_edit_date";  //Time of post
-								require_once "models/timediff.inc";
-								echo "<font color=red>Edited</font><br><font color=red> " . dateDiff("now", "$timestart", 1) . " ago</font> <br><br>";
-							}
+					// Reply Topic Display
+					echo "<div class='panel panel-info'>";
+						echo "<div class='panel-heading'>";
+							echo "<div class='row'>";
+								echo "<div class='col-lg-4 col-md-4 col-sm-4'>";
+									echo " Reply By: ";
+									// Show user main pic
+									global $site_dir;
+									$ID02 = $rf_p_user_id;
+									require('pages/forum/userimage_small.inc');
+									echo " <a href='${site_url_link}member/$rf_p_user_id/'>$rf_p_user_name</a> ";
+								echo "</div>";
+								echo "<div class='col-lg-4 col-md-4 col-sm-4' style='text-align:center'>";
+									//Show user's membership status
+									get_up_info_mem_status($rf_p_user_id);
+								echo "</div>";
+								echo "<div class='col-lg-4 col-md-4 col-sm-4' style='text-align:right'>";
+									// Display how long ago this was posted
+									$timestart = "$rf_p_timestamp";  //Time of post
+									require_once "models/timediff.inc";
+									echo "<font color=green> " . dateDiff("now", "$timestart", 1) . " ago</font> ";
+								echo "</div>";
+							echo "</div>";
+						echo "</div>";
+						echo "<div class='panel-body forum'>";
+							//Format the content with bbcode
+							require_once('models/bbParser.php');
+							$parser = new bbParser();
+							$rf_p_content_bb = $parser->getHtml($rf_p_content);
+							echo "$rf_p_content_bb";
+						echo "</div>";
+						echo "<div class='panel-footer' style='text-align:right'>";
+							echo "<div class='row'>";
+								echo "<div class='col-lg-6 col-md-6 col-sm-6' style='text-align:left'>";
+									if($rf_p_edit_date != NULL){
+										// Display how long ago this was posted
+										$timestart = "$rf_p_edit_date";  //Time of post
+										require_once "models/timediff.inc";
+										echo " <font color=red>Edited</font> <font color=red> " . dateDiff("now", "$timestart", 1) . " ago</font> ";
+									}
+								echo "</div>";
+								echo "<div class='col-lg-6 col-md-6 col-sm-6' style='text-align:right'>";
+									//Start Sweet
+									if(empty($userIdme)){ $userIdme = ""; }
+									$sweet_location = "forum_posts_replys"; //Location on site where sweet is
+									$sweet_id = "$rf_p_main_id";  //Post Id number
+									$sweet_userid = "$userIdme";  //User's Id
+									$sweet_url = "${site_url_link}${site_forum_title}/display_topic/${f_p_id}/?pnum=${pnum}#topicreply${rf_p_main_id}";
+									$sweet_owner_userid = "$rf_p_user_id";  //Post owners userid
+									$sweet_sec_id = $f_p_id; //Main topic id
+									require "models/sweets.inc";
+									//End Sweet 
 
-						echo "</td></tr><tr><td align='center' valign='bottom'>";
-							
-							//Start Sweet
-							if(empty($userIdme)){ $userIdme = ""; }
-							$sweet_location = "forum_posts_replys"; //Location on site where sweet is
-							$sweet_id = "$rf_p_main_id";  //Post Id number
-							$sweet_userid = "$userIdme";  //User's Id
-							$sweet_url = "${site_url_link}${site_forum_title}/display_topic/${f_p_id}/?pnum=${pnum}#topicreply${rf_p_main_id}";
-							$sweet_owner_userid = "$rf_p_user_id";  //Post owners userid
-							$sweet_sec_id = $f_p_id; //Main topic id
-							require "models/sweets.inc";
-							//End Sweet 
-								
-								
-							// If user owns this content show forum buttons for edit and delete
-							if(isUserLoggedIn()){
-								global $userIdme;
-								if($rf_p_user_id == $userIdme){
-
-									echo "</td></tr><tr><td align='center' valign='bottom'><br>";
-								
-										echo "<form enctype=\"multipart/form-data\" action=\"${site_url_link}${site_forum_title}/new_topic/${f_p_id_cat}/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
-											
-											//Setup token in form
-											// create multi sessions
-											if(isset($session_token_num)){
-												$session_token_num = $session_token_num + 1;
-											}else{
-												$session_token_num = "1";
-											}
-											form_token();
-
-											echo "<input type=\"hidden\" name=\"id\" value=\"$rf_p_main_id\" />";
-											echo "<input type=\"hidden\" name=\"pnum\" value=\"$pnum\" />";
-											echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$rf_p_id\" />";
-											echo "<input type=\"hidden\" name=\"forum_id\" value=\"$rf_p_id_cat\" />";
-											echo "<input type=\"hidden\" name=\"edit_forum_reply\" value=\"TRUE\" />";
-
-											echo "<input type=\"submit\" value=\"Edit\" name=\"Edit\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
-										echo "</form>";
-										
-								} // End user own check
-							} // End login check
-							
-						echo "</td></tr></table>";
-							
-					echo "</td></tr></table>";
+									// If user owns this content show forum buttons for edit and delete
+									if(isUserLoggedIn()){
+										global $userIdme;
+										if($rf_p_user_id == $userIdme){
+											echo "<form enctype=\"multipart/form-data\" action=\"${site_url_link}${site_forum_title}/new_topic/${f_p_id_cat}/\" method=\"POST\" onsubmit=\"submitmystat.disabled = true; return true;\" class='sweetform' >";
+												//Setup token in form
+												// create multi sessions
+												if(isset($session_token_num)){
+													$session_token_num = $session_token_num + 1;
+												}else{
+													$session_token_num = "1";
+												}
+												form_token();
+												echo "<input type=\"hidden\" name=\"id\" value=\"$rf_p_main_id\" />";
+												echo "<input type=\"hidden\" name=\"pnum\" value=\"$pnum\" />";
+												echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$rf_p_id\" />";
+												echo "<input type=\"hidden\" name=\"forum_id\" value=\"$rf_p_id_cat\" />";
+												echo "<input type=\"hidden\" name=\"edit_forum_reply\" value=\"TRUE\" />";
+												echo "<button type='submit' class='btn btn-warning btn-xs' value='Edit' name='Edit' style='margin-bottom: 5px' data-loading-text='Please wait...' >Edit</button>";
+											echo "</form>";
+										} // End user own check
+									} // End login check
+								echo "</div>";
+							echo "</div>"; // End row
+						echo "</div>";	
+					echo "</div>";
 				
 			} // End of replys display
 		

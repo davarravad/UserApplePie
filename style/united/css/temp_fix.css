@@ -6,3 +6,11 @@ text-decoration:none;
 color:#DDD;
 text-decoration:none;
 }
+.panel-primary A:link,.panel-primary A:active,.panel-primary A:visited {
+color:#FFF;
+text-decoration:none;
+}
+.panel-primary A:hover {
+color:#DDD;
+text-decoration:none;
+}

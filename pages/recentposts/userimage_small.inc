@@ -6,6 +6,8 @@
 // http://usercake.com          //
 //////////////////////////////////
 
+global $enable_photos;
+
 if($enable_photos == "TRUE"){
 	$queryx = "SELECT ".$db_table_prefix."userprofile.mainPic FROM ".$db_table_prefix."userprofile WHERE `userId`='$ID02' LIMIT 1 ";
 
