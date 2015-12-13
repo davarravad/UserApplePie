@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -42,7 +42,7 @@ if($num_rows == "0"){
 						<input type=\"hidden\" name=\"userId2\" value=\"$userId2\">
 						<input type=\"hidden\" name=\"uriref\" value=\"$uriref\">
 						<input type=\"hidden\" name=\"addfriend\" value=\"TRUE\">
-						<label title=\"Send\"><input type=\"submit\" value=\"Add Friend\" /></label>
+						<button type='submit' class='btn btn-default btn-xs'  data-loading-text='Please wait...' > Send Friend Request </button>
 					</form>
 				";
 				echo "</center>";

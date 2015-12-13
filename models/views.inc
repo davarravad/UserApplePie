@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -63,7 +63,10 @@ if($addview == "yesaddview"){
 		}
 	}
 	
-	echo " ( <font color=green>$num_views views!</font> )";
+	echo "<div class='btn btn-info btn-xs' style='margin-top: 3px'>";
+	echo "Views <span class='badge'>$num_views</span>";
+	echo "</div>";
+	
 
 	//echo " ( $view_location - $view_id - $view_userid - $view_url ) ";  //For testing	
 	

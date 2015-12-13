@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -39,65 +39,90 @@
 		// If not then fix it.
 		forumCleanOrderCat($f_title);
 		
-		echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class=hr2>";
-		echo "<table width='100%'><tr><td>";
-		
-		//Display title or edit title field if mod and requested
-		forumEditTitleCheck($f_title);
-		
-		// Display Forum Title Edit Funcs.
-		if((userCheckForumAdmin() || userCheckForumMod()) && forumSHAF()){
-			// Show admin feature if is admin
-			// Display current order id
-			echo "</td><td align='right'>";
-			//echo "Order Id: $f_order_title ";
-			echo "<table><tr><td width='140px' align='right'>";
-				//Display Move Buttons
-				forumMoveTitleOrder($f_order_title);
-			echo "</td><td width='100px' align='right'>";
-				//Display Edit/Delete Buttons
-				forumEditTitle($f_title);
-			echo "</td></tr></table>";
-		}
-		
-		echo "</td></tr></table>";
-		echo "</td></tr><tr><td class='content78'>";
+		echo "<div class='panel panel-default'>";
+			echo "<div class='panel-heading' style='font-weight: bold'>";
+			
+				//Display title or edit title field if mod and requested
+				forumEditTitleCheck($f_title);
 
-			$f_title_2 = addslashes($f_title);
-		
-			// Get all Sub Categories for current category
-			$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_title`='$f_title_2' GROUP BY forum_cat ORDER BY forum_order_cat";
-			$result = $mysqli->query($query);
-			$arr2 = $result->fetch_all(MYSQLI_BOTH);
-			foreach($arr2 as $row2)
-			{
-				$f_cat = $row2['forum_cat'];
-				$f_des = $row2['forum_des'];
-				$f_id2 = $row2['forum_id'];
-				$cat_order_id = $row2['forum_order_cat'];
-				
-				$f_des = stripslashes($f_des);
-				$f_cat = stripslashes($f_cat);
-				
-				echo "<table width='100%' border='0' cellspacing='0' cellpadding='0' class='epboxc'><tr><td width=''>";
-					forumEditCatCheck($f_cat,$f_des,$f_id2);
-				echo "</td><td width='75'>";
-					// Display total number of topics for this category
-					total_topics_display($f_id2);
-					echo "<br>";
-					// Display total number of topic replys for this category
-					total_topic_replys_display($f_id2);
-					// Display Edit, Delete, and Move Buttons
-					forumCatEdit($f_id2,$f_title,$cat_order_id,$f_cat,$f_des,$f_id2);
-				echo "</td></tr></table>";
-			}
-			// Display Create New Category Form
-			forumCatNew($f_title);
-			
-		echo "</td></tr></table><br>";
-			
+				// Display Forum Title Edit Funcs.
+				if((userCheckForumAdmin() || userCheckForumMod()) && forumSHAF()){
+					// Show admin feature if is admin
+					// Display current order id
+					//echo "Order Id: $f_order_title ";
+					echo "";
+						//Display Move Buttons
+						forumMoveTitleOrder($f_order_title);
+					echo "";
+						//Display Edit/Delete Buttons
+						forumEditTitle($f_title);
+					echo "";
+				}
+
+			echo "</div>";
+			echo "<ul class='list-group'>";
+				$f_title_2 = addslashes($f_title);
+				// Get all Sub Categories for current category
+				$query = "SELECT * FROM ".$db_table_prefix."forum_cat WHERE `forum_title`='$f_title_2' GROUP BY forum_cat ORDER BY forum_order_cat";
+				$result = $mysqli->query($query);
+				$arr2 = $result->fetch_all(MYSQLI_BOTH);
+				foreach($arr2 as $row2)
+				{
+					echo "<ul class='list-group-item'>";
+						$f_cat = $row2['forum_cat'];
+						$f_des = $row2['forum_des'];
+						$f_id2 = $row2['forum_id'];
+						$cat_order_id = $row2['forum_order_cat'];
+						
+						$f_des = stripslashes($f_des);
+						$f_cat = stripslashes($f_cat);
+						
+						echo "<div class='media'>";
+							echo "<div class='media-body'>";
+								forumEditCatCheck($f_cat,$f_des,$f_id2);
+							echo "</div>";
+								
+								
+								// Displays when on mobile device
+								echo "<button href='#Bar$f_id2' class='btn btn-default btn-sm visible-xs' data-toggle='collapse' style='position: absolute; top: 3px; right: 3px'>";
+									echo "<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>";
+								echo "</button>";
+
+								echo "<div id='Bar$f_id2' class='collapse hidden-sm hidden-md hidden-lg'>";
+								echo "<div style='text-align: center'>";
+									// Display total number of topics for this category
+									total_topics_display($f_id2);
+									echo " ";
+									// Display total number of topic replys for this category
+									total_topic_replys_display($f_id2);
+									// Display Edit, Delete, and Move Buttons
+									forumCatEdit($f_id2,$f_title,$cat_order_id,$f_cat,$f_des,$f_id2);
+								echo "</div>";
+								echo "</div>";
+								
+								// Displays when not on mobile device
+								echo "<div class='media-right hidden-xs' style='text-align: right'>";
+									// Display total number of topics for this category
+									total_topics_display($f_id2);
+									echo "<br>";
+									// Display total number of topic replys for this category
+									total_topic_replys_display($f_id2);
+									// Display Edit, Delete, and Move Buttons
+									forumCatEdit($f_id2,$f_title,$cat_order_id,$f_cat,$f_des,$f_id2);
+								echo "</div>";
+							
+						echo "</div>";
+					echo "</ul>";
+				}
+				// Display Create New Category Form
+				forumCatNew($f_title);
+			echo "</ul>";
+		echo "</div>";
 	}
 	forumCreateNewTopic();
+	
+// Show Current Forum Permissions
+forumDisplayUserPerms();
 
 // Run Footer of page func
 style_footer_content();

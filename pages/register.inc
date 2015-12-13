@@ -6,8 +6,8 @@
 
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -156,152 +156,180 @@ if(!empty($_POST))
 }
 
 
-echo "
-
-<div style='main'>";
-
 echo resultBlock($errors,$successes);
 
-echo "<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js\"></script>";
+echo "<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>";
 
 ?>
 
-<SCRIPT type="text/javascript">
-<!--
- 
-pic1 = new Image(16, 16);
-pic1.src = "/images/loader.gif";
- 
-$(document).ready(function(){
- 
-$("#username").on('keyup',function() {  
- 
-var usr = $("#username").val();
- 
-if(usr.length >= 5)
-{
-$("#status").html('<img src="/images/loader.gif" align="absmiddle">&nbsp;Checking availability...');
- 
-    $.ajax({  
-    type: "POST",  
-    url: "/pages/user_name_check.php",  
-    data: "username="+ usr,  
-    success: function(msg){  
+<script type="text/javascript">
+$(document).ready(function()
+{    
+ $("#username").keyup(function()
+ {  
+  var name = $(this).val(); 
   
-   $("#status").ajaxComplete(function(event, request, settings){
- 
-    if(msg == 'OK')
-    {
-        $("#username").removeClass('object_error'); // if necessary
-        $("#username").addClass("object_ok");
-        $(this).html('&nbsp;<img src="/images/tick.gif" align="absmiddle"> <font color=green>User Name is Good!</font>');
-    }  
-    else  
-    {  
-        $("#username").removeClass('object_ok'); // if necessary
-        $("#username").addClass("object_error");
-        $(this).html(msg);
-    }  
-  
-   });
- 
-}
-  
-  });
- 
-}
-else
-    {
-    $("#status").html('<font color="red">User Name must be at least <strong>5</strong> characters.</font>');
-    $("#username").removeClass('object_ok'); // if necessary
-    $("#username").addClass("object_error");
-    }
- 
-});
- 
-});
- 
-//-->
-</SCRIPT>
-
-<SCRIPT type="text/javascript">
-<!--
- 
-pic1 = new Image(16, 16);
-pic1.src = "/images/loader.gif";
- 
-$(document).ready(function(){
- 
-$("#displayname").on('keyup',function() {  
- 
-var usr = $("#displayname").val();
- 
-if(usr.length >= 5)
-{
-$("#status2").html('<img src="/images/loader.gif" align="absmiddle">&nbsp;Checking availability...');
- 
-    $.ajax({  
-    type: "POST",  
-    url: "/pages/user_display_name_check.php",  
-    data: "displayname="+ usr,  
-    success: function(msg){  
-  
-   $("#status2").ajaxComplete(function(event, request, settings){
- 
-    if(msg == 'OK')
-    {
-        $("#displayname").removeClass('object_error'); // if necessary
-        $("#displayname").addClass("object_ok");
-        $(this).html('&nbsp;<img src="/images/tick.gif" align="absmiddle"> <font color=green>Display Name is Good!</font>');
-    }  
-    else  
-    {  
-        $("#displayname").removeClass('object_ok'); // if necessary
-        $("#displayname").addClass("object_error");
-        $(this).html(msg);
-    }  
-  
-   });
- 
-}
-  
-  });
- 
-}
-else
-    {
-    $("#status2").html('<font color="red">User Name must be at least <strong>5</strong> characters.</font>');
-    $("#displayname").removeClass('object_ok'); // if necessary
-    $("#displayname").addClass("object_error");
-    }
- 
-});
- 
-});
- 
-//-->
-</SCRIPT>
-
-<style>
-  #ppbar{
-   background:#CCC;
-   width:100px;
-   height:10px;
-   margin:0px;
+  if(name.length > 4)
+  {  
+   $("#resultun").html('');
+   
+   /*$.post("username-check.php", $("#reg-form").serialize())
+    .done(function(data){
+    $("#result").html(data);
+   });*/
+   
+   $.ajax({
+    
+    type : 'POST',
+    url  : '/pages/user_name_check.php',
+    data : $(this).serialize(),
+    success : function(data)
+        {
+              /*$("#resultun").html(data);*/
+			if(data == 'OK')
+			{
+			   $("#resultun").html("<i class='glyphicon glyphicon-ok text-success'></i>");
+			   $("#resultun2").html("");	
+			}
+			if(data == 'CHAR')
+			{
+			   $("#resultun").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultun2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>User Name Invalid!</div>");	
+			}
+			if(data == 'INUSE')
+			{
+			   $("#resultun").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultun2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>User Name is already in use.</div>");	
+			}
+        }
+    });
+    return false;
+   
   }
-  #pbar{
-   margin:0px;
-   width:0px;
-   background:lightgreen;
-   height: 100%;
+  else
+  {
+   $("#resultun").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+   $("#resultun2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>User Name must be at least <strong>5</strong> characters.</div>");
   }
-  #passwordStrength{
-   text-align:left;
-   margin:0px;
-  }
-</style>
+ });
+ 
+});
+</script>
 
- <script src="../models/jq-pw-strength.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{    
+ $("#displayname").keyup(function()
+ {  
+  var name = $(this).val(); 
+  
+  if(name.length > 4)
+  {  
+   $("#resultdn").html('');
+   
+   /*$.post("username-check.php", $("#reg-form").serialize())
+    .done(function(data){
+    $("#result").html(data);
+   });*/
+   
+   $.ajax({
+    
+    type : 'POST',
+    url  : '/pages/user_display_name_check.php',
+    data : $(this).serialize(),
+    success : function(data)
+        {
+              /*$("#resultun").html(data);*/
+			if(data == 'OK')
+			{
+			   $("#resultdn").html("<i class='glyphicon glyphicon-ok text-success'></i>");
+			   $("#resultdn2").html("");	
+			}
+			if(data == 'CHAR')
+			{
+			   $("#resultdn").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultdn2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Display Name Invalid.</div>");	
+			}
+			if(data == 'INUSE')
+			{
+			   $("#resultdn").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultdn2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Display Name is already in use.</div>");	
+			}
+			if(data == 'SAME')
+			{
+			   $("#resultdn").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultdn2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>This is already your Display Name.</div>");	
+			}
+        }
+    });
+    return false;
+   
+  }
+  else
+  {
+   $("#resultdn").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+   $("#resultdn2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Display Name must be at least <strong>5</strong> characters.</div>");
+  }
+ });
+ 
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{    
+ $("#email").keyup(function()
+ {  
+  var name = $(this).val(); 
+  
+  if(name.length > 4)
+  {  
+   $("#resultemail").html('');
+   
+   /*$.post("username-check.php", $("#reg-form").serialize())
+    .done(function(data){
+    $("#result").html(data);
+   });*/
+   
+   $.ajax({
+    
+    type : 'POST',
+    url  : '/pages/user_email_check.php',
+    data : $(this).serialize(),
+    success : function(data)
+        {
+              /*$("#resultun").html(data);*/
+			if(data == 'OK')
+			{
+			   $("#resultemail").html("<i class='glyphicon glyphicon-ok text-success'></i>");
+			   $("#resultemail2").html("");	
+			}
+			if(data == 'BAD')
+			{
+			   $("#resultemail").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultemail2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Email Address Invalid!</div>");	
+			}
+			if(data == 'INUSE')
+			{
+			   $("#resultemail").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultemail2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Email is already in use.</div>");	
+			}
+        }
+    });
+    return false;
+   
+  }
+  else
+  {
+   $("#resultemail").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+   $("#resultemail2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Email must be at least <strong>5</strong> characters.</div>");
+  }
+ });
+ 
+});
+</script>
+
+<script src="../models/jq-pw-strength.js"></script>
  
 <?php
 
@@ -310,85 +338,92 @@ else
 	if(empty($email)){$email = "";}
 
 echo"
+<center>
+<div class='panel panel-info' style='max-width: 500px'>
+<div class='panel-heading'>
+	<div class='panel-title'>Register</div>
+</div>
+<div class='pannel-body' style='padding-top:10px'>
+	<form name='newUser' action='".$site_url_link."register/' method='post'>
 
+		<div class='input-group' style='width: 80%; margin-bottom: 5px'>
+			<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+			<input id='username' type='text' name='username' value='$username' class='form-control' placeholder='User Name' aria-describedby='basic-addon1' />
+			<span id='resultun' class='input-group-addon'></span>
+		</div>
+		<div class='form-group' style='width: 75%; margin-bottom: 5px'>
+			
+			<font size=1>Pick a username you will remember.</font>
+		</div>
+			
+		<div class='input-group' style='width: 80%; margin-bottom: 5px'>
+			<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+			<input id='displayname' type='text' name='displayname' value='$displayname' class='form-control' placeholder='Display Name' aria-describedby='basic-addon1' />
+			<span id='resultdn' class='input-group-addon'></span>
+		</div>
+		<div class='form-group' style='width: 75%; margin-bottom: 5px'>
+			<font size=1>Your Display Name can be changed at any time.</font>
+		</div>
 
-
-<div id='regbox'>
-<form name='newUser' action='".$site_url_link."register/' method='post'>
-
-<table width='80%' align='center' class='index_headertable3tbl'>
-<tr><td class='epboxb'>
-		<label>User Name:</label>
-</td><td class='epboxa'>
-		<input id='username' type='text' name='username' value='$username' /> 
-</td></tr><tr><td class='epboxa' colspan='2'>
-		<font size=1>Pick a username you will remember.</font>
-		<br><span id='status'></span>
-		
-</td></tr><tr><td class='epboxb'>
-		<label>Display Name:</label>
-</td><td class='epboxa'>
-		<input id='displayname' type='text' name='displayname' value='$displayname' /> 
-</td></tr><tr><td class='epboxa' colspan='2'>
-		<font size=1>Your Display Name can be changed at any time.</font>
-		<br><span id='status2'></span>
-		
-</td></tr><tr><td class='epboxb'>
-		<label>Password:</label>
-</td><td class='epboxa'>
-		<input type='password' name='password' id='passwordInput' />
-</td></tr><tr><td class='epboxa' colspan='2'>
-		<font size=1>Pick a password you will remember.</font>
-		
-	<table width=100% border=0><tr><td width=102px>
-		<div id='ppbar' title='Strength'><div id='pbar'></div></div>
-	</td><td>
-		<div class='' id='passwordStrength'></div>
-	</td></tr></table>
-		
-</td></tr><tr><td class='epboxb'>
-		<label>Confirm:</label>
-</td><td class='epboxa'>
-		<input type='password' name='passwordc' id='confirmPasswordInput' />
-</td></tr><tr><td class='epboxa' colspan='2'>
-		<font size=1>Confirm Your Password.</font>
-		
-</td></tr><tr><td class='epboxb'>
-		<label>Email:</label>
-</td><td class='epboxa'>
-		<input type='text' name='email' value='$email' />
-</td></tr><tr><td class='epboxa' colspan='2'>
-		<font size=1>Please use Current Working Email so you can activate your ".$websiteName." account.  Check your Email and click the link provided.</font>
-</td></tr><tr><td colspan='2' align='center'>
-";
-
-	// Form token. Place within from tag
-	// create multi sessions
-	if(isset($session_token_num)){
-		$session_token_num = $session_token_num + 1;
-	}else{
-		$session_token_num = "1";
-	}
-	form_token();
-
-	// Setup Google Captcha
-	$publickey = $recap_sitekey; // you got this from the signup page
-	echo "
-		<div class=\"g-recaptcha\" data-sitekey=\"".$publickey."\"></div>
-		<script type=\"text/javascript\" src=\"https://www.google.com/recaptcha/api.js?hl=en\">
-		</script>
+		<div class='input-group' style='width: 80%; margin-bottom: 5px'>
+			<span class='input-group-addon'><i class='glyphicon glyphicon-lock'></i></span>
+			<input type='password' name='password' id='passwordInput' class='form-control' placeholder='Password' aria-describedby='basic-addon1'/>
+			<span id='password01' class='input-group-addon'></span>
+		</div>
+		<div class='form-group' style='width: 75%; margin-bottom: 5px'>
+			<font size=1>Pick a password you will remember.</font>
+		</div>
+			
+		<div class='input-group' style='width: 80%; margin-bottom: 5px'>
+			<span class='input-group-addon'><i class='glyphicon glyphicon-lock'></i></span>
+			<input type='password' name='passwordc' id='confirmPasswordInput' class='form-control' placeholder='Confirm Password' aria-describedby='basic-addon1'/>
+			<span id='password02' class='input-group-addon'></span>
+		</div>
+		<div class='form-group' style='width: 75%; margin-bottom: 5px'>
+			<font size=1>Confirm Your Password.</font>
+		</div>
+			
+		<div class='input-group' style='width: 80%; margin-bottom: 5px'>
+			<span class='input-group-addon'><i class='glyphicon glyphicon-envelope'></i></span>
+			<input type='text' id='email' name='email' value='$email' class='form-control' placeholder='Email' aria-describedby='basic-addon1'/>
+			<span id='resultemail' class='input-group-addon'></span>
+		</div>
+		<div class='form-group' style='width: 75%; margin-bottom: 5px'>
+			<font size=1>Please use Current Working Email so you can activate your ".$websiteName." account.  Check your Email and click the link provided.</font>
+		</div>
 	";
+
+		// Form token. Place within from tag
+		// create multi sessions
+		if(isset($session_token_num)){
+			$session_token_num = $session_token_num + 1;
+		}else{
+			$session_token_num = "1";
+		}
+		form_token();
+
+		// Setup Google Captcha
+		$publickey = $recap_sitekey; // you got this from the signup page
+		echo "
+			<div class=\"g-recaptcha\" data-sitekey=\"".$publickey."\"></div>
+			<script type=\"text/javascript\" src=\"https://www.google.com/recaptcha/api.js?hl=en\">
+			</script>
+		";
+		
+	echo "<div class='panel'>
+			<span id='resultun2' class='label'></span>
+			<span id='resultdn2' class='label'></span>
+			<span class='label' id='passwordStrength'></span>
+			<span id='resultemail2' class='label'></span>
+		  </div>
 	
-echo "
-</td></tr><tr><td align=center colspan='2'>
-		<input type='submit' value='Register'/>
-</td></tr></table>
-</form>
+		<button type='submit' class='btn btn-success btn-lg'  data-loading-text='Please wait...' >
+			Register
+		</button>
+	</form>
 </div>
-
 </div>
-
-</div>
+</center>
 ";
 
 // Run Footer of page func

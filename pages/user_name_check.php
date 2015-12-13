@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -31,14 +31,20 @@ if(isSet($_POST['username']))
 		{
 			// Check input to be sure it meets the site standards for usernames
 			if(!preg_match("/^[a-zA-Z\p{Cyrillic}0-9]+$/u", $username)){
-				echo '<font color="red">User Name can only include alpha-numeric characters. No symbols. No spaces.</font>';
+				//echo "<div class='alert alert-danger' role='alert'>User Name can only include alpha-numeric characters. No symbols. No spaces.</div>";
+				//echo "<i class='glyphicon glyphicon-remove'></i>";
+				echo "CHAR";
 			}else{
-				echo 'OK';
+				//echo "<div class='alert alert-success' role='alert'>Available!</div>";
+				//echo "<i class='glyphicon glyphicon-ok'></i>";
+				echo "OK";
 			}
 		}
 		else
 		{
-			echo '<font color="red">The User Name <strong>'.$username.'</strong> is already in use.</font>';
+			//echo "<div class='alert alert-danger' role='alert'>The User Name <strong>".$username."</strong> is already in use.</div>";
+			//echo "<i class='glyphicon glyphicon-remove'></i>";
+			echo "INUSE";
 		}
 
 		unset($username, $ttl_un_rows);

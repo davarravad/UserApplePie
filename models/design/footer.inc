@@ -1,90 +1,72 @@
 <?php
 
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
 
-echo "
-			</div>
-		</div>
-		<div class='right'>
-";
 
-			echo "<table width='100%'><tr><td align='CENTER' valign='TOP' class='main_table_right_nav'>";
-		
-				//Display Forum Recent Posts
-				require "pages/forum/forum_recent.inc";
+	echo "<div class='col-lg-4 col-md-12 col-sm-12 col-xs-12'>";
+		//Display Forum Recent Posts
+		require "pages/forum/forum_recent.inc";
 
-				//Display site stats and such
-				require "models/total_site_stats.inc";		
-		
-			echo "</td></tr></table>";
-			
-echo "
-		</div>
+		//Display site stats and such
+		require "models/total_site_stats.inc";
+	echo "</div>";
+	
 
-		
+	//Site Adds Bottom
+	require "models/adds2.inc";
 
-	</div>
-</div>
-		
-		
-
-";
-
-
-		// Footer table setup 
-		echo "<table width='100%'><tr><td align=\"CENTER\" valign=\"TOP\" class=\"main_tbl_footer\">";
-
-
-
-
-?>	
-			<a href='http://www.thedavar.net' title="View UserApplePie Website" ALT="UserApplePie">UserApplePie</a> 
-			 | <a href="<?php echo "${site_url_link}"; ?>help" title="Help & FAQ" ALT="Help & FAQ">Help & FAQ</a>
-			 | <a href="<?php echo "${site_url_link}"; ?>disclaimer" title="Site Disclaimer" ALT="Disclaimer">Disclaimer</a>
-			 | <a href='<?php echo "${site_url_link}"; ?>privacypolicy' title='Privacy Policy' alt='Privacy Policy'>Privacy Policy</a>
-			 
-			 
-			<?php
-//Displays Admin Manage Site links if Admin is logged in
+	
+	// Footer (sticky)
+	echo "<footer class='navbar navbar-default'>";
+		echo "<div class='container'>";
+			echo "<div class='navbar-text'>";
+				
+				// Footer links / text
+				echo "
+					<a href='http://www.userapplepie.com' title='View UserApplePie Website' ALT='UserApplePie' target='_blank'>UserApplePie</a> 
+					 | <a href='${site_url_link}'help/' title='Help & FAQ' ALT='Help & FAQ'>Help & FAQ</a>
+					 | <a href='${site_url_link}'disclaimer/' title='Site Disclaimer' ALT='Disclaimer'>Disclaimer</a>
+					 | <a href='${site_url_link}'privacypolicy/' title='Privacy Policy' alt='Privacy Policy'>Privacy Policy</a>
+				";
+				// Displays Admin Manage Site links if Admin is logged in
 				if(is_admin())
 				{
-					echo " |  (<a href=\"${site_url_link}YummyAsPie/\">Manage Site</a>) ";
+					echo " |  (<a href=\"${site_url_link}UAP_Admin_Panel/\">Manage Site</a>) ";
 				}
-			?>
-			 
-			<br />	<?php //require("models/sitelogs/showcurrent.inc"); ?>
-			
-			©2015 <?php echo "$websiteUrl"; ?>. All Rights Reserved.
-			<br />
-		</td></tr></table>
+				// Display Copywrite stuff
+				echo "<Br> &copy; 2015 $websiteUrl All Rights Reserved.";
+			echo "</div>";
+		echo "</div>";
+	echo "</footer>";
+		
+require "models/report.inc";
 
-<div class='page_footer_overflow'>
-<?php
-//Adds space at bottom of site to keep from hiding stuff behind footer
-			echo "
-			<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
-			  <tr>
-				<td height=\"38\">&nbsp;</td>
-			  </tr>
-			</table>
-			"; 
-?>
-</div>
+echo "</div>";
+	echo "</div>";
+// End of container
 
-
-<?php
 	//log user for site stats
 	require "models/sitelogs/showcurrent.inc";
 
-
+echo "
+    <!-- Bootstrap core JavaScript ================================================== -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src='/".$site_style_sel."/js/bootstrap.min.js'></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src='/".$site_style_sel."/js/ie10-viewport-bug-workaround.js'></script>
+";
 
 // End the body and html
 echo "</body>";
 echo "</html>";
+
+
 
 ?>

@@ -1,8 +1,8 @@
 <center>
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -17,15 +17,15 @@ $userIdme = $userId;
 	$num_rows = mysqli_num_rows($resultm);
 	
 
-echo "<table width=100% border='0' cellspacing='0' cellpadding='0'><tr><td class=epbox>";
+echo "<div class='panel panel-info'>";
 echo "<strong>Friend Requests  ( $num_rows )</strong>";
-echo "</td></tr></table>";
+echo "</div>";
 
 
 	if($num_rows == 0){
-		echo "<table width=100% border='0' cellspacing='0' cellpadding='0'><tr><td class=epboxa>";
+		echo "<div class='panel panel-default'>";
 		echo "No new friend requests. ";
-		echo "</td></tr></table>";
+		echo "</div>";
 	}
 	else{
 			
@@ -39,7 +39,7 @@ echo "</td></tr></table>";
 	
 		$ID02 = $userId1;
 	
-		echo "<center><table width=100% border='0' cellspacing='0' cellpadding='0'><tr><td width=100 class=$bgcolor>";
+		echo "<center><table width=100% border='0' cellspacing='0' cellpadding='0' class='table table-striped'><tr><td width=100px>";
 		
 		echo "<a href='${site_url_link}member/$ID02/'>";
 		require "pages/profile/userimage.inc";
@@ -52,6 +52,9 @@ echo "</td></tr></table>";
 		echo "</strong>";
 	
 		echo " wants to be your friend. ";
+		echo "(<a href='${site_url_link}member/$ID02/'>";
+		echo " View Profile ";
+		echo "</a>)";
 		//echo "  (<a href='${site_url_link}?page=friend/addfriend&id=$id&approve=TRUE'>Approve Friendship</a>)<br>";	
 
 				echo "
@@ -67,7 +70,7 @@ echo "</td></tr></table>";
 				echo "
 						<input type=\"hidden\" name=\"id\" value=\"$id\">
 						<input type=\"hidden\" name=\"approve\" value=\"TRUE\">
-						<label title=\"Send\"><input type=\"submit\" value=\"Approve Friendship\" /></label>
+						<label title=\"Send\"><input type=\"submit\" value=\"Approve Friendship\" class='btn btn-info'/></label>
 					</form>
 				";			
 	
@@ -85,9 +88,9 @@ echo "<br><br>";
 	$num_rows44 = mysqli_num_rows($result414);
 
 echo "<a class='anchor' name=tiptop></a>";	
-echo "<table width=100% border='0' cellspacing='0' cellpadding='0'><tr><td class=epbox>";
+echo "<div class='panel panel-info'>";
 echo "<strong>My Friends ( $num_rows44 ) </strong>";
-echo "</td></tr></table>";
+echo "</div>";
 
     function getPagerData($numHits, $limit, $pnum) 
     { 
@@ -154,7 +157,7 @@ if($total > 0){
 			}else{
 				$ID02 = $userId2;
 			}
-			echo "<table width=100% border='0' cellspacing='0' cellpadding='0'><tr><td width=100 class=$bgcolor>";
+			echo "<table width=100% border='0' cellspacing='0' cellpadding='0' class='table table-striped'><tr><td width=100px>";
 			
 			echo "<a href='${site_url_link}member/$ID02/'>";
 			require "pages/profile/userimage.inc";
@@ -210,9 +213,9 @@ if($total > 0){
 			echo "</td></tr></table>";
 			echo "</td></tr></table>";
 }else{
-	echo "<table width=100% border='0' cellspacing='0' cellpadding='0'><tr><td class=epboxa>";
+	echo "<div class='panel panel-default'>";
 	echo "You Currently Don't Have any Friends.";
-	echo "</td></tr></table>";
+	echo "</div>";
 }
 				
 			

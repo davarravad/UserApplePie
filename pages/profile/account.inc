@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -139,51 +139,43 @@ echo "<script src='".$site_url_link."models/jq-pw-strength.js'></script>";
 echo resultBlock($errors,$successes);
 
 echo "
-<div id='regbox'>
 <form name='updateAccount' action='/editprofilemain/account/' method='post'>
-<table width='400'><tr><td class=reg_form>
+<table width='100%'><tr><td class=reg_form>
 	<label>Password:</label>
 </td><td class=reg_form>
-	<input type='password' name='password_cur' />
+	<input type='password' name='password_cur' class='form-control'/>
 </td><td class=reg_form>
 	Your Current Password
 </td></tr>
 <tr><td class=reg_form>
 	<label>Email:</label>
 </td><td class=reg_form>
-	<input type='text' name='email' value='".$loggedInUser->email."' />
+	<input type='text' name='email' value='".$loggedInUser->email."' class='form-control' />
 </td><td class=reg_form>
 	Your Email Address
 </td></tr>
 <tr><td class=reg_form>
 	<label>New Pass:</label>
 </td><td class=reg_form>
-	<input type='password' name='passwordc' id='passwordInput' />
+	<input type='password' name='passwordc' id='passwordInput' class='form-control' />
 </td><td class=reg_form>
 	Your New Password
 </td></tr>
 <tr><td class=reg_form>
 	<label>Confirm Pass:</label>
 </td><td class=reg_form>
-	<input type='password' name='passwordcheck' id='confirmPasswordInput' />
+	<input type='password' name='passwordcheck' id='confirmPasswordInput' class='form-control' />
 </td><td class=reg_form>
 	Confirm Your New Password
 </td></tr>
 <tr><td colspan='3'> ";
+ 
+echo "<div class='' id='passwordStrength'></div>";  
 
-?>
-
-    <table width="100%" border="0"><tr><td width="102px">  
-        <div id="ppbar" title="Strength"><div id="pbar"></div></div>  
-    </td><td>  
-        <div class="" id="passwordStrength"></div>  
-    </td></tr></table>  
-
-<?php
 echo "
 </td></tr>
-<tr><td colspan='3'>
-	<input type='submit' value='Update' class='submit' />
+<tr><td colspan='3' align='center'>
+	<input type='submit' value='Update' class='btn btn-success btn-sm' />
 </td></tr></table>
 </form>
 

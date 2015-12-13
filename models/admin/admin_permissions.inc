@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -55,7 +55,7 @@ echo "
 echo resultBlock($errors,$successes);
 
 echo "
-<form name='adminPermissions' action='".$site_url_link."YummyAsPie/admin_permissions/' method='post'>
+<form name='adminPermissions' action='".$site_url_link."UAP_Admin_Panel/admin_permissions/' method='post'>
 <table class='admin'>
 <tr>
 <th>Delete</th><th>Permission Name</th>
@@ -66,7 +66,7 @@ foreach ($permissionData as $v1) {
 	echo "
 	<tr>
 	<td><input type='checkbox' name='delete[".$v1['id']."]' id='delete[".$v1['id']."]' value='".$v1['id']."'></td>
-	<td><a href='".$site_url_link."YummyAsPie/admin_permission/?id=".$v1['id']."'>".$v1['name']."</a></td>
+	<td><a href='".$site_url_link."UAP_Admin_Panel/admin_permission/?id=".$v1['id']."'>".$v1['name']."</a></td>
 	</tr>";
 }
 

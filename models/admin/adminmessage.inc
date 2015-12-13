@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -12,9 +12,26 @@
 // Make sure user is Logged In and an Admin
 if(isUserLoggedIn() && is_admin()){
 	
-	echo "<center>";
-	echo "<strong>Admin Zone - Message To ALL!!!</strong>"; 
-	echo "</center><hr>";
+// Page header
+echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Site Message 
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li class='active'>
+								<i class='fa fa-fw fa-desktop'></i> Site Message
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
 
 	if(isset($_POST['id1'])){ $id1 = $_REQUEST['id1']; }else{ $id1 = ""; } 
 	if(isset($_POST['id2'])){ $id2 = $_REQUEST['id2']; }else{ $id2 = ""; } 
@@ -100,117 +117,128 @@ if(isUserLoggedIn() && is_admin()){
 		//Disables auto refresh for debug stuff
 		if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
 			//Redirects the user
-			$form_redir_link = "${websiteUrl}YummyAsPie/adminmessage/";
+			$form_redir_link = "${websiteUrl}UAP_Admin_Panel/adminmessage/";
 			// Redirect member to their post
 			header("Location: $form_redir_link");
 			exit;
 		}
-	}
+	}else{ err_message("Demo Site : Editing Disabled"); }
 	}else{
 	
 		$user_disp_name = get_up_info_mem_disp_name($userId);
-	
-		echo "<strong>Admin Message for Logged In users!</strong>";
-	echo "<br>";
-	echo "<font color='green' size='1'>";
-	echo "This message is displayed to all members that are logged into this website.  Members can hide this message after they read it.";
-	echo "</font><Br><br>";
-		$query = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='1' ";
-		if($result = $mysqli->query($query)){
-			while ($row = $result->fetch_assoc()) {
-				$id1 = $row['id'];
-				$adminID = $row['adminID'];
-				$adminuser = $row['adminuser'];
-				$admincontent = $row['admincontent'];
-				$adminshow = $row['adminshow'];
-			}
-		}
-		if(!isset($adminID)){ $adminID = "$userId"; }
-		if(!isset($adminuser)){ $adminuser = "$user_disp_name"; }
-		if(!isset($admincontent)){ $admincontent = ""; }
-		if(!isset($adminshow)){ $adminshow = ""; }
-	
-		$admincontent = stripslashes($admincontent);
-		$admincontent = stripslashes($admincontent);
-		$admincontent = stripslashes($admincontent);
-		$admincontent = str_replace("<br />", "", $admincontent );
-
-		echo "<form method='post' action='${site_url_link}YummyAsPie/adminmessage/'>";
-			echo "<input type='hidden' name='save' value='save'>";
-			// See if this is first time admin is using this func
-			if(!empty($id1)){
-				echo "<input type='hidden' name='id1' value='1'>";
-			}
-			echo "<label>Admin ID:</label>";
-			echo "<input name='adminID' type='text' size='11' maxlength='10' value='${adminID}'><br>";
-			echo "<label>Admin Name:</label>";
-			echo "<input name='adminuser' type='text' size='40' maxlength='50' value='${adminuser}'><br>";
-			echo "<label>Message Content:</label><br>";
-			echo "<textarea name='admincontent' cols='50' rows='10'>${admincontent}</textarea><br>";
-			echo "<select name='adminshow' id='adminshow'>";
-				if(empty($adminshow)){
-					$as1 = "";
-					$as2 = "SELECTED";
-				}else{
-					if($adminshow == 'TRUE'){$as1 = "SELECTED";}else{$as1 = "";}
-					if($adminshow == 'FALSE'){$as2 = "SELECTED";}else{$as2 = "";}
-				}
-				echo "<option value='TRUE' $as1>Show Message</option>";
-				echo "<option value='FALSE' $as2>Hide Message</option>";
-			echo "</select>";
-			echo "<Br><Br>";
-			echo "<label title='Send'><input type='submit' value='Save Message' /></label>";
-
-
-		echo "<hr><strong>Admin Message for not logged in users!</strong><Br>";
-		echo "<font color='green' size='1'>";
-		echo "This message is displayed to all visitors that are not logged into this website.  This message can not be hidden unless the visitor logsin.";
-		echo "</font><br>";
-		echo "<br>";
-		$query2 = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='2' ";
-		if($result2 = $mysqli->query($query2)){
-			while ($row2 = $result2->fetch_assoc()) {
-				$id2 = $row2['id'];
-				$adminID2 = $row2['adminID'];
-				$adminuser2 = $row2['adminuser'];
-				$admincontent2 = $row2['admincontent'];
-				$adminshow2 = $row2['adminshow'];
-			}
-		}
-		if(!isset($adminID2)){ $adminID2 = "$userId"; }
-		if(!isset($adminuser2)){ $adminuser2 = "$user_disp_name"; }
-		if(!isset($admincontent2)){ $admincontent2 = ""; }
-		if(!isset($adminshow2)){ $adminshow2 = ""; }
 		
-		$admincontent2 = stripslashes($admincontent2);
-		$admincontent2 = stripslashes($admincontent2);
-		$admincontent2 = stripslashes($admincontent2);
-		$admincontent2 = str_replace("<br />", "", $admincontent2 );
+		echo "<div class='panel panel-info'>";
+			echo "<div class='panel-heading'>";
+				echo "Admin Message for Logged In users!";
+			echo "</div>";
+			echo "<div class='panel-body'>";
+				echo "<font color='green' size='1'>";
+				echo "This message is displayed to all members that are logged into this website.  Members can hide this message after they read it.";
+				echo "</font><hr>";
 
-			if(!empty($id2)){
-				echo "<input type='hidden' name='id2' value='2'>";
-			}
-
-			echo "<label>Admin ID:</label>";
-			echo "<input name='adminID2' type='text' size='11' maxlength='10' value='${adminID2}'><br>";
-			echo "<label>Admin Name:</label>";
-			echo "<input name='adminuser2' type='text' size='40' maxlength='50' value='${adminuser2}'><br>";
-			echo "<label>Message Content:</label><br><textarea name='admincontent2' cols='50' rows='10'>${admincontent2}</textarea><br>";
-			echo "<select name='adminshow2' id='adminshow2'>";
-				if(empty($adminshow2)){
-					$as12 = "";
-					$as22 = "SELECTED";
-				}else{
-					if($adminshow2 == 'TRUE'){$as12 = "SELECTED";}else{$as12 = "";}
-					if($adminshow2 == 'FALSE'){$as22 = "SELECTED";}else{$as22 = "";}
+				$query = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='1' ";
+				if($result = $mysqli->query($query)){
+					while ($row = $result->fetch_assoc()) {
+						$id1 = $row['id'];
+						$adminID = $row['adminID'];
+						$adminuser = $row['adminuser'];
+						$admincontent = $row['admincontent'];
+						$adminshow = $row['adminshow'];
+					}
 				}
-				echo "<option value='TRUE' $as12>Show Message</option>";
-				echo "<option value='FALSE' $as22>Hide Message</option>";
-			echo "</select>";
-			echo "<Br><Br>";
-			echo "<label title='Send'><input type='submit' value='Save Message' /></label>";
-		echo "</form>";
+				if(!isset($adminID)){ $adminID = "$userId"; }
+				if(!isset($adminuser)){ $adminuser = "$user_disp_name"; }
+				if(!isset($admincontent)){ $admincontent = ""; }
+				if(!isset($adminshow)){ $adminshow = ""; }
+			
+				$admincontent = stripslashes($admincontent);
+				$admincontent = stripslashes($admincontent);
+				$admincontent = stripslashes($admincontent);
+				$admincontent = str_replace("<br />", "", $admincontent );
 
+				echo "<form method='post' action='${site_url_link}UAP_Admin_Panel/adminmessage/'>";
+					echo "<input type='hidden' name='save' value='save'>";
+					echo "<input type='hidden' name='adminID' value='${adminID}'>";
+					echo "<input type='hidden' name='adminuser' value='${adminuser}'>";
+					// See if this is first time admin is using this func
+					if(!empty($id1)){
+						echo "<input type='hidden' name='id1' value='1'>";
+					}
+					echo "<label>Message Content:</label><br>";
+					echo "<textarea name='admincontent' cols='50' rows='10' class='form-control'>${admincontent}</textarea><br>";
+					echo "<select name='adminshow' id='adminshow' class='form-control'>";
+						if(empty($adminshow)){
+							$as1 = "";
+							$as2 = "SELECTED";
+						}else{
+							if($adminshow == 'TRUE'){$as1 = "SELECTED";}else{$as1 = "";}
+							if($adminshow == 'FALSE'){$as2 = "SELECTED";}else{$as2 = "";}
+						}
+						echo "<option value='TRUE' $as1>Show Message</option>";
+						echo "<option value='FALSE' $as2>Hide Message</option>";
+					echo "</select>";
+			echo "</div>";
+			echo "<div class='panel-footer' style='text-align: right'>";
+				echo "<button type='submit' class='btn btn-success btn-md'  data-loading-text='Please wait...' >Save</button>";
+			echo "</div>";
+		echo "</div>";
+		
+		echo "<div class='panel panel-info'>";
+			echo "<div class='panel-heading'>";
+				echo "Admin Message for NOT Logged in users!";
+			echo "</div>";
+			echo "<div class='panel-body'>";
+				echo "<font color='green' size='1'>";
+				echo "This message is displayed to all visitors that are NOT Logged into this website. ";
+				echo "</font><br>";
+				echo "<br>";
+				$query2 = "SELECT * FROM ".$db_table_prefix."admin WHERE `id`='2' ";
+				if($result2 = $mysqli->query($query2)){
+					while ($row2 = $result2->fetch_assoc()) {
+						$id2 = $row2['id'];
+						$adminID2 = $row2['adminID'];
+						$adminuser2 = $row2['adminuser'];
+						$admincontent2 = $row2['admincontent'];
+						$adminshow2 = $row2['adminshow'];
+					}
+				}
+				if(!isset($adminID2)){ $adminID2 = "$userId"; }
+				if(!isset($adminuser2)){ $adminuser2 = "$user_disp_name"; }
+				if(!isset($admincontent2)){ $admincontent2 = ""; }
+				if(!isset($adminshow2)){ $adminshow2 = ""; }
+				
+				$admincontent2 = stripslashes($admincontent2);
+				$admincontent2 = stripslashes($admincontent2);
+				$admincontent2 = stripslashes($admincontent2);
+				$admincontent2 = str_replace("<br />", "", $admincontent2 );
+
+					if(!empty($id2)){
+						echo "<input type='hidden' name='id2' value='2'>";
+					}
+					echo "<input type='hidden' name='adminID2' value='${adminID2}'>";
+					echo "<input type='hidden' name='adminuser2' value='${adminuser2}'>";
+					echo "<label>Message Content:</label><br><textarea name='admincontent2' cols='50' rows='10' class='form-control'>${admincontent2}</textarea><br>";
+					echo "<select name='adminshow2' id='adminshow2' class='form-control'>";
+						if(empty($adminshow2)){
+							$as12 = "";
+							$as22 = "SELECTED";
+						}else{
+							if($adminshow2 == 'TRUE'){$as12 = "SELECTED";}else{$as12 = "";}
+							if($adminshow2 == 'FALSE'){$as22 = "SELECTED";}else{$as22 = "";}
+						}
+						echo "<option value='TRUE' $as12>Show Message</option>";
+						echo "<option value='FALSE' $as22>Hide Message</option>";
+					echo "</select>";
+				
+			echo "</div>";
+			echo "<div class='panel-footer' style='text-align: right'>";
+				echo "<button type='submit' class='btn btn-success btn-md'  data-loading-text='Please wait...' >Save</button>";
+			echo "</div>";
+		echo "</div>";
+		
+		// End form
+		echo "</form>";
+		
 		//Un Set Vars
 		unset($id, $adminID, $adminuser, $admincontent, $adminshow, $id2, $adminID2, $adminuser2, $admincontent2, $adminshow2);
 

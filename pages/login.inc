@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -179,20 +179,25 @@ echo "
 echo resultBlock($errors,$successes);
 
 echo "
-
+<div class='panel panel-info' style='max-width: 500px'>
+<div class='panel-heading'>
+	<div class='panel-title'>Login</div>
+</div>
+<div class='pannel-body' style='padding-top:10px'>
 <form name='login' action='/login/' method='post'>
-
-<table border=0><tr><td align='right'>
-	<label>Username or Email:</label>
-</td><td>
-	<input type='text' name='username' size='30' />
-</td><tr><tr><td align='right'>
-	<label>Password:</label>
-</td><td>
-	<input type='password' name='password' size='30' />
-</td></tr><tr><td colspan='2' align='center'>
-	<input type='submit' value='Login' class='submit' />
-</td></tr></table>";
+	<div class='input-group' style='width: 80%; margin-bottom: 25px'>
+		<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+		<input type='text' name='username' class='form-control' placeholder='Username or Email' aria-describedby='basic-addon1'>
+	</div>
+	<div class='input-group' style='width: 80%; margin-bottom: 25px'>
+		<span class='input-group-addon'><i class='glyphicon glyphicon-lock'></i></span>
+		<input type='password' name='password' class='form-control' placeholder='Password' aria-describedby='basic-addon1'>
+	</div>
+	
+	<button type='submit' class='btn btn-success btn-lg'  data-loading-text='Please wait...' >
+		Login
+	</button>
+";
 
 	//Form token. Place within from tag
 	// create multi sessions
@@ -203,17 +208,16 @@ echo "
 	}
 	form_token();
 
-echo "
-</form>
+echo "</form><br>";
 
+echo " <a href='${site_url_link}register/' class='btn btn-primary btn-sm' role='button'>Register</a> ";
+echo " <a href='${site_url_link}forgot_password/' class='btn btn-primary btn-sm' role='button'>Forgot Password</a> ";
+echo " <a href='${site_url_link}resend_activation/' class='btn btn-primary btn-sm' role='button'>Resend Activation Email</a><Br><Br> ";
 
-<br>";
-
-echo "<a href='${site_url_link}register/'>Register</a> - ";
-echo "<a href='${site_url_link}forgot_password/'>Forgot Password</a> - ";
-echo "<a href='${site_url_link}resend_activation/'>Resend Activation Email</a>";
 
 echo "
+</div>
+</div>
 </center>
 ";
 

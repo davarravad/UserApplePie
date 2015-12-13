@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -75,13 +75,15 @@ function forumShowHideAdminFeatures(){
 			//echo "Show Admin Features";
 			echo "<form method=\"post\" action=\"\" onsubmit=\"submit.disabled = true; return true;\">";
 			echo "<input type='hidden' name='forum_admin_features' value='FALSE'>"; 
-			echo "<input type=\"submit\" class=\"sweet\" value=\"Hide Admin Features\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
+			//echo "<input type=\"submit\" class=\"sweet\" value=\"Hide Admin Features\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
+			echo "<button type='submit' class='btn btn-success btn-sm' value='Hide Admin Features' name='submit' style='margin-top: 5px; margin-bottom: 0px' data-loading-text='Please wait...' >Hide Admin Features</button>";
 			echo "</form>";
 		}else{
 			//echo "Hide Admin Features";
 			echo "<form method=\"post\" action=\"\" onsubmit=\"submit.disabled = true; return true;\">";
 			echo "<input type='hidden' name='forum_admin_features' value='TRUE'>"; 
-			echo "<input type=\"submit\" class=\"sweet\" value=\"Show Admin Features\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
+			//echo "<input type=\"submit\" class=\"sweet\" value=\"Show Admin Features\" name=\"submit\" onClick=\"this.value = 'Please Wait....'\" />";
+			echo "<button type='submit' class='btn btn-success btn-sm' value='Show Admin Features' name='submit' style='margin-top: 5px; margin-bottom: 0px' data-loading-text='Please wait...' >Show Admin Features</button>";
 			echo "</form>";
 		}
 	}
@@ -485,13 +487,13 @@ function forumDisplayUserPerms(){
 	else if(isUserLoggedIn()){ $forum_perm_level = "Member"; }
 	else{ $forum_perm_level = "Visitor"; }
 	// If Admin or Mod Show settings to edit forum
-	echo "<table width='100%' class='content78'><tr><td>";
+	echo "<div class='well well-sm'>";
 		echo "Permission Level: $forum_perm_level";
 		if($forum_perm_level == "Admin" || $forum_perm_level == "Moderator"){
 			// Show or hide admin features
 			forumShowHideAdminFeatures();
 		}
-	echo "</td></tr></table>";
+	echo "</div>";
 }
 
 //////////////////////////////////////////////////
@@ -915,7 +917,7 @@ function forumEditCatCheck($f_cat,$f_des,$f_id2){
 		else
 		{
 			global $websiteUrl, $site_forum_cat;
-			echo "<h3><a href='${websiteUrl}${site_forum_title}/forum_display/$f_cat/$f_id2/' title='$f_cat' ALT='$f_cat'>$f_cat</a></h3>";
+			echo "<h4><a href='${websiteUrl}${site_forum_title}/forum_display/$f_cat/$f_id2/' title='$f_cat' ALT='$f_cat'>$f_cat</a></h4>";
 			echo " - $f_des";
 		}
 	}

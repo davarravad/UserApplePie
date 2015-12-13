@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -53,7 +53,7 @@ if($cur_server_name_dc != $demo_server_name_dc){
 
 			//Redirects the user
 			global $site_url_link;
-			$redir_link_url = "${site_url_link}/YummyAsPie/reports/";
+			$redir_link_url = "${site_url_link}/UAP_Admin_Panel/reports/";
 			
 			// Redirect member to their post
 			header("Location: $redir_link_url");
@@ -81,7 +81,7 @@ if($cur_server_name_dc != $demo_server_name_dc){
 		echo "<center>Are you sure you would like to delete that?</center><Br>";
 
 				echo "<center>
-					<form method=\"post\" action=\"${site_url_link}YummyAsPie/delete_report/ \">
+					<form method=\"post\" action=\"${site_url_link}UAP_Admin_Panel/delete_report/ \">
 				";
 					// create multi sessions
 					if(isset($session_token_num)){
@@ -99,7 +99,7 @@ if($cur_server_name_dc != $demo_server_name_dc){
 				";
 				
 				$taz_backz = "
-					<form method=\"post\" action=\"${site_url_link}YummyAsPie/reports/ \">
+					<form method=\"post\" action=\"${site_url_link}UAP_Admin_Panel/reports/ \">
 						<label title=\"Send\"><input type=\"submit\" value=\"NO\" /></label>
 					</form>
 				";

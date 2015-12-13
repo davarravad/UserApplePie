@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -21,7 +21,7 @@ if(isset($_REQUEST['view'])){ $view = $_REQUEST['view']; }else{ $view = ""; }
 
 
 Select the type of comments you would like to review then select "View"!<br>
-<form name="${site_url_link}YummyAsPie/viewcomments/" method="post" action="">
+<form name="${site_url_link}UAP_Admin_Panel/viewcomments/" method="post" action="">
   <select name="view" id="view">
 	<option value="artcomments" <?php if($view == 'artcomments'){echo "SELECTED";} ?> >Vehicle Pic Comments</option>
 	<option value="writingcomments" <?php if($view == 'writingcomments'){echo "SELECTED";} ?> >Vehicle Profile Comments</option>

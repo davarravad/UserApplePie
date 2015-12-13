@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_array($result))
 	echo "<br><a href='$report_pageURL' target='_blank'>$report_pageURL</a>";
 	echo "<hr><font color=gray>$report_msg</font>";
 	echo "
-		<form method=\"post\" action=\"${site_url_link}YummyAsPie/delete_report/ \">
+		<form method=\"post\" action=\"${site_url_link}UAP_Admin_Panel/delete_report/ \">
 		<input type=\"hidden\" name=\"report_id\" value=\"$report_id\">
 		<label title=\"Delete this Location!\"><input type=\"submit\" value=\"Delete!\" /></label>
 		</form>

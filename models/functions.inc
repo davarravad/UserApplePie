@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -160,22 +160,12 @@ function ALB($value) {
 	//START - Token valid function check
 	function is_valid_token()
 	{
-	
 		//Token Script by David (DaVaR) Sargent
 		//davarravad@gmail.com
 		//This script enables tokens within forms on a web site
 		//I designed it to create a large random code
 		//To use tokens withn in the form include this page
 		//Then tell the script which part of the code goes where
-		
-		//The submition page
-		//Use on pages where information is added to a database
-
-		//Top of Submit Pages	
-
-		//Unset the token just in case another one is on same page
-		//unset($ses_taz_token_num);
-		
 		if(isset($_POST['session_token_num'])){
 			$pos_taz_token_num = $_POST['session_token_num'];
 			if(isset($_SESSION['user_token'][$pos_taz_token_num]['FT'])){
@@ -187,43 +177,33 @@ function ALB($value) {
 				}
 			}
 		}else{
-
 			if(isset($_SESSION['user_token'][0]['FT'])){
 				$ses_taz_token = $_SESSION['user_token'][0]['FT'];
 			}else{
 				$ses_taz_token = "NoSesToken";
 			}
-		
 			$pos_taz_token_num = "NoSesTokenNUM";
 		}
-
 		if(isset($_POST['user_token'])){
 			$pos_taz_token = $_POST['user_token'];
 		}else{
 			$pos_taz_token = "NoPosToken";
 		}
-
 		//Setup site validation and stuff
 		//Make sure user is only using this website
-		
 		//Get the site url setting from config file
 		global $site_url;
-		
 		//Get the site url from server
 		$site_url_server = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
 		$site_url_server .= $_SERVER['SERVER_NAME'];
 		$site_url_server .= "/";
-		
 		//Send the site url to session
 		if(isset($_SESSION['site_url'])){ $site_url_SES = $_SESSION['site_url']; }else{ $site_url_SES = ""; }
 		if(isset($_SESSION['site_url_server'])){ $site_url_server_SES = $_SESSION['site_url_server']; }else{ $site_url_server_SES = ""; }		
-
-		
 		//Ends the token session for better security	
  		unset($_SESSION['user_token']);
  		unset($_SESSION['site_url']);
  		unset($_SESSION['site_url_server']);
-	
 		//TESTING Echo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 		if(!isset($ses_taz_token)){ $ses_taz_token = "NoSesTazToken"; }if(!isset($ses_taz_token_num)){ $ses_taz_token_num = "NoSesTazTokenNum"; }
 		global $debug_website;
@@ -231,121 +211,62 @@ function ALB($value) {
 			echo "<br> - DEBUG SITE ON - <BR>"; 
 			echo "<Br><font color=purple size=0.1><br> - Ses: $ses_taz_token <br> Pos: $pos_taz_token <br> Num: $pos_taz_token_num <br> SesNum: $ses_taz_token_num - </font><br>";	
 		}
-		
 		if(($ses_taz_token == $pos_taz_token || $ses_taz_token_num == $pos_taz_token) && ($site_url == $site_url_SES && $site_url_server == $site_url_server_SES) && ($site_url_SES == $site_url_server_SES)) {
 			return 1;
 		}else{
 			return 0;
 		}
-	
 	}
 	//END - Token valid function check
 
 	//START - Token form function <form>
-	
-	//Creats a random string of chars.
-	function genRandomString() {
-		$length = 15;
-		$characters = '0123456789abcdefghijklmnopqrstuvwxyz';
-		$maxrnd = strlen($characters)-1;
-		$string = str_repeat('0', $length);
-		for ($p = $length; $p--;) {
-			$string[$p] = $characters[mt_rand(0, $maxrnd)];
-		}
-		return $string;
-	}
-	//Creats a random string of chars.
-	function genRandomString2() {
-		$length = 15;
-		$characters = '0123456789abcdefghijklmnopqrstuvwxyz';
-		$maxrnd = strlen($characters)-1;
-		$string = str_repeat('0', $length);
-		for ($p = $length; $p--;) {
-			$string[$p] = $characters[mt_rand(0, $maxrnd)];
-		}
-		return $string;
-	}
-	
 	//Setup session form_token for array
 				if(!isset($_SESSION['user_token'])){
 					$_SESSION['user_token'] = array();
 				}
-	
-	
 	//Token form token function
 	function form_token()
 	{
-
 		//The form page
 		//use with your submition form pages
-
 		//Top of Form Pages	
-
 		//setting the token for this submition
-
-			//Create md5 string for even more security
-			$token_md5 = md5(uniqid(rand(), true));
-		
-			// create unique token
-			$form_token = uniqid();
-	 
-				//making token extra better.
-			
-				srand ((double) microtime( )*1000000);
-				$random_number = rand( );
-
-				$ran_tk = genRandomString2();
-				$ranimgname = genRandomString();
-				
-				//Sets generated randoms strings together	
-				$ran_extoken = $ranimgname.$random_number;
-				$form_token = $ran_tk.$form_token.$ran_extoken.$token_md5;
-	 
-			// commit token to session
-			//$_SESSION['user_token'] = $form_token;
-
-			global $session_token_num;
-	
-			if(isset($session_token_num)){
-					//echo "Session: $session_token_num";
-				$_SESSION['user_token'][$session_token_num] = array('FT' => $form_token);
-					//echo $_SESSION['user_token'][$session_token_num]['FT'];
-				echo "<input type=\"hidden\" name=\"session_token_num\" value=\"$session_token_num\" />";
-					global $debug_website;
-					if($debug_website == 'TRUE'){ 
-						echo "<br> ($session_token_num) ";
-					}
-				unset($session_token_num);
-			}else{
-				$_SESSION['user_token'][0] = array('FT' => $form_token);
-				$session_token_num = "";				
-			}
-
-			//Setup site validation and stuff
-			//Make sure user is only using this website
-			
-			//Get the site url setting from config file
-			global $site_url;
-			
-			//Get the site url from server
-			$site_url_server = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
-			$site_url_server .= $_SERVER['SERVER_NAME'];
-			$site_url_server .= "/";
-			
-			//Send the site url to session
-			$_SESSION['site_url'] = $site_url;
-			$_SESSION['site_url_server'] = $site_url_server;
-			
-			//TESTING Echo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			global $debug_website;
-			if($debug_website == 'TRUE'){ 
-				echo " - DEBUG SITE ON - ";
-				echo " $site_url - $site_url_server ";
-				echo "<font color=purple size=0.1> - $form_token - </font><br>";  //testing
-			}
-				
+		//Create a secure token	
+		$form_token = base64_encode( openssl_random_pseudo_bytes(64)); 
+		global $session_token_num;
+		if(isset($session_token_num)){
+				//echo "Session: $session_token_num";
+			$_SESSION['user_token'][$session_token_num] = array('FT' => $form_token);
+				//echo $_SESSION['user_token'][$session_token_num]['FT'];
+			echo "<input type=\"hidden\" name=\"session_token_num\" value=\"$session_token_num\" />";
+				global $debug_website;
+				if($debug_website == 'TRUE'){ 
+					echo "<br> ($session_token_num) ";
+				}
+			unset($session_token_num);
+		}else{
+			$_SESSION['user_token'][0] = array('FT' => $form_token);
+			$session_token_num = "";				
+		}
+		//Setup site validation and stuff
+		//Make sure user is only using this website
+		//Get the site url setting from config file
+		global $site_url;
+		//Get the site url from server
+		$site_url_server = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+		$site_url_server .= $_SERVER['SERVER_NAME'];
+		$site_url_server .= "/";
+		//Send the site url to session
+		$_SESSION['site_url'] = $site_url;
+		$_SESSION['site_url_server'] = $site_url_server;
+		//TESTING Echo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		global $debug_website;
+		if($debug_website == 'TRUE'){ 
+			echo " - DEBUG SITE ON - ";
+			echo " $site_url - $site_url_server ";
+			echo "<font color=purple size=0.1> - $form_token - </font><br>";  //testing
+		}
 		echo "<input type=\"hidden\" name=\"user_token\" value=\"$form_token\" />";	
-
 		//End of Token Process
 	}
 	//END - Token form function
@@ -357,7 +278,9 @@ function ALB($value) {
 function success_message(){
 	if(isset($_SESSION['success_msg'])){
 		$success_msg = $_SESSION['success_msg'];
-		echo "<table width=100% cellspacing=0 class=index_headertable3tbl><tr><td class=index_headertable3><center><strong><font color=green>$success_msg</font></strong></center></td></tr></table><br>";
+		echo "<div class='alert alert-success' role='alert'>";
+				echo "$success_msg";
+		echo "</div>";
 		unset($_SESSION['success_msg']);
 	}
 }
@@ -620,16 +543,14 @@ function is_valid_referer()
  */
 global $websiteName;
 //Setup the header of err_message
-$err_m_head = "<table border='0' width='100%' align='center' cellspacing='0' cellpadding='0'>
-				<tr><td class='hr2'>
+$err_m_head = "<div class='panel panel-danger'>
+				<div class='panel-heading'>
 					$websiteName Error Message
-				</td></tr><tr><td class='content78'>
-					<font color='#990000'><strong>";
+				</div>
+				<div class='panel-body'>";
 
 //Setup the footer of err_message
-$err_m_foot = "</strong></font>
-				</td></tr>
-				</table><br>";
+$err_m_foot = "</div></div>";
 
 function err_message($str)
 {
@@ -750,7 +671,9 @@ function total_topic_sweets($sweet_id, $sweet_sec_id, $sweet_sub, $sweet_locatio
 		$row_cnt = $result->num_rows;
 
 		// Display total number of sweets
-		printf(" Sweets:  %d \n", $row_cnt );
+		echo "<div class='btn btn-success btn-xs' style='margin-top: 3px'>";
+		echo "Sweets <span class='badge'>$row_cnt</span>";
+		echo "</div>";
 
 		/* close result set */
 		$result->close();
@@ -895,6 +818,78 @@ function setUserInactiveStatus($id)
 	$result = $stmt->execute();
 	$stmt->close();	
 	return $result;
+}
+
+// Collect the total number of friend requests
+function get_total_friend_requests($u_id){
+	global $DBH,$db_table_prefix; 
+	$sql = "SELECT count(*) FROM ".$db_table_prefix."friend WHERE `userId2`='$u_id' AND `status2`='0'";
+	$result = $DBH->prepare($sql); 
+	$result->execute(); 
+	$number_of_rows = $result->fetchColumn();
+	if($number_of_rows > "0"){
+		echo " <span class='badge'>";
+		echo "$number_of_rows";
+		echo "</span> ";
+	}
+}
+
+// Collect the total number of new messages
+function get_total_messages($nname){
+	global $DBH,$db_table_prefix; 
+	$sql = "SELECT count(*) FROM `".$db_table_prefix."inbox` WHERE `mto` = '$nname' AND `mread` = 'unread'";
+	$result = $DBH->prepare($sql); 
+	$result->execute(); 
+	$number_of_rows = $result->fetchColumn();
+	if($number_of_rows > "0"){
+		echo " <span class='badge'>";
+		echo "$number_of_rows";
+		echo "</span> ";
+	}
+}
+
+// Collect the total number of new messages
+function get_total_messages_friend_requests($nname, $u_id){
+	global $DBH,$db_table_prefix; 
+	$sqlA = "SELECT count(*) FROM `".$db_table_prefix."inbox` WHERE `mto` = '$nname' AND `mread` = 'unread'";
+	$resultA = $DBH->prepare($sqlA); 
+	$resultA->execute(); 
+	$nor_1 = $resultA->fetchColumn();
+
+	$sqlB = "SELECT count(*) FROM ".$db_table_prefix."friend WHERE `userId2`='$u_id' AND `status2`='0'";
+	$resultB = $DBH->prepare($sqlB); 
+	$resultB->execute(); 
+	$nor_2 = $resultB->fetchColumn();
+
+	$number_of_rows = $nor_1 + $nor_2;
+	if($number_of_rows > "0"){
+		echo " <span class='badge'>";
+		echo "$number_of_rows";
+		echo "</span> ";
+	}
+}
+
+//Creats a random string of chars.
+function genRandomString() {
+	$length = 15;
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+	$maxrnd = strlen($characters)-1;
+	$string = str_repeat('0', $length);
+	for ($p = $length; $p--;) {
+		$string[$p] = $characters[mt_rand(0, $maxrnd)];
+	}
+	return $string;
+}
+//Creats a random string of chars.
+function genRandomString2() {
+	$length = 15;
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+	$maxrnd = strlen($characters)-1;
+	$string = str_repeat('0', $length);
+	for ($p = $length; $p--;) {
+		$string[$p] = $characters[mt_rand(0, $maxrnd)];
+	}
+	return $string;
 }
 
 ?>

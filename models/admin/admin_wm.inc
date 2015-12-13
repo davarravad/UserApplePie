@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -68,7 +68,7 @@ if(isUserLoggedIn() && is_admin()){
 		//Disables auto refresh for debug stuff
 		if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
 			//Redirects the user
-			$form_redir_link = "${websiteUrl}YummyAsPie/admin_wm/";
+			$form_redir_link = "${websiteUrl}UAP_Admin_Panel/admin_wm/";
 			// Redirect member to their post
 			header("Location: $form_redir_link");
 			exit;
@@ -97,7 +97,7 @@ if(isUserLoggedIn() && is_admin()){
 		$con = stripslashes($con);
 		$con = str_replace("<br />", "", $con );
 
-		echo "<form method='post' action='${site_url_link}YummyAsPie/admin_wm/'>";
+		echo "<form method='post' action='${site_url_link}UAP_Admin_Panel/admin_wm/'>";
 			echo "<input type='hidden' name='save' value='save'>";
 			// See if this is first time admin is using this func
 			if(!empty($id)){

@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -34,7 +34,6 @@ if(isset($_REQUEST['profile'])){
 		//Checks to see if taz is a known file that does not exist but is same as one that does exist
 		if($taz == "bn/privacypolicy"){ $taz = "privacypolicy"; }
 		if($taz == "bn/disclaimer"){ $taz = "disclaimer"; }
-		if($taz == "YummyAsPie"){ $taz = "admin/admin"; }
 		if($taz == "gallery"){ $taz = "Gallery"; }
 		if($taz == "forum"){ $taz = "Forum"; }
 		if($taz == "reminder"){ $taz = "forgot_password"; }

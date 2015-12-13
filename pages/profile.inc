@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -71,8 +71,9 @@
 			echo "'s $websiteName Member Profile.\">";
 	
 //Start of Top Table
-echo "<center>";
-echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>"; 
+
+echo "<div class='panel panel-default'>";
+echo "<div class='panel-heading'>";
 
 					echo "<table width='100%'><tr>";
 					
@@ -142,28 +143,20 @@ echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td cla
 				}
 					echo "</td></tr></table>";
 
-echo "</td></tr>";
-echo "<tr><td class='content78'>";
+echo "</div>";
+echo "<div class='panel-body'>";
 
 			//Check privacy settings
 			require "pages/profile/profileprivacy.inc";
 
 			//Use privacy settings to hide or show profile
 			if($allowPV == "TRUE"){
+  
 
-			?>
-
-			<center>
-
-
-			  
-			<Br>
-			<strong>Basic Information About <?php
-get_user_name($ID02); ?>!</strong>
-			</center>
-
-			<?php
-
+				echo "<h3>Basic Information About ";
+				get_user_name($ID02); 
+				echo "</h3>";
+				
 				// Get user profile information
 				$get_info_id = $ID02;
 				// get_user_profile_info_uid($get_info_id);
@@ -186,7 +179,7 @@ get_user_name($ID02); ?>!</strong>
 				
 				
 				echo "<table width='100%' cellspacing='0' cellpadding='0'><tr><td width='50%'>";
-				echo "<table width='100%'>";
+				echo "<table width='100%' class='table table-striped'>";
 				
 				if(!empty($up_get_firstname)){
 					echo "<tr><td class='epboxb'>&nbsp; First Name: </td><td class='epboxb'>&nbsp; $up_get_firstname </td></tr>";
@@ -304,7 +297,8 @@ get_user_name($ID02); ?>!</strong>
 	//End show or hide profile
 	}
 				
-echo "</td></tr></table>";
+echo "</div>";
+echo "</div>";
 
 	}else{ 
 		//Requested profile does not exist, show error message

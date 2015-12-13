@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -20,7 +20,9 @@ function total_topics_display($forum_id){
 		/* determine number of rows result set */
 		$row_cnt = $result->num_rows;
 
-		printf("Topics:  %d \n", $row_cnt);
+		echo "<div class='btn btn-info btn-xs' style='margin-top: 5px'>";
+		echo "Topics <span class='badge'>$row_cnt</span>";
+		echo "</div>";
 
 		/* close result set */
 		$result->close();
@@ -40,7 +42,9 @@ function total_topic_replys_display($forum_id){
 		/* determine number of rows result set */
 		$row_cnt = $result->num_rows;
 
-		printf("Replys:  %d \n", $row_cnt);
+		echo "<div class='btn btn-info btn-xs' style='margin-top: 3px'>";
+		echo "Replies <span class='badge'>$row_cnt</span>";
+		echo "</div>";
 
 		/* close result set */
 		$result->close();
@@ -60,7 +64,9 @@ function total_topic_replys_display_a($forum_post_id){
 		/* determine number of rows result set */
 		$row_cnt = $result->num_rows;
 
-		printf("Replys:  %d \n", $row_cnt);
+		echo "<div class='btn btn-info btn-xs' style='margin-top: 3px'>";
+		echo "Replies <span class='badge'>$row_cnt</span>";
+		echo "</div>";
 
 		/* close result set */
 		$result->close();

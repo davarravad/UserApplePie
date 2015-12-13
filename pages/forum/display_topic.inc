@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -579,6 +579,9 @@
 		
 		// Check to see if admin would like to lock or unlock this topic
 		forumTopicStatus('admin_topic', $f_p_status, $f_p_id);
+		
+		// Show Current Forum Permissions
+		forumDisplayUserPerms();
 		
 		// Run Footer of page func
 		style_footer_content();	

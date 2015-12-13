@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -37,7 +37,5 @@ require("pages/forum/forum_admin_funcs.inc");
 // Run the page function
 display_pages_in_pages($load_page_dir, $load_page_req, $load_page_def, $load_cat, $load_id);
 
-// Show Current Forum Permissions
-forumDisplayUserPerms();
 
 ?>

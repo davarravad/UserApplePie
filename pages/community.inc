@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -23,9 +23,14 @@ if(isUserLoggedIn()){
 
 //Content load
 	require("models/welcomemem.inc");
-	echo "<center><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='hr2'>";
-	echo "$ity_title";
-	echo "</td></tr><tr><td class='content78'>";
+	
+	// Page title
+	$stc_page_title = "$ity_title";
+	// Page Description
+	$stc_page_description = "Complete list of all ".$websiteName." Site Members.";
+
+	// Run Header of page func
+	style_header_content($stc_page_title, $stc_page_description);
 
 		//START OF CONTENT
 		
@@ -63,7 +68,8 @@ if(isUserLoggedIn()){
 		//END OF CONTENT
 		
 
-
+// Run Footer of page func
+style_footer_content();
 
 
 
@@ -71,5 +77,5 @@ if(isUserLoggedIn()){
 else {
 	notlogedinmsg();
 }
-	echo "</td></tr></table></center>";
+
 ?>

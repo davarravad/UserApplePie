@@ -1,9 +1,7 @@
-
-<center>
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -24,62 +22,59 @@ while ($row02 = mysqli_fetch_array($result02))
 	extract($row02);
 
 	echo "<a class='anchor' name='statcom$id'></a>";
-	echo "<table width='99%' border=0 cellpadding=2 cellspacing=2>";
-	echo "<tr>";
-	echo "<td valign=top class=$bgcolor>";
-		$ID02 = $statcom_uid;
-	echo "<div class='comt_nm'><a href='${site_url_link}member/$ID02/'>";
-		require "pages/profile/userimage_small.inc";
-	echo "</a> Comment by ";
-	echo "<a href='${site_url_link}member/$ID02/'>";
-	echo " $statcom_name</div>";
-	echo "</a>";
+	echo "<ul class='list-group'>";
+		echo "<li class='list-group-item'>";
+			$ID02 = $statcom_uid;
+			echo "<a href='${site_url_link}member/$ID02/'>";
+				require "pages/profile/userimage_small.inc";
+			echo "</a> Comment by ";
+			echo "<a href='${site_url_link}member/$ID02/'>";
+			echo " $statcom_name";
+			echo "</a>";
+		echo "</li>";
+		echo "<li class='list-group-item'>";
+			//Comment Settings
+			$ed_com_database = "statcom"; //Comments database
+			$ed_com_id = $id;  //Gets id of comment
+			$ed_com_url = "${site_url_link}community/friendstatus/?offset=$offset#statcom$id";
+			$com_uid = $statcom_uid;
+			$statcom_content = stripslashes($statcom_content);
+			$com_content = $statcom_content;
+			$com_type_edit = "stat"; //Sets type of comment reg or stat
 
-//Comment Settings
-$ed_com_database = "statcom"; //Comments database
-$ed_com_id = $id;  //Gets id of comment
-$ed_com_url = "${site_url_link}community/friendstatus/?offset=$offset#statcom$id";
-$com_uid = $statcom_uid;
-$statcom_content = stripslashes($statcom_content);
-$com_content = $statcom_content;
-$com_type_edit = "stat"; //Sets type of comment reg or stat
-
-//Shows comment if not edit, delete, or update.
-require "pages/comments/main.inc";
+			//Shows comment if not edit, delete, or update.
+			require "pages/comments/main.inc";
 
 
-if(isset($ed_but)){ $edit_but = "$ed_but"; }
-
-	//Display edit button
-	if(isset($edit_but)){
-		echo "<table width='100%'><td align='left'>";
-	}
+			if(isset($ed_but)){ $edit_but = "$ed_but"; }
+		echo "</li>";
+		echo "<li class='list-group-item'>";
+			//Display edit button
+			if(isset($edit_but)){
+				echo "<table width='100%'><td align='left'>";
+			}
 
 
 			//Display how long ago this was posted
-		$timestart = "$timestamp";  //Time of post
-		require_once "models/timediff.inc";
-		echo " " . dateDiff("now", "$timestart", 1) . " ago ";
+			$timestart = "$timestamp";  //Time of post
+			require_once "models/timediff.inc";
+			echo " " . dateDiff("now", "$timestart", 1) . " ago ";
 
-		//Start Sweet
-		$sweet_location = "statuscom"; //Location on site where sweet is
-		$sweet_id = "$id";  //Post Id number
-		$sweet_userid = "$userIdme";  //User's Id
-		$sweet_url = "${site_url_link}community/friendstatus/?offset=$offset#statcom$id";
-		$sweet_owner_userid = "$ID02";  //Post owners userid
-		require "models/sweets.inc";
-		//End Sweet 
+			//Start Sweet
+			$sweet_location = "statuscom"; //Location on site where sweet is
+			$sweet_id = "$id";  //Post Id number
+			$sweet_userid = "$userIdme";  //User's Id
+			$sweet_url = "${site_url_link}community/friendstatus/?offset=$offset#statcom$id";
+			$sweet_owner_userid = "$ID02";  //Post owners userid
+			require "models/sweets.inc";
+			//End Sweet 
 
-	if(isset($edit_but)){
-		echo "</td><td align='right'>$edit_but</td></table>"; 
-	}
-	unset($com_uid, $ed_but, $edit_but, $com_id, $ed_com_id, $ed_com_id_form);
+			if(isset($edit_but)){
+				echo "</td><td align='right'>$edit_but</td></table>"; 
+			}
+			unset($com_uid, $ed_but, $edit_but, $com_id, $ed_com_id, $ed_com_id_form);
 
-
-	echo "</td></tr></table>";
-
-
-
+		echo "</li>";
+	echo "</ul>";
 }
 ?>
-</center>

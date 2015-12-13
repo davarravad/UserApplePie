@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -14,7 +14,7 @@ $userId = $_GET['id'];
 
 //Check if selected user exists
 if(!userIdExists($userId)){
-	header("Location: ".$site_url_link."YummyAsPie/admin_users/"); die();
+	header("Location: ".$site_url_link."UAP_Admin_Panel/admin_users/"); die();
 }
 
 $userdetails = fetchUserDetails(NULL, NULL, $userId); //Fetch user details
@@ -164,7 +164,7 @@ echo "
 echo resultBlock($errors,$successes);
 
 echo "
-<form name='adminUser' action='".$site_url_link."YummyAsPie/admin_user/?id=".$userId."' method='post'>
+<form name='adminUser' action='".$site_url_link."UAP_Admin_Panel/admin_user/?id=".$userId."' method='post'>
 <table class='admin'><tr><td>
 <h3>User Information</h3>
 <div id='regbox'>

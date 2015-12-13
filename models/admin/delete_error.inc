@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -50,7 +50,7 @@ if(isUserLoggedIn() && is_admin()){
 		if($debug_website == 'TRUE'){ echo "<br> - DEBUG SITE ON - <BR>"; }else{
 			//Redirects the user
 			global $site_url_link;
-			$redir_link_url = "${site_url_link}/YummyAsPie/errors/";
+			$redir_link_url = "${site_url_link}/UAP_Admin_Panel/errors/";
 			
 			// Redirect member to their post
 			header("Location: $redir_link_url");
@@ -78,7 +78,7 @@ if(isUserLoggedIn() && is_admin()){
 		echo "<center>Are you sure you would like to delete that?</center><Br>";
 
 				echo "<center>
-					<form method=\"post\" action=\"${site_url_link}YummyAsPie/delete_error/ \">
+					<form method=\"post\" action=\"${site_url_link}UAP_Admin_Panel/delete_error/ \">
 				";
 					// create multi sessions
 					if(isset($session_token_num)){
@@ -96,7 +96,7 @@ if(isUserLoggedIn() && is_admin()){
 				";
 				
 				$taz_backz = "
-					<form method=\"post\" action=\"${site_url_link}YummyAsPie/errors/?er_id=$er_id\">
+					<form method=\"post\" action=\"${site_url_link}UAP_Admin_Panel/errors/?er_id=$er_id\">
 						<label title=\"Send\"><input type=\"submit\" value=\"NO\" /></label>
 					</form>
 				";

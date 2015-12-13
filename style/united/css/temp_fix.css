@@ -1,0 +1,8 @@
+.navbar-text A:link,.navbar-text A:active,.navbar-text A:visited {
+color:#CCC;
+text-decoration:none;
+}
+.navbar-text A:hover {
+color:#DDD;
+text-decoration:none;
+}

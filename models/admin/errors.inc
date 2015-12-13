@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_array($result))
 	echo "<tr>";
 	echo "<td class=$bgcolor rowspan=2 width='50px'>($er_id)";
 	echo "
-		<form method=\"post\" action=\"${site_url_link}YummyAsPie/delete_error/ \">
+		<form method=\"post\" action=\"${site_url_link}UAP_Admin_Panel/delete_error/ \">
 		<input type=\"hidden\" name=\"er_id\" value=\"$er_id\">
 		<label title=\"Delete this Location!\"><input type=\"submit\" value=\"Delete!\" /></label>
 		</form>

@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -13,7 +13,7 @@ $pageId = $_GET['id'];
 
 //Check if selected pages exist
 if(!pageIdExists($pageId)){
-	header("Location: ".$site_url_link."YummyAsPie/admin_pages/"); die();	
+	header("Location: ".$site_url_link."UAP_Admin_Panel/admin_pages/"); die();	
 }
 
 $pageDetails = fetchPageDetails($pageId); //Fetch information specific to page
@@ -83,7 +83,7 @@ echo "
 echo resultBlock($errors,$successes);
 
 echo "
-<form name='adminPage' action='".$site_url_link."YummyAsPie/admin_page/?id=".$pageId."' method='post'>
+<form name='adminPage' action='".$site_url_link."UAP_Admin_Panel/admin_page/?id=".$pageId."' method='post'>
 <input type='hidden' name='process' value='1'>
 <table class='admin'>
 <tr><td>

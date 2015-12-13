@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -19,7 +19,7 @@ if(isUserLoggedIn() && is_admin()){
 	$result_errors = mysqli_query($GLOBALS["___mysqli_ston"], $query_errors);
 	$num_rows_errors = mysqli_num_rows($result_errors);
 		
-		echo " <a href='${site_url_link}YummyAsPie/errors/'>$num_rows_errors Errors</a>";
+		echo " <a href='${site_url_link}UAP_Admin_Panel/errors/'>$num_rows_errors Errors</a>";
 
 		
 	//Get total number of reports
@@ -28,7 +28,7 @@ if(isUserLoggedIn() && is_admin()){
 	$result_reports = mysqli_query($GLOBALS["___mysqli_ston"], $query_reports);
 	$num_rows_reports = mysqli_num_rows($result_reports);
 		
-		echo " | <a href='${site_url_link}YummyAsPie/reports/'>$num_rows_reports Reports</a>";
+		echo " | <a href='${site_url_link}UAP_Admin_Panel/reports/'>$num_rows_reports Reports</a>";
 
 		
 		

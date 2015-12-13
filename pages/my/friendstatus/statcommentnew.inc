@@ -1,8 +1,8 @@
 <center>
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -35,10 +35,10 @@ if(isUserLoggedIn())
 <?php echo "<input type='hidden' name='statcom_uid' value='$statcom_uid'>"; ?>
 
 <textarea style='width:80%;height:14px;font-family:verdana;font-size:12px' id="txt1" name="statcom_content" cols="<?php
-echo "$taw"; ?>" onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>
+echo "$taw"; ?>" onkeyup="textAreaAdjust(this)" style="overflow:hidden" class='form-control'></textarea>
 <br>
 
-<input class="sweet" type="submit" value="Submit Comment" name="submit" onClick="this.value = 'Please Wait....'" />
+<button type='submit' class='btn btn-success btn-xs' value='Update My Status' name='submitmystat' style='' data-loading-text='Please wait...' >Submit Comment</button>
 </form>
 
 <?php

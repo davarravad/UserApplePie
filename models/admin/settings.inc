@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -89,7 +89,7 @@ if(isUserLoggedIn() && is_admin()){
 
 		echo "
 				
-		<form method=\"post\" action=\"${site_url_link}YummyAsPie/settings/ \">
+		<form method=\"post\" action=\"${site_url_link}UAP_Admin_Panel/settings/ \">
 		
 		<input type='hidden' name='site_settings_update' value='TRUE'>
 		<input type='hidden' name='site_dir_settings' value='$site_dir_settings'>

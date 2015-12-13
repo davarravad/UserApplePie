@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -11,7 +11,28 @@ if(isUserLoggedIn() && is_admin()){
 
 //echo "Current Server Name: $cur_server_name_dc<br>";
 //echo "Demo Server Name: $demo_server_name_dc";
-	
+
+// Page header
+echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Configuration 
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li class='active'>
+								<i class='glyphicon glyphicon-wrench'></i> Site Configuration
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
+
 //Check to see is site is demo site.  If so disable editing.
 if($cur_server_name_dc != $demo_server_name_dc){
 	//Forms posted
@@ -283,8 +304,7 @@ if($cur_server_name_dc != $demo_server_name_dc){
 		}
 	}
 }else{
-	echo "<h3>Demo Website - Editing of these settings is disabled.</h3>";
-	echo "<hr>";
+		err_message("Demo Site : Editing Disabled");
 		// Lets hide the recapcha keys
 		unset($site_folder_dir, $recap_sitekey, $recap_secretkey, $site_adds_top, $site_adds_top);
 		$site_folder_dir = "Web Server Local Dir";
@@ -303,43 +323,43 @@ echo "
 echo resultBlock($errors,$successes);
 
 echo "
-<div id='regbox'>
-<form name='adminConfiguration' action='".$site_url_link."YummyAsPie/admin_configuration/' method='post'>
-<table><tr>
+<div class='panel panel-body panel-default'>
+<form name='adminConfiguration' action='".$site_url_link."UAP_Admin_Panel/admin_configuration/' method='post'>
+<table width='100%'><tr>
 	<td>
 		<label>Website Name:</label>
 	</td><td>
-		<input size='60' maxlength='150' type='text' name='settings[".$settings['website_name']['id']."]' value='".$websiteName."' />
+		<input class='form-control' size='60' maxlength='150' type='text' name='settings[".$settings['website_name']['id']."]' value='".$websiteName."' />
 	</td>
 </tr><tr>
 	<td>
 		<label>Website URL:</label>
 	</td><td>
-		<input size='60' maxlength='150' type='text' name='settings[".$settings['website_url']['id']."]' value='".$websiteUrl."' />
+		<input class='form-control' size='60' maxlength='150' type='text' name='settings[".$settings['website_url']['id']."]' value='".$websiteUrl."' />
 	</td>
 </tr><tr>
 	<td>
 		<label>Website Mobile URL:</label>
 	</td><td>
-		<input size='60' maxlength='150' type='text' name='settings[".$settings['site_url_link_m']['id']."]' value='".$site_url_link_m."' />
+		<input class='form-control' size='60' maxlength='150' type='text' name='settings[".$settings['site_url_link_m']['id']."]' value='".$site_url_link_m."' />
 	</td>
 </tr><tr>
 	<td>
 		<label>Website Main Directory:</label>
 	</td><td>
-		<input size='60' maxlength='150' type='text' name='settings[".$settings['site_dir']['id']."]' value='".$site_dir."' />
+		<input class='form-control' size='60' maxlength='150' type='text' name='settings[".$settings['site_dir']['id']."]' value='".$site_dir."' />
 	</td>
 </tr><tr>
 	<td>
 		<label>Website Folder Directory:</label>
 	</td><td>
-		<input size='60' maxlength='150' type='text' name='settings[".$settings['site_folder_dir']['id']."]' value='".$site_folder_dir."' />
+		<input class='form-control' size='60' maxlength='150' type='text' name='settings[".$settings['site_folder_dir']['id']."]' value='".$site_folder_dir."' />
 	</td>
 </tr><tr>
 	<td>
 		<label>Website Debug TRUE/FALSE:</label>
 	</td><td>
-		<select name='settings[".$settings['site_debug']['id']."]'>
+		<select class='form-control' name='settings[".$settings['site_debug']['id']."]'>
 			<option value='TRUE' "; 
 				if($site_debug == 'TRUE'){ echo "SELECTED"; } 
 			echo ">TRUE</option>
@@ -352,31 +372,31 @@ echo "
 	<td>
 		<label>Website Description:</label>
 	</td><td>
-		<textarea rows='4' cols='45' type='text' maxlength='255' name='settings[".$settings['site_gbl_descript']['id']."]'>".$site_gbl_descript."</textarea>
+		<textarea class='form-control' rows='4' cols='45' type='text' maxlength='255' name='settings[".$settings['site_gbl_descript']['id']."]'>".$site_gbl_descript."</textarea>
 	</td>
 </tr><tr>
 	<td>
 		<label>Website Keywords:</label>
 	</td><td>
-		<textarea rows='4' cols='45' type='text' maxlength='255' name='settings[".$settings['site_gbl_keywords']['id']."]'>".$site_gbl_keywords."</textarea>
+		<textarea class='form-control' rows='4' cols='45' type='text' maxlength='255' name='settings[".$settings['site_gbl_keywords']['id']."]'>".$site_gbl_keywords."</textarea>
 	</td>
 </tr><tr>
 	<td>
 		<label>Site Email:</label>
 	</td><td>
-		<input size='60' maxlength='255' type='text' name='settings[".$settings['email']['id']."]' value='".$emailAddress."' />
+		<input class='form-control' size='60' maxlength='255' type='text' name='settings[".$settings['email']['id']."]' value='".$emailAddress."' />
 	</td>
 </tr><tr>
 	<td>
 		<label>Activation Threshold:</label>
 	</td><td>
-		<input size='2' maxlength='1' type='text' name='settings[".$settings['resend_activation_threshold']['id']."]' value='".$resend_activation_threshold."' />
+		<input class='form-control' size='2' maxlength='1' type='text' name='settings[".$settings['resend_activation_threshold']['id']."]' value='".$resend_activation_threshold."' />
 	</td>
 </tr><tr>
 	<td>
 		<label>Language:</label>
 	</td><td>
-		<select name='settings[".$settings['language']['id']."]'>
+		<select class='form-control' name='settings[".$settings['language']['id']."]'>
 ";
 	
 //Display language options
@@ -398,7 +418,7 @@ echo "
 
 <label>Email Activation:</label>
 </td><td>
-<select name='settings[".$settings['activation']['id']."]'>";
+<select class='form-control' name='settings[".$settings['activation']['id']."]'>";
 
 //Display email activation options
 if ($emailActivation == "true"){
@@ -421,7 +441,7 @@ echo "
 	<td>
 <label>Template:</label>
 </td><td>
-<select name='settings[".$settings['template']['id']."]'>";
+<select class='form-control' name='settings[".$settings['template']['id']."]'>";
 
 //Display template options
 foreach ($templates as $temp){
@@ -438,44 +458,53 @@ echo "
 	</td>
 </tr>
 <tr><td colspan=2>
-<hr>
-<strong>Google reCAPTCHA Settings</strong> - <a href='https://www.google.com/recaptcha/' target='_blank'>Google reCAPTCHA</a>
+<br>
+
+	<div class='panel panel-heading panel-info'>
+	<strong>Google reCAPTCHA Settings</strong> - <a href='https://www.google.com/recaptcha/' target='_blank'>Google reCAPTCHA</a>
+	</div>
+
 </td></tr>
 <tr>
 	<td>
 		<label>Site Key:</label>
 	</td><td>
-		<input size='60' maxlength='255' type='text' name='settings[".$settings['recap_sitekey']['id']."]' value='".$recap_sitekey."' />
+		<input class='form-control' size='60' maxlength='255' type='text' name='settings[".$settings['recap_sitekey']['id']."]' value='".$recap_sitekey."' />
 	</td>
 </tr>
 <tr>
 	<td>
 		<label>Secret Key:</label>
 	</td><td>
-		<input size='60' maxlength='255' type='text' name='settings[".$settings['recap_secretkey']['id']."]' value='".$recap_secretkey."' />
+		<input class='form-control' size='60' maxlength='255' type='text' name='settings[".$settings['recap_secretkey']['id']."]' value='".$recap_secretkey."' />
 	</td>
 </tr>
 <tr><td colspan=2>
-<hr>
-<strong>Advertisement Codes</strong>
+<br>
+	<div class='panel panel-heading panel-info'>
+		<strong>Advertisement Codes</strong>
+	</div>
 </td></tr>
 <tr>
 	<td>
 		<label>Advertisement at top of site:</label>
 	</td><td>
-		<textarea rows='4' cols='45' type='text' name='settings[".$settings['site_adds_top']['id']."]'>".$site_adds_top."</textarea>
+		<textarea class='form-control' rows='4' cols='45' type='text' name='settings[".$settings['site_adds_top']['id']."]'>".$site_adds_top."</textarea>
 	</td>
 </tr>
 <tr>
 	<td>
 		<label>Advertisement at bottom of site:</label>
 	</td><td>
-		<textarea rows='4' cols='45' type='text' name='settings[".$settings['site_adds_bot']['id']."]'>".$site_adds_bot."</textarea>
+		<textarea class='form-control' rows='4' cols='45' type='text' name='settings[".$settings['site_adds_bot']['id']."]'>".$site_adds_bot."</textarea>
 	</td>
 </tr>
 <tr><td colspan=2>
-<hr>
-<strong>Photo Settings (ImageMagick)</strong>
+<br>
+	<div class='panel panel-heading panel-info'>
+		<strong>Photo Settings (ImageMagick)</strong>
+	</div>
+
 </td></tr>
 <tr>
 	<td>
@@ -491,7 +520,7 @@ echo "
 		echo "<br> Images have been disabled throughout the site.";
 		echo "<input type=\"hidden\" name=\"settings[".$settings['enable_photos']['id']."]\" value=\"FALSE\" />";
 	} else {
-		echo "<select name='settings[".$settings['enable_photos']['id']."]'>";
+		echo "<select class='form-control' name='settings[".$settings['enable_photos']['id']."]'>";
 		//Display email activation options
 		if ($enable_photos == "TRUE"){
 			echo "
@@ -513,7 +542,7 @@ echo "
 <tr>
 	<td colspan=2>
 <hr>
-<input type='submit' name='Submit' value='Update Site Settings' />
+<input class='btn btn-success' type='submit' name='Submit' value='Update Site Settings' />
 </td></tr>
 </table>
 </form>

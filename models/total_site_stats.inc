@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -64,28 +64,16 @@
 			$result_usr_online->close();
 		}
 
-		echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td class='main_tbl_nav_links_title2'>";
-			echo "Site Stats";
-		echo "</td></tr>";
-
-		
-		echo "<tr><td class='main_tbl_nav_links_sub'>";
-		echo "<a href='${site_url_link}members/' rel='nofollow'>Members: $total_mem</a><br>";
-		echo "</td></tr>";
-		
-		echo "<tr><td class='main_tbl_nav_links_sub'>";
-		echo "<a href='${site_url_link}whosonline/' rel='nofollow'>Members Online: $total_usr_online</a><br>";
-		echo "</td></tr>";
-		
-		echo "<tr><td class='main_tbl_nav_links_sub'>";
-		echo "<a href='${site_url_link}Forum/'>Forum Topics: $total_diy_topics</a><br>";
-		echo "</td></tr>";
-		
-		echo "<tr><td class='main_tbl_nav_links_sub'>";
-		echo "<a href='${site_url_link}Forum/'>Forum Replys: $total_diy_replys</a><br>";
-		echo "</td></tr>";
-
-		echo "<tr><td class='main_tbl_nav_links_subB'>";
-		
-		echo "</td></tr></table>";
+		echo "<div class='panel panel-default'>";
+			echo "<div class='panel-heading' style='font-weight: bold'>";
+				echo "Site Stats";
+			echo "</div>";
+				echo "<ul class='list-group'>";
+					echo "<li class='list-group-item'><a href='${site_url_link}members/' rel='nofollow'>Members: $total_mem</a></li>";
+					echo "<li class='list-group-item'><a href='${site_url_link}whosonline/' rel='nofollow'>Members Online: $total_usr_online</a></li>";
+					echo "<li class='list-group-item'><a href='${site_url_link}Forum/'>Forum Topics: $total_diy_topics</a></li>";
+					echo "<li class='list-group-item'><a href='${site_url_link}Forum/'>Forum Replys: $total_diy_replys</a></li>";
+				echo "</ul>";
+			echo "</div>";
+		echo "</div>";
 ?>

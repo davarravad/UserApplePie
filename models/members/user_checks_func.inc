@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -50,16 +50,16 @@ if(isUserLoggedIn()){
 		
 	// Run the global checks then display message accordingly 
 		if(empty($up_get_firstname_check)){
-			$check_message_output = "Please add your First Name to your profile.  <a href='${site_url_link}editprofilemain/'>Click Here to Edit Profile</a>.";
+			$check_message_output = "Please add your First Name to your profile.  <a href='${site_url_link}editprofilemain/' class='alert-link'>Click Here to Edit Profile</a>.";
 		}
 		else if(empty($up_get_location_check)){
-			$check_message_output =  "Please add your Location to your profile.  <a href='${site_url_link}editprofilemain/'>Click Here to Edit Profile</a>.";
+			$check_message_output =  "Please add your Location to your profile.  <a href='${site_url_link}editprofilemain/' class='alert-link'>Click Here to Edit Profile</a>.";
 		}
 		else if(empty($up_get_sex_check)){
-			$check_message_output = "Please add your Sex to your profile.  <a href='${site_url_link}editprofilemain/'>Click Here to Edit Profile</a>.";
+			$check_message_output = "Please add your Sex to your profile.  <a href='${site_url_link}editprofilemain/' class='alert-link'>Click Here to Edit Profile</a>.";
 		}
 		else if(empty($up_get_mainpic_check) || $up_get_mainpic_check == 'noimg.gif'){
-			$check_message_output = "Please upload your photo to your profile.  <Br><a href='${site_url_link}editprofilemain/picsubmit/'>Click Here to Upload Profile Photo</a>.";
+			$check_message_output = "Please upload your photo to your profile.  <Br><a href='${site_url_link}editprofilemain/picsubmit/' class='alert-link'>Click Here to Upload Profile Photo</a>.";
 		}
 		else{
 			// Do Nothing
@@ -69,11 +69,11 @@ if(isUserLoggedIn()){
 	// Check to see if a message is being displayed
 	// If Yes then show formatted message
 	if(!empty($check_message_output)){
-		echo " <table width=100% cellspacing=0 class=index_headertable3tbl><tr><td class=index_headertable3><center> ";
-		echo " <br> ";
+		echo "<div class='col-lg-12'>";
+		echo " <div class='alert alert-warning' role='alert' style=''> ";
 		echo " $check_message_output ";
-		echo " <br><br> ";
-		echo " </center></td></tr></table><br> ";
+		echo " </div> ";
+		echo "</div>";
 	}
 		
 

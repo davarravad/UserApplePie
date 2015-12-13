@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -76,16 +76,20 @@
 					$sweet_timestamp_ago = " " . dateDiff("now", "$timestart", 1) . " ago ";
 					
 					$ID02 = $sweet_userid;
-					echo "<table width='100%' class='$bgcolor'>";
-					echo "<tr><td>";
-					echo "<a href='${site_url_link}member/$ID02/'>";
-						require "pages/profile/userimage_small.inc";
-					echo "</a>";
-					echo "<strong> $sw_usernameB sweeted a Forum Topic..";
-					echo "</td><td align=right>$sweet_timestamp_ago</td></tr>";
-					echo "<tr><td colspan='2'> <hr>";
-					echo "<a href='$sweet_url'>$f_p_title</a>. </strong>";
-					echo "</td></tr></table><br>";
+					echo "<div class='panel panel-info'>";
+						echo "<div class='panel-heading'>";
+							echo "<a href='${site_url_link}member/$ID02/'>";
+								require "pages/profile/userimage_small.inc";
+							echo "</a>";
+							echo "<strong> $sw_usernameB sweeted a Forum Topic..";
+						echo "</div>";
+						echo "<div class='panel-body'>";
+							echo "<a href='$sweet_url'>$f_p_title</a>. </strong>";
+						echo "</div>";
+						echo "<div class='panel-footer'>";
+							echo "$sweet_timestamp_ago";
+						echo "</div>";
+					echo "</div>";
 					unset($timestart, $timestamp);
 				}
 			}
@@ -95,7 +99,7 @@
 
 
 	////Profile Comment Start
-		if($sweet_location == "profile"){
+		if($sweet_location == "profilecomments"){
 
 			//Display how long ago this was posted
 			unset($timestart);
@@ -105,9 +109,7 @@
 			
 			$ID02 = $sweet_userid;
 			require('pages/recentposts/userimage_small.inc');
-			$sw_user_sweeted =  "<table width=100% height=18><tr><td align=left>
-					$sw_user_sweeted_pic <strong> $sw_usernameB sweeted a <a href='${site_url_link}member/$sweet_sec_id#comment$sweet_id'>comment</a> on... </strong>
-					</td><td align=right>$sweet_timestamp_ago</td></tr></table><hr>";
+			$sw_user_sweeted = "$sw_user_sweeted_pic <strong> $sw_usernameB sweeted a <a href='${site_url_link}member/$sweet_sec_id#comment$sweet_id'>comment</a> on... </strong>";
 			unset($timestart, $timestamp);
 			if(isset($sw_u_timestamp)){}else{$sw_u_timestamp = "";}
 			$timestamp = $sw_u_timestamp;
@@ -131,16 +133,22 @@
 			$sw_usernameC = "<a href='${site_url_link}member/$sweet_sec_id'>$sw_usernameB</a>";
 
 
-			echo "<table width='100%'>";
-			echo "<tr><td class='$bgcolor'>";
-			echo "$sw_user_sweeted";
-			$ID02 = $sweet_sec_id;
-			echo "<a href='${site_url_link}member/$ID02/'>";
-				require "pages/profile/userimage_small.inc";
-			echo "</a>";
-			echo " $sw_usernameC";
-			echo "'s Profile";
-			echo "</td></tr></table><br>";
+			echo "<div class='panel panel-info'>";
+				echo "<div class='panel-heading'>";
+					echo "$sw_user_sweeted";
+				echo "</div>";
+				echo "<div class='panel-body'>";
+					$ID02 = $sweet_sec_id;
+					echo "<a href='${site_url_link}member/$ID02/'>";
+						require "pages/profile/userimage_small.inc";
+					echo "</a>";
+					echo " $sw_usernameC";
+					echo "'s Profile";
+				echo "</div>";
+				echo "<div class='panel-footer'>";
+					echo "$sweet_timestamp_ago";
+				echo "</div>";
+			echo "</div>";
 
 			}else{
 				//content missing, now to delete sweet from database

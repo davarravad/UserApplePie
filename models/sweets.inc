@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -41,7 +41,7 @@ if(isUserLoggedIn())
 		<input type='hidden' name='sweet_userid' value='$sweet_userid' />
 		<input type='hidden' name='sweet_url' value='$sweet_url' />
 		<input type='hidden' name='sweet_owner_userid' value='$sweet_owner_userid' />
-		<input type='submit' value='Sweet' name='sweet' class='sweet' onClick='this.value = 'Please Wait....'' >
+		<button type='submit' class='btn btn-success btn-xs' value='Sweet' name='sweet' style='margin-bottom: 5px' data-loading-text='Please wait...' >Sweet</button>
 	";
 	$unsweet_button = "
 		<input type='hidden' name='sweet_sub' value='unsweet' />
@@ -49,7 +49,7 @@ if(isUserLoggedIn())
 		<input type='hidden' name='sweet_location' value='$sweet_location' />
 		<input type='hidden' name='sweet_userid' value='$sweet_userid' />
 		<input type='hidden' name='sweet_url' value='$sweet_url' />
-		<input type='submit' value='UnSweet' name='sweet' class='unsweet' onClick='this.value = 'Please Wait....'' >
+		<button type='submit' class='btn btn-danger btn-xs' value='UnSweet' name='sweet' style='margin-bottom: 5px' data-loading-text='Please wait...' >UnSweet</button>
 	";
 	$sweet_formE = "</form>";
 
@@ -94,11 +94,11 @@ if(isUserLoggedIn())
 	}
 
 	if($num_sweets == '0'){
-		echo " (<font color=green size=1>No Sweets</font>)";
+		echo " <button type='button' class='btn btn-default btn-xs' style='margin-bottom: 5px'>No Sweets</button> ";
 	}elseif($num_sweets == '1'){
-		echo " (<font color=green size=1>1 Sweet</font>)";
+		echo " <button type='button' class='btn btn-default btn-xs' style='margin-bottom: 5px'>1 Sweet</button> ";
 	}else{
-		echo " (<font color=green size=1>$num_sweets Sweets</font>)";
+		echo " <button type='button' class='btn btn-default btn-xs' style='margin-bottom: 5px'>$num_sweets Sweets</button> ";
 	}
 		
 	//echo " ( $sweet_location - $sweet_id - $sweet_userid - $sweet_url ) ";  //For testing	

@@ -1,8 +1,7 @@
-<center>
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -60,45 +59,47 @@ if($statfriend == "YES"){
 
 
 	echo "<a class='anchor' name='status$id'></a>";
-	echo "<table width='$tblw500' border=0 cellpadding=2 cellspacing=2>";
-	echo "<tr>";
-	echo "<td valign=top class=$bgcolor>";
-		$ID02 = $com_id;
-	echo "<div class='comt_nm2'><a href='${site_url_link}member/$ID02/'>";
-		require "pages/profile/userimage_small.inc";
-	echo "</a>";
-	echo " Status by <a href='${site_url_link}member/$ID02/'>";
-	echo " $com_name</div>";
-	echo "</a>";
-	echo "<br>";
-	$com_content = stripslashes($com_content);
-	echo "<div class='comt_cnt'>$com_content</div>";
+	echo "<div class='panel panel-info'>";
+		echo "<div class='panel-heading'>";
+			$ID02 = $com_id;
+			echo "<a href='${site_url_link}member/$ID02/'>";
+				require "pages/profile/userimage_small.inc";
+			echo "</a>";
+			echo " Status by <a href='${site_url_link}member/$ID02/'>";
+			echo " $com_name";
+			echo "</a>";
+		echo "</div>";
+		echo "<div class='panel-body'>";
+			$com_content = stripslashes($com_content);
+			echo "<div class='well well-sm'>$com_content</div>";
 	
-		//Display how long ago this was posted
-		$timestart = "$timestamp";  //Time of post
-		require_once "models/timediff.inc";
-		echo " " . dateDiff("now", "$timestart", 1) . " ago ";
+			//Display how long ago this was posted
+			$timestart = "$timestamp";  //Time of post
+			require_once "models/timediff.inc";
+			echo " " . dateDiff("now", "$timestart", 1) . " ago ";
 	
-		//Start Sweet
-		$sweet_location = "status"; //Location on site where sweet is
-		$sweet_id = "$id";  //Post Id number
-		$sweet_userid = "$userIdme";  //User's Id
-		$sweet_url = "${site_url_link}community/friendstatus/?offset=$offset#status$id";
-		$sweet_owner_userid = "$ID02";  //Post owners userid
-		require "models/sweets.inc";
-		//End Sweet 
+			//Start Sweet
+			$sweet_location = "status"; //Location on site where sweet is
+			$sweet_id = "$id";  //Post Id number
+			$sweet_userid = "$userIdme";  //User's Id
+			$sweet_url = "${site_url_link}community/friendstatus/?offset=$offset#status$id";
+			$sweet_owner_userid = "$ID02";  //Post owners userid
+			require "models/sweets.inc";
+			//End Sweet 
 
-	echo "</tr></td><tr>";
-	echo "<td class=$bgcolor>";
-	$statcom_id = $id;
-	require "pages/my/friendstatus/statcom.inc";
-	echo "</td></tr></table><br><br>";
-	if(isset($numofcomments)){
-		$numofcomments = ($numofcomments + 1);
-	}else{
-		$numofcomments = "1";
-	}
-	//echo " ( $numofcomments ) ";
+		echo "</div>";
+		echo "<div class='panel-footer'>";
+			$statcom_id = $id;
+			require "pages/my/friendstatus/statcom.inc";
+
+			if(isset($numofcomments)){
+				$numofcomments = ($numofcomments + 1);
+			}else{
+				$numofcomments = "1";
+			}
+			//echo " ( $numofcomments ) ";
+		echo "</div>";
+	echo "</div>";	
 }
 
 }
@@ -107,11 +108,10 @@ if($statfriend == "YES"){
 	//$plussome = ($num_rows - $numofcomments);
  	//echo "<Br>$limitfriendstatus - $num_rows - $numofcomments - $plussome <br>";
 	if($limitfriendstatus < $num_rows || $limitfriendstatus < $numofcomments){
-		echo "<table width=100%><tr><td>";
+		echo "<div class='panel panel-default'>";
 		echo " <center><a href=\"${site_url_link}community/friendstatus/?offset=" . ($limitfriendstatus + 10) . "#status$id\">Show Older Friend's Status...</a> </center> "; 
-		echo "</td></tr></table><br><br>";
+		echo "</div>";
 	}
 	}
 
 ?>
-</center>

@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -12,7 +12,8 @@ if(isUserLoggedIn())
 if(isset($pee)){}else{ $pee = ""; }
 
 //Start of Community Links
-echo "<table width=100% cellspacing=0 class=index_headertable3tbl><tr><td class=index_headertable3><center>";
+echo "<div class='col-lg-12'>";
+echo "<div class='alert alert-info' role='alert' style='text-align: center; font-weight: bold'>";
 
 	//view one status
 		if($pee == "viewstatus"){
@@ -70,7 +71,8 @@ echo "<table width=100% cellspacing=0 class=index_headertable3tbl><tr><td class=
 		else{
 			echo "<a href='${site_url_link}community/myfriends/'>MyFriends</a>";
 		}
-echo "</center></td></tr></table><br>";		
+echo "</div>";		
+echo "</div>";
 //End of Community Links
 
 }

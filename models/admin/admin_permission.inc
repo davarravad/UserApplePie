@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -15,7 +15,7 @@ $permissionId = $_GET['id'];
 
 //Check if selected permission level exists
 if(!permissionIdExists($permissionId)){
-	header("Location: ".$site_url_link."YummyAsPie/admin_permissions/"); die();	
+	header("Location: ".$site_url_link."UAP_Admin_Panel/admin_permissions/"); die();	
 }
 
 $permissionDetails = fetchPermissionDetails($permissionId); //Fetch information specific to permission level
@@ -141,7 +141,7 @@ echo "
 echo resultBlock($errors,$successes);
 
 echo "
-<form name='adminPermission' action='".$site_url_link."YummyAsPie/admin_permission/?id=".$permissionId."' method='post'>
+<form name='adminPermission' action='".$site_url_link."UAP_Admin_Panel/admin_permission/?id=".$permissionId."' method='post'>
 <table class='admin'>
 <tr><td>
 <h3>Permission Information</h3>

@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -107,7 +107,6 @@ unset($timestamp, $userId);
 				AND NOT swe.sweet_location = 'statuscom'
 				AND NOT swe.sweet_location = 'profilecomments_b' 
 				AND NOT swe.sweet_location = 'writingcomments_b'
-				AND NOT swe.sweet_location = 'profilecomments'
 				AND NOT swe.sweet_location = 'forum_posts_replys'
 			GROUP BY swe.sid)
 		";
@@ -344,16 +343,22 @@ unset($timestamp, $userId);
 	{
 		$numofposts = $num_rows_posts;
 		if(isset($vm_id_a)){}else{$vm_id_a = "0";}
-		echo "Currently showing $vm_id_a of $numofposts posts.";//testing
+		echo "<div class='well well-sm'>";
+			echo "Currently Showing $vm_id_a of $numofposts Recent Posts";//testing
+		echo "</div>";
 		if( !isset($numofposts) ){$numofposts = "0";}else{
 			//$plussome = ($num_rows - $numofposts);
  			//echo "<Br>$limitfriendstatus - $num_rows - $numofposts - $plussome <br>";
 			if(isset($num_rows)){}else{ $num_rows = ""; }
 			if($limitfriendstatus < $num_rows || $limitfriendstatus < $numofposts){
 				$vm_id = $limitfriendstatus + 1;
-				echo "<table width=100%><tr><td>";
-				echo " <center><a href=\"?rc_view=$rc_view&offset=" . ($limitfriendstatus + 10) . "#viewmore$vm_id\">Show More Posts...</a> </center> "; 
-				echo "</td></tr></table><br><br>";
+
+				echo "<center>";
+				echo "<span class='btn btn-default'>";
+					echo "<a href=\"?rc_view=$rc_view&offset=" . ($limitfriendstatus + 10) . "#viewmore$vm_id\">Show More Recent Posts</a> ";
+				echo "</span>";
+				echo "</center> "; 
+		
 			}
 		}
 	}

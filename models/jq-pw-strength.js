@@ -4,9 +4,9 @@ $('#passwordInput, #confirmPasswordInput').on('keyup', function(e) {
  
 if($('#passwordInput').val() != '' && $('#confirmPasswordInput').val() != '' && $('#passwordInput').val() != $('#confirmPasswordInput').val())
 {
-$('#passwordStrength').removeClass().addClass('alert alert-error').html('Passwords do not match!');
-$('#pbar').removeClass().addClass('alert alert-error').width('25%');
-$('#pbar').removeClass().addClass('alert alert-error').css('background-color', 'red');
+$('#passwordStrength').html('<div class="alert alert-danger" role="alert">Passwords do not match!</div>');
+$('#password01').html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+$('#password02').html("<i class='glyphicon glyphicon-remove text-danger'></i>");
  
 return false;
 }
@@ -22,25 +22,32 @@ var okRegex = new RegExp("(?=.{8,}).*", "g");
  
 if (okRegex.test($(this).val()) === false) {
 // If ok regex doesn't match the password
-$('#passwordStrength').removeClass().addClass('alert alert-error').html('Password must be at least 8 characters long.');
-$('#pbar').removeClass().addClass('alert alert-error').width('25%');
-$('#pbar').removeClass().addClass('alert alert-error').css('background-color', 'red');
-
+$('#passwordStrength').html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Password must be at least 8 characters long.</div>");
+$('#password01').html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+	if($('#confirmPasswordInput').val()){
+		$('#password02').html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+	}
 } else if (strongRegex.test($(this).val())) {
 // If reg ex matches strong password
-$('#passwordStrength').removeClass().addClass('alert alert-success').html('Strong Password!');
-$('#pbar').removeClass().addClass('alert alert-error').width('100%');
-$('#pbar').removeClass().addClass('alert alert-error').css('background-color', 'green');
+$('#passwordStrength').html("");
+$('#password01').html("<i class='glyphicon glyphicon-thumbs-up text-success'></i>");
+	if($('#confirmPasswordInput').val()){
+		$('#password02').html("<i class='glyphicon glyphicon-thumbs-up text-success'></i>");
+	}
 } else if (mediumRegex.test($(this).val())) {
 // If medium password matches the reg ex
-$('#passwordStrength').removeClass().addClass('alert alert-info').html('Good Password!');
-$('#pbar').removeClass().addClass('alert alert-error').width('75%');
-$('#pbar').removeClass().addClass('alert alert-error').css('background-color', 'lightgreen');
+$('#passwordStrength').html("<div class='alert alert-info alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Good Password!</div>");
+$('#password01').html("<i class='glyphicon glyphicon-ok text-info'></i>");
+	if($('#confirmPasswordInput').val()){
+		$('#password02').html("<i class='glyphicon glyphicon-ok text-info'></i>");
+	}
 } else {
 // If password is ok
-$('#passwordStrength').removeClass().addClass('alert alert-error').html('Weak Password!');
-$('#pbar').removeClass().addClass('alert alert-error').width('50%');
-$('#pbar').removeClass().addClass('alert alert-error').css('background-color', 'yellow');
+$('#passwordStrength').html("<div class='alert alert-warning alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Weak Password!</div>");
+$('#password01').html("<i class='glyphicon glyphicon-remove text-warning'></i>");
+	if($('#confirmPasswordInput').val()){
+		$('#password02').html("<i class='glyphicon glyphicon-remove text-warning'></i>");
+	}
 }
 return true;
 });

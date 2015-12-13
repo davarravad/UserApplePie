@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -137,8 +137,8 @@ function resultBlock($errors,$successes){
 	//Error block
 	if(count($errors) > 0)
 	{
-		echo "<div id='error'>
-		<a href='#' onclick=\"showHide('error');\">[X]</a>
+		echo "<div class='alert alert-danger alert-dismissible' role='alert'>
+		<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 		<ul>";
 		foreach($errors as $error)
 		{
@@ -150,8 +150,8 @@ function resultBlock($errors,$successes){
 	//Success block
 	if(count($successes) > 0)
 	{
-		echo "<div id='success'>
-		<a href='#' onclick=\"showHide('success');\">[X]</a>
+		echo "<div class='alert alert-success alert-dismissible' role='alert'>
+		<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 		<ul>";
 		foreach($successes as $success)
 		{

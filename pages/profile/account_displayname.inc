@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -97,70 +97,69 @@
 					echo "<strong>".$_SESSION['success_msg2']."</strong>";
 					unset($_SESSION['success_msg2']);
 				}
+				
+echo "<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>";
 ?>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> 
 
-	<script type="text/javascript">  
-	<!--  
-	   
-	pic1 = new Image(16, 16);  
-	pic1.src = "/images/loader.gif";  
-	   
-	$(document).ready(function(){  
-	   
-	$("#displayname").on('keyup',function() {  
-	   
-	var usr = $("#displayname").val();  
-	var usrid = <?php echo "$userIdme"; ?>;   
-
-	if(usr.length >= 5)  
-	{  
-	$("#status2").html('<img src="/images/loader.gif" align="absmiddle"> Checking availability...');  
-	   
-		$.ajax({    
-		type: "POST",    
-		url: "/pages/user_display_name_check.php",    
-		data: {"displayname" : usr,
-		 "userIdme" : usrid}, 
-		success: function(msg){    
-		
-	   $("#status2").ajaxComplete(function(event, request, settings){  
-	   
-		if(msg == 'OK')  
-		{  
-			$("#displayname").removeClass('object_error'); // if necessary  
-			$("#displayname").addClass("object_ok");  
-			$(this).html(' <img src="/images/tick.gif" align="absmiddle"> <font color=green>User Name is Good!</font>');  
-		}    
-		else    
-		{    
-			$("#displayname").removeClass('object_ok'); // if necessary  
-			$("#displayname").addClass("object_error");  
-			$(this).html(msg);  
-		}    
-		
-	   });  
-	   
-	}  
-		
-	  });  
-	   
-	}  
-	else  
-		{  
-		$("#status2").html('<font color="red">User Name must be at least <strong>5</strong> characters.</font>');  
-		$("#displayname").removeClass('object_ok'); // if necessary  
-		$("#displayname").addClass("object_error");  
-		}  
-	   
-	});  
-	   
-	});  
-	   
-	//-->  
-	</script>  
-
+<script type="text/javascript">
+$(document).ready(function()
+{    
+ $("#user_displayname_update").keyup(function()
+ {  
+  var name = $(this).val(); 
+  
+  if(name.length > 4)
+  {  
+   $("#resultdn").html('');
+   
+   /*$.post("username-check.php", $("#reg-form").serialize())
+    .done(function(data){
+    $("#result").html(data);
+   });*/
+   
+   $.ajax({
+    
+    type : 'POST',
+    url  : '/pages/user_display_name_check.php',
+    data : $(this).serialize(),
+    success : function(data)
+        {
+              /*$("#resultun").html(data);*/
+			if(data == 'OK')
+			{
+			   $("#resultdn").html("<i class='glyphicon glyphicon-ok text-success'></i>");
+			   $("#resultdn2").html("");	
+			}
+			if(data == 'CHAR')
+			{
+			   $("#resultdn").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultdn2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Display Name Invalid.</div>");	
+			}
+			if(data == 'INUSE')
+			{
+			   $("#resultdn").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultdn2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Display Name is already in use.</div>");	
+			}
+			if(data == 'SAME')
+			{
+			   $("#resultdn").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+			   $("#resultdn2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>This is already your Display Name.</div>");	
+			}
+        }
+    });
+    return false;
+   
+  }
+  else
+  {
+   $("#resultdn").html("<i class='glyphicon glyphicon-remove text-danger'></i>");
+   $("#resultdn2").html("<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Display Name must be at least <strong>5</strong> characters.</div>");
+  }
+ });
+ 
+});
+</script>
 
 <?php
 				
@@ -171,7 +170,11 @@
 				<form name='updateAccount' action='/editprofilemain/account_displayname/' method='post'>
 				<br>
 				<label>Your Current Display Name:</label>
-				<input type='text' name='user_displayname_update' value='".$user_displayname."' id='displayname' />
+				<div class='input-group' style='width: 80%; margin-bottom: 5px'>
+					<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+					<input id='user_displayname_update' type='text' name='user_displayname_update' value='$user_displayname' class='form-control' placeholder='Display Name' aria-describedby='basic-addon1' />
+					<span id='resultdn' class='input-group-addon'></span>
+				</div>
 				";
 				
 					// Form token. Place within from tag
@@ -183,11 +186,10 @@
 					}
 					form_token();
 					
-				echo "<span id='status2'></span>";
-					
-				echo "<br><br>
+				echo "<span id='resultdn2' class='label'></span>
 				
-				<input type='submit' value='Update DisplayName' class='submit' />
+				
+				<input type='submit' value='Update DisplayName' class='btn btn-success btn-sm' />
 				
 				</form>
 

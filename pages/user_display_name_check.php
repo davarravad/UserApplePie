@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.0.1  //
-// http://www.thedavar.com      //
+// UserApplePie Version: 1.1.0  //
+// http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
@@ -11,10 +11,14 @@
 // Used with the AJAX displayname check in register
 
 
-if(isSet($_POST['displayname']))
+if(isSet($_POST['displayname']) || isSet($_POST['user_displayname_update']))
 {
-		$displayname = $_POST['displayname'];
-
+		if(isSet($_POST['displayname'])){
+			$displayname = $_POST['displayname'];
+		}
+		if(isSet($_POST['user_displayname_update'])){
+			$displayname = $_POST['user_displayname_update'];
+		}
 		require_once "../models/db-settings.inc";
 		
 		if(isSet($_POST['userIdme']))
@@ -43,7 +47,7 @@ if(isSet($_POST['displayname']))
 		{
 			// Check input to be sure it meets the site standards for displaynames
 			if(!preg_match("/^[a-zA-Z\p{Cyrillic}0-9\s\-\_]+$/u", $displayname)){
-				echo '<font color="red">User Name can only include alpha-numeric characters. No symbols.</font>';
+				echo 'CHAR';
 			}else{
 				echo 'OK';
 			}
@@ -55,9 +59,9 @@ if(isSet($_POST['displayname']))
 
 			if($displayname == $user_displayname)
 			{
-				echo '<strong>'.$displayname.'</strong> is your current Display Name.';
+				echo 'SAME';
 			}else{
-				echo '<font color="red">The User Name <strong>'.$displayname.'</strong> is already in use.</font>';
+				echo 'INUSE';
 			}
 		}
 
