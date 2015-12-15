@@ -1,113 +1,91 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-
-		<title>SCEditor Demo</title>
-
-		<link rel="stylesheet" href="/minified/themes/default.min.css" type="text/css" media="all" />
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="/minified/jquery.sceditor.bbcode.min.js"></script>
-
-		<style>
-			html {
-				font-family: Arial, Helvetica, sans-serif;
-				font-size: 13px;
-			}
-			form div {
-				padding: .5em;
-			}
-			code:before {
-				position: absolute;
-				content: 'Code:';
-				top: -1.35em;
-				left: 0;
-			}
-			code {
-				margin-top: 1.5em;
-				position: relative;
-				background: #eee;
-				border: 1px solid #aaa;
-				white-space: pre;
-				padding: .25em;
-				min-height: 1.25em;
-			}
-			code:before, code {
-				display: block;
-				text-align: left;
-			}
-		</style>
-
-		<script>
-			// Source: http://www.backalleycoder.com/2011/03/20/link-tag-css-stylesheet-load-event/
-			var loadCSS = function(url, callback){
-				var link = document.createElement('link');
-				link.type = 'text/css';
-				link.rel = 'stylesheet';
-				link.href = url;
-				link.id = 'theme-style';
-
-				document.getElementsByTagName('head')[0].appendChild(link);
-
-				var img = document.createElement('img');
-				img.onerror = function(){
-					if(callback) callback(link);
-				}
-				img.src = url;
-			}
-
-			$(document).ready(function() {
-				var initEditor = function() {
-					$("textarea").sceditor({
-						plugins: 'bbcode',
-						style: "/minified/jquery.sceditor.default.min.css"
-					});
-				};
-
-				$("#theme").change(function() {
-					var theme = "/minified/themes/" + $(this).val() + ".min.css";
-
-					$("textarea").sceditor("instance").destroy();
-					$("link:first").remove();
-					$("#theme-style").remove();
-
-					loadCSS(theme, initEditor);
-				});
-
-				initEditor();
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<style>
+		#wrap{
+			width: 730px;
+			margin: 0 auto;
+		}
+		.form_wrap{
+			float:left;
+			width: 330px;
+			height: 160px;
+			border: dotted 1px gray;
+			padding: 10px;
+		}
+		.form_wrap label{
+			width: 90px;
+			float: left;
+			margin-bottom: 10px;
+		}
+		.form_wrap input[type=text]{
+			width: 190px;
+			margin-bottom: 10px;
+		}
+		.form_wrap textarea{
+			width: 190px;
+			height: 75px;
+			margin-bottom: 10px;
+		}
+		.preview_area{
+			width: 330px;
+			height: 160px;
+			border: dotted 1px gray;
+			float:right;
+			padding: 10px;
+		}
+		.preview_area h3{
+			color: blue;
+			height: 10px;
+		}
+		.preview_area p{
+			font-size: 14px;
+			color: gray;
+			height: 30px;
+		}
+	</style>
+	<script>
+		$(function(){
+			
+			//change title dynamically
+			$( '#title' ).keyup( function(){
+				var title = $( this ).val();
+				$( '.preview_area h3' ).text( title );
 			});
-		</script>
-	</head>
-	<body>
+			
+			//change description dynamically
+			$( '#desc' ).keyup(function(){
+				var desc = $( this ).val();
+				$( '.preview_area p' ).text( desc );
+			});
+			
+			//change website link dynamically
+			$( '#link' ).keyup(function(){
+				var desc = 'http://' + $( this ).val();
+				$( '.preview_area a' ).text( desc );
+				$( '.preview_area a' ).attr( 'href', desc );
+			});			
+		});
+	</script>
+</head>
+<body>
+	<div id="wrap">
+ 
+		<h3 align="center">Live Preview jQuery Example by <a href="http://www.tutorialsmade.com">Tutorialsmade.com</a></h3>
+ 
+		<div class="form_wrap">
 		<form action="" method="post">
-			<div>
-				<textarea name="bbcode_field" style="height:300px;width:600px;">[center][size=3][b]BBCode SCEditor[/b][/size][/center]
-
-Give it a try! :)
-
-[color=#ff00]Red text! [/color][color=#3399ff]Blue?[/color]
-
-[ul][li]A simple list[/li][li]list item 2[/li][/ul]
-
-If you are using IE9+ or any non-IE browser just type [b]:[/b]) and it should be converted into :) as you type.</textarea>
-
-				<p>If you are using IE9+ or any other browser then it should automatically replace
-					:) and other emoticon codes with theit emoticon images.</p>
-			</div>
-
-			<div>
-				<label for="theme">Theme:</label>
-				<select id="theme">
-					<option value="default">Default</option>
-					<option value="modern">Modern</option>
-					<option value="office-toolbar">Office Toolbar</option>
-					<option value="office">Office</option>
-					<option value="square">Square</option>
-				</select>
-			</div>
+			<label>Title</label><input type="text" id="title" name="title" maxlength="25" placeholder="Enter title" />
+			<label>Description</label><textarea placeholder="Description" maxlength="100" id="desc" name="desc"></textarea>
+			<label>Link</label><input type="text" id="link" name="link" placeholder="Your website link" />
 		</form>
-
-		<p>SCEditor is licensed under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a></p>
-	</body>
+		</div>
+ 
+		<div class="preview_area">
+			<h3>Your Title</h3>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+			<a href="http://www.tutorialsmade.com" target="_blank">http://www.tutorialsmade.com</a>
+		</div>
+	</div>
+</body>
 </html>

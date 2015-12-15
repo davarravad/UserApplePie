@@ -370,7 +370,7 @@
 							form_token();
 							
 							echo "<input type=\"hidden\" name=\"forum_id\" value=\"$f_id\" />";
-							echo "<input type=\"submit\" value=\"Create Topic\" name=\"createtopic\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+							echo "<input type=\"submit\" value=\"Create Topic\" name=\"createtopic\" class=\"btn btn-success btn-sm\" onClick=\"this.value = 'Please Wait....'\" />";
 							
 						echo "</form>";
 					} // End Log in check

@@ -147,7 +147,7 @@ if(isUserLoggedIn())
 						$forum_title = stripslashes($forum_title);
 					}
 					echo "<strong>Topic Title</strong><br>";
-					echo "<input name=\"forum_title\" type=\"text\" value=\"${forum_title}\" style='width:100%;font-family:verdana;font-size:12px'><br>";
+					echo "<input name=\"forum_title\" type=\"text\" value=\"${forum_title}\" style='width:100%;font-family:verdana;font-size:12px' class='form-control input-sm'><br>";
 					
 
 					
@@ -159,7 +159,7 @@ if(isUserLoggedIn())
 					$forum_content = stripslashes($forum_content);
 				}
 				
-				echo "<textarea style='width:100%;height:200px;font-family:verdana;font-size:12px' name='forum_content' id='forum_content'>${forum_content}</textarea>";
+				echo "<textarea style='width:100%;height:200px;font-family:verdana;font-size:12px' name='forum_content' id='forum_content' class='form-control'>${forum_content}</textarea>";
 				echo "<br>";
 				echo "<input type=\"hidden\" name=\"forum_id\" value=\"$forum_id\" />";
 				
@@ -169,32 +169,32 @@ if(isUserLoggedIn())
 					echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />";
 					echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$forum_post_id\" />";
 					echo "<br><center>";
-					echo "<input type=\"submit\" value=\"Update Reply\" name=\"updatereply\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+					echo "<input type=\"submit\" value=\"Update Reply\" name=\"updatereply\" class=\"btn btn-success btn-sm\" onClick=\"this.value = 'Please Wait....'\" />";
 					echo "</center>";				
 				}else if($edit_forum_topic == "TRUE"){
 					echo "<input type=\"hidden\" name=\"edit_forum_topic\" value=\"TRUE\" />";	
 					echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />";
 					echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$forum_post_id\" />";
 					echo "<br><center>";
-					echo "<input type=\"submit\" value=\"Update Topic\" name=\"updatetopic\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+					echo "<input type=\"submit\" value=\"Update Topic\" name=\"updatetopic\" class=\"btn btn-success btn-sm\" onClick=\"this.value = 'Please Wait....'\" />";
 					echo "</center>";				
 				}else{
 					echo "<input type=\"hidden\" name=\"insert_new_topic\" value=\"TRUE\" />";				
 					echo "<br><center>";
 					echo "<input type=\"checkbox\" name=\"subcribe_email\" value=\"YES\" checked=\"checked\"> Subscribe to E-Mail Notifications for this Topic<br>";
-					echo "<input type=\"submit\" value=\"Create Topic\" name=\"createtopic\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+					echo "<input type=\"submit\" value=\"Create Topic\" name=\"createtopic\" class=\"btn btn-success btn-sm\" onClick=\"this.value = 'Please Wait....'\" />";
 					echo "</center>";
 				}
 				
 			echo "</form>";
 			
-			echo "
+			echo "<!--
 				<center><strong>Your Reply Preview</strong></center>
 				<pre class='forum'>
 				<DIV id=preview class=scroll style=\"BORDER-RIGHT: #c0c0c0 1px solid; PADDING-RIGHT: 3px;
 				BORDER-TOP: #c0c0c0 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #c0c0c0 1px solid; WIDTH: 98%;
 				PADDING-TOP: 3px; BORDER-BOTTOM: #c0c0c0 1px solid; HEIGHT: 150px; overflow:scroll\"></DIV>
-				</pre>
+				</pre>	-->
 			";
 			
 			echo "</td></tr></table>";
@@ -203,7 +203,7 @@ if(isUserLoggedIn())
 		// Run Footer of page func
 		style_footer_content();
 ?>
-
+<!-- Error with this here bbcode script
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
 	<script src='/models/jquery.bbcode.js' type='text/javascript'></script>
 	<script type=text/javascript>
@@ -229,7 +229,7 @@ if(isUserLoggedIn())
 		setTimeout("process()", 2000);
 	  }
 	</script>
-
+-->
 
 <?php		
 	} // End of token check

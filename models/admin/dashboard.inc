@@ -20,56 +20,56 @@ function percent($num_prev, $num_current) {
 
 //////////////////////////////////////////Unique Visitors//////////////////////////////////////
 //Get total number of unique visitors today
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where DATE(`timestamp`) = CURDATE() GROUP BY ipaddy"); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where DATE(`timestamp`) = CURDATE() "); 
 $result->execute();
 $total_visitors_today = $result->fetchColumn(0);
 //echo $total_visitors_today;
 unset($result);
 
 //Get total number of unique visitors yesterday
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where DAY(`timestamp`) = DAY(DATE_SUB(CURDATE(), INTERVAL 1 DAY))  GROUP BY ipaddy"); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where DAY(`timestamp`) = DAY(DATE_SUB(CURDATE(), INTERVAL 1 DAY)) "); 
 $result->execute();
 $total_visitors_yesterday = $result->fetchColumn(0);
 //echo $total_visitors_yesterday;
 unset($result);
 
 // Get total number of unique visitors this week
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where timestamp > DATE_SUB(NOW(), INTERVAL 1 WEEK) GROUP BY ipaddy"); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where timestamp > DATE_SUB(NOW(), INTERVAL 1 WEEK)"); 
 $result->execute();
 $total_visitors_week = $result->fetchColumn(0);
 //echo $total_visitors_week;
 unset($result);
 
 //Get total number of unique visitors last week
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where WEEK(`timestamp`) = WEEK(DATE_SUB(CURDATE(), INTERVAL 1 WEEK))  GROUP BY ipaddy"); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where WEEK(`timestamp`) = WEEK(DATE_SUB(CURDATE(), INTERVAL 1 WEEK)) "); 
 $result->execute();
 $total_visitors_lastweek = $result->fetchColumn(0);
 //echo $total_visitors_lastweek;
 unset($result);
 
 // Get total number of unique visitors this month
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where timestamp > DATE_SUB(NOW(), INTERVAL 1 MONTH) GROUP BY ipaddy"); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where timestamp > DATE_SUB(NOW(), INTERVAL 1 MONTH)"); 
 $result->execute();
 $total_visitors_month = $result->fetchColumn(0);
 //echo $total_visitors_month;
 unset($result);
 
 //Get total number of unique visitors last month
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where MONTH(`timestamp`) = MONTH(DATE_SUB(CURDATE(), INTERVAL 1 MONTH))  GROUP BY ipaddy"); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where MONTH(`timestamp`) = MONTH(DATE_SUB(CURDATE(), INTERVAL 1 MONTH)) "); 
 $result->execute();
 $total_visitors_lastmonth = $result->fetchColumn(0);
 //echo $total_visitors_lastmonth;
 unset($result);
 
 // Get total number of unique visitors this year
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where timestamp > DATE_SUB(NOW(), INTERVAL 1 YEAR) GROUP BY ipaddy"); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where timestamp > DATE_SUB(NOW(), INTERVAL 1 YEAR)"); 
 $result->execute();
 $total_visitors_year = $result->fetchColumn(0);
 //echo $total_visitors_year;
 unset($result);
 
 //Get total number of unique visitors last year
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where YEAR(`timestamp`) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR)) GROUP BY ipaddy"); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where YEAR(`timestamp`) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))"); 
 $result->execute();
 $total_visitors_lastyear = $result->fetchColumn(0);
 //echo $total_visitors_lastyear;

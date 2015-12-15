@@ -9,7 +9,6 @@
 if(isUserLoggedIn())
 {
 
-
 				
 			global $mysqli, $site_url_link, $site_forum_title, $userIdme, $db_table_prefix;
 			
@@ -51,32 +50,36 @@ if(isUserLoggedIn())
 					$usr_subsc_check = "checked=checked";
 				}
 				
-				echo "<textarea style='width:100%;height:100px;font-family:verdana;font-size:12px;border: 1px solid #333' name='forum_content' id='forum_content'></textarea>";
+				echo "<textarea style='width:100%;height:100px;font-family:verdana;font-size:12px;border: 1px solid #333' name='forum_content' id='forum_content' class='form-control'></textarea>";
 				echo "<br>";
 				echo "<input type=\"hidden\" name=\"forum_id\" value=\"$f_p_id_cat\" />";
 				echo "<input type=\"hidden\" name=\"forum_post_id\" value=\"$f_p_id\" />";
 				echo "<input type=\"hidden\" name=\"insert_reply_topic\" value=\"TRUE\" />";
-				echo "<br><center>";
+				echo "<center>";
 				echo "<input type=\"checkbox\" name=\"subcribe_email\" value=\"YES\" $usr_subsc_check> Subscribe to E-Mail Notifications for this Topic<br>";
-				echo "<input type=\"submit\" value=\"Submit Quick Reply\" name=\"Quick Reply\" class=\"sweet\" onClick=\"this.value = 'Please Wait....'\" />";
+				echo "<input type=\"submit\" value=\"Submit Quick Reply\" name=\"Quick Reply\" class=\"btn btn-success btn-sm\" onClick=\"this.value = 'Please Wait....'\" />";
 				echo "</center>";
 				
 			echo "</form>";
 
-			echo "
+			echo "<!--
 				<center><strong>Your Reply Preview</strong></center>
 				<div class='forum'>
-				<DIV id=preview_display class=scroll style=\"BORDER-RIGHT: #c0c0c0 1px solid; PADDING-RIGHT: 3px;
+				<DIV id='preview_display' class='preview_display' style=\"BORDER-RIGHT: #c0c0c0 1px solid; PADDING-RIGHT: 3px;
 				BORDER-TOP: #c0c0c0 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #c0c0c0 1px solid; WIDTH: 98%;
 				PADDING-TOP: 3px; BORDER-BOTTOM: #c0c0c0 1px solid; HEIGHT: 100px; overflow:scroll\"></DIV>
 				</div>
+				-->
 			";
-			
+		
 			echo "</td></tr></table>";
 
 ?>
 
-	
+
+
+<!-- BBCode Script that doe not work with updated version of jquery
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js' type='text/javascript'></script>
 	<script src='/models/jquery.bbcode.js' type='text/javascript'></script>
 	<script type=text/javascript>
 	  $(document).ready(function(){
@@ -101,6 +104,7 @@ if(isUserLoggedIn())
 		setTimeout("process()", 2000);
 	  }
 	</script>
+ End of Script -->
 
 
 <?php
