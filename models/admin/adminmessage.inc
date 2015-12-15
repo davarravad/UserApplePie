@@ -33,6 +33,11 @@ echo "
                 <!-- /.row -->
 ";
 
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc == $demo_server_name_dc){
+	err_message("Demo Site : Editing Disabled"); 
+}
+
 	if(isset($_POST['id1'])){ $id1 = $_REQUEST['id1']; }else{ $id1 = ""; } 
 	if(isset($_POST['id2'])){ $id2 = $_REQUEST['id2']; }else{ $id2 = ""; } 
 	if(isset($_POST['save'])){ $save = $_REQUEST['save']; }else{ $save = ""; }

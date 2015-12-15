@@ -44,8 +44,33 @@ if (count($deletions) > 0) {
 $dbpages = fetchAllPages();
 
 echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Pages 
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li class='active'>
+								<i class='glyphicon glyphicon-file'></i> Pages
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
+
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc == $demo_server_name_dc){
+	err_message("Demo Site : Editing Disabled"); 
+}
+
+echo "
 <div id='main'>
-<table class='admin'>
+<table class='table table-hover'>
 <tr><th>Id</th><th>Page</th><th>Access</th></tr>";
 
 //Display list of pages

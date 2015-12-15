@@ -106,7 +106,7 @@ $user_displayname = get_up_info_mem_disp_name($userIdme);
 							<span class='icon-bar'></span>
 							<span class='icon-bar'></span>
 						</button>
-						<a class='navbar-brand' href='{$websiteUrl}UAP_Admin_Panel/'>Admin Panel</a>
+						<a class='navbar-brand' href='{$websiteUrl}UAP_Admin_Panel/'><i class='glyphicon glyphicon-cog'></i> Admin Panel</a>
 					</div>
 					<!-- Top Menu Items -->
 					<ul class='nav navbar-right top-nav'>

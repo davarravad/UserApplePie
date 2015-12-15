@@ -9,20 +9,37 @@
 // Check to make sure current user is logged in and a site admin	
 if(isUserLoggedIn() && is_admin()){
 
-echo "<center>";
-	echo "<strong>Admin Zone - ".$websiteName." Reports</strong>"; 
-	echo "</center><br><Br>";
+// Page header
+echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Support Tickets 
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li class='active'>
+								<i class='glyphicon glyphicon-info-sign'></i> Support Tickets
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
 
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc == $demo_server_name_dc){
+	err_message("Demo Site : Editing Disabled"); 
+}
 
 $query = "SELECT * FROM ".$db_table_prefix."report";
 $result = mysqli_query($GLOBALS["___mysqli_ston"], $query)
 	or die ("Couldn't ececute query. Reports 43666");
 
-
 //HTML Stuff
-
-
-echo "<table cellspacing=4 width=100%>";
 
 while ($row = mysqli_fetch_array($result))
 {
@@ -32,21 +49,19 @@ while ($row = mysqli_fetch_array($result))
 
 	$report_msg = stripslashes($report_msg);
 	
-	echo "<tr><td class=$bgcolor>";
+	echo "<div class='panel panel-body panel-default'>";
 	echo "<b>Reporter</b>: $report_user ($report_userID) - <b>Type</b>: $report_type";
 	echo "<br><a href='$report_pageURL' target='_blank'>$report_pageURL</a>";
-	echo "<hr><font color=gray>$report_msg</font>";
+	echo "<div class='well well-sm'>$report_msg</div>";
 	echo "
 		<form method=\"post\" action=\"${site_url_link}UAP_Admin_Panel/delete_report/ \">
 		<input type=\"hidden\" name=\"report_id\" value=\"$report_id\">
-		<label title=\"Delete this Location!\"><input type=\"submit\" value=\"Delete!\" /></label>
+		<input type=\"submit\" value=\"Delete!\" class='btn btn-danger btn-sm'/>
 		</form>
 	";
-	echo "</td></tr>";		
+	echo "</div>";		
 
 }
-echo "</table>";
-
 
 }
 

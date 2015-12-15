@@ -9,10 +9,31 @@
 // Check to make sure current user is logged in and a site admin	
 if(isUserLoggedIn() && is_admin()){
 
+// Page header
+echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Register Message 
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li class='active'>
+								<i class='fa fa-fw fa-envelope'></i> Register Message
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
 
-	echo "<center>";
-	echo "<strong>Admin Zone - Welcome Message To All New Members!!!</strong>"; 
-	echo "</center><hr>";
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc == $demo_server_name_dc){
+	err_message("Demo Site : Editing Disabled"); 
+}
 
 	if(isset($_POST['save'])){ $save = $_REQUEST['save']; }else{ $save = ""; }
 
@@ -75,42 +96,45 @@ if(isUserLoggedIn() && is_admin()){
 		}
 	}
 	}else{
-	
-		echo "<strong>Admin Message for New Members!</strong>";
-	echo "<br>";
-	echo "<font color='green' size='1'>";
-	echo "Admin Welcome Message to users when they sign up for site.  This message will be sent to their messaging inboxes at time of registration.";
-	echo "</font><Br><br>";
-		$query = "SELECT * FROM ".$db_table_prefix."admin_message WHERE `id`='1' ";
-		if($result = $DBH->query($query)){
-			while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-				$id = $row['id'];
-				$sub = $row['sub'];
-				$con = $row['con'];
-			}
-		}
-		if(!isset($sub)){ $sub = ""; }
-		if(!isset($con)){ $con = ""; }
-	
-		$con = stripslashes($con);
-		$con = stripslashes($con);
-		$con = stripslashes($con);
-		$con = str_replace("<br />", "", $con );
+		echo "<div class='panel panel-info'>";
+			echo "<div class='panel-heading'>";
+				echo "Admin Message for New Members at Registration!";
+			echo "</div>";
+			echo "<div class='panel-body'>";
+				echo "<font color='green' size='1'>";
+				echo "Admin Welcome Message to users when they sign up for site.  This message will be sent to their messaging inboxes at time of registration.";
+				echo "</font><Br><br>";
+				$query = "SELECT * FROM ".$db_table_prefix."admin_message WHERE `id`='1' ";
+				if($result = $DBH->query($query)){
+					while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+						$id = $row['id'];
+						$sub = $row['sub'];
+						$con = $row['con'];
+					}
+				}
+				if(!isset($sub)){ $sub = ""; }
+				if(!isset($con)){ $con = ""; }
+			
+				$con = stripslashes($con);
+				$con = stripslashes($con);
+				$con = stripslashes($con);
+				$con = str_replace("<br />", "", $con );
 
-		echo "<form method='post' action='${site_url_link}UAP_Admin_Panel/admin_wm/'>";
-			echo "<input type='hidden' name='save' value='save'>";
-			// See if this is first time admin is using this func
-			if(!empty($id)){
-				echo "<input type='hidden' name='id' value='1'>";
-			}
-			echo "<label>Subject:</label>";
-			echo "<input name='sub' type='text' size='40' maxlength='50' value='${sub}'><br>";
-			echo "<label>Message Content:</label><br>";
-			echo "<textarea name='con' cols='50' rows='10'>${con}</textarea><br>";
-			echo "<Br><Br>";
-			echo "<label title='Send'><input type='submit' value='Save Message' /></label>";
-
-
+				echo "<form method='post' action='${site_url_link}UAP_Admin_Panel/admin_wm/'>";
+				echo "<input type='hidden' name='save' value='save'>";
+				// See if this is first time admin is using this func
+				if(!empty($id)){
+					echo "<input type='hidden' name='id' value='1'>";
+				}
+				echo "<label>Subject:</label>";
+				echo "<input name='sub' type='text' size='40' maxlength='50' value='${sub}' class='form-control input-sm'><br>";
+				echo "<label>Message Content:</label><br>";
+				echo "<textarea name='con' cols='50' rows='10' class='form-control'>${con}</textarea><br>";
+				echo "<Br><Br>";
+				echo "<input type='submit' value='Save Message' class='btn btn-success btn-sm'/>";
+				echo "</form>";
+			echo "</div>";
+		echo "</div>";
 
 		//Un Set Vars
 		unset($id, $sub, $con);

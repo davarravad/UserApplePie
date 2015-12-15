@@ -130,6 +130,34 @@ if(!empty($_POST)){
 }
 }
 
+echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Groups 
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li>
+								<i class='glyphicon glyphicon-book'></i> Groups
+							</li>
+							<li class='active'>
+								Group Information
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
+
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc == $demo_server_name_dc){
+	err_message("Demo Site : Editing Disabled"); 
+}
+
 $pagePermissions = fetchPermissionPages($permissionId); //Retrieve list of accessible pages
 $permissionUsers = fetchPermissionUsers($permissionId); //Retrieve list of users with membership
 $userData = fetchAllUsers(); //Fetch all users
@@ -142,7 +170,7 @@ echo resultBlock($errors,$successes);
 
 echo "
 <form name='adminPermission' action='".$site_url_link."UAP_Admin_Panel/admin_permission/?id=".$permissionId."' method='post'>
-<table class='admin'>
+<table class='table'>
 <tr><td>
 <h3>Permission Information</h3>
 <div id='regbox'>
@@ -152,15 +180,15 @@ echo "
 </p>
 <p>
 <label>Name:</label>
-<input type='text' name='name' value='".$permissionDetails['name']."' />
+<input class='form-control input-sm' type='text' name='name' value='".$permissionDetails['name']."' />
 </p>
 <p>
 <label>Font Color:</label>
-<input type='text' name='color' maxlength='20' value='".$permissionDetails['color']."' />
+<input class='form-control input-sm' type='text' name='color' maxlength='20' value='".$permissionDetails['color']."' />
 </p>
 <p>
 <label>Bold Font:</label>
-<select name='weight'>
+<select name='weight' class='form-control input-sm'>
 	<option value='TRUE'";
 if($permissionDetails['weight'] == "TRUE"){ echo "SELECTED"; }
 echo "/>Bold</option>
@@ -241,8 +269,8 @@ echo"
 </tr>
 </table>
 <p>
-<label>&nbsp;</label>
-<input type='submit' value='Update' class='submit' />
+
+<input type='submit' value='Update Group' class='btn btn-success btn-sm' />
 </p>
 </form>
 </div>

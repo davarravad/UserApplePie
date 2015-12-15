@@ -154,6 +154,34 @@ if(!empty($_POST))
 }
 }
 
+echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Users
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li>
+								<i class='glyphicon glyphicon-user'></i> Users
+							</li>
+							<li class='active'>
+								User Information
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
+
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc == $demo_server_name_dc){
+	err_message("Demo Site : Editing Disabled"); 
+}
+
 $userPermission = fetchUserPermissions($userId);
 $permissionData = fetchAllPermissions();
 
@@ -165,7 +193,7 @@ echo resultBlock($errors,$successes);
 
 echo "
 <form name='adminUser' action='".$site_url_link."UAP_Admin_Panel/admin_user/?id=".$userId."' method='post'>
-<table class='admin'><tr><td>
+<table class='table'><tr><td>
 <h3>User Information</h3>
 <div id='regbox'>
 <p>
@@ -178,11 +206,11 @@ echo "
 </p>
 <p>
 <label>Display Name:</label>
-<input type='text' name='display' value='".$userdetails['display_name']."' />
+<input class='form-control input-sm' type='text' name='display' value='".$userdetails['display_name']."' />
 </p>
 <p>
 <label>Email:</label>
-<input type='text' name='email' value='".$userdetails['email']."' />
+<input class='form-control input-sm' type='text' name='email' value='".$userdetails['email']."' />
 </p>
 <p>
 <label>Status:</label> ";
@@ -208,7 +236,7 @@ echo "
 </p>
 <p>
 <label>Title:</label>
-<input type='text' name='title' value='".$userdetails['title']."' />
+<input class='form-control input-sm' type='text' name='title' value='".$userdetails['title']."' />
 </p>
 <p>
 <label>Sign Up:</label>
@@ -233,7 +261,7 @@ echo "
 </p>
 <p>
 <label>&nbsp;</label>
-<input type='submit' value='Update' class='submit' />
+<input type='submit' value='Update User' class='btn btn-success btn-sm' />
 </p>
 </div>
 </td>
@@ -253,7 +281,7 @@ foreach ($permissionData as $v1) {
 echo "</p><p>Add Permission:";
 foreach ($permissionData as $v1) {
 	if(!isset($userPermission[$v1['id']])){
-		echo "<br><input type='checkbox' name='addPermission[".$v1['id']."]' id='addPermission[".$v1['id']."]' value='".$v1['id']."'> ".$v1['name'];
+		echo "<br><input class='form-group' type='checkbox' name='addPermission[".$v1['id']."]' id='addPermission[".$v1['id']."]' value='".$v1['id']."'> ".$v1['name'];
 	}
 }
 

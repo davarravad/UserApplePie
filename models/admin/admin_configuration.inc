@@ -9,9 +9,6 @@
 // Check to make sure current user is logged in and a site admin	
 if(isUserLoggedIn() && is_admin()){
 
-//echo "Current Server Name: $cur_server_name_dc<br>";
-//echo "Demo Server Name: $demo_server_name_dc";
-
 // Page header
 echo "
                 <!-- Page Heading -->

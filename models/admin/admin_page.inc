@@ -76,6 +76,33 @@ if(!empty($_POST)){
 $pagePermissions = fetchPagePermissions($pageId);
 $permissionData = fetchAllPermissions();
 
+echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Pages
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li>
+								<i class='glyphicon glyphicon-file'></i> Pages
+							</li>
+							<li class='active'>
+								Page Information
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
+
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc == $demo_server_name_dc){
+	err_message("Demo Site : Editing Disabled"); 
+}
 
 echo "
 <div id='main'>";
@@ -85,7 +112,7 @@ echo resultBlock($errors,$successes);
 echo "
 <form name='adminPage' action='".$site_url_link."UAP_Admin_Panel/admin_page/?id=".$pageId."' method='post'>
 <input type='hidden' name='process' value='1'>
-<table class='admin'>
+<table class='table'>
 <tr><td>
 <h3>Page Information</h3>
 <div id='regbox'>
@@ -141,7 +168,7 @@ echo"
 </table>
 <p>
 <label>&nbsp;</label>
-<input type='submit' value='Update' class='submit' />
+<input type='submit' value='Update' class='btn btn-success btn-sm' />
 </p>
 </form>
 </div>

@@ -47,6 +47,31 @@ if(!empty($_POST))
 }
 }
 
+echo "
+                <!-- Page Heading -->
+                <div class='row'>
+                    <div class='col-lg-12'>
+                        <h1 class='page-header'>
+                            $websiteName - Groups 
+                        </h1>
+                        <ol class='breadcrumb'>
+                            <li>
+                                <i class='glyphicon glyphicon-cog'></i> Admin Panel 
+                            </li>
+							<li class='active'>
+								<i class='glyphicon glyphicon-book'></i> Groups
+							</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+";
+
+//Check to see is site is demo site.  If so disable editing.
+if($cur_server_name_dc == $demo_server_name_dc){
+	err_message("Demo Site : Editing Disabled"); 
+}
+
 $permissionData = fetchAllPermissions(); //Retrieve list of all permission levels
 
 echo "
@@ -56,7 +81,7 @@ echo resultBlock($errors,$successes);
 
 echo "
 <form name='adminPermissions' action='".$site_url_link."UAP_Admin_Panel/admin_permissions/' method='post'>
-<table class='admin'>
+<table class='table table-hover'>
 <tr>
 <th>Delete</th><th>Permission Name</th>
 </tr>";
@@ -74,9 +99,9 @@ echo "
 </table>
 <p>
 <label>Permission Name:</label>
-<input type='text' name='newPermission' />
+<input class='form-control input-sm' type='text' name='newPermission' placeholder='New Group Name' />
 </p>                                
-<input type='submit' name='Submit' value='Submit' />
+<input type='submit' name='Submit' value='Submit' class='btn btn-success btn-sm'/>
 </form>
 </div>
 <div id='bottom'></div>
