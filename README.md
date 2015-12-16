@@ -1,4 +1,4 @@
-# UserApplePie v.1.0.1
+# UserApplePie v1.1.0
 UserApplePie is a web site portal based on UserCake
 
 Features:
