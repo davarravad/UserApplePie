@@ -39,29 +39,7 @@
 	echo "<tr><td class='content78'>";
     ###Page Content###
 
-		//Start Page Number Math
-		function getPagerData($numHits, $limit, $pnum) 
-		{ 
-			   $numHits  = (int) $numHits; 
-			   $limit    = max((int) $limit, 1); 
-			   $pnum     = (int) $pnum; 
-			   $numPages = ceil($numHits / $limit); 
-	
-			   $pnum = max($pnum, 1); 
-			   $pnum = min($pnum, $numPages); 
-	
-			   $offset = ($pnum - 1) * $limit; 
-	
-			   $ret = new stdClass; 
-	
-			   $ret->offset   = $offset; 
-			   $ret->limit    = $limit; 
-			   $ret->numPages = $numPages; 
-			   $ret->pnum     = $pnum; 
-	
-			   return $ret; 
-		} 
-		//End Page Number Math
+
 
 
 		// get pnum no from user to move user defined pnum    

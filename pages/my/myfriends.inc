@@ -92,28 +92,6 @@ echo "<div class='panel panel-info'>";
 echo "<strong>My Friends ( $num_rows44 ) </strong>";
 echo "</div>";
 
-    function getPagerData($numHits, $limit, $pnum) 
-    { 
-           $numHits  = (int) $numHits; 
-           $limit    = max((int) $limit, 1); 
-           $pnum     = (int) $pnum; 
-           $numPages = ceil($numHits / $limit); 
-
-           $pnum = max($pnum, 1); 
-           $pnum = min($pnum, $numPages); 
-
-           $offset = ($pnum - 1) * $limit; 
-
-           $ret = new stdClass; 
-
-           $ret->offset   = $offset; 
-           $ret->limit    = $limit; 
-           $ret->numPages = $numPages; 
-           $ret->pnum     = $pnum; 
-
-           return $ret; 
-    } 
-
     // get pnum no from user to move user defined pnum    
     if(isset($_GET['pnum'])){ $pnum = $_GET['pnum']; }else{ $pnum = ""; }
     
