@@ -1,9 +1,10 @@
-# UserApplePie v1.1.0
+# UserApplePie v.1.1.1
 UserApplePie is a web site portal based on UserCake
 
 Features:
+- Bootstrap Responsive Design.
 - Forum.
-- User Profiles with Photos.
+- User Profiles with Photos. (Photos Optional)
 - Friends.
 - Status Updates.
 - Status Comments.
@@ -13,7 +14,8 @@ Features:
 - Advanced User Account Settings.
 - User Messages. Members can message each other in site with email notifications.
 - Member profile comments.
-- Added Security Functions
+- Added Security Functions.
+- Admin Panel.
 - And Much More!
 
 Need Help or Want to Help with UserApplePie visit http://www.userapplepie.com/
@@ -80,20 +82,11 @@ Step #7. Enable/Install Apache mod_rewrite and add the following to your sites A
 The Above will enable your site url links to look better than http://www.website.com/index.php?page=login
 The urls will be much like http://www.website.com/login/
 
-Step #8. Enable/Install Apache mod_access so that intruders can not open the *.inc files (shows full code as text file if not disabled). 
-Add the following to either apache global config, or vhost/directory, or .htaccess
-```html
-	<Files  ~ "\.inc$">
-	  Order allow,deny
-	  Deny from all
-	</Files> 
-```
-
-Step #9. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
+Step #8. To use the installer visit http://yourdomain.com/install/ in your browser. UserApplePie will attempt to build the database for you. After completion
    delete the install folder.  The install script checks to make sure all requirements match UserApplePie's needs.  Also has links if not.
 
-Step #10. Import the install/cities.sql file into your database.  
-If not using default table prefix uc_ you will need to change it after import. 
+Step #9. Import the install/cities.sql file into your database.  
+If not using default table prefix "uc_" you will need to change it after import. 
 (uc_cities, uc_cities_extended)
    
 - UserApplePie was tested with a Ubuntu Linux server with all the latest updates.  
@@ -103,7 +96,7 @@ If not using default table prefix uc_ you will need to change it after import.
 //--Credits for UserApplePie
 
 UserApplePie created by: David Sargent aka DaVaR
-Vers: 0.0.1
+Vers: 1.1.1
 http://www.userapplepie.com/
    
 //--Credits for UserCake Backbone

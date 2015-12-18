@@ -1,13 +1,17 @@
 <?php
 //////////////////////////////////
-// UserApplePie Version: 1.1.0  //
+// UserApplePie Version: 1.1.1  //
 // http://www.userapplepie.com  //
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
 
+// Security Feature to Disallow File to be opened directly.
+// Sets this page (index.php) as the main file that is allowed
+// to include protected files
+define('Page_Protection', TRUE);
 
-require_once("../models/db-settings.inc");
+require_once("../external/db-settings.php");
 
 // Current Version
 $uap_ver = "v1.1.0";
@@ -45,7 +49,7 @@ h2 {
 	color: #003333;
 }
 </style>
-<script src='../models/funcs.js' type='text/javascript'>
+<script src='./external/funcs.js' type='text/javascript'>
 </script>
 </head>
 <body>
@@ -659,7 +663,7 @@ if($tableExists->rowCount()>0){
 		(8, 'site_gbl_keywords', '$site_gbl_keywords'),
 		(9, 'email', '$site_email'),
 		(10, 'resend_activation_threshold', '0'),
-		(11, 'language', 'models/languages/en.php'),
+		(11, 'language', 'external/languages/en.php'),
 		(12, 'activation', 'false'),
 		(13, 'template', 'style/default'),
 		(14, 'recap_sitekey', '$recap_sitekey'),
@@ -1063,7 +1067,7 @@ if($tableExists->rowCount()>0){
 		
 		// Add admin user to database
 		// Include config to setup new user
-		require_once("adminuser.inc");
+		require_once("adminuser.php");
 		uap_create_admin_user($email,$username,$displayname,$password);
 		
 		// Include the cities file for database
