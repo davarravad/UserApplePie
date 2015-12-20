@@ -78,7 +78,7 @@ style_header_content($stc_page_title, $stc_page_description);
 			</div>
 		</div>
 	</div>
-	<div class='row'>
+	<div class=''>
 	<h3><a href='".$websiteUrl."Downloads/'>Download UserApplePie</a></h3><hr>
 	UserApplePie was created as an improved version of <a href='http://usercake.com/' target='_blank'>UserCake 2.0.2</a>.<hr>
 	The goal of UserApplePie is to create a simple to use User Management System based on MySQL and PHP.  <Br><br>
@@ -94,6 +94,7 @@ style_header_content($stc_page_title, $stc_page_description);
 	If you need any assistance with UserApplePie, please read the <a href='".$websiteUrl."Docs/'>Docs</a> page 
 	or go to our <a href='".$websiteUrl."Forum/'>Forum</a>.<br><br>
 	Thanks You For Your Interest in UserApplePie!  Enjoy!
+	</div>
 	";
 	// End of page content
 

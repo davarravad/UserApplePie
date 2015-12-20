@@ -27,7 +27,7 @@ $total_visitors_today = $result->fetchColumn(0);
 unset($result);
 
 //Get total number of unique visitors yesterday
-$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where DAY(`timestamp`) = DAY(DATE_SUB(CURDATE(), INTERVAL 1 DAY)) "); 
+$result = $DBH->prepare("select count(distinct ipaddy) from ".$db_table_prefix."sitelogs where timestamp BETWEEN DATE_ADD(CURDATE(), INTERVAL -1 day) AND CURDATE()"); 
 $result->execute();
 $total_visitors_yesterday = $result->fetchColumn(0);
 //echo $total_visitors_yesterday;
@@ -84,7 +84,7 @@ $total_page_views_today = $result->fetchColumn(0);
 unset($result);
 
 //Get total number of unique visitors yesterday
-$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where DAY(`timestamp`) = DAY(DATE_SUB(CURDATE(), INTERVAL 1 DAY))"); 
+$result = $DBH->prepare("select count(*) from ".$db_table_prefix."sitelogs where timestamp BETWEEN DATE_ADD(CURDATE(), INTERVAL -1 day) AND CURDATE()"); 
 $result->execute();
 $total_page_views_yesterday = $result->fetchColumn(0);
 //echo $total_page_views_yesterday;
