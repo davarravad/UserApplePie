@@ -12,10 +12,12 @@ if(!defined('Page_Protection')){header("Location: ../");exit();}
 
 
 if(!empty($site_adds_bot && $userAdds == "TRUE")){
-	echo "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td class='content78' align='center'>";
+	echo "<div class='panel panel-default'>";
+		echo "<div class='panel-body'>";
 
-	echo "$site_adds_bot";
-	
-	echo "</td></tr></table>";
+			echo "$site_adds_bot";
+		
+		echo "</div>";
+	echo "</div>";
 }
 ?>
