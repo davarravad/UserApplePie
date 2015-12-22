@@ -73,6 +73,7 @@ if($tableExists->rowCount()>0){
 	The site uses this data to display where a user is from based on their zip code.<hr>";
 	echo "<p><h1><strong>Database setup complete, please delete the install folder.</h1></strong></p>";
 }else{
+	// Database not installed yet, let's install!
 
 	// Get Data from form request
 	if(isset($_POST['pass_requirements'])){ $pass_requirements = $_POST['pass_requirements']; }else{ $pass_requirements = "FALSE"; }

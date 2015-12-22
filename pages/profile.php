@@ -10,10 +10,6 @@
 // Only allows this file to be include by index.php
 if(!defined('Page_Protection')){header("Location: ../");exit();}
 
-
-// Get globals
-	global $mysqli, $site_url_link, $site_forum_title;
-
 	// get the id of content from the URL request
 	if(!empty($ID02)){
 		// Show user profile by userId
