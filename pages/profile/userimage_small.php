@@ -11,11 +11,7 @@
 if(!defined('Page_Protection')){header("Location: ../");exit();}
 
 
-// Get users profile image at 18 px height
-
-// Get globals 	
-global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix, $enable_photos;
-
+// Get users profile image at 18 px heigh
 if($enable_photos == "TRUE"){
 
 	if(!empty($A_ID02)){
