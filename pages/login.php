@@ -10,16 +10,8 @@
 // Only allows this file to be include by index.php
 if(!defined('Page_Protection')){header("Location: ../");exit();}
 
-
-
-
-require_once("external/config.php");
-// Build Security for Current Page if Any
-$cur_page_get = "pages/".$_GET['page'].".php";
-if (!securePage($cur_page_get)){die();}
-
 //Prevent the user visiting the logged in page if he/she is already logged in
-if(isUserLoggedIn()) { header("Location: /"); die(); }
+if(isUserLoggedIn()) { header("Location: ../"); die(); }
 
 // Page title
 $stc_page_title = "$websiteName Member Login";

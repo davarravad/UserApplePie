@@ -95,7 +95,7 @@ foreach ($dbpages as $page){
 		echo "Public";
 	}
 	else {
-		echo "Private";	
+		echo "<font color='red'>Private</font>";	
 	}
 	
 	echo "

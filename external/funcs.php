@@ -38,7 +38,7 @@ function getTemplateFiles()
 function getPageFiles()
 {
 	$directory = "pages/";
-	$pages = glob($directory . "*");
+	$pages = glob($directory . "*.php");
 	//print each file name
 	foreach ($pages as $page){
 		$page = str_replace("pages/", "", $page);

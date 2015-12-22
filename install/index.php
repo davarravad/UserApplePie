@@ -248,27 +248,18 @@ if($tableExists->rowCount()>0){
 		`page` varchar(150) NOT NULL,
 		`private` tinyint(1) NOT NULL DEFAULT '0',
 		PRIMARY KEY (`id`)
-		) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+		) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 		";
 		
 		$pages_entry = "INSERT INTO `".$db_table_prefix."pages` (`id`, `page`, `private`) VALUES
-		(1, 'account.php', 1),
-		(2, 'activate-account.php', 0),
-		(3, 'admin_configuration.php', 1),
-		(4, 'admin_page.php', 1),
-		(5, 'admin_pages.php', 1),
-		(6, 'admin_permission.php', 1),
-		(7, 'admin_permissions.php', 1),
-		(8, 'admin_user.php', 1),
-		(9, 'admin_users.php', 1),
-		(10, 'forgot-password.php', 0),
-		(11, 'index.php', 0),
-		(12, 'left-nav.php', 0),
-		(13, 'login.php', 0),
-		(14, 'logout.php', 1),
-		(15, 'register.php', 0),
-		(16, 'resend-activation.php', 0),
-		(17, 'user_settings.php', 1);
+		(1, 'account', 1),
+		(2, 'activate-account', 0),
+		(3, 'forgot-password', 0),
+		(4, 'login', 0),
+		(5, 'logout', 1),
+		(6, 'register', 0),
+		(7, 'resend-activation', 0),
+		(8, 'user_settings', 1);
 		";
 		
 		$permission_page_matches_sql = "CREATE TABLE IF NOT EXISTS `".$db_table_prefix."permission_page_matches` (

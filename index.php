@@ -11,7 +11,6 @@
 // to include protected files
 define('Page_Protection', TRUE);
 
-
 // Check to see if Admin is viewing admin panel
 if(isset($_REQUEST['page'])){$page_check = $_REQUEST['page'];}else{$page_check = "";}
 if($page_check == 'UAP_Admin_Panel'){
