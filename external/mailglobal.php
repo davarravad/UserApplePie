@@ -20,6 +20,9 @@ function mailmessage() {
 	
 	$mto = $_POST['mto'];
 	$mfrom = $_POST['mfrom'];
+	
+	$mto = get_up_info_mem_disp_name($mto);
+	$mfrom = get_up_info_mem_disp_name($mfrom);
 	//echo "$mto";
 
 	$query = "SELECT * FROM ".$db_table_prefix."users WHERE `display_name` = '$mto' LIMIT 1";

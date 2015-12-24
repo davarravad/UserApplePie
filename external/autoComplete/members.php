@@ -5,17 +5,13 @@
 // UserCake Version: 2.0.2      //
 // http://usercake.com          //
 //////////////////////////////////
-
+	
 // Security Feature to Disallow File to be opened directly.
-// Only allows this file to be include by index.php
-if(!defined('Page_Protection')){header("Location: ../");exit();}
-
-
-// PHP5 Implementation - uses MySQLi.
-	// mysqli('localhost', 'yourUsername', 'yourPassword', 'yourDatabase');
+// Sets this page as the main file that is allowed
+// to include protected files
+define('Page_Protection', TRUE);
 	
 	require_once("../db-settings.php");
-	global $db_host, $db_name, $db_user, $db_pass, $db_table_prefix;
 	
 	$db = new mysqli($db_host, $db_user ,$db_pass, $db_name);
 	

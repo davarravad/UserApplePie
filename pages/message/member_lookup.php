@@ -34,7 +34,7 @@ unset($user_name);
 			// Hide the suggestion box.
 			$('#suggestions').hide();
 		} else {
-			$.post("./external/autoComplete/members.php", {queryString: ""+inputString+""}, function(data){
+			$.post("../external/autoComplete/members.php", {queryString: ""+inputString+""}, function(data){
 				if(data.length >0) {
 					$('#suggestions').show();
 					$('#autoSuggestionsList').html(data);
@@ -53,12 +53,12 @@ unset($user_name);
 			<div>
 			<label>
 				<input autocomplete="off" name="mto" type="text" size="30" id="inputString" value="<?php
-if(isset($user_name)){echo "$user_name";} ?>" onkeyup="lookup(this.value);" onblur="fill();" />
+if(isset($user_name)){echo "$user_name";} ?>" onkeyup="lookup(this.value);" onblur="fill();" class='form-control' />
 			</label>
 			</div>
 			
 			<div class="suggestionsBox" id="suggestions" style="display: none;">
-				<img src="./external/autoComplete/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+				<img src="../external/autoComplete/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
 				<center><font color=#090><h3>Please Select User<br> From This Drop Down<br></h3></font></center>
 				<div class="suggestionList" id="autoSuggestionsList">
 					&nbsp;

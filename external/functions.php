@@ -840,9 +840,9 @@ function get_total_friend_requests($u_id){
 }
 
 // Collect the total number of new messages
-function get_total_messages($nname){
+function get_total_messages($u_id){
 	global $DBH,$db_table_prefix; 
-	$sql = "SELECT count(*) FROM `".$db_table_prefix."inbox` WHERE `mto` = '$nname' AND `mread` = 'unread'";
+	$sql = "SELECT count(*) FROM `".$db_table_prefix."inbox` WHERE `mto` = '$u_id' AND `mread` = 'unread'";
 	$result = $DBH->prepare($sql); 
 	$result->execute(); 
 	$number_of_rows = $result->fetchColumn();
@@ -854,9 +854,9 @@ function get_total_messages($nname){
 }
 
 // Collect the total number of new messages
-function get_total_messages_friend_requests($nname, $u_id){
+function get_total_messages_friend_requests($u_id){
 	global $DBH,$db_table_prefix; 
-	$sqlA = "SELECT count(*) FROM `".$db_table_prefix."inbox` WHERE `mto` = '$nname' AND `mread` = 'unread'";
+	$sqlA = "SELECT count(*) FROM `".$db_table_prefix."inbox` WHERE `mto` = '$u_id' AND `mread` = 'unread'";
 	$resultA = $DBH->prepare($sqlA); 
 	$resultA->execute(); 
 	$nor_1 = $resultA->fetchColumn();

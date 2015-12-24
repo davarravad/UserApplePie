@@ -11,7 +11,6 @@
 if(!defined('Page_Protection')){header("Location: ../");exit();}
 
 
-
     // get pnum no from user to move user defined pnum    
     if(isset($_GET['pnum'])){ $pnum = $_GET['pnum']; }else{ $pnum = ""; } 
     
@@ -19,7 +18,7 @@ if(!defined('Page_Protection')){header("Location: ../");exit();}
     $limit = 20; 
     
     // simple query to get total no of entries
-    $queryPN = "select * from ".$db_table_prefix."inbox WHERE `mto`='$nname' "; 
+    $queryPN = "select * from ".$db_table_prefix."inbox WHERE `mto`='$userIdme' "; 
 	// simple query to get total no of entries
 	if ($result = $mysqli->query("$queryPN")) {
 
@@ -44,13 +43,13 @@ if($total > '0'){
 
 				//GETTING INFORMATION FROM DATABASE
 
-			$query = "SELECT * FROM ".$db_table_prefix."inbox WHERE `mto`='$nname' ORDER BY `mid` DESC LIMIT $offset, $limit";
+			$query = "SELECT * FROM ".$db_table_prefix."inbox WHERE `mto`='$userIdme' ORDER BY `mid` DESC LIMIT $offset, $limit";
 			$result = mysqli_query($GLOBALS["___mysqli_ston"], $query);
 				//or die ("Couldn't ececute query.");
 
 				//TABLE SETUP FOR CONTENT
 
-			echo "<table>";
+			echo "<table class='table'>";
 				echo "<tr>";
 			echo "<td valign=bottom> <strong>From</strong></td><td valign=bottom><strong>Subject</strong></td><td valign=bottom><strong>Status</strong> </td><td valign=bottom><strong>Date Read</strong></td><td valign=bottom><strong>Date Sent</strong> </td><td valign=bottom><strong>Other</strong></td></tr>";
 
@@ -71,7 +70,10 @@ if($total > '0'){
 				}
 					$msubject2 = stripslashes($msubject2);
 				echo "<tr>";
-				echo "<td class='$bgcolor' valign=bottom>$mfrom </td>";
+				echo "<td class='$bgcolor' valign=bottom>";
+					// Display from user's display name
+					get_user_name($mfrom);
+				echo "</td>";
 				echo "<td class='$bgcolor' valign=bottom>";
 				echo "$msubject2";
 				echo " </td>";
@@ -80,7 +82,7 @@ if($total > '0'){
 				if($mread == 'unread'){ echo "<font color=green><strong>Unread</strong></font>"; }
 				echo "</td>";
 				echo "<td class='$bgcolor' valign=bottom>$mdateread</td>";
-				echo "<td class='$bgcolor' valign=bottom>$mdatesent</td>";
+				echo "<td class='$bgcolor' valign=bottom>$timestamp</td>";
 				echo "<td class='$bgcolor'>";
 				//echo "<a href=='${site_url_link}?page=message&mes=delmesinbox&mid=$mid'>DELETE</a>";
 							if(isset($mread)){}else{$mread = "";}
@@ -95,7 +97,7 @@ if($total > '0'){
 									<input type=\"hidden\" name=\"mid\" value=\"$mid\">
 									<input type=\"hidden\" name=\"box\" value=\"inbox\">
 									<input type=\"hidden\" name=\"read\" value=\"$taz_read\">
-									<label title=\"Read Message\"><input type=\"submit\" value=\"Read Message\"></label>
+									<input type=\"submit\" value=\"Read Message\" class='btn btn-default btn-sm'>
 								</form>
 							";
 				
@@ -103,14 +105,14 @@ if($total > '0'){
 								<form method=\"post\" action=\"${site_url_link}message/\">
 									<input type=\"hidden\" name=\"mes\" value=\"delmesinbox\">
 									<input type=\"hidden\" name=\"mid\" value=\"$mid\">
-									<label title=\"Delete Message\"><input type=\"submit\" value=\"Delete\"></label>
+									<input type=\"submit\" value=\"Delete\" class='btn btn-default btn-sm'>
 								</form>
 							";
-							echo "<table><tr><td>";
-								echo "$taz_reada";
-							echo "</td><td>";
+
+								echo " $taz_reada ";
+
 								echo "$taz_delete";
-							echo "</td></tr></table>";	
+
 				
 
 				echo "</td>";

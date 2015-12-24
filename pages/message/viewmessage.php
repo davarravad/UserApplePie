@@ -41,13 +41,15 @@ while ($row = mysqli_fetch_array($result))
 
 echo "	
 <br><Br>
-<table width='500' border='0' cellspacing='2' cellpadding='2'>
+<table width='500' border='0' cellspacing='2' cellpadding='2' class='table'>
     <tr> 
 	<td width='20%' class='epboxa'>
 		<strong>To:</strong>
 	</td>
       	<td class='epboxa'>
-         		<strong>$mto</strong>
+         		<strong>";
+				get_user_name($mto);
+				echo "</strong>
      	</td>
     </tr>
     <tr> 
@@ -55,7 +57,9 @@ echo "
 		<strong>From:</strong>
 	</td>
       	<td class='epboxb'>
-         		<strong>$mfrom</strong>
+         		<strong>";
+				get_user_name($mfrom);
+				echo "</strong>
      	</td>
     </tr>
     <tr> 
@@ -69,7 +73,9 @@ echo "
 
 <tr>
       	<td colspan='2' class='content79'>
-         		<strong>$taz_content</strong>
+				<div class='panel panel-default panel-sm'>
+					<div class='panel-body'>$taz_content</div>
+				</div>
      	</td>
     </tr>
 
@@ -96,7 +102,7 @@ $mdateread = date("YmdHis");
 <input name="msubject" type="hidden" value="<?php echo "$msubject"; ?>">
 <input name="mcontent" type="hidden" value="<?php echo "$mcontent"; ?>">
 
-<label title="Reply"><input name="submit" type="submit" value="Reply" class="contSubmit" onClick="this.value = 'Please Wait....'"></label>
+<input name="submit" type="submit" value="Reply" onClick="this.value = 'Please Wait....'" class='btn btn-default btn-sm'>
 </form>
 </td><td>
 <?php
@@ -104,7 +110,7 @@ $taz_delete = "
 					<form method=\"post\" action=\"${site_url_link}message/\">
 						<input type=\"hidden\" name=\"mes\" value=\"delmes$box\">
 						<input type=\"hidden\" name=\"mid\" value=\"$mid\">
-						<label title=\"Delete Message\"><input type=\"submit\" value=\"Delete\" /></label>
+						<input type=\"submit\" value=\"Delete\" class='btn btn-default btn-sm'/>
 					</form>
 				";
 				echo "$taz_delete";	

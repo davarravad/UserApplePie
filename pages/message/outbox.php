@@ -20,7 +20,7 @@ if(!defined('Page_Protection')){header("Location: ../");exit();}
     $limit = 20; 
     
     // simple query to get total no of entries
-    $queryPN = "select * from ".$db_table_prefix."outbox WHERE `mfrom`='$nname' "; 
+    $queryPN = "select * from ".$db_table_prefix."outbox WHERE `mfrom`='$userIdme' "; 
 	// simple query to get total no of entries
 	if ($result = $mysqli->query("$queryPN")) {
 
@@ -45,13 +45,13 @@ if($total > '0'){
 
 				//GETTING INFORMATION FROM DATABASE
 
-			$query = "SELECT * FROM ".$db_table_prefix."outbox WHERE `mfrom`='$nname' ORDER BY `mid` DESC LIMIT $offset, $limit";
+			$query = "SELECT * FROM ".$db_table_prefix."outbox WHERE `mfrom`='$userIdme' ORDER BY `mid` DESC LIMIT $offset, $limit";
 			$result = mysqli_query($GLOBALS["___mysqli_ston"], $query)
 				or die ("Couldn't ececute query.");
 
 				//TABLE SETUP FOR CONTENT
 
-			echo "<table>";
+			echo "<table class='table'>";
 				echo "<tr>";
 			echo "<td valign=bottom> <strong>To</strong></td><td valign=bottom><strong>Subject</strong></td><td valign=bottom><strong>Status</strong> </td><td valign=bottom><strong>Date Read</strong></td><td valign=bottom><strong>Date Sent</strong> </td><td valign=bottom><strong>Other</strong></td></tr>";
 
@@ -74,7 +74,10 @@ if($total > '0'){
 				$msubject2 = stripslashes($msubject2);
 
 				echo "<tr>";
-				echo "<td class='$bgcolor' valign=bottom>$mto </td>";
+				echo "<td class='$bgcolor' valign=bottom>";
+					// Display to user display_name
+					get_user_name($mto);
+				echo "</td>";
 				echo "<td class='$bgcolor' valign=bottom>";
 				echo "$msubject2";
 				echo " </td>";
@@ -83,7 +86,7 @@ if($total > '0'){
 				if($mread == 'unread'){ echo "<font color=green><strong>Unread</strong></font>"; }
 				echo "</td>";
 				echo "<td class='$bgcolor' valign=bottom>$mdateread</td>";
-				echo "<td class='$bgcolor' valign=bottom>$mdatesent</td>";
+				echo "<td class='$bgcolor' valign=bottom>$timestamp</td>";
 				echo "<td class='$bgcolor'>";
 				//echo "<a href=='${site_url_link}?page=message&mes=delmesoutbox&mid=$mid'>DELETE</a>";
 
@@ -94,19 +97,19 @@ if($total > '0'){
 									<input type=\"hidden\" name=\"mes\" value=\"viewmessage\">
 									<input type=\"hidden\" name=\"mid\" value=\"$mid\">
 									<input type=\"hidden\" name=\"box\" value=\"outbox\">
-									<label title=\"Read Message\"><input type=\"submit\" value=\"Read Message\"></label>
+									<input type=\"submit\" value=\"Read Message\" class='btn btn-default btn-sm'>
 								</form>
 							";
-							echo "<table><tr><td>$taz_readb";		
+							echo "$taz_readb";		
 				
 							$taz_backz = "
 								<form method=\"post\" action=\"${site_url_link}message/\">
 									<input type=\"hidden\" name=\"mes\" value=\"delmesoutbox\">
 									<input type=\"hidden\" name=\"mid\" value=\"$mid\">
-									<label title=\"Delete\"><input type=\"submit\" value=\"Delete\"></label>
+									<input type=\"submit\" value=\"Delete\" class='btn btn-default btn-sm'>
 								</form>
 							";
-							echo "</td><td>$taz_backz</td></tr></table>";	
+							echo "$taz_backz";	
 
 				echo "</td>";
 				echo "</tr>";

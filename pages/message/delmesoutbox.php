@@ -30,7 +30,7 @@ if(!defined('Page_Protection')){header("Location: ../");exit();}
 
 	}else{
 
-			$userone = $nname;
+			$userone = $userIdme;
 		
 		
 		
@@ -50,9 +50,7 @@ if(!defined('Page_Protection')){header("Location: ../");exit();}
 				//echo "Owner = $mfrom";
 			}
 		
-			$nname2 = strtolower($nname);
-		
-			if($mfrom == $nname || $mfrom == $nname2) {
+			if($mfrom == $userone) {
 		
 		
 		 

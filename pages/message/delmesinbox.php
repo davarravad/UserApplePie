@@ -28,7 +28,7 @@ if(isUserLoggedIn())
 
 		}else{
 		
-			$userone = $nname;
+			$userone = $userIdme;
 			//echo "$userone";
 			
 			$mid = $_POST['mid'];
@@ -43,11 +43,8 @@ if(isUserLoggedIn())
 				extract($row);
 				//echo "Owner = $mto";
 			}
-			
-			//turn into lowercase
-			$nname2 = strtolower($nname);
 		
-			if($mto == $nname || $mto == $nname2) {
+			if($mto == $userone) {
 			 
 				$query = "DELETE FROM `".$db_table_prefix."inbox` WHERE `mid`='$mid' LIMIT 1"; 
 

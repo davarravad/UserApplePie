@@ -188,11 +188,11 @@ echo "
 							echo "<span class='glyphicon glyphicon-user' aria-hidden='true'></span> ";
 						}
 					echo " $user_displayname ";
-						get_total_messages_friend_requests($nname, $userIdme);
+						get_total_messages_friend_requests($userIdme);
 					echo "<span class='caret'></span></a>
 					<ul class='dropdown-menu'>
 						<li><a href='${site_url_link}message/' title='View Your Messages'> <span class='glyphicon glyphicon-inbox' aria-hidden='true'></span> Messages";
-							get_total_messages($nname);
+							get_total_messages($userIdme);
 						echo "</a></li>
 						<li><a href='${site_url_link}community/myfriends/' title='View Your Friend Requests'> <span class='glyphicon glyphicon-heart' aria-hidden='true'></span> Friend Requests";
 							get_total_friend_requests($userIdme);

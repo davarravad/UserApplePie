@@ -39,26 +39,29 @@ $mcontent = $_POST['mcontent'];
 	form_token();
 ?>
 
-  <table width="" border="0" cellspacing="0" cellpadding="0">
+<input name="mto" type="hidden" value="<?php echo"$mto"; ?>">
+<input name="mfrom" type="hidden" value="<?php echo"$userIdme"; ?>">
+
+  <table width="" border="0" cellspacing="0" cellpadding="0" class='table'>
     <tr> 
       <td width="10%">TO:</td>
       <td width="90%"> 
      
-<?php echo "$mto"; ?>
+<?php get_user_name($mto); ?>
         
       </td>
     </tr>
     <tr> 
       <td>FROM:</td>
-      <td><?php echo"$mfrom"; ?></td>
+      <td><?php get_user_name($mfrom); ?></td>
     </tr>
     <tr> 
       <td width="0">SUBJECT: &nbsp;</td>
-      <td><input name="msubject" type="text" size="50" value="RE: <?php echo"$msubject"; ?>"></td>
+      <td><input name="msubject" type="text" size="50" value="RE: <?php echo"$msubject"; ?>" class='form-control'></td>
     </tr>
     <tr> 
       <td colspan="2">MESSAGE CONTENT:<br>
-          <textarea name="mcontent" cols="80" rows="10">
+          <textarea name="mcontent" cols="80" rows="10" class='form-control'>
 
 
 
@@ -67,10 +70,9 @@ $mcontent = $_POST['mcontent'];
 </textarea>
         </td>
     </tr>
-<tr><td colspan="2"><input name="submit" type="submit" value="Send Message" class="contSubmit" onClick="this.value = 'Please Wait....'">
+<tr><td colspan="2"><input name="submit" type="submit" value="Send Message" class="btn btn-default btn-sm" onClick="this.value = 'Please Wait....'">
 
-<input name="mto" type="hidden" value="<?php echo"$mto"; ?>">
-<input name="mfrom" type="hidden" value="<?php echo"$nname"; ?>">
+
 </td></tr>
   </table>
 </form>

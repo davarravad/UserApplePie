@@ -14,7 +14,7 @@ if(!defined('Page_Protection')){header("Location: ../");exit();}
 global $mysqli, $site_url_link, $site_forum_title, $db_table_prefix;
 
 
-$query = "SELECT * FROM `".$db_table_prefix."inbox` WHERE `mto` = '$nname' AND `mread` = 'unread' ";
+$query = "SELECT * FROM `".$db_table_prefix."inbox` WHERE `mto` = '$userIdme' AND `mread` = 'unread' ";
 
 	if ($result = $mysqli->query("$query")) {
 

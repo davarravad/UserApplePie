@@ -38,14 +38,14 @@ $userId = $userIdme;
 	form_token();
 ?>
 
-  <table width="" border="0" cellspacing="0" cellpadding="0">
+  <table width="" border="0" cellspacing="0" cellpadding="0" class='table'>
     <tr><td colspan=2>
 	<font size=1 color=green>Type Name of member, and select their name from the dropdown. The selected name will autofill.</font>
 	</td></tr><tr>
       <td width="10%">TO:</td>
       <td width="90%"> 
      
-<?php require "pages/message/member_lookup.php"; ?> 
+<?php require "member_lookup.php"; ?> 
         
       </td>
     </tr>
@@ -56,11 +56,11 @@ $userId = $userIdme;
     <tr> 
       <td width="0">SUBJECT: &nbsp;</td>
       <td><input name="msubject" type="text" value="<?php
-echo "$msub"; ?>" size="50"></td>
+echo "$msub"; ?>" size="50" class='form-control'></td>
     </tr>
     <tr> 
       <td colspan="2">MESSAGE CONTENT:<br>
-          <textarea name="mcontent" cols="80" rows="10"><?php
+          <textarea name="mcontent" cols="80" rows="10" class='form-control'><?php
 if($mbod){echo "This post relates to your post in Swap Meet
 *$mbod*
 -------------------------------------------------
@@ -70,8 +70,8 @@ if($mbod){echo "This post relates to your post in Swap Meet
 <tr><td colspan="2">
 
 
-<input name="mfrom" type="hidden" value="<?php echo"$nname"; ?>" size="50">
-<input name="submit" type="submit" value="Send Message" onClick="this.value = 'Please Wait....'">
+<input name="mfrom" type="hidden" value="<?php echo"$userIdme"; ?>" size="50">
+<input name="submit" type="submit" value="Send Message" onClick="this.value = 'Please Wait....'" class='btn btn-default btn-sm'>
 </td></tr>
   </table>
 </form>
