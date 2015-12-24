@@ -22,7 +22,7 @@ if(isUserLoggedIn())
 		
 		// Get Message Data
 		$mto = $_POST['mto'];
-		$mfrom = $_POST['mfrom'];
+		$mfrom = $userIdme;
 		$msubject = $_POST['msubject'];
 		$mcontent = $_POST['mcontent'];
 		

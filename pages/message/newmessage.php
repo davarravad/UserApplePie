@@ -69,8 +69,6 @@ if($mbod){echo "This post relates to your post in Swap Meet
     </tr>
 <tr><td colspan="2">
 
-
-<input name="mfrom" type="hidden" value="<?php echo"$userIdme"; ?>" size="50">
 <input name="submit" type="submit" value="Send Message" onClick="this.value = 'Please Wait....'" class='btn btn-default btn-sm'>
 </td></tr>
   </table>

@@ -40,7 +40,6 @@ $mcontent = $_POST['mcontent'];
 ?>
 
 <input name="mto" type="hidden" value="<?php echo"$mto"; ?>">
-<input name="mfrom" type="hidden" value="<?php echo"$userIdme"; ?>">
 
   <table width="" border="0" cellspacing="0" cellpadding="0" class='table'>
     <tr> 

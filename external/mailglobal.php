@@ -16,10 +16,10 @@ function mailmessage() {
 
 	//Function mailmessage(); is set up to get userEmail for sending message alerts
 
-	global $mysqli, $site_url_link, $db_table_prefix, $websiteUrl, $websiteName;
+	global $mysqli, $site_url_link, $db_table_prefix, $websiteUrl, $websiteName, $userIdme;
 	
 	$mto = $_POST['mto'];
-	$mfrom = $_POST['mfrom'];
+	$mfrom = $userIdme;
 	
 	$mto = get_up_info_mem_disp_name($mto);
 	$mfrom = get_up_info_mem_disp_name($mfrom);
