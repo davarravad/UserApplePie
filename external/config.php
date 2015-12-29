@@ -92,7 +92,9 @@ if(isset($_SESSION["userCakeUser"]) && is_object($_SESSION["userCakeUser"]))
 }
 
 // Build Security for Current Page if Any
-$cur_page_get = "pages/".$_GET['page'].".php";
-if (!securePage($cur_page_get)){die();}
+if(isset($_GET['page'])){
+	$cur_page_get = "pages/".$_GET['page'].".php";
+	if (!securePage($cur_page_get)){die();}
+}
 
 ?>
